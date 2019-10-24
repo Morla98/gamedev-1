@@ -1,0 +1,50 @@
+.header {
+  display: flex;
+
+  justify-content: space-between;
+  .toolbar {
+    display: flex;
+    justify-content: space-between;
+    .language {
+      width: 6rem;
+      .mat-select {
+        padding-top: 0.5rem;
+        margin-bottom: 0;
+        ::ng-deep {
+            .mat-select-value-text {
+                color: white;
+            }
+            .mat-select-underline {
+                background-color: white;
+            }
+            .mat-select-disabled .mat-select-value,
+            .mat-select-arrow,
+            .mat-select-trigger {
+                color: white;
+            }
+        }
+      }
+    }
+    button{
+        &:hover{
+            cursor: pointer;
+        }
+    }
+  }
+}
+
+mat-sidenav-container {
+  height: calc(100vh - 5rem);
+  mat-sidenav {
+    min-width: 20rem;
+    padding-right: 2rem;
+  }
+  li {
+    border-bottom: 2px solid darkblue;
+    margin: 1rem 0;
+  }
+}
+
+mat-sidenav-content {
+  padding: 2rem;
+}
