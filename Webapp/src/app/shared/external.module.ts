@@ -5,11 +5,21 @@ import {
   MatFormFieldModule,
   MatInputModule,
   MatButtonModule,
-  MatSelectModule
+  MatSelectModule,
+  MatTableModule
 } from '@angular/material';
 
 @NgModule({
   declarations: [],
-  exports: [MatSidenavModule, MatCardModule, MatFormFieldModule, MatInputModule, MatButtonModule, MatSelectModule]
+  exports: [
+    MatSidenavModule,
+    MatCardModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
+    MatSelectModule,
+    MatTableModule,
+    MatCardModule
+  ]
 })
 export class ExternalModule {}

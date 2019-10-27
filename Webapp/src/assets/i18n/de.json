@@ -3,5 +3,10 @@
     "GERMAN": "Deutsch",
     "ENGLISH": "Englisch",
     "SERVICES": "Dienste",
-    "RANKING": "Rangliste"
+    "RANKING": "Rangliste",
+    "MONTHLY": "Dieser Monat",
+    "DAILY": "Heute",
+    "POINTS": "Punkte insgesamt",
+    "NAME": "Name",
+    "ACHIEVMENTS": "Errungenschaffen"
 }

@@ -5,12 +5,16 @@ import { SharedModule } from '../shared/shared.module';
 import { BaseComponent } from './base.component';
 import { RouterModule } from '@angular/router';
 import { baseRoutes } from './base.routes';
+import { RankingModule } from '../ranking/ranking.module';
+import { AchievmentsModule } from '../achievments/achievments.module';
 
 @NgModule({
   declarations: [BaseComponent, ProfileComponent, ServicesComponent],
   imports: [
     SharedModule,
     RouterModule.forChild(baseRoutes),
+    RankingModule,
+    AchievmentsModule
   ]
 })
 export class BaseModule { }

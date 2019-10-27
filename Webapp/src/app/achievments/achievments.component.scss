@@ -1,0 +1,17 @@
+.flex-container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    mat-card{
+        min-width: 20rem;
+        //margin: 2rem;
+        mat-card-header{
+            display: flex;
+            justify-content: space-between;
+        }
+        li{
+            margin-top: 1rem;
+        }
+    }
+}

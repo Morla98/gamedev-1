@@ -3,5 +3,10 @@
     "GERMAN": "German",
     "ENGLISH": "English",
     "SERVICES": "Services",
-    "RANKING": "Ranking"
+    "RANKING": "Ranking",
+    "MONTHLY": "This Month",
+    "DAILY": "Today",
+    "POINTS": "Points overall",
+    "NAME": "Name",
+    "ACHIEVMENTS": "Erungenschaffen"
 }

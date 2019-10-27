@@ -1,0 +1,18 @@
+<h2>{{'ACHIEVMENTS' | translate}}</h2>
+<div class="flex-container">
+  <mat-card *ngFor="let service of services">
+    <mat-card-header>
+      <span>
+        {{service.name}}
+      </span>
+      <span>
+        {{getOverallCompletion(achievments) | number:'1.2'}}%
+      </span>
+    </mat-card-header>
+    <mat-card-content>
+      <ul>
+        <li *ngFor="let achievment of achievments"> {{achievment.name}}: {{achievment.complete}}%</li>
+      </ul>
+    </mat-card-content>
+  </mat-card>
+</div>

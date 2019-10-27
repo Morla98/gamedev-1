@@ -1,4 +1,20 @@
 import { Component, OnInit } from '@angular/core';
+import { Service } from './service.models';
+
+const servicesMock: Service[] = [
+  {
+    name: 'Jira'
+  },
+  {
+    name: 'Git'
+  },
+  {
+    name: 'Bamboo'
+  },
+  {
+    name: 'Fancy Service'
+  }
+];
 
 @Component({
   selector: 'app-services',
@@ -12,4 +28,6 @@ export class ServicesComponent implements OnInit {
   ngOnInit() {
   }
 
+
+  
 }
