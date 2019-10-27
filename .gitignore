@@ -92,3 +92,7 @@ local.properties
 .classpath
 
 # End of https://www.gitignore.io/api/eclipse
+
+##Webapp
+Webapp/node_modules/
+Webapp/dist/
