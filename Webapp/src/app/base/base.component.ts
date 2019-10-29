@@ -10,6 +10,7 @@ import { AuthenticationService } from '../authentication/authentication.service'
 })
 export class BaseComponent implements OnInit {
   public selectedLanguage: string;
+  public user;
   constructor(
     private router: Router,
     private translateService: TranslateService,
@@ -21,6 +22,11 @@ export class BaseComponent implements OnInit {
     } else {
       this.selectedLanguage = this.translateService.defaultLang;
     }
+    this.user = {
+      name: 'Jhon Doe',
+      points: 82,
+      level: 4
+    };
   }
 
   ngOnInit() {}
@@ -31,5 +37,5 @@ export class BaseComponent implements OnInit {
 
   setLanguage(lang: string) {
     this.authenticationService.changeLanguage(lang);
-}
+  }
 }

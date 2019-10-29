@@ -3,16 +3,20 @@ import { Service } from './service.models';
 
 const servicesMock: Service[] = [
   {
-    name: 'Jira'
+    name: 'Jira',
+    achievments: []
   },
   {
-    name: 'Git'
+    name: 'Git',
+    achievments: []
   },
   {
-    name: 'Bamboo'
+    name: 'Bamboo',
+    achievments: []
   },
   {
-    name: 'Fancy Service'
+    name: 'Fancy Service',
+    achievments: []
   }
 ];
 
@@ -22,12 +26,7 @@ const servicesMock: Service[] = [
   styleUrls: ['./services.component.scss']
 })
 export class ServicesComponent implements OnInit {
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit() {
-  }
-
-
-  
+  ngOnInit() {}
 }

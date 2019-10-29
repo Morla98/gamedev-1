@@ -1,3 +1,21 @@
+@import '../../scss/variables';
+
 table{
     width: 100%;
 }
+
+mat-sidenav-container {
+    background-color: map-get($color, primary-background);
+    height: calc(100vh - 5rem);
+    mat-sidenav {
+      min-width: 20rem;
+      padding-right: 2rem;
+      background-color: map-get($color, primary-dark);
+      color: map-get($color, primary-background);
+    }
+  }
+  
+  mat-sidenav-content {
+    padding: 2rem;
+  }
+  

@@ -8,5 +8,7 @@
     "DAILY": "Today",
     "POINTS": "Points overall",
     "NAME": "Name",
-    "ACHIEVMENTS": "Erungenschaffen"
+    "ACHIEVMENTS": "Achievments",
+    "LEVEL": "Level",
+    "LOGOUT": "Logout"
 }

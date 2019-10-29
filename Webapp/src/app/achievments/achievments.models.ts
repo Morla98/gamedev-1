@@ -1,8 +1,5 @@
-
-
 export class Achievment {
-    name: string;
-    complete: number; //percentage
-    
-
+  name: string;
+  complete: number; //percentage
+  description: string;
 }

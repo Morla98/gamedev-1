@@ -1,18 +1,39 @@
-<h2>{{'ACHIEVMENTS' | translate}}</h2>
-<div class="flex-container">
-  <mat-card *ngFor="let service of services">
-    <mat-card-header>
-      <span>
-        {{service.name}}
-      </span>
-      <span>
-        {{getOverallCompletion(achievments) | number:'1.2'}}%
-      </span>
-    </mat-card-header>
-    <mat-card-content>
-      <ul>
-        <li *ngFor="let achievment of achievments"> {{achievment.name}}: {{achievment.complete}}%</li>
-      </ul>
-    </mat-card-content>
-  </mat-card>
-</div>
+<mat-sidenav-container class="example-container">
+  <mat-sidenav mode="side"
+               opened>
+    <div *ngFor="let service of services"
+         class="service"
+         (click)="selectService(service.name)"
+         [class.underlined]="selectedService === service.name">
+      {{service.name}}
+    </div>
+  </mat-sidenav>
+  <mat-sidenav-content>
+
+    <h2>{{'ACHIEVMENTS' | translate}}</h2>
+
+      <div *ngIf="selectedService === undefined" class="flex-container">
+        <mat-card *ngFor="let service of services">
+          <mat-card-header>
+            <span>
+              {{service.name}}
+            </span>
+            <span>
+              {{getOverallCompletion(achievments) | number:'1.0-0'}}%
+            </span>
+          </mat-card-header>
+          <mat-card-content>
+            <ul>
+              <li *ngFor="let achievment of achievments"> {{achievment.name}}: {{achievment.complete | number:'1.0-0'}}%</li>
+            </ul>
+          </mat-card-content>
+        </mat-card>
+      </div>
+      <div *ngIf="selectedService !== undefined" class="flex-column-container">
+        <div *ngFor="let achievment of getSelectedAchievments()" class="achievment">
+          <span>{{achievment.name}} - {{achievment.description}}({{achievment.complete | number:'1.0-0'}}%)</span>
+        </div>
+      </div>
+
+  </mat-sidenav-content>
+</mat-sidenav-container>

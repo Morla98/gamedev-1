@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-profile',
@@ -7,7 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfileComponent implements OnInit {
 
-  constructor() { }
+  public user;
+  constructor(public translateService: TranslateService) {
+    this.user = {name: 'Jhon Doe', email: 'JhonDoes@email.com'};
+   }
 
   ngOnInit() {
   }

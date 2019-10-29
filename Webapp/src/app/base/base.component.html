@@ -3,9 +3,18 @@
        width="40"
        height="40" />
   <div class="toolbar">
-
+    <mat-icon routerLink="/achievments">house</mat-icon>
+    <div routerLink="/profile" class="toolbar-item">
+      {{user.name}}
+      <span class="points">{{user.points}} </span>
+    </div>
+    <div routerLink="/ranking" class="toolbar-item">
+      {{'LEVEL' | translate}}
+      <span>{{user.level}}</span>
+    </div>
     <div class="language">
-      <mat-select name="language" color="accent"
+      <mat-select name="language"
+                  color="accent"
                   [ngModel]="selectedLanguage"
                   (ngModelChange)="setLanguage($event)">
         <mat-option value="de">{{'GERMAN' | translate}}</mat-option>
@@ -16,17 +25,5 @@
     <button (click)="logout()">{{'LOGOUT' | translate}}</button>
   </div>
 </div>
-<mat-sidenav-container class="example-container">
-  <mat-sidenav mode="side"
-               opened>
-    <ul>
-      <li routerLink="/profile"> {{'PROFILE' | translate}} </li>
-      <li routerLink="/services"> {{'SERVICES' | translate}} </li>
-      <li routerLink="/ranking"> {{'RANKING' | translate}} </li>
-      <li routerLink="/achievments"> {{'ACHIEVMENTS' | translate}} </li>
-    </ul>
-  </mat-sidenav>
-  <mat-sidenav-content>
-    <router-outlet></router-outlet>
-  </mat-sidenav-content>
-</mat-sidenav-container>
+
+<router-outlet></router-outlet>

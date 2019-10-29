@@ -1,50 +1,67 @@
+@import '../../scss/variables';
 .header {
+  background-color: map-get($color, primary);
   display: flex;
 
   justify-content: space-between;
   .toolbar {
     display: flex;
     justify-content: space-between;
+
+    mat-icon {
+      color: map-get($color, primary-background);
+      font-size: 200%;
+      padding-top: 0.25rem;
+      margin-right: 1rem;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+    .toolbar-item {
+      height: 100%;
+      padding: 0.25rem;
+      font-size: 170%;
+      color: map-get($color, primary-background);
+      margin-right: 1rem;
+      &:hover {
+        cursor: pointer;
+      }
+      span {
+        background-color: map-get($color, primary-background);
+        height: 90%;
+        padding: 0 0.5rem;
+        color: map-get($color, primary);
+      }
+    }
+
     .language {
-      width: 6rem;
+      width: 8rem;
+      font-size: 170%;
       .mat-select {
-        padding-top: 0.5rem;
+        padding-top: 0.25rem;
+        text-align: left;
         margin-bottom: 0;
         ::ng-deep {
-            .mat-select-value-text {
-                color: white;
-            }
-            .mat-select-underline {
-                background-color: white;
-            }
-            .mat-select-disabled .mat-select-value,
-            .mat-select-arrow,
-            .mat-select-trigger {
-                color: white;
-            }
+          .mat-select-value-text {
+            color: map-get($color, primary-background);
+          }
+          .mat-select-underline {
+            background-color: map-get($color, primary-background);
+          }
+          .mat-select-disabled .mat-select-value,
+          .mat-select-arrow,
+          .mat-select-trigger {
+            color: map-get($color, primary-background);
+          }
         }
       }
     }
-    button{
-        &:hover{
-            cursor: pointer;
-        }
+    button {
+      font-size: 170%;
+      &:hover {
+        cursor: pointer;
+      }
     }
   }
 }
 
-mat-sidenav-container {
-  height: calc(100vh - 5rem);
-  mat-sidenav {
-    min-width: 20rem;
-    padding-right: 2rem;
-  }
-  li {
-    border-bottom: 2px solid darkblue;
-    margin: 1rem 0;
-  }
-}
-
-mat-sidenav-content {
-  padding: 2rem;
-}

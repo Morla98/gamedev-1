@@ -14,7 +14,7 @@ export const baseRoutes: Routes = [
       { path: 'services', pathMatch: 'full', component: ServicesComponent },
       { path: 'ranking', pathMatch: 'full', component: RankingComponent },
       { path: 'achievments', pathMatch: 'full', component: AchievmentsComponent },
-      { path: '**', redirectTo: 'profile' }
+      { path: '**', redirectTo: 'achievments' }
     ]
   }
 ];

@@ -1,38 +1,47 @@
 import { Component, OnInit } from '@angular/core';
 import { Service } from '../services/service.models';
 import { Achievment } from './achievments.models';
-
-const servicesMock: Service[] = [
-  {
-    name: 'Jira'
-  },
-  {
-    name: 'Git'
-  },
-  {
-    name: 'Bamboo'
-  },
-  {
-    name: 'Fancy Service'
-  }
-];
+import { cloneDeep } from 'lodash-es';
 
 const achievmentsMock: Achievment[] = [
   {
     name: 'Morning Person',
-    complete: 60
+    complete: Math.random() * 100,
+    description: 'Check in before 8'
   },
   {
     name: 'Busy Person',
-    complete: 20
+    complete: Math.random() * 100,
+    description: 'Commit 5 things before Lunch'
   },
   {
     name: 'Quantity is everything',
-    complete: 45
+    complete: Math.random() * 100,
+    description: 'Reach 500 Commits'
   },
   {
     name: 'Hold my Coffe',
-    complete: 85
+    complete: Math.random() * 100,
+    description: 'Check in before 7'
+  }
+];
+
+const servicesMock: Service[] = [
+  {
+    name: 'Jira',
+    achievments: cloneDeep(achievmentsMock)
+  },
+  {
+    name: 'Git',
+    achievments: cloneDeep(achievmentsMock)
+  },
+  {
+    name: 'Bamboo',
+    achievments: cloneDeep(achievmentsMock)
+  },
+  {
+    name: 'Fancy Service',
+    achievments: cloneDeep(achievmentsMock)
   }
 ];
 
@@ -42,10 +51,31 @@ const achievmentsMock: Achievment[] = [
   styleUrls: ['./achievments.component.scss']
 })
 export class AchievmentsComponent implements OnInit {
-  public services;
+  public services: Service[];
   public achievments;
+  public selectedService: string;
   constructor() {
     this.services = servicesMock;
+    this.services[0].achievments.push({
+      name: 'Jira Expert',
+      complete: 23,
+      description: 'Edit 400 Tickets'
+    });
+    this.services[1].achievments.push({
+      name: 'Git Expert',
+      complete: 30,
+      description: 'Push 150 Changes'
+    });
+    this.services[2].achievments.push({
+      name: 'Bamboo Expert',
+      complete: 12,
+      description: 'Have 100 successfull builds'
+    });
+    this.services[3].achievments.push({
+      name: 'Fancy Expert',
+      complete: 100,
+      description: 'Be super fancy'
+    });
     this.achievments = achievmentsMock;
   }
 
@@ -57,5 +87,17 @@ export class AchievmentsComponent implements OnInit {
       result += a.complete;
     }
     return result / achievments.length;
+  }
+
+  selectService(name: string) {
+    this.selectedService = name;
+  }
+
+  getSelectedAchievments(){
+    const service =  this.services.find(s => s.name === this.selectedService);
+    if (service !== undefined){
+      return service.achievments;
+    }
+    return [];
   }
 }
