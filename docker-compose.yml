@@ -1,0 +1,38 @@
+version: '3.3'
+
+services:
+
+  # The database
+  db:
+    image: postgres
+    container_name: devgame_db
+    restart: always
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: devgame
+    volumes:
+      - ./db/init:/docker-entrypoint-initdb.d
+# TODO: Volume für Datenbank-Dateien-> persistent ggü. Neustart
+
+  # Administration tool for debug purposes
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: devgame_pgadmin
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin
+      PGADMIN_DEFAULT_PASSWORD: admin
+    ports:
+      - 8081:80
+# TODO: Volume für Dateien -> Konfiguration der Datenbank-Verbindung nicht jedes mal notwendig
+
+# TODO: Configure frontend container here
+#
+#  # Frontend
+#  main:
+#    container_name: devgame_main
+#    restart: always
+#    build:
+#      context: ./frontend
+
