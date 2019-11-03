@@ -36,3 +36,13 @@ services:
 #    build:
 #      context: ./frontend
 
+  # A first test connector
+  test-connector:
+    container_name: devgame_test-connector
+    restart: always
+    build:
+      context: ./test-connector
+    ports:
+      - 9001:80
+    depends_on:
+      - "db"
