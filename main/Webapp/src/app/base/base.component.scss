@@ -1,0 +1,67 @@
+@import '../../scss/variables';
+.header {
+  background-color: map-get($color, primary);
+  display: flex;
+
+  justify-content: space-between;
+  .toolbar {
+    display: flex;
+    justify-content: space-between;
+
+    mat-icon {
+      color: map-get($color, primary-background);
+      font-size: 200%;
+      padding-top: 0.25rem;
+      margin-right: 1rem;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+    .toolbar-item {
+      height: 100%;
+      padding: 0.25rem;
+      font-size: 170%;
+      color: map-get($color, primary-background);
+      margin-right: 1rem;
+      &:hover {
+        cursor: pointer;
+      }
+      span {
+        background-color: map-get($color, primary-background);
+        height: 90%;
+        padding: 0 0.5rem;
+        color: map-get($color, primary);
+      }
+    }
+
+    .language {
+      width: 8rem;
+      font-size: 170%;
+      .mat-select {
+        padding-top: 0.25rem;
+        text-align: left;
+        margin-bottom: 0;
+        ::ng-deep {
+          .mat-select-value-text {
+            color: map-get($color, primary-background);
+          }
+          .mat-select-underline {
+            background-color: map-get($color, primary-background);
+          }
+          .mat-select-disabled .mat-select-value,
+          .mat-select-arrow,
+          .mat-select-trigger {
+            color: map-get($color, primary-background);
+          }
+        }
+      }
+    }
+    button {
+      font-size: 170%;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+}
+

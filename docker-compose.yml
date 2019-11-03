@@ -1,5 +1,10 @@
 version: '3.3'
-
+#
+# Suggestion for port conventions:
+#  - 80   : Frontend
+#  - 80xx : Development (pgAdmin, ...)
+#  - 90xx : Connectors (WebHooks)
+#
 services:
 
   # The database
@@ -24,17 +29,17 @@ services:
       PGADMIN_DEFAULT_EMAIL: admin
       PGADMIN_DEFAULT_PASSWORD: admin
     ports:
-      - 8081:80
+      - 8001:80
 # TODO: Volume für Dateien -> Konfiguration der Datenbank-Verbindung nicht jedes mal notwendig
 
-# TODO: Configure frontend container here
-#
-#  # Frontend
-#  main:
-#    container_name: devgame_main
-#    restart: always
-#    build:
-#      context: ./frontend
+  # Main
+  main:
+    container_name: devgame_main
+    restart: always
+    build:
+      context: ./main
+    ports:
+      - 80:8080
 
   # A first test connector
   test-connector:
