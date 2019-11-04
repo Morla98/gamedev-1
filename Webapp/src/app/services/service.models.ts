@@ -1,7 +1,7 @@
-import { Achievment } from '../achievments/achievments.models';
+import { Achievement } from '../achievements/achievements.models';
 
 
 export class Service {
     name: string;
-    achievments: Achievment[];
+    achievements: Achievement[];
 }

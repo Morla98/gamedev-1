@@ -1,6 +1,6 @@
 @import '../../scss/variables';
 h2 {
-  color: white;
+  color: map-get($color, primary);
 }
 .flex-container {
   display: flex;
@@ -27,7 +27,8 @@ h2 {
     flex-direction: column;
     justify-content: space-between;
     overflow-y: auto;
-  .achievment {
+    padding-bottom: 2rem;
+  .achievement {
     background-color: map-get($color, primary);
     color: map-get($color, primary-background);
     height: 7rem;
