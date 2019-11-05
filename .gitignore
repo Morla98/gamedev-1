@@ -1,5 +1,6 @@
 HELP.md
 .DS_Store
+/**/.DS_Store
 target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**
@@ -97,3 +98,6 @@ local.properties
 ##Webapp
 Webapp/node_modules/
 Webapp/dist/
+
+Backend/target/
+main/Backend/target

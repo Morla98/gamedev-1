@@ -18,6 +18,8 @@ services:
       POSTGRES_DB: devgame
     volumes:
       - ./db/init:/docker-entrypoint-initdb.d
+    ports:
+      - 5432:5432
 # TODO: Volume für Datenbank-Dateien-> persistent ggü. Neustart
 
   # Administration tool for debug purposes
@@ -39,7 +41,7 @@ services:
     build:
       context: ./main
     ports:
-      - 80:8080
+      - 8082:8080
 
   # A first test connector
   test-connector:
@@ -51,3 +53,7 @@ services:
       - 9001:80
     depends_on:
       - "db"
+
+networks:
+  default:
+    driver: bridge
