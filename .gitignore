@@ -1,4 +1,6 @@
 HELP.md
+.DS_Store
+/**/.DS_Store
 target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**
@@ -92,3 +94,11 @@ local.properties
 .classpath
 
 # End of https://www.gitignore.io/api/eclipse
+
+##Webapp
+main/Webapp/node_modules/*
+main/Webapp/node_modules/
+main/Webapp/dist/
+
+main/Backend/target/
+main/Backend/target

@@ -1,0 +1,31 @@
+<div class="header">
+  <!-- <img src="./assets/img/trophy.png"
+       id="logo"
+       width="40"
+       height="40" /> -->
+       <mat-icon class="menu" >menu</mat-icon>
+  <div class="toolbar">
+    <mat-icon routerLink="/achievements">house</mat-icon>
+    <div routerLink="/profile" class="toolbar-item">
+      {{user.name}}
+      <span class="points">{{user.points}} </span>
+    </div>
+    <div routerLink="/ranking" class="toolbar-item">
+      {{'LEVEL' | translate}}
+      <span>{{user.level}}</span>
+    </div>
+    <div class="language">
+      <mat-select name="language"
+                  color="accent"
+                  [ngModel]="selectedLanguage"
+                  (ngModelChange)="setLanguage($event)">
+        <mat-option value="de">{{'GERMAN' | translate}}</mat-option>
+        <mat-option value="en">{{'ENGLISH' | translate}}</mat-option>
+
+      </mat-select>
+    </div>
+    <button (click)="logout()">{{'LOGOUT' | translate}}</button>
+  </div>
+</div>
+
+<router-outlet></router-outlet>

@@ -1,0 +1,76 @@
+@import '../../scss/variables';
+h2 {
+  color: map-get($color, primary);
+}
+.flex-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  mat-card {
+    min-width: 25rem;
+    margin: 1rem;
+    background-color: map-get($color, primary);
+    color: map-get($color, primary-background);
+    mat-card-header {
+      display: flex;
+      justify-content: space-between;
+    }
+    li {
+      margin-top: 1rem;
+    }
+  }
+}
+
+.flex-column-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow-y: auto;
+    padding-bottom: 2rem;
+  .achievement {
+    background-color: map-get($color, primary);
+    color: map-get($color, primary-background);
+    height: 7rem;
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 150%;
+    margin: 2rem;
+  }
+}
+
+mat-sidenav-container {
+  background-color: map-get($color, primary-background);
+  height: calc(100vh - 5rem);
+  mat-sidenav {
+    min-width: 20rem;
+    padding-right: 2rem;
+    background-color: map-get($color, primary-dark);
+    color: map-get($color, primary-background);
+    //   display: flex;
+    //   flex-direction: column;
+    .service {
+      width: 15rem;
+      height: 8rem;
+      margin: 2rem;
+      font-size: 150%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: map-get($color, primary-background);
+      color: map-get($color, primary);
+      &:hover {
+        cursor: pointer;
+      }
+      &.underlined {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+mat-sidenav-content {
+  padding: 2rem;
+}
