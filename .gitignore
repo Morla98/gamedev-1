@@ -96,8 +96,9 @@ local.properties
 # End of https://www.gitignore.io/api/eclipse
 
 ##Webapp
-Webapp/node_modules/
-Webapp/dist/
+main/Webapp/node_modules/*
+main/Webapp/node_modules/
+main/Webapp/dist/
 
-Backend/target/
+main/Backend/target/
 main/Backend/target

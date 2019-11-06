@@ -3,20 +3,24 @@ import { Service } from './service.models';
 
 const servicesMock: Service[] = [
   {
+    id: 0,
     name: 'Jira',
-    achievments: []
+    achievements: []
   },
   {
+    id: 1,
     name: 'Git',
-    achievments: []
+    achievements: []
   },
   {
+    id: 2,
     name: 'Bamboo',
-    achievments: []
+    achievements: []
   },
   {
+    id: 3,
     name: 'Fancy Service',
-    achievments: []
+    achievements: []
   }
 ];
 

@@ -3,7 +3,7 @@
 @import './scss/variables.scss';
 
 body {
-  background-color: darkslategrey;
+  background-color: map-get($color, primary);
 }
 html,
 body {
