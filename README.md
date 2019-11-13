@@ -10,7 +10,7 @@
 #### Starten der Anwendung
 
 ```shell
-docker-compose up
+docker-compose up --build
 ```
 
 #### Beenden der Anwendung
