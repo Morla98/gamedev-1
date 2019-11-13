@@ -100,5 +100,9 @@ main/Webapp/node_modules/*
 main/Webapp/node_modules/
 main/Webapp/dist/
 
-main/Backend/target/
 main/Backend/target
+main/Backend/target/
+
+main/Backend/META-INF/
+main/Backend/build.properties
+
