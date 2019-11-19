@@ -32,7 +32,8 @@ services:
       PGADMIN_DEFAULT_PASSWORD: admin
     ports:
       - 8001:80
-# TODO: Volume für Dateien -> Konfiguration der Datenbank-Verbindung nicht jedes mal notwendig
+    volumes:
+      - ./db/pgadmin/servers.json:/pgadmin4/servers.json
 
   # Main
   main:
@@ -60,7 +61,7 @@ services:
     image: osixia/openldap:1.3.0
     command: --copy-service --loglevel debug
     volumes:
-      - ${PWD}/ldap/init:/container/service/slapd/assets/config/bootstrap/ldif/custom:ro
+      - ./ldap/init:/container/service/slapd/assets/config/bootstrap/ldif/custom:ro
 #    environment:
 #      - LDAP_ORGANISATION="Example Inc."
 #      - LDAP_DOMAIN="example.com"
