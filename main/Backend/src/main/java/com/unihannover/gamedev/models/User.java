@@ -17,8 +17,9 @@ public class User {
 	private Repo repo;
 	private Achievement achievement;
 	private ArrayList<Repo> repoList = new ArrayList<>();
-	private ArrayList<Achievement> achievementsList = new ArrayList<>();
 	
+	
+	//getters and setters
 	public String getFullName() {
 		return fullName;
 	}
@@ -61,12 +62,7 @@ public class User {
 	public void setAnonymous(boolean anonymous) {
 		this.anonymous = anonymous;
 	}
-	public ArrayList<Achievement> getAchievementsList() {
-		return achievementsList;
-	}
-	public void setAchievementsList(ArrayList<Achievement> achievementsList) {
-		this.achievementsList = achievementsList;
-	}
+	
 	public ArrayList<Repo> getRepoList() {
 		return repoList;
 	}

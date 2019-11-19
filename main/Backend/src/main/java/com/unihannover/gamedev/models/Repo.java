@@ -24,6 +24,10 @@ public class Repo {
 		return repoAchievementsList;
 	}
 
+	public void setRepoAchievementsList(ArrayList<Achievement> repoAchievementsList) {
+		this.repoAchievementsList = repoAchievementsList;
+	}
+
 	
 	
 	
