@@ -1,5 +1,7 @@
 package com.unihannover.gamedev.models;
 
+import java.util.ArrayList;
+
 /**
  * Represents the repos that user has access to.
  * @author amrit
@@ -7,15 +9,22 @@ package com.unihannover.gamedev.models;
  */
 public class Repo {
 	private String repoName;
-	private Achievement achievement;
+	private ArrayList<Achievement> repoAchievementsList = new ArrayList<>();
+	
+	//getter and setter 
 	public String getRepoName() {
 		return repoName;
 	}
 	
-	
 	public void setRepoName(String repoName) {
 		this.repoName = repoName;
 	}
+	
+	public ArrayList<Achievement> getRepoAchievementsList() {
+		return repoAchievementsList;
+	}
+
+	
 	
 	
 }

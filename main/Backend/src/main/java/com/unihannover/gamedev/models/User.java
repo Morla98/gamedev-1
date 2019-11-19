@@ -1,6 +1,6 @@
 package com.unihannover.gamedev.models;
 
-import javax.validation.ReportAsSingleViolation;
+import java.util.ArrayList;
 
 /**
  * Represents the user 
@@ -13,9 +13,11 @@ public class User {
 	private String userName;
 	private int level;
 	private int score;
-	private Repo repo;
 	private boolean anonymous;
-	
+	private Repo repo;
+	private Achievement achievement;
+	private ArrayList<Repo> repoList = new ArrayList<>();
+	private ArrayList<Achievement> achievementsList = new ArrayList<>();
 	
 	public String getFullName() {
 		return fullName;
@@ -59,20 +61,25 @@ public class User {
 	public void setAnonymous(boolean anonymous) {
 		this.anonymous = anonymous;
 	}
-	
-	/**
-	 * method to login in the system
-	 */
-	public void login(){
-		
+	public ArrayList<Achievement> getAchievementsList() {
+		return achievementsList;
+	}
+	public void setAchievementsList(ArrayList<Achievement> achievementsList) {
+		this.achievementsList = achievementsList;
+	}
+	public ArrayList<Repo> getRepoList() {
+		return repoList;
+	}
+	public void setRepoList(ArrayList<Repo> repoList) {
+		this.repoList = repoList;
+	}
+	public Achievement getAchievement() {
+		return achievement;
+	}
+	public void setAchievement(Achievement achievement) {
+		this.achievement = achievement;
 	}
 	
-	/**
-	 * method to update profile
-	 */
-	public void updateProfile() {
-		
-		
-	}
+	
 	
 }
