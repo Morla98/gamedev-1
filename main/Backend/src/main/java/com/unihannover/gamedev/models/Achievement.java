@@ -4,7 +4,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
+import javax.persistence.Enumerated;
+import javax.persistence.EnumType;
 @Entity
 public class Achievement {
 	
@@ -17,6 +18,9 @@ public class Achievement {
 	private int completion;
 	private int value;
 	private int collectorId;
+	
+	@Enumerated(EnumType.STRING)
+	private AchievementType type; // daily, weekly, one-time
 	
 	public String getName() {
 		return name;
@@ -47,6 +51,12 @@ public class Achievement {
 	}
 	public void setCollectorId(int collectorId) {
 		this.collectorId = collectorId;
+	}
+	public AchievementType getAchievementType(){
+		return type;
+	}
+	public void setAchievementType(AchievementType type){
+		this.type = type;
 	}
 	
 }
