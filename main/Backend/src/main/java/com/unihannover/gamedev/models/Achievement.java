@@ -17,7 +17,14 @@ public class Achievement {
 	private int completion;
 	private int value;
 	private int collectorId;
+	private boolean achievementStatus;
 	
+	public boolean isAchievementStatus() {
+		return achievementStatus;
+	}
+	public void setAchievementStatus(boolean achievementStatus) {
+		this.achievementStatus = achievementStatus;
+	}
 	public String getName() {
 		return name;
 	}
