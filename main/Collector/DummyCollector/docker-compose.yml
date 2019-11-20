@@ -1,4 +1,4 @@
-version: '3.3'
+version: '3.0'
 #
 # Suggestion for port conventions:
 #  - 80   : Frontend
@@ -19,7 +19,7 @@ services:
     volumes:
       - ./db/init:/docker-entrypoint-initdb.d
     ports:
-      - 5444:5444
+      - 5432:5432
 # TODO: Volume für Datenbank-Dateien-> persistent ggü. Neustart
 
   # Administration tool for debug purposes
@@ -43,7 +43,7 @@ services:
       context: ./main
     ports:
       - 9082:8080
-      
+
 networks:
   default:
     driver: bridge
