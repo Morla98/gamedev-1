@@ -1,0 +1,49 @@
+version: '3.3'
+#
+# Suggestion for port conventions:
+#  - 80   : Frontend
+#  - 80xx : Development (pgAdmin, ...)
+#  - 90xx : Connectors (WebHooks)
+#
+services:
+
+  # The database
+  db:
+    image: postgres
+    container_name: dummycollector_db
+    restart: always
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: dummycollector
+    volumes:
+      - ./db/init:/docker-entrypoint-initdb.d
+    ports:
+      - 5444:5444
+# TODO: Volume für Datenbank-Dateien-> persistent ggü. Neustart
+
+  # Administration tool for debug purposes
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: dummycollector_pgadmin
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin
+      PGADMIN_DEFAULT_PASSWORD: admin
+    ports:
+      - 9001:80
+    volumes:
+      - ./db/pgadmin/servers.json:/pgadmin4/servers.json
+
+  # Main
+  main:
+    container_name: dummycollector_main
+    restart: always
+    build:
+      context: ./main
+    ports:
+      - 9082:8080
+      
+networks:
+  default:
+    driver: bridge
