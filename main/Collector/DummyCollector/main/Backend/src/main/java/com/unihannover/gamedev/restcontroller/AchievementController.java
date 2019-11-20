@@ -18,17 +18,18 @@ public class AchievementController {
 	@Autowired
     private AchievementRepository repository;
 	
-	@CrossOrigin(origins = "http://localhost:8082")
-	@RequestMapping(value="/achievements", method = RequestMethod.GET)
-    public List<Achievement> getAchievementByCollectorId(@RequestParam(value="controllerId", defaultValue="0") int id) {
-        return repository.findByCollectorId(id);
+	@CrossOrigin(origins = "http://localhost:9082")
+	@RequestMapping(value="/update", method = RequestMethod.GET)
+    public void jsonToCollector() {
+        //call collector function
+		System.out.println("Hello World!");
     }
-	
-	@CrossOrigin(origins = "http://localhost:8082")
+	/*
+	@CrossOrigin(origins = "http://localhost:9082")
 	@RequestMapping(value="/achievements", method = RequestMethod.POST)
 	public void addAchievement(@RequestBody Achievement a) {
 		repository.save(a);
 		System.out.println(a.toString());
-	}
+	}*/
 	
 }
