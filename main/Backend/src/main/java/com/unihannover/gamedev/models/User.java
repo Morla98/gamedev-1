@@ -1,7 +1,5 @@
 package com.unihannover.gamedev.models;
 
-import javax.validation.ReportAsSingleViolation;
-
 /**
  * Represents the user 
  * @author amrit
