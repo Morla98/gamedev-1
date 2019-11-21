@@ -1,30 +1,61 @@
 package com.unihannover.gamedev.restcontroller;
 
 import com.unihannover.gamedev.models.Achievement;
+import com.unihannover.gamedev.models.Collector;
 import org.springframework.web.bind.annotation.*;
 import springfox.documentation.spring.web.json.Json;
 
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
 
 @RestController
 public class CollectorController {
     private static String requestUrl = "localhost:8082";
+    private Collector collector;
+
 
     /**
      * Initialize the Collector on the main application
      */
     public void init(){
+        createCollector();
+        createMetricDB();
+        createAchievements();
+
+        // TODO: Transfer important Data into JSON Format
+        String payload = "";
+        sendPostRequest("/init", payload);
     }
 
-    private static String sendPostRequest(String payload) {
+    private void createCollector() {
+        collector = new Collector(1, "Dummy");
+    }
+
+    private void createMetricDB(){
+        // TODO: implement
+    }
+
+    /**
+     * The Achievements will be defined here
+     *
+     */
+    private void createAchievements(){
+        Achievement a1 = new Achievement(0,
+                                         "Dummy Achievement",
+                                         "This is an dummy Achievement",
+                                         1,
+                                         10,
+                                         collector.getId());
+
+        collector.getAchievements().add(a1);
+        // ...
+    }
+    private static String sendPostRequest(String api, String payload) {
         try {
-            URL url = new URL(requestUrl);
+            URL url = new URL(requestUrl+api);
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
 
             connection.setDoInput(true);
@@ -49,9 +80,23 @@ public class CollectorController {
         }
 
     }
-
+    private void updateAchievements(){
+        for(int id = 0; id < collector.getAchievements().size(); ++id){
+            if(id == 0){
+                Achievement a = collector.getAchievements().get(id);
+                String payload = "";
+                // make payload to JSON-String with data from Achievement a and MetricDB
+                sendPostRequest("/update", payload);
+            }
+            if(id == 0){
+                // ..
+            }
+            // ...
+        }
+    }
     /**
      * gets called on hook from application
+     * the data from the hook is stored in the MetricDB
      */
     @CrossOrigin(origins = "http://localhost:9082")
     @RequestMapping(value="/update", method = RequestMethod.POST)

@@ -16,9 +16,18 @@ public class Achievement {
 	private String description;
 	private int completion;
 	private int value;
-	private int collectorId;
+	private long collectorId;
 	private boolean achievementStatus;
-	
+
+	public Achievement(long id, String name, String description, int completion, int value, long collectorId){
+		this.id = id;
+		this.name = name;
+		this.description = description;
+		this.completion = completion;
+		this.value = value;
+		this.collectorId = collectorId;
+		this.achievementStatus = false;
+	}
 	public boolean isAchievementStatus() {
 		return achievementStatus;
 	}
@@ -49,10 +58,10 @@ public class Achievement {
 	public void setValue(int value) {
 		this.value = value;
 	}
-	public int getCollectorId() {
+	public long getCollectorId() {
 		return collectorId;
 	}
-	public void setCollectorId(int collectorId) {
+	public void setCollectorId(long collectorId) {
 		this.collectorId = collectorId;
 	}
 	
