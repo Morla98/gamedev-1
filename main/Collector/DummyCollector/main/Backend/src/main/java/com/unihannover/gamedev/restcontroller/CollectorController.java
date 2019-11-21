@@ -2,9 +2,11 @@ package com.unihannover.gamedev.restcontroller;
 
 import com.unihannover.gamedev.models.Achievement;
 import com.unihannover.gamedev.models.Collector;
+import com.unihannover.gamedev.models.User;
 import org.springframework.web.bind.annotation.*;
 import springfox.documentation.spring.web.json.Json;
 
+import javax.annotation.PostConstruct;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
@@ -20,14 +22,23 @@ public class CollectorController {
     /**
      * Initialize the Collector on the main application
      */
+    @PostConstruct
     public void init(){
         createCollector();
         createMetricDB();
         createAchievements();
+        createUsers();
 
         // TODO: Transfer important Data into JSON Format
         String payload = "";
         sendPostRequest("/init", payload);
+    }
+
+    /**
+     * Add Users in the users List
+     */
+    private void createUsers() {
+        // TODO: implement
     }
 
     private void createCollector() {
@@ -39,8 +50,7 @@ public class CollectorController {
     }
 
     /**
-     * The Achievements will be defined here
-     *
+     * The Achievements will be defined here and will be added to the achievements list of the connector
      */
     private void createAchievements(){
         Achievement a1 = new Achievement(0,
@@ -80,7 +90,11 @@ public class CollectorController {
         }
 
     }
-    private void updateAchievements(){
+
+    /**
+     * for User check each achievement with MetricDB and send updated values to main application
+     */
+    private void updateAchievements(User user){
         for(int id = 0; id < collector.getAchievements().size(); ++id){
             if(id == 0){
                 Achievement a = collector.getAchievements().get(id);
@@ -100,7 +114,7 @@ public class CollectorController {
      */
     @CrossOrigin(origins = "http://localhost:9082")
     @RequestMapping(value="/update", method = RequestMethod.POST)
-    public void update(@RequestBody Json data){
+    public void update(@RequestBody String data){
     }
 
 
