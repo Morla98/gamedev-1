@@ -39,11 +39,11 @@ docker-compose up --build --remove-orphans --force-recreate
 
 (Aktuell) werden folgende (POSIX-)Benutzer angelegt:
 
-| Username (`uid` / `cn`) | Passwort |
-| --- | --- |
+| Username (`uid` / `cn`) | Passwort | Email |
+| --- | --- | --- |
 | `admin` | `admin` |
-| `developer1` | `developer1` |
-| `developer2` | `developer2` |
+| `developer1` | `developer1` | `dev1@example.com` |
+| `developer2` | `developer2` | `dev2@example.com` |
 
 Folgende (POSIX-)Gruppen werden angelegt:
 
