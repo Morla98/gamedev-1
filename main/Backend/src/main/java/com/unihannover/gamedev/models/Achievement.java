@@ -11,20 +11,13 @@ public class Achievement {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
-
 	private String name;
 	private String description;
-	private int completion;
 	private int value;
 	private int collectorId;
-	private boolean achievementStatus;
 	
-	public boolean isAchievementStatus() {
-		return achievementStatus;
-	}
-	public void setAchievementStatus(boolean achievementStatus) {
-		this.achievementStatus = achievementStatus;
-	}
+	
+	//getters and setters
 	public String getName() {
 		return name;
 	}
@@ -36,12 +29,6 @@ public class Achievement {
 	}
 	public void setDescription(String description) {
 		this.description = description;
-	}
-	public int getCompletion() {
-		return completion;
-	}
-	public void setCompletion(int completion) {
-		this.completion = completion;
 	}
 	public int getValue() {
 		return value;
