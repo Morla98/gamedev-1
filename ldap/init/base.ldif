@@ -27,9 +27,10 @@ version: 1
 
 # Entry 3: cn=developer1,dc=example,dc=org
 dn: cn=developer1,dc=example,dc=org
-cn:  developer1
+cn: developer1
 gidnumber: 500
 homedirectory: /home/users/developer1
+mail: dev1@example.com
 objectclass: inetOrgPerson
 objectclass: posixAccount
 objectclass: top
@@ -40,9 +41,10 @@ userpassword: {SHA}rNUkMaAIaPFeVUhJGhnYNL96aIw=
 
 # Entry 4: cn=developer2,dc=example,dc=org
 dn: cn=developer2,dc=example,dc=org
-cn:  developer2
+cn: developer2
 gidnumber: 500
 homedirectory: /home/users/developer2
+mail: dev2@example.com
 objectclass: inetOrgPerson
 objectclass: posixAccount
 objectclass: top
