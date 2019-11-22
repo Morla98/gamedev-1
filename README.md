@@ -39,7 +39,7 @@ docker-compose up --build --remove-orphans --force-recreate
 
 (Aktuell) werden folgende (POSIX-)Benutzer angelegt:
 
-| Username (`uid` / `cn`) | Passwort | Eamil |
+| Username (`uid` / `cn`) | Passwort | Email |
 | --- | --- | --- |
 | `admin` | `admin` |
 | `developer1` | `developer1` | `dev1@example.com` |
