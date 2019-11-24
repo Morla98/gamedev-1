@@ -3,8 +3,6 @@
 --
 CREATE SCHEMA "main";
 
--- TODO: Benutzer "main" erstellen und zum Owner des Schemas machen?
-
 -- Table managing the users
 CREATE TABLE main."users" (
     "email" TEXT NOT NULL,

@@ -1,5 +1,5 @@
 up:
-	docker-compose up --build --force-recreate --remove-orphans --detach db pgadmin
+	docker-compose up --build --force-recreate --remove-orphans --detach
 
 down:
 	docker-compose down

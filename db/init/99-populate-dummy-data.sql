@@ -1,3 +1,7 @@
+--
+-- Populate the main schema with some dummy data
+--
+
 INSERT INTO main."users"(
     "email",
     "uid",
