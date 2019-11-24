@@ -10,10 +10,10 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.gameDev</groupId>
-	<artifactId>dummycollector</artifactId>
+	<artifactId>GeneralCollector</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>uni-hannover</name>
-	<description>Dummy Collector Base</description>
+	<description>GeneralCollector Construction</description>
 
 	<properties>
 		<java.version>1.8</java.version>
