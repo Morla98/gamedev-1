@@ -1,19 +1,21 @@
 package com.unihannover.gamedev.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+
 @Entity
+@Table(name = "collectors", schema="collector")
 public class Collector {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
     private long id;
+    @Column(name = "name")
     private String name;
+    @ElementCollection
     private List<Achievement> achievements;
+    @ElementCollection
     private List<User>  users;
 
     public Collector(long id, String name){

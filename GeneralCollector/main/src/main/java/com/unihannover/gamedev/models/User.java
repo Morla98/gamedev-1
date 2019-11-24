@@ -1,5 +1,8 @@
 package com.unihannover.gamedev.models;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.validation.ReportAsSingleViolation;
 
 /**
@@ -7,8 +10,11 @@ import javax.validation.ReportAsSingleViolation;
  * @author amrit
  * @version 0.0.1
  */
+@Entity
+@Table(name = "users", schema="collector")
 public class User {
 	private String fullName;
+	@Id
 	private String email;
 	private String userName;
 	private int level;

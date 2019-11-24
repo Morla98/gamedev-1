@@ -1,22 +1,25 @@
 package com.unihannover.gamedev.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
+@Table(name = "achievements_collector", schema="collector")
 public class Achievement {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "id")
 	private long id;
-
+	@Column(name = "name")
 	private String name;
+	@Column(name = "description")
 	private String description;
+	@Column(name = "completion")
 	private int completion;
+	@Column(name = "value")
 	private int value;
+	@Column(name = "collectorId")
 	private long collectorId;
+	@Column(name = "achievementStatus")
 	private boolean achievementStatus;
 
 	public Achievement(long id, String name, String description, int completion, int value, long collectorId){
