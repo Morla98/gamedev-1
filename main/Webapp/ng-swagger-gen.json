@@ -13,5 +13,6 @@
   "apiModule": true,
   "enumModule": true,
   "generateExamples": false,
-  "camelCase": false
+  "camelCase": false,
+  "path": "/api"
 }
