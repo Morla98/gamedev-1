@@ -8,7 +8,7 @@ version: '3.0'
 services:
   # Main
   main:
-    container_name: dummycollector_main
+    container_name: GeneralCollector_main
     restart: always
     build:
       context: .
@@ -17,4 +17,5 @@ services:
 
 networks:
   default:
-    driver: bridge
+    external:
+      name: gamedev-1_default
