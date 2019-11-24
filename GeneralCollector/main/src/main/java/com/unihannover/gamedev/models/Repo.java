@@ -2,6 +2,7 @@ package com.unihannover.gamedev.models;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 /**
  * Represents the repos that user has access to.
@@ -12,7 +13,8 @@ import javax.persistence.Id;
 public class Repo {
 	@Id
 	private String repoName;
-	
+
+	@ManyToOne
 	private Achievement achievement;
 	public String getRepoName() {
 		return repoName;

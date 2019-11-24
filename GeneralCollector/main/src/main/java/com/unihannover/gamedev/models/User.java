@@ -2,6 +2,7 @@ package com.unihannover.gamedev.models;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.ReportAsSingleViolation;
 
@@ -19,6 +20,7 @@ public class User {
 	private String userName;
 	private int level;
 	private int score;
+	@ManyToOne
 	private Repo repo;
 	private boolean anonymous;
 	
