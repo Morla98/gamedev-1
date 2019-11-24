@@ -5,41 +5,45 @@ CREATE SCHEMA "main";
 
 -- TODO: Benutzer "main" erstellen und zum Owner des Schemas machen?
 
--- TODO: Tabelle users verbessern
+-- Table managing the users
 CREATE TABLE main."users" (
-  "id" serial NOT NULL,
-  "name" TEXT NOT NULL,
-  "ldap" TEXT NOT NULL
+    "email" TEXT NOT NULL,
+    "uid" TEXT NOT NULL,
+    "username" TEXT NOT NULL,
+    "fullname" TEXT NOT NULL,
+    "anonymous" BOOLEAN NOT NULL DEFAULT TRUE,
+    "level" NUMERIC NOT NULL DEFAULT 0,
+    "score" NUMERIC NOT NULL DEFAULT 0,
+    PRIMARY KEY ("email")
 );
 
--- TODO: Tabelle achievements verbessern
+--Table managing Collectors
+CREATE TABLE main."collectors" (
+    "id" TEXT NOT NULL,
+    "name" TEXT NOT NULL,
+    "last_seen" TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    PRIMARY KEY("id")
+);
+
+-- Table managing achievement
+--  (one achievement is only identifiable in combination with its collectors id)
 CREATE TABLE main."achievements" (
-  "id" serial NOT NULL
+    "id" TEXT NOT NULL,
+    "collector_id" TEXT NOT NULL REFERENCES main.collectors("id"),
+    "name" TEXT NOT NULL,
+    "description" TEXT NOT NULL,
+    "value" NUMERIC NOT NULL,
+    PRIMARY KEY ("id","collector_id")
 );
 
--- TODO: Tabelle connectors verbessern
-CREATE TABLE main."connectors" (
-  "name" TEXT NOT NULL PRIMARY KEY,
-  "last_seen" TIMESTAMPTZ NOT NULL
+-- Table managing the achievements of specific user
+CREATE TABLE main."user_achievements" (
+    "achievement_id" TEXT NOT NULL,
+    "collector_id" TEXT NOT NULL,
+    "user_email" TEXT NOT NULL,
+    "progress" NUMERIC DEFAULT 0,
+    "last_updated" TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    FOREIGN KEY ("achievement_id","collector_id") REFERENCES main.achievements("id","collector_id"),
+    FOREIGN KEY ("user_email") REFERENCES main.users("email"),
+    PRIMARY KEY ("achievement_id","collector_id","user_email")
 );
-
--- Funktion zum Registrieren/Updaten eines Konnektors.
--- Wird von den Konnektoren selbst aufgerufen.
-CREATE FUNCTION main."UPDATE_CONNECTOR" (connector_name main.connectors.name%TYPE)
-RETURNS VOID
-AS $$
-BEGIN
-   -- Check if connector is already known
-   IF EXISTS (
-	   SELECT *
-	   FROM main.connectors
-	   WHERE main.connectors.name = connector_name
-   ) THEN
-      -- raise notice 'Connector known, updating.';
-	  UPDATE main.connectors SET last_seen = NOW() WHERE main.connectors.name = connector_name;
-   ELSE
-      -- raise notice 'Connector unknown, inserting';
-	  INSERT INTO main.connectors (name, last_seen) VALUES(connector_name, NOW());
-   END IF;
-END;
-$$ LANGUAGE plpgsql;
