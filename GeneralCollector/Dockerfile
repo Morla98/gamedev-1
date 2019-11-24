@@ -4,9 +4,9 @@ RUN apt-get update && apt-get install -y \
     openjdk-11-jdk-headless \
     maven
 
-COPY ./Backend /app/Backend
+COPY ./main /app/Collector/Test
 
-WORKDIR /app/Backend
+WORKDIR /app/Collector/Test
 RUN mvn compile
 
 CMD ["mvn", "spring-boot:run"]
