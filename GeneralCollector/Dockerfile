@@ -4,9 +4,12 @@ RUN apt-get update && apt-get install -y \
     openjdk-11-jdk-headless \
     maven
 
-COPY ./main /app/Collector/Test
+COPY ./main/pom.xml /app/Collector/
+WORKDIR /app/Collector/
 
-WORKDIR /app/Collector/Test
+RUN mvn dependency:resolve
+
+COPY ./main/. /app/Collector/
 RUN mvn compile
 
 CMD ["mvn", "spring-boot:run"]
