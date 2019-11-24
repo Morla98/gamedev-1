@@ -113,8 +113,9 @@ public class CollectorController {
      * the data from the hook is stored in the MetricDB
      */
     @CrossOrigin(origins = "http://localhost:9082")
-    @RequestMapping(value="/update", method = RequestMethod.POST)
+    @RequestMapping(value="/update", method = RequestMethod.GET)
     public void update(@RequestBody String data){
+        System.out.println("Hello World!");
     }
 
 
