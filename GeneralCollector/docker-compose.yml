@@ -1,0 +1,20 @@
+version: '3.0'
+#
+# Suggestion for port conventions:
+#  - 80   : Frontend
+#  - 80xx : Development (pgAdmin, ...)
+#  - 90xx : Connectors (WebHooks)
+#
+services:
+  # Main
+  main:
+    container_name: dummycollector_main
+    restart: always
+    build:
+      context: ./main
+    ports:
+      - 9082:8080
+
+networks:
+  default:
+    driver: bridge
