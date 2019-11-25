@@ -7,8 +7,9 @@ import { SharedModule } from './shared/shared.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppGuard } from './app.guard';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ApiModule } from 'src/api/api.module';
+import { RequestInterceptor } from 'src/app/shared/http/request-interceptor';
 
 @NgModule({
   declarations: [AppComponent],
@@ -19,9 +20,13 @@ import { ApiModule } from 'src/api/api.module';
     AuthenticationModule,
     BrowserModule,
     BrowserAnimationsModule,
-    ApiModule.forRoot({rootUrl: 'http://localhost:8082'}),
+    ApiModule.forRoot({ rootUrl: '' })
   ],
-  providers: [AppGuard],
+  providers: [
+    AppGuard,
+    { provide: HTTP_INTERCEPTORS, multi: true, useClass: RequestInterceptor },
+    RequestInterceptor
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

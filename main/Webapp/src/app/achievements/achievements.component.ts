@@ -9,22 +9,18 @@ import { Achievement } from 'src/api/models';
 const achievementsMock: Achievement[] = [
   {
     name: 'Morning Person',
-    completion: Math.random() * 100,
     description: 'Check in before 8'
   },
   {
     name: 'Busy Person',
-    completion: Math.random() * 100,
     description: 'Commit 5 things before Lunch'
   },
   {
     name: 'Quantity is everything',
-    completion: Math.random() * 100,
     description: 'Reach 500 Commits'
   },
   {
     name: 'Hold my Coffee',
-    completion: Math.random() * 100,
     description: 'Check in before 7'
   }
 ];
@@ -106,7 +102,7 @@ export class AchievementsComponent implements OnInit {
   getOverallCompletion(achievements: Achievement[]) {
     let result = 0;
     for (const a of achievements) {
-      result += a.completion;
+      //result += a.completion;
     }
     return result / achievements.length;
   }
