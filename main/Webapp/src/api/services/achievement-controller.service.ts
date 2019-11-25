@@ -16,8 +16,8 @@ import { Achievement } from '../models/achievement';
   providedIn: 'root',
 })
 class AchievementControllerService extends __BaseService {
-  static readonly getAchievementByCollectorIdUsingGETPath = '/achievements';
-  static readonly addAchievementUsingPOSTPath = '/achievements';
+  static readonly getAchievementByCollectorIdUsingGETPath = '/api/achievements';
+  static readonly addAchievementUsingPOSTPath = '/api/achievements';
 
   constructor(
     config: __Configuration,
@@ -37,7 +37,7 @@ class AchievementControllerService extends __BaseService {
     if (controllerId != null) __params = __params.set('controllerId', controllerId.toString());
     let req = new HttpRequest<any>(
       'GET',
-      this.rootUrl + `/achievements`,
+      this.rootUrl + `/api/achievements`,
       __body,
       {
         headers: __headers,
@@ -72,7 +72,7 @@ class AchievementControllerService extends __BaseService {
     __body = a;
     let req = new HttpRequest<any>(
       'POST',
-      this.rootUrl + `/achievements`,
+      this.rootUrl + `/api/achievements`,
       __body,
       {
         headers: __headers,

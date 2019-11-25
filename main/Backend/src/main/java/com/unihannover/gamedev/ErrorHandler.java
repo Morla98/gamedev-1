@@ -15,6 +15,7 @@ public class ErrorHandler implements ErrorController {
         return "forward:/index.html";
     }
     
+
     // Redirecting to the index.html on everything thats not a file
     @RequestMapping(value = "/**/{path:[^.]*}")       
     public String redirect() {

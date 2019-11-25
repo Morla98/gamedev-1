@@ -6,20 +6,28 @@ package com.unihannover.gamedev.models;
  * @version 0.0.1
  */
 public class User {
-	private String fullName;
+	private String firstName;
+	private String lastName;
 	private String email;
 	private String userName;
 	private int level;
 	private int score;
-	private Repo repo;
 	private boolean anonymous;
 	
 	
-	public String getFullName() {
-		return fullName;
+	
+	
+	public String getFirstName() {
+		return firstName;
 	}
-	public void setFullName(String fullName) {
-		this.fullName = fullName;
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+	public String getLastName() {
+		return lastName;
+	}
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
 	}
 	public String getEmail() {
 		return email;
@@ -45,12 +53,6 @@ public class User {
 	public void setScore(int score) {
 		this.score = score;
 	}
-	public Repo getRepo() {
-		return repo;
-	}
-	public void setRepo(Repo repo) {
-		this.repo = repo;
-	}
 	public boolean isAnonymous() {
 		return anonymous;
 	}
@@ -58,19 +60,5 @@ public class User {
 		this.anonymous = anonymous;
 	}
 	
-	/**
-	 * method to login in the system
-	 */
-	public void login(){
-		
-	}
-	
-	/**
-	 * method to update profile
-	 */
-	public void updateProfile() {
-		
-		
-	}
 	
 }

@@ -14,7 +14,7 @@ import com.unihannover.gamedev.models.Achievement;
 import com.unihannover.gamedev.repositories.AchievementRepository;
 
 @RestController
-public class AchievementController {
+public class AchievementController extends BaseController {
 	@Autowired
     private AchievementRepository repository;
 	
