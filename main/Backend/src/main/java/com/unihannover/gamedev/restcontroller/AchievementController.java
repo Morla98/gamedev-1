@@ -18,13 +18,11 @@ public class AchievementController extends BaseController {
 	@Autowired
     private AchievementRepository repository;
 	
-	@CrossOrigin(origins = "http://localhost:8082")
 	@RequestMapping(value="/achievements", method = RequestMethod.GET)
     public List<Achievement> getAchievementByCollectorId(@RequestParam(value="controllerId", defaultValue="0") int id) {
         return repository.findByCollectorId(id);
     }
 	
-	@CrossOrigin(origins = "http://localhost:8082")
 	@RequestMapping(value="/achievements", method = RequestMethod.POST)
 	public void addAchievement(@RequestBody Achievement a) {
 		repository.save(a);

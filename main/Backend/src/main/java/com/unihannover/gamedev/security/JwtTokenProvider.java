@@ -1,11 +1,8 @@
 package com.unihannover.gamedev.security;
 
-import java.nio.file.attribute.UserPrincipal;
 import java.util.Date;
-import java.util.logging.Logger;
 
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Component;
 
 import io.jsonwebtoken.Claims;
@@ -27,22 +24,21 @@ public class JwtTokenProvider {
 	@Value("${app.jwtExpirationInMs}")
 	private int jwtExpirationInMs;
 
-	public String generateToken(Authentication authentication) {
+	public String generateToken(String email) {
 
 		Date now = new Date();
 		Date expiryDate = new Date(now.getTime() + jwtExpirationInMs);
-		UserPrincipal userPrincipal = (UserPrincipal) authentication.getPrincipal();
 
 
 		//The long should be user Id which has to be added
-		return Jwts.builder().setSubject(Long.toString(1234L)).setIssuedAt(new Date())
+		return Jwts.builder().setSubject(email).setIssuedAt(new Date())
 				.setExpiration(expiryDate).signWith(SignatureAlgorithm.HS512, jwtSecret).compact();
 	}
 
-	public Long getUserIdFromJWT(String token) {
+	public String getUserIdFromJWT(String token) {
 		Claims claims = Jwts.parser().setSigningKey(jwtSecret).parseClaimsJws(token).getBody();
 
-		return Long.parseLong(claims.getSubject());
+		return claims.getSubject();
 	}
 
 	public boolean validateToken(String authToken) {

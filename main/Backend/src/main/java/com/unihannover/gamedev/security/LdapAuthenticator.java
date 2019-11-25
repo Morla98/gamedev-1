@@ -16,18 +16,16 @@ import org.springframework.stereotype.Service;
 public class LdapAuthenticator {
 
 	// service user
-	String serviceUserDN = "cn=Mister Service,ou=Users,dc=example,dc=com";
-	String serviceUserPassword = "testPass";
+	String serviceUserDN = "cn=admin,dc=example,dc=org";
+	String serviceUserPassword = "admin";
 	
 	// user to authenticate
-	String identifyingAttribute = "email";
-	//String identifier = "gameDev@gamerDads.com";
-	//String password = "testPass";
-	String base = "ou=Users,dc=example,dc=com";
+	String identifyingAttribute = "mail";
+	String base = "dc=example,dc=org";
 	
 	// LDAP connection info
-	String ldap = "devgame_ldap-server";
-	int port = 10389;
+	String ldap = "ldap-server";
+	int port = 389;
 	String ldapUrl = "ldap://" + ldap + ":" + port;
 	
 	public boolean performAuthentication(String email, String password) {
