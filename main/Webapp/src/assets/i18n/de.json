@@ -10,5 +10,7 @@
     "NAME": "Name",
     "ACHIEVEMENTS": "Errungenschaffen",
     "LEVEL": "Level",
-    "LOGOUT": "Logout"
+    "LOGOUT": "Logout",
+    "LOGIN_SUCCESS": "Login erfolgreich",
+    "LOGIN_FAILED": "Login fehlgeschlagen"
 }

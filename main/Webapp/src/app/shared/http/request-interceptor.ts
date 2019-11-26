@@ -13,7 +13,6 @@ export class RequestInterceptor implements HttpInterceptor {
   ): Observable<HttpEvent<any>> {
     const token = sessionStorage.getItem('jwt');
     const baseUrl = window.location.protocol + '//' + window.location.host;
-    console.log(token);
     if (token) {
       request = request.clone({
         setHeaders: {
