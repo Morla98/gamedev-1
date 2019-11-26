@@ -26,9 +26,9 @@ public class CustomerController {
             user1.userName = "myUserName";
             user1.level = 1;
             user1.score = 0;
-            user1.anonymous = true;
+            user1.anonymous = false;
 
-            if(user1.anonymous) {
+            if(!user1.anonymous) {
                 users.add(user1);
             }
 
