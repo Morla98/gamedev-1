@@ -59,6 +59,14 @@ public class User {
 	public void setAnonymous(boolean anonymous) {
 		this.anonymous = anonymous;
 	}
+
+	public String toString() {
+		String s = "";
+		if(this.anonymous) {
+			s = "*";
+		}
+		return s += this.userName + "(" + this.lastName + ", " this.firstName + ") ";
+	}
 	
 	
 }
