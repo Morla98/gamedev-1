@@ -19,7 +19,7 @@ public class CustomerController {
 
     @CrossOrigin(origins = "http://localhost:8082")
     @RequestMapping(value="/profile", method = RequestMethod.POST)
-    public void updateProfile(@RequestBody String name, boolean hidden) {
+    public void updateProfile(@RequestBody String name, String mail, boolean hidden) {
 
         User user1 = new User();
         user1.setFirstName("Jhon");
@@ -34,6 +34,7 @@ public class CustomerController {
 
         user1.setAnonymous(hidden);
         user1.setUserName(name);
+        user1.setEmail(mail);
 
         System.out.println(user1.toString());
 
