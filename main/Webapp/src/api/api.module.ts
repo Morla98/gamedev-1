@@ -4,6 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ApiConfiguration, ApiConfigurationInterface } from './api-configuration';
 
 import { AchievementControllerService } from './services/achievement-controller.service';
+import { AuthenticationControllerService } from './services/authentication-controller.service';
 
 /**
  * Provider for all Api services, plus ApiConfiguration
@@ -18,7 +19,8 @@ import { AchievementControllerService } from './services/achievement-controller.
   declarations: [],
   providers: [
     ApiConfiguration,
-    AchievementControllerService
+    AchievementControllerService,
+    AuthenticationControllerService
   ],
 })
 export class ApiModule {

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthenticationService } from './authentication.service';
 
 @Component({
   selector: 'app-authentication',
@@ -7,15 +8,13 @@ import { Router } from '@angular/router';
   styleUrls: ['./authentication.component.scss']
 })
 export class AuthenticationComponent implements OnInit {
-  public name?: string;
+  public email?: string;
   public password?: string;
-  constructor(private router: Router) {}
+  constructor(private router: Router, private authService: AuthenticationService) {}
 
   ngOnInit() {}
 
   login() {
-    if (this.name === 'admin' && this.password === 'gameDev') {
-      this.router.navigate(['/profile']);
-    }
+   this.authService.login(this.email, this.password);
   }
 }
