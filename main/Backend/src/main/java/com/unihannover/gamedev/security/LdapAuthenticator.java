@@ -12,24 +12,11 @@ import javax.naming.directory.SearchResult;
 
 import org.springframework.stereotype.Service;
 
+import com.unihannover.gamedev.Configuration;
+
 @Service
 public class LdapAuthenticator {
-
-	// service user
-	String serviceUserDN = "cn=admin,dc=example,dc=org";
-	String serviceUserPassword = "admin";
-	
-	// user to authenticate
-	String identifyingAttribute = "mail";
-	String base = "dc=example,dc=org";
-	
-	// LDAP connection info
-	String ldap = "ldap-server";
-	int port = 389;
-	String ldapUrl = "ldap://" + ldap + ":" + port;
-	
 	public boolean performAuthentication(String email, String password) {
-
 
 	    // first create the service context
 	    DirContext serviceCtx = null;
@@ -37,21 +24,23 @@ public class LdapAuthenticator {
 	        // use the service user to authenticate
 	        Properties serviceEnv = new Properties();
 	        serviceEnv.put(Context.INITIAL_CONTEXT_FACTORY, "com.sun.jndi.ldap.LdapCtxFactory");
-	        serviceEnv.put(Context.PROVIDER_URL, ldapUrl);
+	        serviceEnv.put(Context.PROVIDER_URL, Configuration.LDAP_URL);
 	        serviceEnv.put(Context.SECURITY_AUTHENTICATION, "simple");
-	        serviceEnv.put(Context.SECURITY_PRINCIPAL, serviceUserDN);
-	        serviceEnv.put(Context.SECURITY_CREDENTIALS, serviceUserPassword);
+	        serviceEnv.put(Context.SECURITY_PRINCIPAL, Configuration.LDAP_SERVICE_USER_DN);
+	        serviceEnv.put(Context.SECURITY_CREDENTIALS, Configuration.LDAP_SERVICE_USER_PW);
 	        serviceCtx = new InitialDirContext(serviceEnv);
 
 	        // we don't need all attributes, just let it get the identifying one
-	        String[] attributeFilter = { identifyingAttribute };
+	        String[] attributeFilter = { Configuration.LDAP_IDENTIFYING_ATTRIBUTE };
 	        SearchControls sc = new SearchControls();
 	        sc.setReturningAttributes(attributeFilter);
 	        sc.setSearchScope(SearchControls.SUBTREE_SCOPE);
 
-	        // use a search filter to find only the user we want to authenticate
-	        String searchFilter = "(" + identifyingAttribute + "=" + email + ")";
-	        NamingEnumeration<SearchResult> results = serviceCtx.search(base, searchFilter, sc);
+	        // Construct the search filter
+			String searchFilter = Configuration.LDAP_SEARCH_FILTER;
+			searchFilter = searchFilter.replaceAll("#EMAIL", email);
+
+	        NamingEnumeration<SearchResult> results = serviceCtx.search(Configuration.LDAP_BASE, searchFilter, sc);
 
 	        if (results.hasMore()) {
 	            // get the users DN (distinguishedName) from the result
@@ -61,9 +50,9 @@ public class LdapAuthenticator {
 	            // attempt another authentication, now with the user
 	            Properties authEnv = new Properties();
 	            authEnv.put(Context.INITIAL_CONTEXT_FACTORY, "com.sun.jndi.ldap.LdapCtxFactory");
-	            authEnv.put(Context.PROVIDER_URL, ldapUrl);
-	            authEnv.put(Context.SECURITY_PRINCIPAL, distinguishedName);
-	            authEnv.put(Context.SECURITY_CREDENTIALS, password);
+	            authEnv.put(Context.PROVIDER_URL, Configuration.LDAP_URL);
+	            authEnv.put(Context.SECURITY_PRINCIPAL, Configuration.LDAP_SERVICE_USER_DN);
+	            authEnv.put(Context.SECURITY_CREDENTIALS, Configuration.LDAP_SERVICE_USER_PW);
 	            new InitialDirContext(authEnv);
 
 	            System.out.println("Authentication successful");
