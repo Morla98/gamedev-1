@@ -1,7 +1,7 @@
 package com.unihannover.gamedev.models;
 
 import static org.junit.jupiter.api.Assertions.*;
-
+import org.junit.Ignore;
 import org.junit.jupiter.api.Test;
 
 class AchievementTest {
@@ -45,16 +45,13 @@ class AchievementTest {
 		Achievement ach = new Achievement();
 		ach.setCollectorId(1);
 		assertEquals(1, ach.getCollectorId());
-	}
-	/*
+	}	
 	
-	function getId() is missing
-	
-	@Test
+	@Ignore("function getId() is missing") @Test
 	void getUniqueID(){
-		Achievement a1 = new Achievement();
-		Achievement a2 = new Achievement();
-		assertFalse(a1.getId == a2.getId);
-	}*/
+		//Achievement a1 = new Achievement();
+		//Achievement a2 = new Achievement();
+		//assertFalse(a1.getId == a2.getId);
+	}
 
 }
