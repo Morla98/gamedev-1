@@ -15,6 +15,23 @@ INSERT INTO main."users"(
     0,
     'Example User'
 );
+INSERT INTO main."users"(
+    "email",
+    "uid",
+    "username",
+    "anonymous",
+    "level",
+    "score",
+    "fullname"
+) VALUES (
+    'user2@example.com',
+    '0000002',
+    'example2.user',
+    TRUE,
+    1,
+    0,
+    'Example User'
+);
 
 INSERT INTO main."collectors" (
     "id",
@@ -25,6 +42,17 @@ INSERT INTO main."collectors" (
     'This is just a test collector',
     NOW()
 );
+
+INSERT INTO main."collectors" (
+    "id",
+    "name",
+    "last_seen"
+) VALUES (
+    'test-collector2',
+    'This is just a test collector2',
+    NOW()
+);
+
 
 INSERT INTO main."achievements" (
     "id",
@@ -65,5 +93,16 @@ INSERT INTO main."user_achievements"(
     'test-collector',
     'user@example.com',
     0,
+    NOW()
+);
+INSERT INTO main."user_achievements"(
+    "achievement_id",
+    "collector_id",
+    "user_email",
+    "last_updated"
+) VALUES (
+    'achievement-01',
+    'test-collector',
+    'user2@example.com',
     NOW()
 );
