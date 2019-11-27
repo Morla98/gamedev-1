@@ -16,7 +16,7 @@ class AchievementTest {
 	void SetNameTwiceTest() {
 		Achievement ach = new Achievement();
 		ach.setName("Test0");
-		assertEquals("Test0", ach.getName();
+		assertEquals("Test0", ach.getName());
 		ach.setName("Test1");
 		assertEquals("Test1", ach.getName());
 	}
@@ -39,22 +39,22 @@ class AchievementTest {
 		ach.setValue(300);
 		assertEquals(300, ach.getValue());
 	}
-	/*@Test
-	void SetValueOutOfBoundTest(){
-		Achievement ach = new Achievement();
-		ach.setValue(3000000000);
-		fail("value needs to be in integer bounds");
-	}*/
+
 	@Test
 	void setCollectorIDTest(){
 		Achievement ach = new Achievement();
 		ach.setCollectorId(1);
-		assertEquals(1, ach.getDescription());
+		assertEquals(1, ach.getCollectorId());
 	}
-	@Test IdUniqueTest(){
-		Achievement ach1 = new Achievement();
-		Achievement ach2 = new Achievement();
-		assertFalse(ach1.getid() == ach2.getid());
-	}
+	/*
+	
+	function getId() is missing
+	
+	@Test
+	void getUniqueID(){
+		Achievement a1 = new Achievement();
+		Achievement a2 = new Achievement();
+		assertFalse(a1.getId == a2.getId);
+	}*/
 
 }
