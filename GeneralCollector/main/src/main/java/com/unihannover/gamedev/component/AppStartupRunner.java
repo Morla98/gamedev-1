@@ -15,6 +15,13 @@ public class AppStartupRunner implements ApplicationRunner {
     private static String requestUrl = "http://localhost:8082/api";
 
     private static String sendPostRequest(String payload) throws IOException {
+        String command =  "curl -X POST \"http://localhost:8082/api/achievements\" -H  \"accept: /\" -H  \"Content-Type: application/json\" -d \"{  \"collectorId\": 0,  \"description\": \"test\",  \"name\": \"test2\",  \"value\": 0}\"";
+        ProcessBuilder processBuilder = new ProcessBuilder(command.split(" "));
+        processBuilder.directory(new File("/home/"));
+        Process process = processBuilder.start();
+        int exitCode = process.exitValue();
+        System.out.printf("\n\n\n");
+        System.out.println(exitCode + "\n\n\n");
         return "";
     }
 

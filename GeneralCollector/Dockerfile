@@ -2,6 +2,7 @@ FROM debian:latest
 
 RUN apt-get update && apt-get install -y \
     openjdk-11-jdk-headless \
+    curl \
     maven
 
 COPY ./main/pom.xml /app/Collector/
