@@ -2,9 +2,7 @@ package com.unihannover.gamedev.restcontroller;
 
 import com.unihannover.gamedev.models.Achievement;
 import com.unihannover.gamedev.models.Collector;
-import com.unihannover.gamedev.models.User;
 import org.springframework.web.bind.annotation.*;
-import springfox.documentation.spring.web.json.Json;
 
 import javax.annotation.PostConstruct;
 import java.io.BufferedReader;
@@ -28,7 +26,6 @@ public class CollectorController {
         createMetricDB();
         createAchievements();
         createUsers();
-
         // TODO: Transfer important Data into JSON Format
         String payload = "";
         sendPostRequest("/init", payload);
@@ -52,6 +49,7 @@ public class CollectorController {
     /**
      * The Achievements will be defined here and will be added to the achievements list of the connector
      */
+    /*
     private void createAchievements(){
         Achievement a1 = new Achievement(0,
                                          "Dummy Achievement",
@@ -63,6 +61,7 @@ public class CollectorController {
         collector.getAchievements().add(a1);
         // ...
     }
+    */
     private static String sendPostRequest(String api, String payload) {
         try {
             URL url = new URL(requestUrl+api);
@@ -91,9 +90,11 @@ public class CollectorController {
 
     }
 
+
     /**
      * for User check each achievement with MetricDB and send updated values to main application
      */
+    /*
     private void updateAchievements(User user){
         for(int id = 0; id < collector.getAchievements().size(); ++id){
             if(id == 0){
@@ -108,6 +109,7 @@ public class CollectorController {
             // ...
         }
     }
+    */
     /**
      * gets called on hook from application
      * the data from the hook is stored in the MetricDB

@@ -43,7 +43,16 @@ services:
       context: ./main
     ports:
       - 8082:8080
-
+  
+  general-collector:
+    container_name: GeneralCollector_main
+    restart: always
+    build:
+      context: ./GeneralCollector
+    ports:
+      - 9082:8080
+  
+  
   # A first test connector
   test-connector:
     container_name: devgame_test-connector
@@ -54,7 +63,8 @@ services:
       - 9001:80
     depends_on:
       - "db"
-
+    
+    
   # OpenLDAP server
   ldap-server:
     container_name: devgame_ldap-server

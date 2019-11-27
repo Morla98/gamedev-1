@@ -22,9 +22,6 @@ public class Achievement {
 	@Column(name = "achievementStatus")
 	private boolean achievementStatus;
 
-	@Column(name = "testfield")
-	private String testfield;
-
 	public Achievement(long id, String name, String description, int completion, int value, long collectorId){
 		this.id = id;
 		this.name = name;
