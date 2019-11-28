@@ -1,8 +1,13 @@
 package com.unihannover.gamedev.component;
 
+import com.unihannover.gamedev.models.Metric;
+import com.unihannover.gamedev.repositories.MetricRepository;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
+
 
 import java.io.*;
 import java.net.HttpURLConnection;
@@ -25,6 +30,12 @@ public class AppStartupRunner implements ApplicationRunner {
         return "";
     }
 
+    @Bean
+    CommandLineRunner initMetricDatabase(MetricRepository repository) {
+        return args -> {
+            System.out.println("Preloading " + repository.save(new Metric(666)));
+        };
+    }
     private void test(){
         String payload = "{\n" +
                 "  \"collectorId\": 0,\n" +
@@ -42,7 +53,7 @@ public class AppStartupRunner implements ApplicationRunner {
     @Override
     public void run(ApplicationArguments args) throws Exception {
         // TODO: Init Achievements and send them to server
-        test();
+        System.out.println("Test finished");
 
     }
 }
