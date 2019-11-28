@@ -22,7 +22,7 @@ CREATE TABLE main."collectors" (
     "id" TEXT NOT NULL,
     "name" TEXT NOT NULL,
     "last_seen" TIMESTAMPTZ NOT NULL DEFAULT NOW(),
-	"token" TEXT NOT NULL UNIQUE DEFAULT random_token(25), 
+	"token" TEXT NOT NULL UNIQUE DEFAULT random_token(15), 
     PRIMARY KEY("id")
 );
 	
