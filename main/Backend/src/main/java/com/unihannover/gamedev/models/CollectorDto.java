@@ -8,9 +8,9 @@ package com.unihannover.gamedev.models;
 public class CollectorDto {
 	private String collectorName;
 	private long collectorId;
-	private String token;
 	
 	
+	//getters and setters
 	public String getCollectorName() {
 		return collectorName;
 	}
@@ -23,11 +23,6 @@ public class CollectorDto {
 	public void setCollectorId(long collectorId) {
 		this.collectorId = collectorId;
 	}
-	public String getToken() {
-		return token;
-	}
-	public void setToken(String token) {
-		this.token = token;
-	}
+	
 	
 }
