@@ -25,7 +25,7 @@ public class CollectorController {
      * the data from the hook is stored in the MetricDB
      */
     @RequestMapping(value="/update", method = RequestMethod.GET)
-    public void update(@RequestBody String data){
+    public void update(){
         System.out.println("Hello World!");
     }
 

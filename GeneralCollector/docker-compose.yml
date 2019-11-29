@@ -18,4 +18,4 @@ services:
 networks:
   default:
     external:
-      name: swp_default
+      name: gamedev1_default
