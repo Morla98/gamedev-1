@@ -68,11 +68,10 @@ public class AppStartupRunner implements ApplicationRunner {
         catch (Exception e){
             e.printStackTrace();
         }*/
-
         Runtime runtime = Runtime.getRuntime();
 
         try {
-            Process process = runtime.exec("curl -X POST \"http://localhost:8082/api/achievements\" -H \"accept: */*\" -H \"Content-Type: application/json\" -d \"{ \\\"collectorId\\\": 0, \\\"description\\\": \\\"TEST\\\", \\\"name\\\": \\\"TEST\\\", \\\"value\\\": 0}\"");
+            Process process = runtime.exec("curl -X POST -d '{\"collectorId\": 0,\"description\":\"Die Curl Posts funktionieren!\",\"name\":\"TEST\",\"value\":0}' -v -i 'http://devgame:8080/api/achievements'");
             int resultCode = process.waitFor();
 
             if (resultCode == 0) {
@@ -85,6 +84,7 @@ public class AppStartupRunner implements ApplicationRunner {
             }
         } catch (Throwable cause) {
             // process cause
+            cause.printStackTrace();
         }
 
         return "";
