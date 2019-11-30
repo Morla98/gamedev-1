@@ -86,6 +86,20 @@ INSERT INTO main."achievements" (
     20
 );
 
+INSERT INTO main."achievements" (
+    "id",
+    "collector_id",
+    "name",
+    "description",
+    "value"
+) VALUES (
+    'achievement-03',
+    'test-collector2',
+    'Achievement 03',
+    'This is the first achievement of the second test collector!',
+    20
+);
+
 INSERT INTO main."user_achievements"(
     "achievement_id",
     "collector_id",
@@ -99,14 +113,31 @@ INSERT INTO main."user_achievements"(
     0,
     NOW()
 );
+
 INSERT INTO main."user_achievements"(
     "achievement_id",
     "collector_id",
     "user_email",
+    "progress",
     "last_updated"
 ) VALUES (
     'achievement-01',
     'test-collector',
     'user2@example.com',
+    0,
+    NOW()
+);
+
+INSERT INTO main."user_achievements"(
+    "achievement_id",
+    "collector_id",
+    "user_email",
+    "progress",
+    "last_updated"
+) VALUES (
+    'achievement-03',
+    'test-collector2',
+    'user@example.com',
+    0,
     NOW()
 );

@@ -20,10 +20,10 @@ CREATE TABLE main."collectors" (
     "id" TEXT NOT NULL,
     "name" TEXT NOT NULL,
     "last_seen" TIMESTAMPTZ NOT NULL DEFAULT NOW(),
-	"token" TEXT NOT NULL UNIQUE DEFAULT random_token(256), 
+    "token" TEXT NOT NULL DEFAULT random_token(256),
     PRIMARY KEY("id")
 );
-	
+
 -- Table managing achievement
 --  (one achievement is only identifiable in combination with its collectors id)
 CREATE TABLE main."achievements" (
