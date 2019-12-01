@@ -81,7 +81,8 @@ public class User {
 		if(this.anonymous) {
 			s = "*";
 		}
-		return s += this.userName + "(" + this.lastName + ", " this.firstName + ") ";
+		s += this.userName + " (" + this.fullName + ") ";
+		return s;
 	}
 	
 
