@@ -29,15 +29,8 @@ public class UserAchievementController extends BaseController {
         return repository.findByUserEmail(userEmail);
     }
 
-    //vllt in update integrieren, falls noch nicht in db vorhanden
-    @RequestMapping(value="/user-achievements", method = RequestMethod.POST)
-    public void addUserAchievements(@RequestBody UserAchievement u) {
-        repository.save(u);
-    }
-
     @RequestMapping(value="/user-achievements", method = RequestMethod.POST)
     public void updateUserAchievements(@RequestBody UserAchievement u) {
-        //evtl delete, falls notwendig
         repository.save(u);
     }
 }
