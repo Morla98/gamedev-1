@@ -5,53 +5,56 @@ import org.junit.Ignore;
 import org.junit.jupiter.api.Test;
 
 class AchievementTest {
-
+	@Test
+	void AchievementPkTest(){
+		Achievement.AchievementPK achievementPK = new Achievement.AchievementPK("ThisIsMyId", "ThisIsMyCollectorId");
+		assertEquals("ThisIsMyId", achievementPK.id);
+		assertEquals("ThisIsMyCollectorId", achievementPK.collectorId);
+	}
+	@Test
+	void setIdTest(){
+		Achievement achievement = new Achievement();
+		achievement.setId("ThisIsMyId");
+		assertEquals("ThisIsMyId", achievement.getId());
+	}
 	@Test
 	void SetNameTest() {
-		Achievement ach = new Achievement();
-		ach.setName("Test1");
-		assertEquals("Test1", ach.getName());
+		Achievement achievement = new Achievement();
+		achievement.setName("Test1");
+		assertEquals("Test1", achievement.getName());
 	}
 	@Test
 	void SetNameTwiceTest() {
-		Achievement ach = new Achievement();
-		ach.setName("Test0");
-		assertEquals("Test0", ach.getName());
-		ach.setName("Test1");
-		assertEquals("Test1", ach.getName());
+		Achievement achievement = new Achievement();
+		achievement.setName("Test0");
+		assertEquals("Test0", achievement.getName());
+		achievement.setName("Test1");
+		assertEquals("Test1", achievement.getName());
 	}
 	@Test
 	void SetDescriptionTest() {
-		Achievement ach = new Achievement();
-		ach.setDescription("Test1");
-		assertEquals("Test1", ach.getDescription());
+		Achievement achievement = new Achievement();
+		achievement.setDescription("Test1");
+		assertEquals("Test1", achievement.getDescription());
 	}
 	@Test
 	void SetDescriptionTwiceTest() {
-		Achievement ach = new Achievement();
-		ach.setDescription("Test0");
-		ach.setDescription("Test1");
-		assertEquals("Test1", ach.getDescription());
+		Achievement achievement = new Achievement();
+		achievement.setDescription("Test0");
+		achievement.setDescription("Test1");
+		assertEquals("Test1", achievement.getDescription());
 	}
 	@Test
 	void SetValueTest(){
-		Achievement ach = new Achievement();
-		ach.setValue(300);
-		assertEquals(300, ach.getValue());
+		Achievement achievement = new Achievement();
+		achievement.setValue(300);
+		assertEquals(300, achievement.getValue());
 	}
 
 	@Test
 	void setCollectorIDTest(){
-		Achievement ach = new Achievement();
-		ach.setCollectorId(1);
-		assertEquals(1, ach.getCollectorId());
+		Achievement achievement = new Achievement();
+		achievement.setCollectorId("ThisIsMyCollectorId");
+		assertEquals("ThisIsMyCollectorId", achievement.getCollectorId());
 	}	
-	
-	@Ignore("function getId() is missing") @Test
-	void getUniqueID(){
-		//Achievement a1 = new Achievement();
-		//Achievement a2 = new Achievement();
-		//assertFalse(a1.getId == a2.getId);
-	}
-
 }

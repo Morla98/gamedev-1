@@ -7,21 +7,14 @@ import org.junit.jupiter.api.Test;
 class UserTest {
 
 	@Test
-	void FirstNameTest() {
+	void setFullNameTest() {
 		User user = new User();
-		user.setFirstName("abc");
-		assertEquals("abc", user.getFirstName());		
+		user.setFullName("Max Mustermann");
+		assertEquals("Max Mustermann", user.getFullName());		
 	}
 	
 	@Test
-	void LastNameTest() {
-		User user = new User();
-		user.setLastName("abc");
-		assertEquals("abc", user.getLastName());		
-	}
-	
-	@Test
-	void FirstNameUsertest() {
+	void setUserNametest() {
 		User user = new User();
 		user.setUserName("abc");
 		assertEquals("abc", user.getUserName());		
@@ -33,6 +26,14 @@ class UserTest {
 		user.setEmail("abc.def@adesso.de");
 		assertEquals("abc.def@adesso.de", user.getEmail());
 	}
+	
+	@Test
+	void setUIDTest(){
+		User user = new User();
+		user.setUid("MyUniqueID");
+		assertEquals("MyUniqueID", user.getUid());
+	}
+	
 	
 	@Test
 	void setLevelTest() {
