@@ -5,12 +5,12 @@ RUN apt-get update && apt-get install -y \
     curl \
     maven
 
-COPY ./main/pom.xml /app/Collector/
+COPY ./pom.xml /app/Collector/
 WORKDIR /app/Collector/
 
 RUN mvn dependency:resolve
 
-COPY ./main/. /app/Collector/
+COPY ./. /app/Collector/
 RUN mvn compile
 
 CMD ["mvn", "spring-boot:run"]
