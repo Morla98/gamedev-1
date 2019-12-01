@@ -9,11 +9,14 @@ public class ErrorHandler implements ErrorController {
 
 	private static final String PATH = "/error";
 
+	// Redirecting to the index.html on error
     @RequestMapping(value = PATH)
     public String error() {
         return "forward:/index.html";
     }
     
+
+    // Redirecting to the index.html on everything thats not a file
     @RequestMapping(value = "/**/{path:[^.]*}")       
     public String redirect() {
         // Forward to home page so that route is preserved.

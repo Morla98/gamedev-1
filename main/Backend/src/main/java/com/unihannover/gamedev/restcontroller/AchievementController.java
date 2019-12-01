@@ -15,20 +15,27 @@ import com.unihannover.gamedev.repositories.AchievementRepository;
 
 @RestController
 public class AchievementController extends BaseController {
+
 	@Autowired
     private AchievementRepository repository;
-	
-	@CrossOrigin(origins = "http://localhost:8082")
-	@RequestMapping(value="/achievements", method = RequestMethod.GET)
-    public List<Achievement> getAchievementByCollectorId(@RequestParam(value="controllerId", defaultValue="0") int id) {
+
+	@RequestMapping(value="/achievements/all", method = RequestMethod.GET)
+	public List<Achievement> getAllAchievements() {
+		return repository.findAll();
+	}
+
+	@RequestMapping(value="/achievements/by-collector-id", method = RequestMethod.GET)
+    public List<Achievement> getAchievementByCollectorId(@RequestParam(value="collectorId") String id) {
         return repository.findByCollectorId(id);
     }
-	
-	@CrossOrigin(origins = "http://localhost:8082")
+
 	@RequestMapping(value="/achievements", method = RequestMethod.POST)
-	public void addAchievement(@RequestBody Achievement a) {
-		repository.save(a);
-		System.out.println(a.toString());
+	public void addAchievementList(@RequestBody Achievement[] achievements) {
+
+		for(Achievement a : achievements) {
+			repository.save(a);
+			System.out.println(a.toString()); // UNDONE: Debug print
+		}
+
 	}
-	
 }

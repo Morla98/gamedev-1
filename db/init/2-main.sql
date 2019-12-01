@@ -20,6 +20,7 @@ CREATE TABLE main."collectors" (
     "id" TEXT NOT NULL,
     "name" TEXT NOT NULL,
     "last_seen" TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    "token" TEXT NOT NULL DEFAULT random_token(256),
     PRIMARY KEY("id")
 );
 
