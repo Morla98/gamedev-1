@@ -12,7 +12,7 @@ public class UserController {
 
     @CrossOrigin(origins = "http://localhost:8082")
     @RequestMapping(value="/profile", method = RequestMethod.GET)
-    public User getUsers() {
+    public User getUser() {
         User returnUser = new User();
         return returnUser;
     }
