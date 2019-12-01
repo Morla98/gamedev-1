@@ -50,4 +50,8 @@ public class Collector {
     public void setToken(String token) {
         this.token = token;
     }
+
+    public StringBuilder toJSON(){
+        return new StringBuilder();
+    }
 }
