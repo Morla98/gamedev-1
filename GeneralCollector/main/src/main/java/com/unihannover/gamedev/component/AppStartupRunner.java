@@ -112,7 +112,7 @@ public class AppStartupRunner implements ApplicationRunner {
     }
     private void sendPostRequest(){
         String result = "";
-        String url = "http://172.22.0.1:8082/api/achievements";
+        String url = "http://devgame:8080/api/achievements";
         HttpPost post = new HttpPost(url);
 
         StringBuilder json = new StringBuilder();
