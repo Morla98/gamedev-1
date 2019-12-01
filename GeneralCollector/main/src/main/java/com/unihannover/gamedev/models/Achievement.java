@@ -77,4 +77,19 @@ public class Achievement {
 	public void setValue(float value) {
 		this.value = value;
 	}
+
+
+
+	public StringBuilder toJSON()
+	{
+		StringBuilder json = new StringBuilder();
+		json.append("{");
+		json.append("\"collectorId\": " + " " + collectorId + ",");
+		json.append("\"description\": " + " " + "\"" + description + "\"" + ",");
+		json.append("\"name\": " + "\"" + name + "\"" + ",");
+		json.append("\"value\": " + value);
+		json.append("}");
+		return json;
+	}
+
 }
