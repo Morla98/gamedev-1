@@ -76,7 +76,6 @@ public class User {
 		this.anonymous = anonymous;
 	}
 
-<<<<<<< HEAD
 	public String toString() {
 		String s = "";
 		if(this.anonymous) {
@@ -85,8 +84,7 @@ public class User {
 		return s += this.userName + "(" + this.lastName + ", " this.firstName + ") ";
 	}
 	
-	
-=======
+
 	public float getLevel() {
 		return level;
 	}
@@ -102,5 +100,4 @@ public class User {
 	public void setScore(float score) {
 		this.score = score;
 	}
->>>>>>> fc7dc9a65f7953b296c8e8b8dd0cca1ee177df5a
 }

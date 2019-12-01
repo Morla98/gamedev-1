@@ -20,7 +20,7 @@ public class UserController extends BaseController {
     private UserRepository repository;
 
     @RequestMapping(value="/users/all", method = RequestMethod.GET)
-    public List<User> getAllUserss() {
+    public List<User> getAllUsers() {
         return repository.findAll();
     }
 
@@ -35,5 +35,7 @@ public class UserController extends BaseController {
         System.out.println(u.toString());
 
     }
+
+
 }
 
