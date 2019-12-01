@@ -6,7 +6,6 @@ version: '3.0'
 #  - 90xx : Connectors (WebHooks)
 #
 services:
-
   # The database
   db:
     image: postgres
@@ -50,7 +49,7 @@ services:
     build:
       context: ./GeneralCollector
     ports:
-      - 9082:8080
+      - 9082:9082
   
   
   # A first test connector
