@@ -7,6 +7,7 @@ import {
   Router
 } from '@angular/router';
 import { Observable } from 'rxjs';
+import { isNull } from 'util';
 
 @Injectable()
 export class AppGuard implements CanActivate {
@@ -33,7 +34,10 @@ export class AppGuard implements CanActivate {
   }
 
   checkToken() {
-    // TODO Check/Verify Token
-    return true;
+    const token = sessionStorage.getItem('jwt');
+    if (!isNull(token) && token !== undefined) {
+      return true;
+    }
+    return false;
   }
 }
