@@ -29,14 +29,14 @@ public class CollectorService {
 
     @Autowired
     CollectorConfig config;
-    
+
     public String ListToJSON(List<Model> mList){
         StringBuilder json = new StringBuilder();
         json.append("[");
         for(Model m : mList){
             json.append(m.toJSON().toString() + ", ");
         }
-        json.deleteCharAt(json.length()-1);
+        json.deleteCharAt(json.length()-2);
         json.append("]");
         return json.toString();
     }
@@ -72,19 +72,12 @@ public class CollectorService {
         }
         System.out.println("\n\n" + result + "\n\n");
     }
-    public void sendPostRequest(List<Achievement> aList){
+    public void sendPostRequest(List<Model> mList){
         String result = "";
         String url = "http://devgame:8080/api/achievements";
         HttpPost post = new HttpPost(url);
 
-        StringBuilder json = new StringBuilder();
-        json.append("[");
-        for(Achievement a : aList){
-            json.append(a.toJSON().toString() + ",");
-        }
-        json.deleteCharAt(json.length()-1);
-        json.append("]");
-        System.out.println("\n\n" + json.toString() + "\n\n");
+        String json = ListToJSON(mList);
 
         try {
             // send a JSON data
@@ -117,6 +110,9 @@ public class CollectorService {
             CloseableHttpClient httpClient = HttpClients.createDefault();
             CloseableHttpResponse response = httpClient.execute(post);
             result = EntityUtils.toString(response.getEntity());
+            // TODO: Handle result later
+
+
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         } catch (ClientProtocolException e) {
@@ -124,7 +120,6 @@ public class CollectorService {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        System.out.println("\n\n" + result + "\n\n");
     }
     @Bean
     CommandLineRunner initMetricDatabase(MetricRepository repository) {
@@ -141,8 +136,40 @@ public class CollectorService {
         me.setToken("supersecretToken");
         Timestamp t = new Timestamp(System.currentTimeMillis());
         me.setLastSeen(t);
-        System.out.println(me.toJSON());
+        config.setCollectorId(me.getId());
         sendPostRequest(me);
-        System.out.println("Init Collector");
+        System.out.println("\nInit Collector\n");
+        initAchievements();
+
+    }
+
+    private void initAchievements() {
+        List<Model> aList = new ArrayList<>();
+        Achievement a1 = new Achievement();
+        a1.setCollectorId(config.getCollectorId());
+        a1.setId("1");
+        a1.setName("Test_Achievement1");
+        a1.setDescription("This is a simple Test Achievement");
+        a1.setValue(1);
+        aList.add(a1);
+
+        Achievement a2 = new Achievement();
+        a2.setCollectorId(config.getCollectorId());
+        a2.setId("2");
+        a2.setName("Test_Achievement2");
+        a2.setDescription("This is a simple Test Achievement 2");
+        a2.setValue(3);
+        aList.add(a2);
+
+        Achievement a3 = new Achievement();
+        a3.setCollectorId(config.getCollectorId());
+        a3.setId("3");
+        a3.setName("Test_Achievement3");
+        a3.setDescription("This is a simple Test Achievement 3");
+        a3.setValue(10);
+        aList.add(a3);
+
+        sendPostRequest(aList);
+        System.out.println("\nInit Achievements\n");
     }
 }

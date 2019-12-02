@@ -84,8 +84,9 @@ public class Achievement implements Model{
 	{
 		StringBuilder json = new StringBuilder();
 		json.append("{");
-		json.append("\"collectorId\": " + " " + collectorId + ",");
-		json.append("\"description\": " + " " + "\"" + description + "\"" + ",");
+		json.append("\"collectorId\":  " + "\"" + collectorId + "\"" + ",");
+		json.append("\"description\":  " + "\"" + description + "\"" + ",");
+		json.append("\"id\": " + "\"" + id + "\"" + ",");
 		json.append("\"name\": " + "\"" + name + "\"" + ",");
 		json.append("\"value\": " + value);
 		json.append("}");
