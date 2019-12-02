@@ -1,5 +1,6 @@
 package com.unihannover.gamedev.component;
 
+import com.unihannover.gamedev.CollectorConfig;
 import com.unihannover.gamedev.CollectorService;
 import com.unihannover.gamedev.models.Achievement;
 import com.unihannover.gamedev.models.Metric;
@@ -24,18 +25,21 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
+import java.util.ArrayList;
 
 @Component
 public class AppStartupRunner implements ApplicationRunner {
     @Autowired
     CollectorService service;
+    @Autowired
+    CollectorConfig config;
 
 
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
         // TODO: Init Achievements and send them to server
-        service.sendPostRequest(new Achievement());
+
         System.out.println("Test finished");
     }
 }

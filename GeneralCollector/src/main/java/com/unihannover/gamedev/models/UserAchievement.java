@@ -12,7 +12,12 @@ import java.io.Serializable;
 /**
  * Represents an achievement achieved by a user
  */
-public class UserAchievement {
+public class UserAchievement implements Model{
+
+	@Override
+	public String toJSON() {
+		return "";
+	}
 
 	/**
 	 * Required for composite primary keys

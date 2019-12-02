@@ -3,6 +3,7 @@ package com.unihannover.gamedev;
 import com.unihannover.gamedev.models.Achievement;
 import com.unihannover.gamedev.models.Collector;
 import com.unihannover.gamedev.models.Metric;
+import com.unihannover.gamedev.models.Model;
 import com.unihannover.gamedev.repositories.MetricRepository;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.methods.CloseableHttpResponse;
@@ -18,14 +19,27 @@ import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.sql.Time;
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class CollectorService {
 
     @Autowired
     CollectorConfig config;
-
+    
+    public String ListToJSON(List<Model> mList){
+        StringBuilder json = new StringBuilder();
+        json.append("[");
+        for(Model m : mList){
+            json.append(m.toJSON().toString() + ", ");
+        }
+        json.deleteCharAt(json.length()-1);
+        json.append("]");
+        return json.toString();
+    }
     public void sendPostRequest(Achievement a){
         String result = "";
         String url = "http://devgame:8080/api/achievements";
@@ -36,12 +50,48 @@ public class CollectorService {
         a.setName("Congratulations!");
         a.setDescription("the dummy Collector is almost done!");
         a.setValue(0.5f);
+        StringBuilder json = new StringBuilder();
+        json.append("[");
+        json.append(a.toJSON());
+        json.append("]");
         try {
             // send a JSON data
             post.setHeader("Accept", "*/*");
             post.setHeader("Content-type", "application/json");
-            post.setEntity(new StringEntity(a.toJSON().toString()));
-            System.out.println(a.toJSON().toString());
+            post.setEntity(new StringEntity(json.toString()));
+            System.out.println(json.toString());
+            CloseableHttpClient httpClient = HttpClients.createDefault();
+            CloseableHttpResponse response = httpClient.execute(post);
+            result = EntityUtils.toString(response.getEntity());
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        } catch (ClientProtocolException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        System.out.println("\n\n" + result + "\n\n");
+    }
+    public void sendPostRequest(List<Achievement> aList){
+        String result = "";
+        String url = "http://devgame:8080/api/achievements";
+        HttpPost post = new HttpPost(url);
+
+        StringBuilder json = new StringBuilder();
+        json.append("[");
+        for(Achievement a : aList){
+            json.append(a.toJSON().toString() + ",");
+        }
+        json.deleteCharAt(json.length()-1);
+        json.append("]");
+        System.out.println("\n\n" + json.toString() + "\n\n");
+
+        try {
+            // send a JSON data
+            post.setHeader("Accept", "*/*");
+            post.setHeader("Content-type", "application/json");
+            post.setEntity(new StringEntity(json.toString()));
+            System.out.println(json.toString());
             CloseableHttpClient httpClient = HttpClients.createDefault();
             CloseableHttpResponse response = httpClient.execute(post);
             result = EntityUtils.toString(response.getEntity());
@@ -56,15 +106,14 @@ public class CollectorService {
     }
     public void sendPostRequest(Collector c){
         String result = "";
-        // TODO: adjust url
-        String url = "http://devgame:8080/api/achievements";
+        String url = "http://devgame:8080/api/collectors";
         HttpPost post = new HttpPost(url);
         try {
             // send a JSON data
             post.setHeader("Accept", "*/*");
             post.setHeader("Content-type", "application/json");
-            post.setEntity(new StringEntity(c.toJSON().toString()));
-            System.out.println(c.toJSON().toString());
+            post.setEntity(new StringEntity(c.toJSON()));
+            System.out.println(c.toJSON());
             CloseableHttpClient httpClient = HttpClients.createDefault();
             CloseableHttpResponse response = httpClient.execute(post);
             result = EntityUtils.toString(response.getEntity());
@@ -89,8 +138,11 @@ public class CollectorService {
         Collector me = new Collector();
         me.setName("GeneralCollector");
         me.setId("-1");
-        me.setToken("");
-        // sendPostRequest(me);
+        me.setToken("supersecretToken");
+        Timestamp t = new Timestamp(System.currentTimeMillis());
+        me.setLastSeen(t);
+        System.out.println(me.toJSON());
+        sendPostRequest(me);
         System.out.println("Init Collector");
     }
 }

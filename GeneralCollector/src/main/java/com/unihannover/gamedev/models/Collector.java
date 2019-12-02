@@ -1,16 +1,11 @@
 package com.unihannover.gamedev.models;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
-
 import java.sql.Timestamp;
 
 /**
  * Represents a collector
  */
-public class Collector {
+public class Collector implements Model{
 
     private String id;
     private String name;
@@ -51,7 +46,25 @@ public class Collector {
         this.token = token;
     }
 
-    public StringBuilder toJSON(){
-        return new StringBuilder();
+    public String toJSON(){
+        StringBuilder json = new StringBuilder();
+        json.append("{");
+        json.append("\"id\": \"" + this.id + "\", ");
+        json.append("\"lastSeen\": {");
+        json.append("\"date\": " + lastSeen.getDate() + ", ");
+        json.append("\"day\": " + lastSeen.getDay() + ", ");
+        json.append("\"hours\": " + lastSeen.getHours() + ", ");
+        json.append("\"minutes\": " + lastSeen.getMinutes() + ", ");
+        json.append("\"month\": " + lastSeen.getMonth() + ", ");
+        json.append("\"nanos\": " + lastSeen.getNanos() + ", ");
+        json.append("\"seconds\": " + lastSeen.getSeconds() + ", ");
+        json.append("\"time\": " + lastSeen.getTime() + ", ");
+        json.append("\"timezoneOffset\": " + lastSeen.getTimezoneOffset() + ", ");
+        json.append("\"year\": " + lastSeen.getYear());
+        json.append("},");
+        json.append("\"name\": \"" + name + "\",");
+        json.append("\"token\": \"" + token + "\"");
+        json.append("}");
+        return json.toString();
     }
 }

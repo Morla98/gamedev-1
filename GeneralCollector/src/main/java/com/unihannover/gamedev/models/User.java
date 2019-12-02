@@ -8,7 +8,7 @@ import javax.persistence.Table;
 /**
  * Represents a user
  */
-public class User {
+public class User implements Model{
 	private String email;
 	private String uid;
 	private String userName;
@@ -73,5 +73,10 @@ public class User {
 
 	public void setScore(float score) {
 		this.score = score;
+	}
+
+	@Override
+	public String toJSON() {
+		return "";
 	}
 }
