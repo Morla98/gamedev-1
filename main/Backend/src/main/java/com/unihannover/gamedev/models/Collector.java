@@ -14,6 +14,13 @@ import java.sql.Timestamp;
 @Table(name = "collectors", schema = "main")
 public class Collector {
 
+    public Collector(){}
+    public Collector(CollectorWOT cWOT){
+        this.id = cWOT.getId();
+        this.name = cWOT.getName();
+        this.token = cWOT.getToken();
+        this.lastSeen = new Timestamp(System.currentTimeMillis());
+    }
     @Id
     @Column(name = "id")
     private String id;
