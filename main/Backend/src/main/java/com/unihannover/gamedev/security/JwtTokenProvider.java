@@ -34,6 +34,14 @@ public class JwtTokenProvider {
 		return Jwts.builder().setSubject(email).setIssuedAt(new Date())
 				.setExpiration(expiryDate).signWith(SignatureAlgorithm.HS512, jwtSecret).compact();
 	}
+	
+	public String generateTokenWithSecretAndId(String id, String secret) {
+
+		Date now = new Date();
+
+		//The long should be user Id which has to be added
+		return Jwts.builder().setSubject(id).setIssuedAt(new Date()).signWith(SignatureAlgorithm.HS512, secret).compact();
+	}
 
 	public String getUserIdFromJWT(String token) {
 		Claims claims = Jwts.parser().setSigningKey(jwtSecret).parseClaimsJws(token).getBody();

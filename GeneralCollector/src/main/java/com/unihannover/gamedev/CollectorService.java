@@ -66,7 +66,7 @@ public class CollectorService {
             post.setEntity(new StringEntity(json.toString()));
             postParameters = new ArrayList<NameValuePair>();
             postParameters.add(new BasicNameValuePair("secret", jwtSecret));
-            post.setEntity(new UrlEncodedFormEntity(postParameters, "UTF-8"));
+            //post.setEntity(new UrlEncodedFormEntity(postParameters, "UTF-8"));
             System.out.println(json.toString());
             CloseableHttpClient httpClient = HttpClients.createDefault();
             CloseableHttpResponse response = httpClient.execute(post);
@@ -108,7 +108,7 @@ public class CollectorService {
     }
     public void sendPostRequest(Collector c){
         String result = "";
-        String url = "http://devgame:8080/api/collectors";
+        String url = "http://devgame:8080/api/collectors?secret=" + jwtSecret;
         HttpPost post = new HttpPost(url);
         try {
             // send a JSON data
@@ -118,7 +118,12 @@ public class CollectorService {
             System.out.println(c.toJSON());
             CloseableHttpClient httpClient = HttpClients.createDefault();
             CloseableHttpResponse response = httpClient.execute(post);
-            result = EntityUtils.toString(response.getEntity());
+            if (response.getStatusLine().getStatusCode() < 300 ) {
+            	result = EntityUtils.toString(response.getEntity());
+            	updateWithToken(result);
+            } else {
+            	System.out.println("Add Collectore Reponsecopde: " + response.getStatusLine().getStatusCode());
+            }
             // TODO: Handle result later
 
 
@@ -140,6 +145,7 @@ public class CollectorService {
     public void updateWithToken(String token) {
     	if (tokenProvider.validateToken(token)) {
     		String id = tokenProvider.getCollectorIdFromJWT(token);
+    		System.out.println("Found id from Token: " + id + " " + token);
     		if (id != null) {
     			config.setCollectorId(id);    
     			config.setToken(token);
