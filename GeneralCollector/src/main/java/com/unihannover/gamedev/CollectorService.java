@@ -162,10 +162,11 @@ public class CollectorService {
         ua1.setAchievementId("1");
         ua1.setCollectorId(config.getCollectorId());
         ua1.setProgress(100f);
-        ua1.setUserEmail("dev1@example.com");
+        ua1.setUserEmail("user@example.com");
         ua1.setLastUpdated(new Timestamp(System.currentTimeMillis()));
 
         sendPostRequest(aList);
+        sendPostRequest(ua1);
         System.out.println("\nInit Achievements\n");
     }
 }

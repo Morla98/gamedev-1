@@ -35,6 +35,7 @@ public class UserAchievement {
 		// equals, hashCode ?!
 	}
 
+	public UserAchievement(){}
 	public UserAchievement(UserAchievementWOT a) {
 		this.achievementId = a.getAchievementId();
 		this.collectorId = a.getCollectorId();
