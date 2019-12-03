@@ -2,6 +2,7 @@ package com.unihannover.gamedev.restcontroller;
 
 import java.util.List;
 
+import com.unihannover.gamedev.models.CollectorWOT;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -30,8 +31,8 @@ public class CollectorController extends BaseController {
     }
 
     @RequestMapping(value="/collectors", method = RequestMethod.POST)
-    public void addCollector(@RequestBody Collector collector) {
-        repository.save(collector);
-        System.out.println(collector.toString()); // UNDONE: Debug print
+    public void addCollector(@RequestBody CollectorWOT collectorWOT) {
+        repository.save(new Collector(collectorWOT));
+        // System.out.println(collector.toString()); // UNDONE: Debug print
     }
 }

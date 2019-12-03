@@ -28,10 +28,14 @@ public class AchievementController extends BaseController {
     public List<Achievement> getAchievementByCollectorId(@RequestParam(value="collectorId") String id) {
         return repository.findByCollectorId(id);
     }
-	
+
 	@RequestMapping(value="/achievements", method = RequestMethod.POST)
-	public void addAchievement(@RequestBody Achievement achievement) {
-		repository.save(achievement);
-		System.out.println(achievement.toString()); // UNDONE: Debug print
+	public void addAchievementList(@RequestBody Achievement[] achievements) {
+
+		for(Achievement a : achievements) {
+			repository.save(a);
+			System.out.println(a.toString()); // UNDONE: Debug print
+		}
+
 	}
 }
