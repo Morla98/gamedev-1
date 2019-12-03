@@ -2,6 +2,7 @@ package com.unihannover.gamedev.restcontroller;
 
 import java.util.List;
 
+import com.unihannover.gamedev.models.UserAchievementWOT;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -30,7 +31,8 @@ public class UserAchievementController extends BaseController {
     }
 
     @RequestMapping(value="/user-achievements", method = RequestMethod.POST)
-    public void updateUserAchievements(@RequestBody UserAchievement u) {
-        repository.save(u);
+    public void updateUserAchievements(@RequestBody UserAchievementWOT u) {
+        repository.save(new UserAchievement(u));
+        //repository.save(u);
     }
 }

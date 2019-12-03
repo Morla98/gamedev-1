@@ -1,9 +1,6 @@
 package com.unihannover.gamedev;
 
-import com.unihannover.gamedev.models.Achievement;
-import com.unihannover.gamedev.models.Collector;
-import com.unihannover.gamedev.models.Metric;
-import com.unihannover.gamedev.models.Model;
+import com.unihannover.gamedev.models.*;
 import com.unihannover.gamedev.repositories.MetricRepository;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.methods.CloseableHttpResponse;
@@ -40,20 +37,12 @@ public class CollectorService {
         json.append("]");
         return json.toString();
     }
-    public void sendPostRequest(Achievement a){
+    public void sendPostRequest(UserAchievement a){
         String result = "";
-        String url = "http://devgame:8080/api/achievements";
+        String url = "http://devgame:8080/api/user-achievements";
         HttpPost post = new HttpPost(url);
-        Achievement test = new Achievement();
-        a.setId("10");
-        a.setCollectorId("0");
-        a.setName("Congratulations!");
-        a.setDescription("the dummy Collector is almost done!");
-        a.setValue(0.5f);
         StringBuilder json = new StringBuilder();
-        json.append("[");
         json.append(a.toJSON());
-        json.append("]");
         try {
             // send a JSON data
             post.setHeader("Accept", "*/*");
@@ -168,6 +157,13 @@ public class CollectorService {
         a3.setDescription("This is a simple Test Achievement 3");
         a3.setValue(10);
         aList.add(a3);
+
+        UserAchievement ua1 = new UserAchievement();
+        ua1.setAchievementId("1");
+        ua1.setCollectorId(config.getCollectorId());
+        ua1.setProgress(100f);
+        ua1.setUserEmail("dev1@example.com");
+        ua1.setLastUpdated(new Timestamp(System.currentTimeMillis()));
 
         sendPostRequest(aList);
         System.out.println("\nInit Achievements\n");

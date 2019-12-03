@@ -8,7 +8,6 @@ import javax.persistence.Table;
 
 import java.sql.Timestamp;
 import java.io.Serializable;
-
 /**
  * Represents an achievement achieved by a user
  */
@@ -36,6 +35,13 @@ public class UserAchievement {
 		// equals, hashCode ?!
 	}
 
+	public UserAchievement(UserAchievementWOT a) {
+		this.achievementId = a.getAchievementId();
+		this.collectorId = a.getCollectorId();
+		this.progress = a.getProgress();
+		this.userEmail = a.getUserEmail();
+		this.lastUpdated = new Timestamp(System.currentTimeMillis());
+	}
 	@Id
 	@Column(name = "achievement_id")
 	private String achievementId;

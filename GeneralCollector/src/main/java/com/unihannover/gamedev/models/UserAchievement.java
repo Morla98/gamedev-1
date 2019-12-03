@@ -15,8 +15,16 @@ import java.io.Serializable;
 public class UserAchievement implements Model{
 
 	@Override
-	public String toJSON() {
-		return "";
+	public String toJSON()
+	{
+		StringBuilder json = new StringBuilder();
+		json.append("{");
+		json.append("\"achievementId\":  " + "\"" + achievementId + "\"" + ",");
+		json.append("\"collectorId\":  " + "\"" + collectorId + "\"" + ",");
+		json.append("\"progress\": " + "\"" + progress + "\"" + ",");
+		json.append("\"userEmail\": " + "\"" + userEmail + "\"");
+		json.append("}");
+		return json.toString();
 	}
 
 	/**
