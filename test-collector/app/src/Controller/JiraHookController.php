@@ -10,12 +10,6 @@ class JiraHookController
     public function __construct($dbHandle)
     {
         $this->dbHandle = $dbHandle;
-
-        /*// Connect to database
-        $db_handle = DatabaseConnector::connectToDatabase();
-        if (null === $db_handle) {
-            throw new \RuntimeException("Error connecting to the database.");
-        }*/
     }
 
     /**

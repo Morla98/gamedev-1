@@ -11,12 +11,14 @@ class Kernel
 {
     public static function main(): void
     {
-        
+        $dbHandle = DatabaseConnector::connectToDatabase();
+        if (null === $dbHandle) {
+            throw new \RuntimeException('Error connecting to the database!');
+        }
 
-
-        switch($_SERVER['REQUEST_URI']) {
+        switch($_SERVER['PATH_INFO']) {
             case '/hook/jira':
-                new JiraHookController($dbhandle)->main();
+                (new JiraHookController($dbHandle))->main();
                 return;
             default:
                 throw new \RuntimeException('Not found!');
