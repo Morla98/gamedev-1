@@ -35,7 +35,7 @@ public class UserAchievementController extends BaseController {
     }
 
     @RequestMapping(value="/user-achievements/preview-for-collector", method = RequestMethod.GET)
-    public List<UserAchievement> getUserAchievementsCollectorPreview(@RequestParam(value="userEmail") String userEmail, int collectorTd) {
+    public List<UserAchievement> getUserAchievementsCollectorPreview(@RequestParam(value="userEmail") String userEmail, int collectorId) {
         return repository.findByUserEmail(userEmail);
     }
 
