@@ -18,4 +18,4 @@ services:
 networks:
   default:
     external:
-      name: gamedev1_default
+      name: gamedev-1_default
