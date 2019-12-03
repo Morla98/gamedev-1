@@ -27,5 +27,6 @@ WORKDIR /app/Backend
 COPY ./Backend/. /app/Backend
 RUN cp -r /app/Webapp/dist/gameDevApp/* /app/Backend/src/main/resources/static/;
 RUN mvn compile
-
+RUN mvn clean test 
+RUN mvn verify
 CMD ["mvn", "spring-boot:run"]
