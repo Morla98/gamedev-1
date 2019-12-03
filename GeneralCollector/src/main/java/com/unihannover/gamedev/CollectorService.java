@@ -9,17 +9,22 @@ import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
+import org.json.simple.parser.JSONParser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.sql.Time;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
+import org.json.simple.*;
+
+import static java.lang.Float.parseFloat;
 
 @Service
 public class CollectorService {
@@ -133,6 +138,23 @@ public class CollectorService {
 
     private void initAchievements() {
         List<Model> aList = new ArrayList<>();
+        JSONParser parser = new JSONParser();
+        try {
+            //System.out.println(System.getProperty("user.dir"));
+            JSONArray a = (JSONArray) parser.parse(new FileReader("./config/achievements/config.json"));
+
+
+            for (Object o : a)
+            {
+                JSONObject jsonachievement = (JSONObject) o;
+                aList.add(new Achievement((String) jsonachievement.get("id"), (String) jsonachievement.get("name"), (String) jsonachievement.get("description"), parseFloat((String) jsonachievement.get("value")), config.getCollectorId()));
+
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        /*
         Achievement a1 = new Achievement();
         a1.setCollectorId(config.getCollectorId());
         a1.setId("1");
@@ -156,6 +178,7 @@ public class CollectorService {
         a3.setDescription("This is a simple Test Achievement 3");
         a3.setValue(10);
         aList.add(a3);
+        */
 
         UserAchievement ua1 = new UserAchievement();
         ua1.setAchievementId("1");
@@ -163,7 +186,6 @@ public class CollectorService {
         ua1.setProgress(100f);
         ua1.setUserEmail("user@example.com");
         ua1.setLastUpdated(new Timestamp(System.currentTimeMillis()));
-
         sendPostRequest(aList);
         sendPostRequest(ua1, "http://devgame:8080/api/user-achievements");
         System.out.println("\nInit Achievements\n");
