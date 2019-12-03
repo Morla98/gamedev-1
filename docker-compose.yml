@@ -1,4 +1,4 @@
-version: '3.3'
+version: '3.7'
 #
 # Suggestion for port conventions:
 #  - 80   : Frontend
@@ -18,6 +18,8 @@ services:
       POSTGRES_DB: devgame
     volumes:
       - ./db/init:/docker-entrypoint-initdb.d
+    networks:
+      - network1
     ports:
       - 5432:5432
 # TODO: Volume für Datenbank-Dateien-> persistent ggü. Neustart
@@ -30,6 +32,8 @@ services:
     environment:
       PGADMIN_DEFAULT_EMAIL: admin
       PGADMIN_DEFAULT_PASSWORD: admin
+    networks:
+      - network1
     ports:
       - 8001:80
     volumes:
@@ -37,10 +41,12 @@ services:
 
   # Main
   main:
-    container_name: devgame_main
+    container_name: devgame
     restart: always
     build:
       context: ./main
+    networks:
+      - network1
     ports:
       - 8082:8080
 
@@ -50,6 +56,8 @@ services:
     restart: always
     build:
       context: ./test-collector
+    networks:
+      - network1
     ports:
       - 9001:80
     depends_on:
@@ -74,9 +82,12 @@ services:
     environment:
       PHPLDAPADMIN_LDAP_HOSTS: ldap-server
       PHPLDAPADMIN_HTTPS: "false"
+    networks:
+      - network1
     ports:
       - 8002:80
 
 networks:
-  default:
-    driver: bridge
+  network1:
+    name: devgame-network
+      #driver: bridge
