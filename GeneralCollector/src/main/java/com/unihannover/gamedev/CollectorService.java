@@ -81,6 +81,8 @@ public class CollectorService {
         }
         System.out.println("\n\n" + result + "\n\n");
     }*/
+    
+    // post achievements
     public void sendPostRequest(List<Model> mList){
         String result = "";
         String url = "http://devgame:8080/api/achievements";
@@ -106,9 +108,11 @@ public class CollectorService {
         }
         System.out.println("\n\n" + result + "\n\n");
     }
-    public void sendPostRequest(Model m, String url){
+    
+    
+    public String sendPostRequest(Model m, String url){
         String result = "";
-        String url = "http://devgame:8080/api/collectors?secret=" + jwtSecret;
+        System.out.println("using url " + url);
         HttpPost post = new HttpPost(url);
         try {
             // send a JSON data
@@ -119,12 +123,12 @@ public class CollectorService {
             CloseableHttpClient httpClient = HttpClients.createDefault();
             CloseableHttpResponse response = httpClient.execute(post);
             if (response.getStatusLine().getStatusCode() < 300 ) {
-            	result = EntityUtils.toString(response.getEntity());
-            	updateWithToken(result);
+            	return EntityUtils.toString(response.getEntity());
+            	//updateWithToken(result);
             } else {
-            	System.out.println("Add Collectore Reponsecopde: " + response.getStatusLine().getStatusCode());
+            	System.out.println("Post failed: " + response.getStatusLine().getStatusCode());
+            	return null;
             }
-            // TODO: Handle result later
 
 
         } catch (UnsupportedEncodingException e) {
@@ -134,6 +138,7 @@ public class CollectorService {
         } catch (IOException e) {
             e.printStackTrace();
         }
+		return null;
     }
     @Bean
     CommandLineRunner initMetricDatabase(MetricRepository repository) {
@@ -162,7 +167,10 @@ public class CollectorService {
         Timestamp t = new Timestamp(System.currentTimeMillis());
         me.setLastSeen(t);
         config.setCollectorId(me.getId());
-        sendPostRequest(me, "http://devgame:8080/api/collector");
+        String result = sendPostRequest(me, "http://devgame:8080/api/collectors?secret=" + jwtSecret);
+        if (result != null) {
+        	updateWithToken(result);
+        }
         System.out.println("\nInit Collector\n");
         initAchievements();
 
