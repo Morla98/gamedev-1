@@ -4,7 +4,7 @@ FROM debian:latest
 ENV TZ=Europe/Berlin
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
-# Install apache and php
+# Install apache and php7.3 with required extensions from debian sources
 ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && apt-get install -y \
     php7.3 \
