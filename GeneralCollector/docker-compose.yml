@@ -18,4 +18,4 @@ services:
 networks:
   default:
     external:
-      name: gamedev-1_default
+      name: devgame-network

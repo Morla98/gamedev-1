@@ -52,6 +52,7 @@ public class CollectorService {
         json.append("]");
         return json.toString();
     }
+    /*
     public void sendPostRequest(UserAchievement a){
         String result = "";
         String url = "http://devgame:8080/api/user-achievements";
@@ -60,8 +61,7 @@ public class CollectorService {
         StringBuilder json = new StringBuilder();
         json.append(a.toJSON());
         try {
-            // send a JSON data
-            post.setHeader("Accept", "*/*");
+            //post.setHeader("Accept", "*//*");
             post.setHeader("Content-type", "application/json");
             post.setEntity(new StringEntity(json.toString()));
             postParameters = new ArrayList<NameValuePair>();
@@ -80,7 +80,7 @@ public class CollectorService {
             e.printStackTrace();
         }
         System.out.println("\n\n" + result + "\n\n");
-    }
+    }*/
     public void sendPostRequest(List<Model> mList){
         String result = "";
         String url = "http://devgame:8080/api/achievements";
@@ -106,7 +106,7 @@ public class CollectorService {
         }
         System.out.println("\n\n" + result + "\n\n");
     }
-    public void sendPostRequest(Collector c){
+    public void sendPostRequest(Model m, String url){
         String result = "";
         String url = "http://devgame:8080/api/collectors?secret=" + jwtSecret;
         HttpPost post = new HttpPost(url);
@@ -114,8 +114,8 @@ public class CollectorService {
             // send a JSON data
             post.setHeader("Accept", "*/*");
             post.setHeader("Content-type", "application/json");
-            post.setEntity(new StringEntity(c.toJSON()));
-            System.out.println(c.toJSON());
+            post.setEntity(new StringEntity(m.toJSON()));
+            System.out.println(m.toJSON());
             CloseableHttpClient httpClient = HttpClients.createDefault();
             CloseableHttpResponse response = httpClient.execute(post);
             if (response.getStatusLine().getStatusCode() < 300 ) {
@@ -162,7 +162,7 @@ public class CollectorService {
         Timestamp t = new Timestamp(System.currentTimeMillis());
         me.setLastSeen(t);
         config.setCollectorId(me.getId());
-        sendPostRequest(me);
+        sendPostRequest(me, "http://devgame:8080/api/collector");
         System.out.println("\nInit Collector\n");
         initAchievements();
 
@@ -202,7 +202,7 @@ public class CollectorService {
         ua1.setLastUpdated(new Timestamp(System.currentTimeMillis()));
 
         sendPostRequest(aList);
-        sendPostRequest(ua1);
+        sendPostRequest(ua1, "http://devgame:8080/api/user-achievements");
         System.out.println("\nInit Achievements\n");
     }
 }
