@@ -28,9 +28,23 @@ public class UserPrincipal implements UserDetails {
 		return new UserPrincipal(user.getUserName(), user.getEmail());
 	}
 
+	
+	
+	public String getEmail() {
+		return this.email;
+	}
+	
+	public Long getId() {
+		return id;
+	}
+	
+	public void setId(Long id) {
+		this.id = id;
+	}
+	
 	@Override
 	public String getUsername() {
-		return null;
+		return this.username;
 	}
 	
 	@Override
