@@ -37,7 +37,7 @@ public class Achievement implements Model{
     private String description = "Simple test achievement";
     private float value = 0;
 
-
+	public Achievement(){}
     public Achievement(String id, String name, String description, Float value, String collectorId){
     	this.id = id;
     	this.name = name;
