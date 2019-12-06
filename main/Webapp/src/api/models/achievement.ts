@@ -1,7 +1,8 @@
 /* tslint:disable */
 export interface Achievement {
-  collectorId?: number;
+  collectorId?: string;
   description?: string;
+  id?: string;
   name?: string;
   value?: number;
 }

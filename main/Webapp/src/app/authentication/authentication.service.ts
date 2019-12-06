@@ -25,9 +25,9 @@ export class AuthenticationService {
       .loginUsingGET({ email, password })
       .pipe(
         tap(res => {
-          this.snackBar.open(this.translateService.instant('LOGIN_FAILED'));
           if (res !== undefined) {
             sessionStorage.setItem('jwt', res);
+            sessionStorage.setItem('email', email);
             this.snackBar.open(this.translateService.instant('LOGIN_SUCCESS'));
             this.router.navigate(['achievements']);
           }
