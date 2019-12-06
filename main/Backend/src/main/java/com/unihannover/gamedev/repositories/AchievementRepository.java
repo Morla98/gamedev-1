@@ -13,4 +13,5 @@ public interface AchievementRepository extends PagingAndSortingRepository<Achiev
 	List<Achievement> findAll();
 	List<Achievement> findByName(@Param("name") String name);
 	List<Achievement> findByCollectorId(@Param("collectorId") String id);
+	Achievement findById(@Param("id") String id);
 }
