@@ -6,15 +6,12 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.http.NameValuePair;
 import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
-import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -180,7 +177,7 @@ public class CollectorService {
         List<Model> aList = new ArrayList<>();
         Achievement a1 = new Achievement();
         a1.setCollectorId(config.getCollectorId());
-        a1.setId("1");
+        a1.setId(config.getCollectorId() + "-1");
         a1.setName("Test_Achievement1");
         a1.setDescription("This is a simple Test Achievement");
         a1.setValue(1);
@@ -188,7 +185,7 @@ public class CollectorService {
 
         Achievement a2 = new Achievement();
         a2.setCollectorId(config.getCollectorId());
-        a2.setId("2");
+        a2.setId(config.getCollectorId() + "-2");
         a2.setName("Test_Achievement2");
         a2.setDescription("This is a simple Test Achievement 2");
         a2.setValue(3);
@@ -196,21 +193,37 @@ public class CollectorService {
 
         Achievement a3 = new Achievement();
         a3.setCollectorId(config.getCollectorId());
-        a3.setId("3");
+        a3.setId(config.getCollectorId() + "-3");
         a3.setName("Test_Achievement3");
         a3.setDescription("This is a simple Test Achievement 3");
         a3.setValue(10);
         aList.add(a3);
 
         UserAchievement ua1 = new UserAchievement();
-        ua1.setAchievementId("1");
+        ua1.setAchievementId(config.getCollectorId() + "-1");
         ua1.setCollectorId(config.getCollectorId());
         ua1.setProgress(100f);
-        ua1.setUserEmail("user@example.com");
+        ua1.setUserEmail("dev1@example.com");
         ua1.setLastUpdated(new Timestamp(System.currentTimeMillis()));
+        
+        UserAchievement ua2 = new UserAchievement();
+        ua2.setAchievementId(config.getCollectorId() + "-2");
+        ua2.setCollectorId(config.getCollectorId());
+        ua2.setProgress(80f);
+        ua2.setUserEmail("dev1@example.com");
+        ua2.setLastUpdated(new Timestamp(System.currentTimeMillis()));
+        
+        UserAchievement ua3 = new UserAchievement();
+        ua3.setAchievementId(config.getCollectorId() + "-3");
+        ua3.setCollectorId(config.getCollectorId());
+        ua3.setProgress(10f);
+        ua3.setUserEmail("dev1@example.com");
+        ua3.setLastUpdated(new Timestamp(System.currentTimeMillis()));
 
         sendPostRequest(aList);
         sendPostRequest(ua1, "http://devgame:8080/api/user-achievements");
+        sendPostRequest(ua2, "http://devgame:8080/api/user-achievements");
+        sendPostRequest(ua3, "http://devgame:8080/api/user-achievements");
         System.out.println("\nInit Achievements\n");
     }
 }
