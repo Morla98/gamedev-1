@@ -16,19 +16,39 @@ import com.unihannover.gamedev.repositories.AchievementRepository;
 @RestController
 public class AchievementController extends BaseController {
 
+	/**
+	 * A controller to handle HTTP requests about acievements that belong to an achievement.
+	 */
 	@Autowired
     private AchievementRepository repository;
 
+	/**
+	 * Returns all achievements in the repository.
+	 *
+	 * @return A list with all achievements
+	 */
 	@RequestMapping(value="/achievements/all", method = RequestMethod.GET)
 	public List<Achievement> getAllAchievements() {
 		return repository.findAll();
 	}
 
+	/**
+	 * Returns all achievements, that belong to a given collector.
+	 *
+	 * @param id The id of the collector
+	 * @return A list with all fitting achievements
+	 */
 	@RequestMapping(value="/achievements/by-collector-id", method = RequestMethod.GET)
     public List<Achievement> getAchievementByCollectorId(@RequestParam(value="collectorId") String id) {
         return repository.findByCollectorId(id);
     }
 
+	/**
+	 * Adds multiple achievements to the repository. If there is already an achievement with the given id,
+	 * the existing achievement will be updated.
+	 * 
+	 * @param achievements A list of achievements to add
+	 */
 	@RequestMapping(value="/achievements", method = RequestMethod.POST)
 	public void addAchievementList(@RequestBody Achievement[] achievements) {
 

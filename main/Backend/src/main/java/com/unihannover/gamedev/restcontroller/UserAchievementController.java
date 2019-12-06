@@ -16,22 +16,43 @@ import com.unihannover.gamedev.models.User;
 import com.unihannover.gamedev.models.UserAchievement;
 import com.unihannover.gamedev.repositories.UserAchievementRepository;
 
+        /**
+        * A controller to handle HTTP requests about acievements that belong to a user.
+        */
         @RestController
         public class UserAchievementController extends BaseController {
 
             @Autowired
             private UserAchievementRepository repository;
 
+            /**
+             * Returns all achievements in the repository, regardless of the user it belongs to.
+             *
+             * @return all UserAchievements
+             */
             @RequestMapping(value="/user-achievements/all", method = RequestMethod.GET)
             public List<UserAchievement> getAllUserss() {
                 return repository.findAll();
             }
 
+            /**
+             * Returns all achievements of a given user.
+             *
+             * @param userEmail The user to search for
+             * @return All achievements in the repository that belong to the given user
+             */
             @RequestMapping(value="/user-achievements/by-user-email", method = RequestMethod.GET)
             public List<UserAchievement> getUserAchievementsByUserEmail(@RequestParam(value="userEmail") String userEmail) {
                 return repository.findByUserEmail(userEmail);
             }
 
+            /**
+             * Returns the preview of all achievements.
+             * Previews contain the most important user achievements that have more progress than 0%.
+             *
+             * @param userEmail The user to generate the preview for
+             * @return The list of most interesting achievements for the given user
+             */
             @RequestMapping(value="/user-achievements/preview", method = RequestMethod.GET)
             public List<UserAchievement> getUserAchievementsPreview(@RequestParam(value="userEmail") String userEmail) {
 
@@ -46,7 +67,7 @@ import com.unihannover.gamedev.repositories.UserAchievementRepository;
 
         //add finished achievements
         for(UserAchievement u : repository.findByUserEmail(userEmail)) {
-            if(u.getProgress() == 1) {
+            if(u.getProgress() == 1.0) {
                 preview.add(u);
             }
         }
@@ -54,6 +75,14 @@ import com.unihannover.gamedev.repositories.UserAchievementRepository;
         return preview;
     }
 
+    /**
+     * Returns the preview of all achievements in a given collector.
+     * Previews contain the most important user achievements that have more progress than 0%.
+     *
+     * @param userEmail The user to generate the preview for
+     * @param collectorId The collector to which the achievements belong
+     * @return The list of most interesting achievements for the given user
+     */
     @RequestMapping(value="/user-achievements/preview-for-collector", method = RequestMethod.GET)
     public List<UserAchievement> getUserAchievementsCollectorPreview(@RequestParam(value="userEmail") String userEmail, String collectorId) {
 
@@ -69,14 +98,14 @@ import com.unihannover.gamedev.repositories.UserAchievementRepository;
 
         //add non finished achievements
         for(UserAchievement u : all) {
-            if(u.getProgress() < 1 && u.getProgress() > 0) {
+            if(u.getProgress() < 1.0 && u.getProgress() > 0.0) {
                 preview.add(u);
             }
         }
 
         //add finished achievements
         for(UserAchievement u : all) {
-            if(u.getProgress() == 1) {
+            if(u.getProgress() == 1.0) {
                 preview.add(u);
             }
         }
@@ -85,6 +114,12 @@ import com.unihannover.gamedev.repositories.UserAchievementRepository;
     }
 
 
+    /**
+    * Updates given UserAchievements in the repository. If there is no UserAchievement with the same ids than a given one,
+    * the UserAchievements will be added to the repository.
+    *
+    * @param u
+    */
     @RequestMapping(value="/user-achievements", method = RequestMethod.POST)
     public void updateUserAchievements(@RequestBody UserAchievementWOT[] u) {
         for(UserAchievementWOT uWOT: u){
