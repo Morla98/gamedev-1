@@ -77,9 +77,12 @@ public class UserAchievementController extends BaseController {
 		return null;
 	}
 
-	@RequestMapping(value = "/user-achievements", method = RequestMethod.POST)
-	public void updateUserAchievements(@RequestBody UserAchievementWOT u) {
-		userAchievementRepo.save(new UserAchievement(u));
-		// repository.save(u);
-	}
+
+    @RequestMapping(value="/user-achievements", method = RequestMethod.POST)
+    public void updateUserAchievements(@RequestBody UserAchievementWOT[] u) {
+        for(UserAchievementWOT uWOT: u){
+            userAchievementRepo.save(new UserAchievement(uWOT));
+        }
+        //repository.save(u);
+    }
 }
