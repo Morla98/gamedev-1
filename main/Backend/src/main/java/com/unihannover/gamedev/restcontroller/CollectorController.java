@@ -37,42 +37,33 @@ public class CollectorController extends BaseController {
 	}
 
 	@RequestMapping(value = "/collectors", method = RequestMethod.POST)
-	public ResponseEntity<String> addCollector(@RequestParam(value = "secret") String secret,
-			@RequestBody CollectorWOT[] collectorWOTs) {
-		for(CollectorWOT cWOT: collectorWOTs){
-			if (secret.equals(SECRET)) {
-				Collector newCollector = new Collector(cWOT);
-				List<Collector> foundCollectors = repository.findAll();
-				int highestId = 0;
-				for (Collector c : foundCollectors) {
-					int checkThis = -1;
-					if (isNumber(c.getId())) {
-						checkThis = Integer.parseInt((c.getId()));
-						if (checkThis > -1 && highestId < checkThis) {
-							highestId = checkThis;
-						}
-					}
-				}
-				newCollector.setId(highestId + 1 + "");
-				// repository.save(newCollector);
-				String token = tokenProvider.generateTokenWithSecretAndId(newCollector.getId(), SECRET);
-				newCollector.setToken(token);
-				repository.save(newCollector);
-				return new ResponseEntity<>(token, HttpStatus.OK);
-
-			}
-			// System.out.println(collector.toString()); // UNDONE: Debug print
-			return new ResponseEntity<>("Could not verfiy Collector", HttpStatus.BAD_REQUEST);
-		}
-		return null;
-	}
-
-	private boolean isNumber(String s) {
-		for (char chr : s.toCharArray()) {
-			if (!Character.isDigit(chr)) {
-				return false;
+	public ResponseEntity addCollector(@RequestParam(value = "secret") String secret,
+			@RequestBody CollectorWOT collectorWOT) {
+		List<Collector> foundCollectors = repository.findAll();
+		boolean matchingCollector = false;
+		for (Collector c : foundCollectors) {
+			if (c.getId().equals(collectorWOT.getId())) {
+				matchingCollector = true;
 			}
 		}
-		return true;
+		if (secret.equals(SECRET)) {
+			if (matchingCollector) {
+				return ResponseEntity.status(HttpStatus.OK).body(null);
+			}
+			Collector newCollector = new Collector(collectorWOT);
+			String token = tokenProvider.generateTokenWithSecretAndId(newCollector.getId(), SECRET);
+			newCollector.setToken(token);
+			repository.save(newCollector);
+			collectorWOT.setToken(token);
+			return ResponseEntity.status(HttpStatus.OK).body(collectorWOT);
+		}
+		// System.out.println(collector.toString()); // UNDONE: Debug print
+		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Could not verify Collector");
+
 	}
+
+	/*
+	 * private boolean isNumber(String s) { for (char chr : s.toCharArray()) { if
+	 * (!Character.isDigit(chr)) { return false; } } return true; }
+	 */
 }
