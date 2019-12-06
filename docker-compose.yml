@@ -70,6 +70,8 @@ services:
     command: --copy-service --loglevel debug
     volumes:
       - ./ldap/init:/container/service/slapd/assets/config/bootstrap/ldif/custom:ro
+    networks:
+      - network1
 #    environment:
 #      - LDAP_ORGANISATION="Example Inc."
 #      - LDAP_DOMAIN="example.com"
