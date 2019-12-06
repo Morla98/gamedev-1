@@ -38,30 +38,33 @@ public class CollectorController extends BaseController {
 
 	@RequestMapping(value = "/collectors", method = RequestMethod.POST)
 	public ResponseEntity<String> addCollector(@RequestParam(value = "secret") String secret,
-			@RequestBody CollectorWOT collectorWOT) {
-		if (secret.equals(SECRET)) {
-			Collector newCollector = new Collector(collectorWOT);
-			List<Collector> foundCollectors = repository.findAll();
-			int highestId = 0;
-			for (Collector c : foundCollectors) {
-				int checkThis = -1;
-				if (isNumber(c.getId())) {
-					checkThis = Integer.parseInt((c.getId()));
-					if (checkThis > -1 && highestId < checkThis) {
-						highestId = checkThis;
+			@RequestBody CollectorWOT[] collectorWOTs) {
+		for(CollectorWOT cWOT: collectorWOTs){
+			if (secret.equals(SECRET)) {
+				Collector newCollector = new Collector(cWOT);
+				List<Collector> foundCollectors = repository.findAll();
+				int highestId = 0;
+				for (Collector c : foundCollectors) {
+					int checkThis = -1;
+					if (isNumber(c.getId())) {
+						checkThis = Integer.parseInt((c.getId()));
+						if (checkThis > -1 && highestId < checkThis) {
+							highestId = checkThis;
+						}
 					}
 				}
-			}
-			newCollector.setId(highestId + 1 + "");
-			// repository.save(newCollector);
-			String token = tokenProvider.generateTokenWithSecretAndId(newCollector.getId(), SECRET);
-			newCollector.setToken(token);
-			repository.save(newCollector);
-			return new ResponseEntity<>(token, HttpStatus.OK);
+				newCollector.setId(highestId + 1 + "");
+				// repository.save(newCollector);
+				String token = tokenProvider.generateTokenWithSecretAndId(newCollector.getId(), SECRET);
+				newCollector.setToken(token);
+				repository.save(newCollector);
+				return new ResponseEntity<>(token, HttpStatus.OK);
 
+			}
+			// System.out.println(collector.toString()); // UNDONE: Debug print
+			return new ResponseEntity<>("Could not verfiy Collector", HttpStatus.BAD_REQUEST);
 		}
-		// System.out.println(collector.toString()); // UNDONE: Debug print
-		return new ResponseEntity<>("Could not verfiy Collector", HttpStatus.BAD_REQUEST);
+		return null;
 	}
 
 	private boolean isNumber(String s) {
