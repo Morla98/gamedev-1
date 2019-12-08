@@ -4,9 +4,24 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class CollectorConfig {
-    private String collectorId;
+	private String name;
+	private String collectorId;
     private String token;
+    
+    public CollectorConfig(String name, String collectorId, String token) {
+    	this.name = name;
+    	this.collectorId = collectorId;
+    	this.token = token;
+    }
+    
+    public String getName() {
+		return name;
+	}
 
+	public void setName(String name) {
+		this.name = name;
+	}
+	
     public String getCollectorId() {
         return collectorId;
     }

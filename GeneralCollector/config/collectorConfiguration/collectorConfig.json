@@ -1,0 +1,4 @@
+[
+{"collectorConfig":{"name":"GitCollector","collectorId":"git101","token":"tokenForGit101"}},
+{"collectorConfig":{"name":"JiraCollector","collectorId":"jira102","token":"tokenForJira102"}}
+]
