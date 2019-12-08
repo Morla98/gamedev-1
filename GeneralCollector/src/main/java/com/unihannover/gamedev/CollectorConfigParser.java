@@ -3,44 +3,42 @@ package com.unihannover.gamedev;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
-
 import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
-import com.google.gson.Gson;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class CollectorConfigParser{
-		//list that contains all the CollectorsConfig object 
-		static ArrayList<CollectorConfig> configList = new ArrayList<>();
 		
+	/**
+	 * reads the collectorconfig.json file and parse it into object  
+	 * @return CollectorConfig object
+	 */
+	@SuppressWarnings("unchecked")
+	public static CollectorConfig configJsonToObject() {
 		
-		/*
-		 * Reads the config.json file for collector
-		 * turns each collector to an object
-		 * puts them in the list 
-		*/
-		@SuppressWarnings("unchecked")
-		public static void configParser() {
         //JSON parser object to parse read file
-        JSONParser jsonParser = new JSONParser();
-         
+        JSONParser jsonParser = new JSONParser(); 
         try (FileReader reader = new FileReader("config/collectorConfiguration/collectorConfig.json"))
         {
             //Read JSON file
             Object obj = jsonParser.parse(reader);
             JSONArray collectorConfigList = (JSONArray) obj;
-            System.out.println(collectorConfigList);  
-            //Iterate over colectorConfig array
-            collectorConfigList.forEach( colConfig -> parseCollectorConfigObject( (JSONObject) colConfig ) );
-            //just for debugging, should be removed 
-            for(CollectorConfig c : configList) {
-            	System.out.println(c.getName());
-                System.out.println(c.getCollectorId());
-                System.out.println(c.getToken());
-            }
- 
+            
+            //print the json configuration string
+            System.out.println(collectorConfigList); 
+            //just to get into array token of json file 
+            //maybe requires polishing, but works for now 
+            CollectorConfig[] config = new ObjectMapper().readValue(collectorConfigList.toString(), CollectorConfig[].class);
+            //get the first object, will always be one 
+            CollectorConfig collectorConfig = config[0];
+            
+            //for debugging should be removed, tested and works 
+            System.out.println(collectorConfig.getName());
+		    System.out.println(collectorConfig.getCollectorId());
+		    System.out.println(collectorConfig.getToken());
+		    return collectorConfig;
+		    
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -48,21 +46,31 @@ public class CollectorConfigParser{
         } catch (org.json.simple.parser.ParseException e) {
 			e.printStackTrace();
 		}
-	}   
+		return null;
+	}
 	
-		/**
-		 * helper function which turn the JsonObject to java Object 
-		 * @param collectorConfig
-		 */
-    private static void parseCollectorConfigObject(JSONObject collectorConfig) 
-    {
-        //Get collectorConfig object within list
-        JSONObject collectorConfigObject = (JSONObject) collectorConfig.get("collectorConfig");
-        Gson gson = new Gson();
-        //turns the JSONObject to the collectorConfig object and adds them in the list
-        CollectorConfig config1 = gson.fromJson(collectorConfigObject.toString(), CollectorConfig.class);
-        configList.add(config1); 
-    }
+	/**
+	 * converts the CollectorConfig objects to Json String 
+	 * @param collectorConfig
+	 * @return json string of collectorConfig object 
+	 */
+	public static String configCollectorToJson(CollectorConfig collectorConfig) {		
+		// Creating Object of ObjectMapper define in Jakson-Api 
+	    ObjectMapper Obj = new ObjectMapper();
+			try { 
+				// get collectorConfig object as a json string 
+				String jsonStr = Obj.writeValueAsString(collectorConfig); 
+		        
+				// Displaying JSON String 
+		        System.out.println(jsonStr);
+		        return jsonStr;
+		     } catch (IOException e) { 
+		        e.printStackTrace(); 
+		     }
+			 return "";
+	}
+	
+	
 }
 
 

@@ -8,6 +8,7 @@ public class CollectorConfig {
 	private String collectorId;
     private String token;
     
+    public CollectorConfig() {}
     public CollectorConfig(String name, String collectorId, String token) {
     	this.name = name;
     	this.collectorId = collectorId;
