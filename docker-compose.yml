@@ -1,0 +1,93 @@
+version: '3.7'
+#
+# Suggestion for port conventions:
+#  - 80   : Frontend
+#  - 80xx : Development (pgAdmin, ...)
+#  - 90xx : Connectors (WebHooks)
+#
+services:
+
+  # The database
+  db:
+    image: postgres
+    container_name: devgame_db
+    restart: always
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: devgame
+    volumes:
+      - ./db/init:/docker-entrypoint-initdb.d
+    networks:
+      - network1
+    ports:
+      - 5432:5432
+# TODO: Volume für Datenbank-Dateien-> persistent ggü. Neustart
+
+  # Administration tool for debug purposes
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: devgame_pgadmin
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin
+      PGADMIN_DEFAULT_PASSWORD: admin
+    networks:
+      - network1
+    ports:
+      - 8001:80
+    volumes:
+      - ./db/pgadmin/servers.json:/pgadmin4/servers.json
+
+  # Main
+  main:
+    container_name: devgame
+    restart: always
+    build:
+      context: ./main
+    networks:
+      - network1
+    ports:
+      - 8082:8080
+
+  # A first test connector
+  test-collector:
+    container_name: devgame_test-collector
+    restart: always
+    build:
+      context: ./test-collector
+    networks:
+      - network1
+    ports:
+      - 9001:80
+    depends_on:
+      - "db"
+
+  # OpenLDAP server
+  ldap-server:
+    container_name: devgame_ldap-server
+    image: osixia/openldap:1.3.0
+    command: --copy-service --loglevel debug
+    volumes:
+      - ./ldap/init:/container/service/slapd/assets/config/bootstrap/ldif/custom:ro
+#    environment:
+#      - LDAP_ORGANISATION="Example Inc."
+#      - LDAP_DOMAIN="example.com"
+#      - LDAP_ADMIN_PASSWORD="admin"
+
+  # phpLDAPadmin for debug purposes
+  ldap-admin:
+    container_name: devgame_ldap-admin
+    image: osixia/phpldapadmin:0.9.0
+    environment:
+      PHPLDAPADMIN_LDAP_HOSTS: ldap-server
+      PHPLDAPADMIN_HTTPS: "false"
+    networks:
+      - network1
+    ports:
+      - 8002:80
+
+networks:
+  network1:
+    name: devgame-network
+      #driver: bridge

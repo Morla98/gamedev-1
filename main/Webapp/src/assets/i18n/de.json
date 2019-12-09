@@ -1,0 +1,16 @@
+{
+    "PROFILE": "Profile",
+    "GERMAN": "Deutsch",
+    "ENGLISH": "Englisch",
+    "SERVICES": "Dienste",
+    "RANKING": "Rangliste",
+    "MONTHLY": "Dieser Monat",
+    "DAILY": "Heute",
+    "POINTS": "Punkte insgesamt",
+    "NAME": "Name",
+    "ACHIEVEMENTS": "Errungenschaffen",
+    "LEVEL": "Level",
+    "LOGOUT": "Logout",
+    "LOGIN_SUCCESS": "Login erfolgreich",
+    "LOGIN_FAILED": "Login fehlgeschlagen"
+}

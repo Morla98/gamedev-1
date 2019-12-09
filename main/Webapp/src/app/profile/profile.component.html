@@ -1,0 +1,34 @@
+
+<mat-sidenav-container class="example-container">
+    <mat-sidenav mode="side"
+                 opened>
+      <div class="" ></div>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      
+      
+      <h2> Profile </h2>
+      
+      <mat-card>
+        <!-- <mat-card-header>{{user.name}}</mat-card-header> -->
+        <div class="flex-container">
+          <img src="/assets/img/default-profile.jpg"
+          height="100"
+          width="100">
+          <div class="fields">
+            <mat-form-field>
+              <input matInput
+              [placeholder]="'NAME' | translate"
+              [(ngModel)]="user.name">
+            </mat-form-field>
+            <mat-form-field>
+              <input matInput
+              [placeholder]="'EMAIL' | translate"
+              [(ngModel)]="user.email"
+              [disabled]="true">
+            </mat-form-field>
+          </div>
+        </div>
+      </mat-card>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
