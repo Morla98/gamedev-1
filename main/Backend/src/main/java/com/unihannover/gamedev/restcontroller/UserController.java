@@ -35,6 +35,11 @@ public class UserController extends BaseController {
         System.out.println(u.toString());
 
     }
+    
+    @RequestMapping(value="/users", method = RequestMethod.PUT)
+    public void addUser(@RequestBody User u) {
+    	repository.save(u);
+    }
 
 
 }

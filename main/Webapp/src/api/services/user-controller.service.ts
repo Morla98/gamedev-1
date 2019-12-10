@@ -7,18 +7,18 @@ import { StrictHttpResponse as __StrictHttpResponse } from '../strict-http-respo
 import { Observable as __Observable } from 'rxjs';
 import { map as __map, filter as __filter } from 'rxjs/operators';
 
-import { Achievement } from '../models/achievement';
+import { User } from '../models/user';
 
 /**
- * Achievement Controller
+ * User Controller
  */
 @Injectable({
   providedIn: 'root',
 })
-class AchievementControllerService extends __BaseService {
-  static readonly addAchievementListUsingPOSTPath = '/api/achievements';
-  static readonly getAllAchievementsUsingGETPath = '/api/achievements/all';
-  static readonly getAchievementByCollectorIdUsingGETPath = '/api/achievements/by-collector-id';
+class UserControllerService extends __BaseService {
+  static readonly updateProfileUsingPOSTPath = '/api/users';
+  static readonly getAllUsersUsingGETPath = '/api/users/all';
+  static readonly getUsersByEmailUsingGETPath = '/api/users/by-email';
 
   constructor(
     config: __Configuration,
@@ -28,16 +28,16 @@ class AchievementControllerService extends __BaseService {
   }
 
   /**
-   * @param achievements achievements
+   * @param u u
    */
-  addAchievementListUsingPOSTResponse(achievements: Array<Achievement>): __Observable<__StrictHttpResponse<null>> {
+  updateProfileUsingPOSTResponse(u: User): __Observable<__StrictHttpResponse<null>> {
     let __params = this.newParams();
     let __headers = new HttpHeaders();
     let __body: any = null;
-    __body = achievements;
+    __body = u;
     let req = new HttpRequest<any>(
       'POST',
-      this.rootUrl + `/api/achievements`,
+      this.rootUrl + `/api/users`,
       __body,
       {
         headers: __headers,
@@ -53,10 +53,10 @@ class AchievementControllerService extends __BaseService {
     );
   }
   /**
-   * @param achievements achievements
+   * @param u u
    */
-  addAchievementListUsingPOST(achievements: Array<Achievement>): __Observable<null> {
-    return this.addAchievementListUsingPOSTResponse(achievements).pipe(
+  updateProfileUsingPOST(u: User): __Observable<null> {
+    return this.updateProfileUsingPOSTResponse(u).pipe(
       __map(_r => _r.body as null)
     );
   }
@@ -64,13 +64,13 @@ class AchievementControllerService extends __BaseService {
   /**
    * @return OK
    */
-  getAllAchievementsUsingGETResponse(): __Observable<__StrictHttpResponse<Array<Achievement>>> {
+  getAllUsersUsingGETResponse(): __Observable<__StrictHttpResponse<Array<User>>> {
     let __params = this.newParams();
     let __headers = new HttpHeaders();
     let __body: any = null;
     let req = new HttpRequest<any>(
       'GET',
-      this.rootUrl + `/api/achievements/all`,
+      this.rootUrl + `/api/users/all`,
       __body,
       {
         headers: __headers,
@@ -81,31 +81,31 @@ class AchievementControllerService extends __BaseService {
     return this.http.request<any>(req).pipe(
       __filter(_r => _r instanceof HttpResponse),
       __map((_r) => {
-        return _r as __StrictHttpResponse<Array<Achievement>>;
+        return _r as __StrictHttpResponse<Array<User>>;
       })
     );
   }
   /**
    * @return OK
    */
-  getAllAchievementsUsingGET(): __Observable<Array<Achievement>> {
-    return this.getAllAchievementsUsingGETResponse().pipe(
-      __map(_r => _r.body as Array<Achievement>)
+  getAllUsersUsingGET(): __Observable<Array<User>> {
+    return this.getAllUsersUsingGETResponse().pipe(
+      __map(_r => _r.body as Array<User>)
     );
   }
 
   /**
-   * @param collectorId collectorId
+   * @param email email
    * @return OK
    */
-  getAchievementByCollectorIdUsingGETResponse(collectorId: string): __Observable<__StrictHttpResponse<Array<Achievement>>> {
+  getUsersByEmailUsingGETResponse(email: string): __Observable<__StrictHttpResponse<Array<User>>> {
     let __params = this.newParams();
     let __headers = new HttpHeaders();
     let __body: any = null;
-    if (collectorId != null) __params = __params.set('collectorId', collectorId.toString());
+    if (email != null) __params = __params.set('email', email.toString());
     let req = new HttpRequest<any>(
       'GET',
-      this.rootUrl + `/api/achievements/by-collector-id`,
+      this.rootUrl + `/api/users/by-email`,
       __body,
       {
         headers: __headers,
@@ -116,22 +116,22 @@ class AchievementControllerService extends __BaseService {
     return this.http.request<any>(req).pipe(
       __filter(_r => _r instanceof HttpResponse),
       __map((_r) => {
-        return _r as __StrictHttpResponse<Array<Achievement>>;
+        return _r as __StrictHttpResponse<Array<User>>;
       })
     );
   }
   /**
-   * @param collectorId collectorId
+   * @param email email
    * @return OK
    */
-  getAchievementByCollectorIdUsingGET(collectorId: string): __Observable<Array<Achievement>> {
-    return this.getAchievementByCollectorIdUsingGETResponse(collectorId).pipe(
-      __map(_r => _r.body as Array<Achievement>)
+  getUsersByEmailUsingGET(email: string): __Observable<Array<User>> {
+    return this.getUsersByEmailUsingGETResponse(email).pipe(
+      __map(_r => _r.body as Array<User>)
     );
   }
 }
 
-module AchievementControllerService {
+module UserControllerService {
 }
 
-export { AchievementControllerService }
+export { UserControllerService }

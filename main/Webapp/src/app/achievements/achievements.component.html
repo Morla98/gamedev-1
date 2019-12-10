@@ -3,8 +3,8 @@
                opened>
     <div *ngFor="let service of services"
          class="service"
-         (click)="selectService(service.name)"
-         [class.underlined]="selectedService === service.name">
+         (click)="selectService(service.id)"
+         [class.underlined]="selectedService === service.id">
       {{service.name}}
     </div>
   </mat-sidenav>
@@ -24,14 +24,14 @@
           </mat-card-header>
           <mat-card-content>
             <ul>
-              <li *ngFor="let achievement of achievements"> {{achievement.name}}: {{achievement.complete | number:'1.0-0'}}%</li>
+              <li *ngFor="let achievement of achievements"> {{achievement.name}}: {{achievement.progress | number:'1.0-0'}}%</li>
             </ul>
           </mat-card-content>
         </mat-card>
       </div>
       <div *ngIf="selectedService !== undefined" class="flex-column-container">
         <div *ngFor="let achievement of achievements" class="achievement">
-          <span>{{achievement.name}} - {{achievement.description}}({{achievement.completion | number:'1.0-0'}}%)</span>
+          <span>{{achievement.name}} - {{achievement.description}}({{achievement.progress | number:'1.0-0'}}%)</span>
         </div>
       </div>
 
