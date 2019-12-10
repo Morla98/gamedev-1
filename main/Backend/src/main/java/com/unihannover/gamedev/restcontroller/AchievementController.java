@@ -46,7 +46,7 @@ public class AchievementController extends BaseController {
 	/**
 	 * Adds multiple achievements to the repository. If there is already an achievement with the given id,
 	 * the existing achievement will be updated.
-	 * 
+	 *
 	 * @param achievements A list of achievements to add
 	 */
 	@RequestMapping(value="/achievements", method = RequestMethod.POST)
