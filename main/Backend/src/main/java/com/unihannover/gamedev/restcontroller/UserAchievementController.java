@@ -16,46 +16,57 @@ import com.unihannover.gamedev.models.User;
 import com.unihannover.gamedev.models.UserAchievement;
 import com.unihannover.gamedev.repositories.UserAchievementRepository;
 
-        /**
-        * A controller to handle HTTP requests about acievements that belong to a user.
-        */
-        @RestController
-        public class UserAchievementController extends BaseController {
+/**
+ * A controller to handle HTTP requests about acievements that belong to a user.
+ */
+@RestController
+public class UserAchievementController extends BaseController {
 
-            @Autowired
-            private UserAchievementRepository repository;
+    @Autowired
+    private UserAchievementRepository repository;
 
-            /**
-             * Returns all achievements in the repository, regardless of the user it belongs to.
-             *
-             * @return all UserAchievements
-             */
-            @RequestMapping(value="/user-achievements/all", method = RequestMethod.GET)
-            public List<UserAchievement> getAllUserss() {
+    @Autowired
+    private CollectorRepository colRepository;
+
+    /**
+     * Returns all achievements in the repository, regardless of the user it belongs to.
+     *
+     * @return all UserAchievements
+     */
+    @RequestMapping(value="/user-achievements/all", method = RequestMethod.GET)
+    public List<UserAchievement> getAllUserss() {
                 return repository.findAll();
             }
 
-            /**
-             * Returns all achievements of a given user.
-             *
-             * @param userEmail The user to search for
-             * @return All achievements in the repository that belong to the given user
-             */
-            @RequestMapping(value="/user-achievements/by-user-email", method = RequestMethod.GET)
-            public List<UserAchievement> getUserAchievementsByUserEmail(@RequestParam(value="userEmail") String userEmail) {
-                return repository.findByUserEmail(userEmail);
-            }
+    /**
+     * Returns all achievements of a given user.
+     *
+     * @param userEmail The user to search for
+     * @return All achievements in the repository that belong to the given user
+     */
+    @RequestMapping(value="/user-achievements/by-user-email", method = RequestMethod.GET)
+    public List<UserAchievement> getUserAchievementsByUserEmail(@RequestParam(value="userEmail") String userEmail) {
+        return repository.findByUserEmail(userEmail);
+        }
 
-            /**
-             * Returns the preview of all achievements.
-             * Previews contain the most important user achievements that have more progress than 0%.
-             *
-             * @param userEmail The user to generate the preview for
-             * @return The list of most interesting achievements for the given user
-             */
-            @RequestMapping(value="/user-achievements/preview", method = RequestMethod.GET)
-            public List<UserAchievement> getUserAchievementsPreview(@RequestParam(value="userEmail") String userEmail) {
+        /**
+         * Returns the preview of all achievements.
+         * Previews contain the most important user achievements that have more progress than 0%.
+         *
+         * @param userEmail The user to generate the preview for
+         * @return The list of most interesting achievements for the given user
+         */
+        @RequestMapping(value="/user-achievements/preview", method = RequestMethod.GET)
+        public List<UserAchievement> getUserAchievementsPreview(@RequestParam(value="userEmail") String userEmail) {
 
+            String[] collectorIds = colRepository.findAll();
+
+
+            CollectorPreviewDto dto = new CollectorPreviewDto(repository, collectorIds);
+
+            return dto.getAllPreviews(userEmail);
+
+            /*
         List <UserAchievement> preview = new ArrayList<>();
 
         //add non finished achievements
@@ -73,6 +84,7 @@ import com.unihannover.gamedev.repositories.UserAchievementRepository;
         }
 
         return preview;
+        */
     }
 
     /**
@@ -86,6 +98,12 @@ import com.unihannover.gamedev.repositories.UserAchievementRepository;
     @RequestMapping(value="/user-achievements/preview-for-collector", method = RequestMethod.GET)
     public List<UserAchievement> getUserAchievementsCollectorPreview(@RequestParam(value="userEmail") String userEmail, String collectorId) {
 
+
+        CollectorPreviewDto dto = new CollectorPreviewDto(repository);
+
+        return dto.getPreviewForController(userEmail, collectorId);
+
+        /*
         List <UserAchievement> preview = new ArrayList<>();
         List <UserAchievement> all = new ArrayList<>();
 
@@ -111,6 +129,7 @@ import com.unihannover.gamedev.repositories.UserAchievementRepository;
         }
 
         return preview;
+        */
     }
 
 

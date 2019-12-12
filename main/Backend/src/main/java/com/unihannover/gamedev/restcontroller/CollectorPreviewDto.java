@@ -18,6 +18,8 @@ public class CollectorPreviewDto{
 
     private UserAchievementRepository repository;
 
+    public List<List<Userachievement>> preview;
+
     public CollectorPreviewDto(UserAchievementRepository repository){
         this.repository = repository;
     }
@@ -54,13 +56,12 @@ public class CollectorPreviewDto{
     }
 
     /**
-     * Returns a list of all UserAchievements, sorte in individual lists for each collector
+     * Saves a list of all UserAchievements, sorted in individual lists for each collector in preview.
      *
      * @param userEmail The user that owns the Userachievements
      * @param collectorId The collector to search for
-     * @return The list of UserAchievement-Lists
      */
-    public List<List<UserAchievement>> getAllPreviews(String userEmail, String[] collectorIds) {
+    public List<List<UserAchievement>> generateAllPreviews(String userEmail, String[] collectorIds) {
 
         List<List<UserAchievement>> collection = new ArrayList<>;
 
@@ -69,7 +70,19 @@ public class CollectorPreviewDto{
             collection.add(l);
         }
 
-        return collection;
+        this.preview = collection;
 
+    }
+
+    /**
+     * Returns a list of all UserAchievements, sorted in individual lists for each collector.
+     *
+     * @param userEmail The user that owns the Userachievements
+     * @param collectorId The collector to search for
+     * @return
+     */
+    public List<List<UserAchievement>> getAllPreviews(String userEmail, String[] collectorIds) {
+        generateAllPreviews(userEmail, collectorIds;
+        return this.preview;
     }
 }
