@@ -7,26 +7,40 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "GeneralCollector_Metrics", schema="metrics")
+@Table(name = "JiraCollector_Metrics", schema="metrics")
 public class Metric {
+
     @Id
-    @Column(name = "example")
-    private int examplefield;
+    @Column(name = "useremail")
+    private String useremail;
 
-    public Metric() {
-        super();
+    @Column(name = "issue_created")
+    private int issue_created;
+
+    @Column(name = "issue_updated")
+    private int issue_updated;
+
+    public String getUseremail() {
+        return useremail;
     }
 
-    public Metric(int i) {
-        this.examplefield = i;
-
+    public void setUseremail(String useremail) {
+        this.useremail = useremail;
     }
 
-    public int getExamplefield() {
-        return examplefield;
+    public int getIssue_created() {
+        return issue_created;
     }
 
-    public void setExamplefield(int examplefield) {
-        this.examplefield = examplefield;
+    public void setIssue_created(int issue_created) {
+        this.issue_created = issue_created;
+    }
+
+    public int getIssue_updated() {
+        return issue_updated;
+    }
+
+    public void setIssue_updated(int issue_updated) {
+        this.issue_updated = issue_updated;
     }
 }

@@ -3,15 +3,21 @@ package com.unihannover.gamedev.services;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.unihannover.gamedev.models.User;
 import org.apache.http.HttpEntity;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.methods.CloseableHttpResponse;
+import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
+import org.apache.http.util.EntityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -26,7 +32,33 @@ public class HttpService {
 	@Autowired
 	CollectorConfig config;
 
-	public HttpEntity sendModel(Model m, String url) {
+    public List<User> getUsers() {
+		httpClient = HttpClients.createDefault();
+		CloseableHttpResponse response;
+		HttpEntity result;
+		ObjectMapper objectMapper = new ObjectMapper();
+		try{
+			HttpGet get = new HttpGet("http://devgame:8080/api/users/all");
+			get.setHeader("Accept", "*/*");
+			get.setHeader("Content-type", "application/json");
+			if (config.getToken() != null) {
+				get.setHeader("X-Auth-Token", config.getToken());
+			}
+			response = httpClient.execute(get);
+			String responsestring = EntityUtils.toString(response.getEntity(), "UTF-8");
+			// System.out.println("Responsestring: " + responsestring);
+			// User[] uArray = objectMapper.readValue(responsestring, new TypeReference<List<User>>(){}););
+			List<User> uList = objectMapper.readValue(responsestring, new TypeReference<List<User>>(){}); // Arrays.asList(uArray);
+			return uList;
+		} catch (ClientProtocolException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+    public HttpEntity sendModel(Model m, String url) {
 		List<Model> mList = new ArrayList<>();
 		mList.add(m);
 		return sendList(mList, url);
