@@ -2,11 +2,22 @@ package com.unihannover.gamedev;
 import java.io.File;
 import java.io.IOException;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class LdapConfigParser {
-	public static LdapConfiguration LdapJsonToObject() {	
-		File file = new File("config/ldapConfig.json");
+	private static String ldapConfigPath = "config/ldapConfig.json";
+	
+	@Autowired
+    public LdapConfigParser(@Value("${app.ldapConfigPath}")String config) {
+		ldapConfigPath = config;
+	}
+	
+	public static LdapConfiguration LdapJsonToObject() {
+		
+		File file = new File(ldapConfigPath);
 		try {
 			LdapConfiguration[] ldapConfigArr = new ObjectMapper().readValue(file, LdapConfiguration[].class);
 			LdapConfiguration configuration = ldapConfigArr[0];
@@ -22,6 +33,7 @@ public class LdapConfigParser {
 			System.out.println(configuration.LDAP_SEARCH_FILTER);
 			System.out.println("-------------");
 			//--------
+			configuration.LDAP_SEARCH_FILTER = String.format(configuration.LDAP_SEARCH_FILTER, configuration.LDAP_IDENTIFYING_ATTRIBUTE, configuration.LDAP_GROUP_ID);
 			return configuration;
 		
 		} catch (IOException e) {

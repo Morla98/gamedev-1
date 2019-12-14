@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.unihannover.gamedev.CollectorConfig;
+import com.unihannover.gamedev.CollectorConfigParser;
 import com.unihannover.gamedev.models.Achievement;
 import com.unihannover.gamedev.models.Collector;
 import com.unihannover.gamedev.models.Metric;
@@ -28,8 +29,10 @@ public class CollectorService {
 	@Value("${app.jwtSecret}")
 	private String jwtSecret;
 
+	/*
 	@Autowired
 	CollectorConfig config;
+	*/
 
 	@Autowired
 	JwtTokenProvider tokenProvider;
@@ -46,10 +49,17 @@ public class CollectorService {
 
 	@Bean
 	public void initCollector() {
+		CollectorConfig config = CollectorConfigParser.configJsonToObject();
 		Collector me = new Collector();
-		me.setName("GeneralCollector");
-		me.setId("general-collector");
-		me.setToken("supersecretToken");
+		if (config != null) {
+			me.setName(config.getName());
+			me.setId(config.getCollectorId());
+			me.setToken(config.getToken());
+		} else {
+			me.setName("GeneralCollector");
+			me.setId("general-collector");
+			me.setToken("supersecretToken");
+		}
 		Timestamp t = new Timestamp(System.currentTimeMillis());
 		me.setLastSeen(t);
 		// config.setCollectorId(me.getId());
@@ -82,6 +92,7 @@ public class CollectorService {
 				if (c.getId() != null) {
 					config.setCollectorId(c.getId());
 				}
+				CollectorConfigParser.configCollectorToJson(config);
 				System.out.println("\nInit Collector\n");
 			}
 		}
@@ -92,6 +103,7 @@ public class CollectorService {
 	}
 
 	private void initAchievements() {
+		CollectorConfig config = CollectorConfigParser.configJsonToObject();
 		List<Model> aList = new ArrayList<>();
 		List<Model> uaList = new ArrayList<>();
 		Achievement a1 = new Achievement();
