@@ -37,6 +37,24 @@ INSERT INTO main."users"(
     'Example User'
 );
 
+INSERT INTO main."users"(
+    "email",
+    "uid",
+    "username",
+    "anonymous",
+    "level",
+    "score",
+    "fullname"
+) VALUES (
+    'dev1@example.com',
+    '0000003',
+    'dev1.user',
+    TRUE,
+    1,
+    0,
+    'dev1'
+);
+
 INSERT INTO main."collectors" (
     "id",
     "name",
