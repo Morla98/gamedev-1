@@ -52,8 +52,8 @@ public class GitService {
         };
         thread.start();
     }
-    //TODO: Add Timer which pulls from git
-    //TODO: Iterate through all branches
+
+
     public void iterateBranches(){
         //List<Ref> call = null;
         try{
@@ -72,7 +72,9 @@ public class GitService {
 
         }
     }
-    //TODO: Read git log and generate achievements from the data
+
+    //TODO: Persistence of current Head
+    //TODO: Generate achievements from the data
     //TODO: Update Achievements
 
 
