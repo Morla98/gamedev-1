@@ -141,6 +141,7 @@ public class CollectorService {
 				Repository repository = repositoryBuilder.setGitDir(new File(repoFile + "/.git")).readEnvironment().findGitDir().setMustExist(true).build();
 				gitservice = new GitService(repository, git);
 				gitservice.runTimer(credentialsProvider);
+				gitservice.iterateBranches();
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
