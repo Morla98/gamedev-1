@@ -12,6 +12,8 @@ import org.apache.http.HttpStatus;
 import org.apache.http.util.EntityUtils;
 import org.eclipse.jgit.api.CloneCommand;
 import org.eclipse.jgit.api.Git;
+import org.eclipse.jgit.lib.Repository;
+import org.eclipse.jgit.storage.file.FileRepositoryBuilder;
 import org.eclipse.jgit.transport.UsernamePasswordCredentialsProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -106,7 +108,7 @@ public class CollectorService {
 		boolean reported = false;
 		initAchievements(reported);
 		CloneCommand cloneCommand = Git.cloneRepository();
-		String repoURL = "https://meinsupercoolesgitrepository/.git" 
+		String repoURL = "https://github.com/omahildegard/meinsupercoolesgitrepository.git";
 		String repoFile = "./repo";
 		String adminName =  "omahilde@1secmail.com";
 		String adminpass = "omahildessupercoolesgitrepo";
@@ -118,8 +120,12 @@ public class CollectorService {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		FileRepoitoryBuilder repositoryBuilder = new FileRepoitoryBuilder();
-		Repository repository = repositoryBuilder.setGirDir(new File(repoFile + "/.git"));
+		FileRepositoryBuilder repositoryBuilder = new FileRepositoryBuilder();
+		try{
+			Repository repository = repositoryBuilder.setGitDir(new File(repoFile + "/.git")).readEnvironment().findGitDir().setMustExist(true).build();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	private void initAchievements(boolean reported) {
