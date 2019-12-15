@@ -12,29 +12,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.unihannover.gamedev.models.User;
-import com.unihannover.gamedev.models.UserAchievement;
-import com.unihannover.gamedev.repositories.UserAchievementRepository;
+import com.unihannover.gamedev.models.*;
+import com.unihannover.gamedev.repositories.*;
 
-<<<<<<< HEAD
-        /**
-        * A controller to handle HTTP requests about acievements that belong to a user.
-        */
-        @RestController
-        public class UserAchievementController extends BaseController {
 
-            @Autowired
-            private UserAchievementRepository repository;
-            @Autowired CollectorRepository repositoryCol;
-
-            /**
-             * Returns all achievements in the repository, regardless of the user it belongs to.
-             *
-             * @return all UserAchievements
-             */
-            @RequestMapping(value="/user-achievements/all", method = RequestMethod.GET)
-            public List<UserAchievement> getAllUserss() {
-=======
 /**
  * A controller to handle HTTP requests about acievements that belong to a user.
  */
@@ -54,7 +35,6 @@ public class UserAchievementController extends BaseController {
      */
     @RequestMapping(value="/user-achievements/all", method = RequestMethod.GET)
     public List<UserAchievement> getAllUserss() {
->>>>>>> 4c7c2df540c92654f93e4f2887aa87665d1fc24e
                 return repository.findAll();
             }
 
@@ -77,30 +57,20 @@ public class UserAchievementController extends BaseController {
          * @return The list of most interesting achievements for the given user
          */
         @RequestMapping(value="/user-achievements/preview", method = RequestMethod.GET)
-        public List<UserAchievement> getUserAchievementsPreview(@RequestParam(value="userEmail") String userEmail) {
+        public List<List<UserAchievement>> getUserAchievementsPreview(@RequestParam(value="userEmail") String userEmail) {
 
-            String[] collectorIds = colRepository.findAll();
+            List<Collector> collectorList = colRepository.findAll();
+            List<String> collectorIds = new ArrayList<>();
 
+            for(Collector c : collectorList) {
+                collectorIds.add(c.getName());
+            }
 
-            CollectorPreviewDto dto = new CollectorPreviewDto(repository, collectorIds);
+            CollectorPreviewDto dto = new CollectorPreviewDto(repository);
+            dto.createPreviews(userEmail, collectorIds);
+            return dto.getPreviewObject();
 
-            return dto.getAllPreviews(userEmail);
-
-<<<<<<< HEAD
-                List<Collector> collectorList = repositoryCol.findAll();
-                List<String> collectorIds = new ArrayList<>;
-
-                for(Collector c : collectorList) {
-                    collectorIds.add(c.getName());
-                }
-
-                CollectorPreviewDto dto = new CollectorPreviewDto(repository);
-                dto.createPreviews();
-                return dto.getPreviewObject();
-        /*
-=======
             /*
->>>>>>> 4c7c2df540c92654f93e4f2887aa87665d1fc24e
         List <UserAchievement> preview = new ArrayList<>();
 
         //add non finished achievements
@@ -119,10 +89,6 @@ public class UserAchievementController extends BaseController {
 
         return preview;
         */
-<<<<<<< HEAD
-         */
-=======
->>>>>>> 4c7c2df540c92654f93e4f2887aa87665d1fc24e
     }
 
     /**
@@ -136,16 +102,10 @@ public class UserAchievementController extends BaseController {
     @RequestMapping(value="/user-achievements/preview-for-collector", method = RequestMethod.GET)
     public List<UserAchievement> getUserAchievementsCollectorPreview(@RequestParam(value="userEmail") String userEmail, String collectorId) {
 
-<<<<<<< HEAD
-        CollectorPreviewDto dto = new CollectorPreviewDto(repository);
-        return dto.getPreviewForController();
-=======
-
         CollectorPreviewDto dto = new CollectorPreviewDto(repository);
 
         return dto.getPreviewForController(userEmail, collectorId);
 
->>>>>>> 4c7c2df540c92654f93e4f2887aa87665d1fc24e
         /*
         List <UserAchievement> preview = new ArrayList<>();
         List <UserAchievement> all = new ArrayList<>();
@@ -173,10 +133,6 @@ public class UserAchievementController extends BaseController {
 
         return preview;
         */
-<<<<<<< HEAD
-         */
-=======
->>>>>>> 4c7c2df540c92654f93e4f2887aa87665d1fc24e
     }
 
 

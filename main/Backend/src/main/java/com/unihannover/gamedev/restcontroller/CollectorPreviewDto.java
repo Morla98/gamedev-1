@@ -9,10 +9,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.unihannover.gamedev.models.Collector;
-import com.unihannover.gamedev.models.CollectorWOT;
 import com.unihannover.gamedev.repositories.CollectorRepository;
 import com.unihannover.gamedev.security.JwtTokenProvider;
+
+import com.unihannover.gamedev.repositories.*;
+import com.unihannover.gamedev.models.*;
+
+import java.util.List;
+import java.util.ArrayList;
 
 /**
  * A data transfer object that
@@ -22,7 +26,7 @@ public class CollectorPreviewDto{
     private UserAchievementRepository repository;
     private List<List<UserAchievement>> previewObject;
 
-    public List<List<Userachievement>> preview;
+    public List<List<UserAchievement>> preview;
 
     public CollectorPreviewDto(UserAchievementRepository repository){
         this.repository = repository;
@@ -65,43 +69,38 @@ public class CollectorPreviewDto{
      * @param userEmail The user that owns the Userachievements
      * @param collectorId The collector to search for
      */
-<<<<<<< HEAD:main/Backend/src/main/java/com/unihannover/gamedev/restcontroller/CollectorPreviewDto
-    public List<List<UserAchievement>> getAllPreviews(String userEmail, List<String> collectorIds) {
-=======
-    public List<List<UserAchievement>> generateAllPreviews(String userEmail, String[] collectorIds) {
->>>>>>> 4c7c2df540c92654f93e4f2887aa87665d1fc24e:main/Backend/src/main/java/com/unihannover/gamedev/restcontroller/CollectorPreviewDto.java
+    public List<List<UserAchievement>> generateAllPreviews(String userEmail, List<String> collectorIds) {
 
-        List<List<UserAchievement>> collection = new ArrayList<>;
+        List<List<UserAchievement>> collection = new ArrayList<>();
 
         for(String s : collectorIds) {
             List<UserAchievement> l = getPreviewForController(userEmail, s);
             collection.add(l);
         }
 
-        this.preview = collection;
-
+        return collection;
     }
 
     /**
-<<<<<<< HEAD:main/Backend/src/main/java/com/unihannover/gamedev/restcontroller/CollectorPreviewDto
      * Creates a list of collector previews and saves it in an intern list.
      */
-    public void createPreviews(){
-        this.previewObject = getAllPreviews();
+    public void createPreviews(String userEmail, List<String> collectorIds){
+        this.previewObject = getAllPreviews(userEmail, collectorIds);
     }
 
     public List<List<UserAchievement>> getPreviewObject() {
         return previewObject;
-=======
+    }
+
+    /**
      * Returns a list of all UserAchievements, sorted in individual lists for each collector.
      *
      * @param userEmail The user that owns the Userachievements
      * @param collectorId The collector to search for
      * @return
      */
-    public List<List<UserAchievement>> getAllPreviews(String userEmail, String[] collectorIds) {
-        generateAllPreviews(userEmail, collectorIds;
+    public List<List<UserAchievement>> getAllPreviews(String userEmail, List<String> collectorIds) {
+        generateAllPreviews(userEmail, collectorIds);
         return this.preview;
->>>>>>> 4c7c2df540c92654f93e4f2887aa87665d1fc24e:main/Backend/src/main/java/com/unihannover/gamedev/restcontroller/CollectorPreviewDto.java
     }
 }
