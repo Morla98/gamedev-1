@@ -18,6 +18,8 @@ public class AchievementController extends BaseController {
 
 	/**
 	 * A controller to handle HTTP requests about acievements that belong to an achievement.
+	 *
+	 * @author Lukas Niehus
 	 */
 	@Autowired
     private AchievementRepository repository;

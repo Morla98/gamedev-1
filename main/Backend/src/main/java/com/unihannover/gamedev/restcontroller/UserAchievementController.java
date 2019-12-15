@@ -24,6 +24,7 @@ import com.unihannover.gamedev.repositories.UserAchievementRepository;
 
             @Autowired
             private UserAchievementRepository repository;
+            @Autowired CollectorRepository repositoryCol;
 
             /**
              * Returns all achievements in the repository, regardless of the user it belongs to.
@@ -56,6 +57,17 @@ import com.unihannover.gamedev.repositories.UserAchievementRepository;
             @RequestMapping(value="/user-achievements/preview", method = RequestMethod.GET)
             public List<UserAchievement> getUserAchievementsPreview(@RequestParam(value="userEmail") String userEmail) {
 
+                List<Collector> collectorList = repositoryCol.findAll();
+                List<String> collectorIds = new ArrayList<>;
+
+                for(Collector c : collectorList) {
+                    collectorIds.add(c.getName());
+                }
+
+                CollectorPreviewDto dto = new CollectorPreviewDto(repository);
+                dto.createPreviews();
+                return dto.getPreviewObject();
+        /*
         List <UserAchievement> preview = new ArrayList<>();
 
         //add non finished achievements
@@ -73,6 +85,8 @@ import com.unihannover.gamedev.repositories.UserAchievementRepository;
         }
 
         return preview;
+        */
+         */
     }
 
     /**
@@ -86,6 +100,9 @@ import com.unihannover.gamedev.repositories.UserAchievementRepository;
     @RequestMapping(value="/user-achievements/preview-for-collector", method = RequestMethod.GET)
     public List<UserAchievement> getUserAchievementsCollectorPreview(@RequestParam(value="userEmail") String userEmail, String collectorId) {
 
+        CollectorPreviewDto dto = new CollectorPreviewDto(repository);
+        return dto.getPreviewForController();
+        /*
         List <UserAchievement> preview = new ArrayList<>();
         List <UserAchievement> all = new ArrayList<>();
 
@@ -111,6 +128,8 @@ import com.unihannover.gamedev.repositories.UserAchievementRepository;
         }
 
         return preview;
+        */
+         */
     }
 
 
@@ -118,7 +137,7 @@ import com.unihannover.gamedev.repositories.UserAchievementRepository;
     * Updates given UserAchievements in the repository. If there is no UserAchievement with the same ids than a given one,
     * the UserAchievements will be added to the repository.
     *
-    * @param u
+    * @param u The UserAchievement to save in the repository
     */
     @RequestMapping(value="/user-achievements", method = RequestMethod.POST)
     public void updateUserAchievements(@RequestBody UserAchievementWOT[] u) {

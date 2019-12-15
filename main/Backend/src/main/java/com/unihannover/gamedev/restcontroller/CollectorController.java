@@ -18,6 +18,8 @@ import com.unihannover.gamedev.security.JwtTokenProvider;
 
 /**
  *A controller to handle HTTP requests about Collectors.
+ *
+ * @author Lukas Niehus
  */
 @RestController
 public class CollectorController extends BaseController {

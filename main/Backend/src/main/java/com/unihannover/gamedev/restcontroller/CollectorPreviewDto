@@ -14,9 +14,13 @@ import com.unihannover.gamedev.models.CollectorWOT;
 import com.unihannover.gamedev.repositories.CollectorRepository;
 import com.unihannover.gamedev.security.JwtTokenProvider;
 
+/**
+ * A data transfer object that
+ */
 public class CollectorPreviewDto{
 
     private UserAchievementRepository repository;
+    private List<List<UserAchievement>> previewObject;
 
     public CollectorPreviewDto(UserAchievementRepository repository){
         this.repository = repository;
@@ -60,7 +64,7 @@ public class CollectorPreviewDto{
      * @param collectorId The collector to search for
      * @return The list of UserAchievement-Lists
      */
-    public List<List<UserAchievement>> getAllPreviews(String userEmail, String[] collectorIds) {
+    public List<List<UserAchievement>> getAllPreviews(String userEmail, List<String> collectorIds) {
 
         List<List<UserAchievement>> collection = new ArrayList<>;
 
@@ -71,5 +75,16 @@ public class CollectorPreviewDto{
 
         return collection;
 
+    }
+
+    /**
+     * Creates a list of collector previews and saves it in an intern list.
+     */
+    public void createPreviews(){
+        this.previewObject = getAllPreviews();
+    }
+
+    public List<List<UserAchievement>> getPreviewObject() {
+        return previewObject;
     }
 }
