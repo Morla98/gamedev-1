@@ -35,7 +35,7 @@ import com.unihannover.gamedev.security.JwtTokenProvider;
 public class CollectorService {
 	@Value("${app.jwtSecret}")
 	private String jwtSecret;
-	private Repository repository;
+	private GitService gitservice;
 	/*
 	@Autowired
 	CollectorConfig config;
@@ -56,7 +56,7 @@ public class CollectorService {
 		return achievementList;
 	}
 
-	public Repository getRepository(){ return repository; }
+
 
 	public void setAchievementList(List<Achievement> achievementList) {
 		this.achievementList = achievementList;
@@ -136,7 +136,8 @@ public class CollectorService {
 			FileRepositoryBuilder repositoryBuilder = new FileRepositoryBuilder();
 			try{
 				Git git = Git.open(new File(repoFile + "/.git"));
-				repository = repositoryBuilder.setGitDir(new File(repoFile + "/.git")).readEnvironment().findGitDir().setMustExist(true).build();
+				Repository repository = repositoryBuilder.setGitDir(new File(repoFile + "/.git")).readEnvironment().findGitDir().setMustExist(true).build();
+				gitservice = new GitService(repository, git);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
