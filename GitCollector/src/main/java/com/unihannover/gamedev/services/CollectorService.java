@@ -106,14 +106,20 @@ public class CollectorService {
 		boolean reported = false;
 		initAchievements(reported);
 		CloneCommand cloneCommand = Git.cloneRepository();
-		cloneCommand.setURI( "https://meinsupercoolesgitrepository/.git" );
-		cloneCommand.setDirectory(new File("./repo"));
-		cloneCommand.setCredentialsProvider( new UsernamePasswordCredentialsProvider( "omahilde@1secmail.com", "omahildessupercoolesgitrepo" ) );
+		String repoURL = "https://meinsupercoolesgitrepository/.git" 
+		String repoFile = "./repo";
+		String adminName =  "omahilde@1secmail.com";
+		String adminpass = "omahildessupercoolesgitrepo";
+		cloneCommand.setURI( repoURL);
+		cloneCommand.setDirectory(new File(repoFile));
+		cloneCommand.setCredentialsProvider( new UsernamePasswordCredentialsProvider(adminName, adminpass ));
 		try{
 			cloneCommand.call();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		FileRepoitoryBuilder repositoryBuilder = new FileRepoitoryBuilder();
+		Repository repository = repositoryBuilder.setGirDir(new File(repoFile + "/.git"));
 	}
 
 	private void initAchievements(boolean reported) {
