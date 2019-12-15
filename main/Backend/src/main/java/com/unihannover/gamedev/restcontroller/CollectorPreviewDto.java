@@ -22,6 +22,8 @@ public class CollectorPreviewDto{
     private UserAchievementRepository repository;
     private List<List<UserAchievement>> previewObject;
 
+    public List<List<Userachievement>> preview;
+
     public CollectorPreviewDto(UserAchievementRepository repository){
         this.repository = repository;
     }
@@ -58,13 +60,16 @@ public class CollectorPreviewDto{
     }
 
     /**
-     * Returns a list of all UserAchievements, sorte in individual lists for each collector
+     * Saves a list of all UserAchievements, sorted in individual lists for each collector in preview.
      *
      * @param userEmail The user that owns the Userachievements
      * @param collectorId The collector to search for
-     * @return The list of UserAchievement-Lists
      */
+<<<<<<< HEAD:main/Backend/src/main/java/com/unihannover/gamedev/restcontroller/CollectorPreviewDto
     public List<List<UserAchievement>> getAllPreviews(String userEmail, List<String> collectorIds) {
+=======
+    public List<List<UserAchievement>> generateAllPreviews(String userEmail, String[] collectorIds) {
+>>>>>>> 4c7c2df540c92654f93e4f2887aa87665d1fc24e:main/Backend/src/main/java/com/unihannover/gamedev/restcontroller/CollectorPreviewDto.java
 
         List<List<UserAchievement>> collection = new ArrayList<>;
 
@@ -73,11 +78,12 @@ public class CollectorPreviewDto{
             collection.add(l);
         }
 
-        return collection;
+        this.preview = collection;
 
     }
 
     /**
+<<<<<<< HEAD:main/Backend/src/main/java/com/unihannover/gamedev/restcontroller/CollectorPreviewDto
      * Creates a list of collector previews and saves it in an intern list.
      */
     public void createPreviews(){
@@ -86,5 +92,16 @@ public class CollectorPreviewDto{
 
     public List<List<UserAchievement>> getPreviewObject() {
         return previewObject;
+=======
+     * Returns a list of all UserAchievements, sorted in individual lists for each collector.
+     *
+     * @param userEmail The user that owns the Userachievements
+     * @param collectorId The collector to search for
+     * @return
+     */
+    public List<List<UserAchievement>> getAllPreviews(String userEmail, String[] collectorIds) {
+        generateAllPreviews(userEmail, collectorIds;
+        return this.preview;
+>>>>>>> 4c7c2df540c92654f93e4f2887aa87665d1fc24e:main/Backend/src/main/java/com/unihannover/gamedev/restcontroller/CollectorPreviewDto.java
     }
 }
