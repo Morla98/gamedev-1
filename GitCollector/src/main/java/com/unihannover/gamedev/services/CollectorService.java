@@ -1,5 +1,6 @@
 package com.unihannover.gamedev.services;
 
+import java.io.File;
 import java.io.IOException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
@@ -9,6 +10,9 @@ import com.unihannover.gamedev.models.*;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpStatus;
 import org.apache.http.util.EntityUtils;
+import org.eclipse.jgit.api.CloneCommand;
+import org.eclipse.jgit.api.Git;
+import org.eclipse.jgit.transport.UsernamePasswordCredentialsProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
@@ -101,8 +105,15 @@ public class CollectorService {
 		// TODO: reported should be true if collector is already known by server so that he doesnt (re)send his Achievements
 		boolean reported = false;
 		initAchievements(reported);
-
-
+		CloneCommand cloneCommand = Git.cloneRepository();
+		cloneCommand.setURI( "https://meinsupercoolesgitrepository/.git" );
+		cloneCommand.setDirectory(new File("./repo"));
+		cloneCommand.setCredentialsProvider( new UsernamePasswordCredentialsProvider( "omahilde@1secmail.com", "omahildessupercoolesgitrepo" ) );
+		try{
+			cloneCommand.call();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	private void initAchievements(boolean reported) {

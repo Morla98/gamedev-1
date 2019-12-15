@@ -59,41 +59,6 @@ public class CollectorController {
     // URL IS: http://GitCollector:8080/update
     @RequestMapping(value="/update", method = RequestMethod.POST)
     public void update(@RequestBody String data) {
-        // Debug
-        Timestamp t = new Timestamp(System.currentTimeMillis());
-        System.out.println("Hook confirmed: " + t.getHours()+":"+t.getMinutes()+":"+t.getSeconds());
-        Gson gson = new GsonBuilder().create();
-        JsonObject job = gson.fromJson(data, JsonObject.class);
-        String event = job.getAsJsonPrimitive("webhookEvent").getAsString(); // webhookEvent
-        String useremail = job.getAsJsonObject("user").getAsJsonPrimitive("emailAddress").getAsString(); // emailAddress
-        List<Metric> oldMetricList = repository.findByUseremail(useremail);
-        System.out.println("user: " + useremail + "triggered event: "+ event);
-
-        // if user comes for the first time, initialize his record
-        if(oldMetricList.size() < 1){
-            Metric initMetric = new Metric();
-            initMetric.setUseremail(useremail);
-            initMetric.setIssue_created(0);
-            initMetric.setIssue_updated(0);
-            repository.save(initMetric);
-        }
-        oldMetricList = repository.findByUseremail(useremail);
-        if(event.equals("jira:issue_created")){
-            Metric newMetric = new Metric();
-            newMetric.setUseremail(useremail);
-            newMetric.setIssue_created(oldMetricList.get(0).getIssue_created()+1);
-            repository.save(newMetric);
-        }
-
-        if(event.equals("jira:issue_updated")){
-            Metric newMetric = new Metric();
-            newMetric.setUseremail(useremail);
-            newMetric.setIssue_updated(oldMetricList.get(0).getIssue_updated()+1);
-            repository.save(newMetric);
-        }
-
-
-        updateAchievements(useremail);
 
     }
 
