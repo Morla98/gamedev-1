@@ -135,6 +135,7 @@ public class CollectorService {
 			}
 			FileRepositoryBuilder repositoryBuilder = new FileRepositoryBuilder();
 			try{
+				Git git = Git.open(new File(repoFile + "/.git"));
 				repository = repositoryBuilder.setGitDir(new File(repoFile + "/.git")).readEnvironment().findGitDir().setMustExist(true).build();
 			} catch (Exception e) {
 				e.printStackTrace();
