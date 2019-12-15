@@ -4,10 +4,13 @@ import org.eclipse.jgit.api.Git;
 import org.eclipse.jgit.api.ListBranchCommand;
 import org.eclipse.jgit.api.PullResult;
 import org.eclipse.jgit.api.errors.GitAPIException;
+import org.eclipse.jgit.internal.storage.file.FileRepository;
 import org.eclipse.jgit.lib.Ref;
 import org.eclipse.jgit.lib.Repository;
+import org.eclipse.jgit.revwalk.RevCommit;
 import org.eclipse.jgit.transport.CredentialsProvider;
 
+import java.util.Iterator;
 import java.util.List;
 
 public class GitService {
@@ -56,7 +59,12 @@ public class GitService {
         try{
             List<Ref> call = git.branchList().setListMode(ListBranchCommand.ListMode.ALL).call();
             for(Ref ref : call)
-            {System.out.println("\n\n\nBranch: " + ref.getName()+ "\n\n\n");
+            {
+                System.out.println("\n\n\nBranch: " + ref.getName()+ "\n\n\n");
+                String treeName = ref.getName(); // tag or branch
+                for (RevCommit commit : git.log().add(repository.resolve(treeName)).call()) {
+                    System.out.println(commit.getFullMessage());
+                }
             }
         }catch (Exception e){
             e.printStackTrace();
