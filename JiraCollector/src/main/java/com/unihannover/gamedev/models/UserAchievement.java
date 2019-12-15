@@ -14,7 +14,11 @@ import java.io.Serializable;
  */
 public class UserAchievement implements Model{
 
-	@Override
+	public UserAchievement(){
+		super();
+	}
+
+    @Override
 	public String toJSON()
 	{
 		StringBuilder json = new StringBuilder();

@@ -40,6 +40,16 @@ public class CollectorService {
 	@Autowired
 	AchievementGenerator achievementGenerator;
 
+	List<Achievement> achievementList;
+
+	public List<Achievement> getAchievementList() {
+		return achievementList;
+	}
+
+	public void setAchievementList(List<Achievement> achievementList) {
+		this.achievementList = achievementList;
+	}
+
 	@Bean
 	public void initCollector() {
 		CollectorConfig config = CollectorConfigParser.configJsonToObject();
@@ -97,7 +107,7 @@ public class CollectorService {
 
 	private void initAchievements(boolean reported) {
 		CollectorConfig config = CollectorConfigParser.configJsonToObject();
-		List<Achievement> aList = achievementGenerator.initAchievements();
+		achievementList = achievementGenerator.initAchievements();
 		List<User> uList = httpService.getUsers();
 		List<UserAchievement> uaList = new ArrayList<>();
 
@@ -105,14 +115,14 @@ public class CollectorService {
 		// remake lists as model lists because httpService.sendList() can only take models...
 		List<Model> aModelList = new ArrayList<>();
 		List<Model> uaModelList = new ArrayList<>();
-		for(Achievement achievement: aList){
+		for(Achievement achievement: achievementList){
 			aModelList.add(achievement);
 		}
 
 		// Create UserAchievements for each User and for each Achievement
 		UserAchievement userAchievement;
 		for(User user: uList){
-			for(Achievement achievement: aList){
+			for(Achievement achievement: achievementList){
 				userAchievement = new UserAchievement();
 				userAchievement.setAchievementId(achievement.getId());
 				userAchievement.setCollectorId(config.getCollectorId());

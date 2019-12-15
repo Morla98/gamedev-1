@@ -65,6 +65,32 @@ public class AchievementGenerator {
         a2.setLogic(logic);
         aList.add(a2);
 
+        Achievement a3 = new Achievement();
+        a3.setCollectorId(config.getCollectorId());
+        a3.setId("c" + config.getCollectorId() + "3");
+        a3.setName("Step by Step x5");
+        a3.setDescription("Move five Tickets");
+        a3.setValue(1);
+        a3.setRepository(repository);
+        logic = new AchievementLogic() {
+            @Override
+            public float complied(String useremail) {
+                Metric m = repository.findByUseremail(useremail).get(0);
+                float result = 0f;
+                if(m.getIssue_updated() >= 5){
+                    result = (float)100;
+                }else{
+                    result = (m.getIssue_updated() / (float)5)*(float)100;
+                    if(result >= 100){
+                        result = (float)100;
+                    }
+                }
+                return result;
+            }
+        };
+        a3.setLogic(logic);
+        aList.add(a3);
+
         return aList;
 
     }
