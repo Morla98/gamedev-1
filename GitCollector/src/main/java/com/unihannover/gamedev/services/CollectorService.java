@@ -16,6 +16,7 @@ import org.eclipse.jgit.api.CloneCommand;
 import org.eclipse.jgit.api.Git;
 import org.eclipse.jgit.lib.Repository;
 import org.eclipse.jgit.storage.file.FileRepositoryBuilder;
+import org.eclipse.jgit.transport.CredentialsProvider;
 import org.eclipse.jgit.transport.UsernamePasswordCredentialsProvider;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -127,7 +128,8 @@ public class CollectorService {
 			String adminPass = (String) jsonObject.get("adminPass");
 			cloneCommand.setURI( repoURL);
 			cloneCommand.setDirectory(new File(repoFile));
-			cloneCommand.setCredentialsProvider( new UsernamePasswordCredentialsProvider(adminName, adminPass ));
+			CredentialsProvider credentialsProvider = new UsernamePasswordCredentialsProvider(adminName, adminPass );
+			cloneCommand.setCredentialsProvider(credentialsProvider);
 			try{
 				cloneCommand.call();
 			} catch (Exception e) {
@@ -138,6 +140,7 @@ public class CollectorService {
 				Git git = Git.open(new File(repoFile + "/.git"));
 				Repository repository = repositoryBuilder.setGitDir(new File(repoFile + "/.git")).readEnvironment().findGitDir().setMustExist(true).build();
 				gitservice = new GitService(repository, git);
+				gitservice.runTimer(credentialsProvider);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
