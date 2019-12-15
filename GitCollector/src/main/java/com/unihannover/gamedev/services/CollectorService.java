@@ -148,8 +148,6 @@ public class CollectorService {
 			e.printStackTrace();
 		}
 
-
-
 	}
 
 	private void initAchievements(boolean reported) {
