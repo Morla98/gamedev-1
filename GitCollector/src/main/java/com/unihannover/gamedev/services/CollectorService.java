@@ -1,7 +1,9 @@
 package com.unihannover.gamedev.services;
 
 import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
+import java.io.Reader;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,6 +17,8 @@ import org.eclipse.jgit.api.Git;
 import org.eclipse.jgit.lib.Repository;
 import org.eclipse.jgit.storage.file.FileRepositoryBuilder;
 import org.eclipse.jgit.transport.UsernamePasswordCredentialsProvider;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
@@ -31,7 +35,7 @@ import com.unihannover.gamedev.security.JwtTokenProvider;
 public class CollectorService {
 	@Value("${app.jwtSecret}")
 	private String jwtSecret;
-
+	private Repository repository;
 	/*
 	@Autowired
 	CollectorConfig config;
@@ -51,6 +55,8 @@ public class CollectorService {
 	public List<Achievement> getAchievementList() {
 		return achievementList;
 	}
+
+	public Repository getRepository(){ return repository; }
 
 	public void setAchievementList(List<Achievement> achievementList) {
 		this.achievementList = achievementList;
@@ -107,25 +113,38 @@ public class CollectorService {
 		// TODO: reported should be true if collector is already known by server so that he doesnt (re)send his Achievements
 		boolean reported = false;
 		initAchievements(reported);
-		CloneCommand cloneCommand = Git.cloneRepository();
-		String repoURL = "https://github.com/omahildegard/meinsupercoolesgitrepository.git";
-		String repoFile = "./repo";
-		String adminName =  "omahilde@1secmail.com";
-		String adminpass = "omahildessupercoolesgitrepo";
-		cloneCommand.setURI( repoURL);
-		cloneCommand.setDirectory(new File(repoFile));
-		cloneCommand.setCredentialsProvider( new UsernamePasswordCredentialsProvider(adminName, adminpass ));
-		try{
-			cloneCommand.call();
-		} catch (Exception e) {
+
+
+
+		JSONParser parser = new JSONParser();
+
+		try (Reader reader = new FileReader("config/collectorConfiguration/gitCredentials.json")) {
+			JSONObject jsonObject = (JSONObject) parser.parse(reader);
+			CloneCommand cloneCommand = Git.cloneRepository();
+			String repoURL = (String) jsonObject.get("repoURL");
+			String repoFile = "./repo";
+			String adminName =  (String) jsonObject.get("adminName");
+			String adminPass = (String) jsonObject.get("adminPass");
+			cloneCommand.setURI( repoURL);
+			cloneCommand.setDirectory(new File(repoFile));
+			cloneCommand.setCredentialsProvider( new UsernamePasswordCredentialsProvider(adminName, adminPass ));
+			try{
+				cloneCommand.call();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			FileRepositoryBuilder repositoryBuilder = new FileRepositoryBuilder();
+			try{
+				repository = repositoryBuilder.setGitDir(new File(repoFile + "/.git")).readEnvironment().findGitDir().setMustExist(true).build();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} catch(Exception e) {
 			e.printStackTrace();
 		}
-		FileRepositoryBuilder repositoryBuilder = new FileRepositoryBuilder();
-		try{
-			Repository repository = repositoryBuilder.setGitDir(new File(repoFile + "/.git")).readEnvironment().findGitDir().setMustExist(true).build();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+
+
+
 	}
 
 	private void initAchievements(boolean reported) {
