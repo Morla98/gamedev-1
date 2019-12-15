@@ -1,6 +1,7 @@
 package com.unihannover.gamedev.services;
 
 import org.eclipse.jgit.api.Git;
+import org.eclipse.jgit.api.ListBranchCommand;
 import org.eclipse.jgit.api.PullResult;
 import org.eclipse.jgit.api.errors.GitAPIException;
 import org.eclipse.jgit.lib.Ref;
@@ -53,9 +54,10 @@ public class GitService {
     public void iterateBranches(){
         //List<Ref> call = null;
         try{
-            List<Ref> call = git.branchList().call();
+            List<Ref> call = git.branchList().setListMode(ListBranchCommand.ListMode.ALL).call();
             for(Ref ref : call)
-            {System.out.println("\n\n\nBranch: " + ref.getName()+ "\n\n\n");}
+            {System.out.println("\n\n\nBranch: " + ref.getName()+ "\n\n\n");
+            }
         }catch (Exception e){
             e.printStackTrace();
         }
