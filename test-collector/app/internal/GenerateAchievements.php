@@ -9,6 +9,7 @@ require __DIR__ . '/../vendor/autoload.php';
 
 use DevGame\TestConnector\Logic\AchievementLogicInterface;
 use DevGame\TestConnector\Logic\JiraNoob;
+use DevGame\TestConnector\Logic\MyJob;
 use DevGame\TestConnector\Logic\NotMyJob;
 use DevGame\TestConnector\Util\DatabaseConnector;
 
@@ -23,7 +24,7 @@ if (null === $dbHandle) {
  *
  * @var $achievementClass AchievementLogicInterface
  */
-foreach([JiraNoob::class, NotMyJob::class] as $achievementClass) {
+foreach([JiraNoob::class, NotMyJob::class, MyJob::class] as $achievementClass) {
     print(sprintf("Updating user-achievements for achievement %s ... ", $achievementClass));
     $ret = $achievementClass::generateOrUpdate($dbHandle);
     print(sprintf("done. %d affected. \n", $ret));

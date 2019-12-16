@@ -5,6 +5,7 @@ class JiraHookController
 {
     private const ACTION_ISSUE_CLOSED = 'issue-closed';
     private const ACTION_ASSIGNED_AWAY = 'assigned-away';
+    private const ACTION_ASSIGNED_TO_ME = 'assigned-to-me';
 
     protected $dbHandle;
 
@@ -91,12 +92,15 @@ class JiraHookController
             if ($changelogItem->{"field"} == "assignee" && $changelogItem->{"fieldtype"} == "jira" && $changelogItem->{"from"} == $userKey && $changelogItem->{"to"} !== $userKey) {
                 $this->insertMetric($userMail, self::ACTION_ASSIGNED_AWAY, $issueKey, $timestamp);
             }
+            // Issue assigned to myself
+            if ($changelogItem->{"field"} == "assignee" && $changelogItem->{"fieldtype"} == "jira" && $changelogItem->{"from"} !== $userKey && $changelogItem->{"to"} == $userKey) {
+                $this->insertMetric($userMail, self::ACTION_ASSIGNED_TO_ME, $issueKey, $timestamp);
+            }
             // TODO: Add more supported event types
         }
     }
 
     protected function insertMetric(string $userMail, string $action, string $jiraKey, string $timestamp): void {
         $result = @pg_execute($this->dbHandle, "insert-metrics-query", [$userMail, $action, $jiraKey, $timestamp]);
-        var_dump($result); // UNDONE: Debug output
     }
 }
