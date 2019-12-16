@@ -26,8 +26,8 @@ public class AchievementGenerator {
         Achievement a1 = new Achievement();
         a1.setCollectorId(config.getCollectorId());
         a1.setId("c" + config.getCollectorId() + "1");
-        a1.setName("Hello Jira");
-        a1.setDescription("Create your first Ticket");
+        a1.setName("Hello Git");
+        a1.setDescription("Push for the first Time");
         a1.setValue(1);
         a1.setRepository(repository);
         logic = new AchievementLogic() {
