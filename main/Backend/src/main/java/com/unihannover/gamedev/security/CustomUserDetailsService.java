@@ -8,12 +8,25 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.unihannover.gamedev.models.User;
 
+/**
+ * Represents A class that contains details of Users, used in transactions.
+ *
+ * @author Dominik Andrae
+ */
 @Service
 public class CustomUserDetailsService implements UserDetailsService {
 
     //@Autowired
     //UserRepository userRepository;
 
+    /**
+     * Returns the details of a User, given the Users name or E-Mail address (primary key).
+     * Exception will not be thrown right now, since the code is commented.
+     *
+     * @param usernameOrEmail The id of the User
+     * @return The details of the User
+     * @throws UsernameNotFoundException
+     */
     @Override
     @Transactional
     public UserDetails loadUserByUsername(String usernameOrEmail)
@@ -31,7 +44,14 @@ public class CustomUserDetailsService implements UserDetailsService {
         return UserPrincipal.create(user);
     }
 
-    // This method is used by JWTAuthenticationFilter
+    /**
+     * Returns the details of a User, given the User id.
+     * Userid(uid) is a redundant attribute.
+     * Mostly used in JWTAuthenticationFilter.
+     *
+     * @param id The user id
+     * @return The details of the user
+     */
     @Transactional
     public UserDetails loadUserById(String id) {
        /* User user = userRepository.findById(id).orElseThrow(

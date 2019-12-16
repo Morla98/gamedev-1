@@ -14,6 +14,10 @@ import org.springframework.stereotype.Service;
 
 import com.unihannover.gamedev.Configuration;
 
+/**
+ *
+ * @author Dominik Andrae
+ */
 @Service
 public class LdapAuthenticator {
 	public boolean performAuthentication(String email, String password) {

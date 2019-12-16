@@ -13,14 +13,15 @@ import org.springframework.web.bind.annotation.RestController;
 import com.unihannover.gamedev.models.Achievement;
 import com.unihannover.gamedev.repositories.AchievementRepository;
 
+/**
+ * A controller to handle HTTP requests about Achievements.
+ *
+ * @author Lukas Niehus
+ */
 @RestController
 public class AchievementController extends BaseController {
 
-	/**
-	 * A controller to handle HTTP requests about acievements that belong to an achievement.
-	 *
-	 * @author Lukas Niehus
-	 */
+
 	@Autowired
     private AchievementRepository repository;
 

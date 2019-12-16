@@ -15,6 +15,11 @@ import org.springframework.security.web.authentication.WebAuthenticationDetailsS
 import org.springframework.util.StringUtils;
 import org.springframework.web.filter.OncePerRequestFilter;
 
+/**
+ *
+ *
+ * @author Dominik Andrae
+ */
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
     @Autowired
@@ -24,7 +29,6 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
     private CustomUserDetailsService customUserDetailsService;
 
    // private static final Logger logger = LoggerFactory.getLogger(JwtAuthenticationFilter.class);
-
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
         try {
@@ -46,6 +50,13 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         filterChain.doFilter(request, response);
     }
 
+    /**
+     * Returns the JWT token used to verify access for a HTTP request.
+     * Returns null, if there is no token.
+     *
+     * @param request The HTTP request
+     * @return the bearerToken
+     */
     private String getJwtFromRequest(HttpServletRequest request) {
         String bearerToken = request.getHeader("X-Auth-Token");
         if (StringUtils.hasText(bearerToken)){ // && bearerToken.startsWith("Bearer ")) {
