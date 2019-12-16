@@ -14,11 +14,8 @@ public class Metric {
     @Column(name = "useremail")
     private String useremail;
 
-    @Column(name = "issue_created")
-    private int issue_created;
-
-    @Column(name = "issue_updated")
-    private int issue_updated;
+    @Column(name = "numberOfCommits")
+    private int numberOfCommits;
 
     public String getUseremail() {
         return useremail;
@@ -29,18 +26,10 @@ public class Metric {
     }
 
     public int getIssue_created() {
-        return issue_created;
+        return numberOfCommits;
     }
 
     public void setIssue_created(int issue_created) {
-        this.issue_created = issue_created;
-    }
-
-    public int getIssue_updated() {
-        return issue_updated;
-    }
-
-    public void setIssue_updated(int issue_updated) {
-        this.issue_updated = issue_updated;
+        this.numberOfCommits = issue_created;
     }
 }

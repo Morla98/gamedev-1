@@ -1,5 +1,6 @@
 package com.unihannover.gamedev.services;
 
+import com.unihannover.gamedev.repositories.MetricRepository;
 import org.eclipse.jgit.api.Git;
 import org.eclipse.jgit.api.ListBranchCommand;
 import org.eclipse.jgit.api.PullResult;
@@ -20,19 +21,24 @@ import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
+import com.unihannover.gamedev.models.*;
+import org.springframework.beans.factory.annotation.Autowired;
+
 /**
  * Represents a Service that handles Git Requests.
  *
  * @author Felix Volodarskis, Lukas Niehus, Leon Curth
  */
 public class GitService {
-    private Repository repository;
+    private Repository git_repository;
     private Git git;
     private int lastCommitDate;
+    @Autowired
+    public MetricRepository repository;
     //private
     public GitService(Repository repository, Git git)
     {
-        this.repository = repository;
+        this.git_repository = repository;
         this.git = git;
         setLastCommitDate();
     }
@@ -93,7 +99,18 @@ public class GitService {
         };
         thread.start();
     }
+    public void parseCommit(RevCommit commit){
+        System.out.println("Commiter_Email " + commit.getCommitterIdent().getEmailAddress());
+        String user_email = commit.getCommitterIdent().getEmailAddress();
+        int TimeStamp = commit.getCommitTime();
+        String commit_message = commit.getFullMessage();
+        if(user_email.equals("dev1@example.com")){
+            Metric m = repository.findByUseremail(user_email).get(0);
+            m.setIssue_created(m.getIssue_created() + 1);
+        }
 
+        return;
+    }
     public void iterateBranches(){
         try{
             List<Ref> call = git.branchList().setListMode(ListBranchCommand.ListMode.ALL).call();
@@ -102,12 +119,13 @@ public class GitService {
             {
                 System.out.println("\n\n\nBranch: " + ref.getName()+ "\n\n\n");
                 String treeName = ref.getName(); // tag or branch
-                for (RevCommit commit : git.log().add(repository.resolve(treeName)).call()) {
+                for (RevCommit commit : git.log().add(git_repository.resolve(treeName)).call()) {
                     if(commit.getCommitTime() > lastCommitDate) {
                         if(latest_date < commit.getCommitTime()){
                             latest_date = commit.getCommitTime();
                         }
-                        System.out.println("Full Message: " + commit.getFullMessage() + "; Timestamp(int): " + commit.getCommitTime());
+                        parseCommit(commit);
+                        //System.out.println("Committer email: " + commit.getCommitterIdent().getEmailAddress() + "; Full Message: " + commit.getFullMessage() + "; Timestamp(int): " + commit.getCommitTime());
                     }
                 }
             }

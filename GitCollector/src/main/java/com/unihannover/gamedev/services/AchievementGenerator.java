@@ -34,16 +34,17 @@ public class AchievementGenerator {
             @Override
             public float complied(String useremail) {
                 Metric m = repository.findByUseremail(useremail).get(0); //TODO handle size != 1
-                float result = 0f;
+               /* float result = 0f;
                 if(m.getIssue_created() > 0){
                     result = 100f;
                 }
-                return result;
+                return result;*/
+                return m.getIssue_created();
             }
         };
         a1.setLogic(logic);
         aList.add(a1);
-
+/*
         Achievement a2 = new Achievement();
         a2.setCollectorId(config.getCollectorId());
         a2.setId("c" + config.getCollectorId() + "2");
@@ -89,7 +90,7 @@ public class AchievementGenerator {
             }
         };
         a3.setLogic(logic);
-        aList.add(a3);
+        aList.add(a3);*/
 
         return aList;
 
