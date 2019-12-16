@@ -4,7 +4,7 @@ namespace DevGame\TestConnector\Logic;
 interface AchievementLogicInterface
 {
     /**
-     * Generates or updates a user-achievements
+     * Generates or updates user-achievements
      *
      * @param $dbHandle object Handle to the database
      * @return int The amount of generated or updated user-achievements
