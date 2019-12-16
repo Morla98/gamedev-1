@@ -9,21 +9,59 @@ import org.eclipse.jgit.lib.Ref;
 import org.eclipse.jgit.lib.Repository;
 import org.eclipse.jgit.revwalk.RevCommit;
 import org.eclipse.jgit.transport.CredentialsProvider;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
 
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.Reader;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
+/**
+ * Represents a Service that handles Git Requests.
+ *
+ * @author Felix Volodarskis, Lukas Niehus, Leon Curth
+ */
 public class GitService {
     private Repository repository;
     private Git git;
-    private int lastCommitDate = 0;
+    private int lastCommitDate;
     //private
     public GitService(Repository repository, Git git)
     {
         this.repository = repository;
         this.git = git;
+        setLastCommitDate();
     }
+
+    public void setLastCommitDate() {
+        JSONParser parser = new JSONParser();
+        try {
+            Reader reader = new FileReader("config/collectorConfiguration/gitTimestamp.json");
+            JSONObject jsonObject = (JSONObject) parser.parse(reader);
+            lastCommitDate = ((Long) jsonObject.get("timestamp")).intValue();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void writeTimestamptoJSON(int timestamp)
+    {
+        JSONObject time = new JSONObject();
+        time.put("timestamp", timestamp);
+        try {
+            FileWriter file = new FileWriter("config/collectorConfiguration/gitTimestamp.json");
+            file.write(time.toJSONString());
+            file.flush();
+            file.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     public void runTimer(CredentialsProvider user)
     {
 
@@ -74,6 +112,7 @@ public class GitService {
                 }
             }
             lastCommitDate = latest_date;
+            writeTimestamptoJSON(lastCommitDate);
         }catch (Exception e){
             e.printStackTrace();
         }
