@@ -4,6 +4,7 @@ namespace DevGame\TestConnector\Controller;
 class JiraHookController
 {
     private const ACTION_ISSUE_CLOSED = 'issue-closed';
+    private const ACTION_ASSIGNED_AWAY = 'assigned-away';
 
     protected $dbHandle;
 
@@ -41,10 +42,24 @@ class JiraHookController
 
     protected function progressHookObject($jsonObj): void
     {
+        // Extract event type
+        $eventType = $jsonObj->{"webhookEvent"};
+        if (null == $eventType) {
+            throw new \RuntimeException("Error extracting the event type.");
+        }
+        if ("jira:issue_updated" !== $eventType) {
+            return;
+        }
+
         // Extract user email
         $userMail = $jsonObj->{"user"}->{"emailAddress"};
         if (null === $userMail) {
             throw new \RuntimeException("Error extracting the user email.");
+        }
+
+        $userKey = $jsonObj->{"user"}->{"key"};
+        if (null == $userKey) {
+            throw new \RuntimeException("Error extracting the user key.");
         }
 
         // Extract issue reference
@@ -56,9 +71,10 @@ class JiraHookController
         // Extract timestamp
         $timestamp = (int) $jsonObj->{"timestamp"};
         if (!is_numeric($timestamp)) {
-            throw new \RuntimeException("Error extracting the timestamp");
+            throw new \RuntimeException("Error extracting the timestamp.");
         }
 
+        // Extract changelog items
         $changelogItems = $jsonObj->{"changelog"}->{"items"};
         if (!is_array($changelogItems)) {
             throw new \RuntimeException("Error extracting the changelog items.");
@@ -70,6 +86,10 @@ class JiraHookController
             if ($changelogItem->{"field"} == "status" && $changelogItem->{"fieldtype"} == "jira" && $changelogItem->{"toString"} == 'Done') {
                 $this->insertMetric($userMail, self::ACTION_ISSUE_CLOSED, $issueKey, $timestamp);
                 continue;
+            }
+            // Issue assigned away
+            if ($changelogItem->{"field"} == "assignee" && $changelogItem->{"fieldtype"} == "jira" && $changelogItem->{"from"} == $userKey && $changelogItem->{"to"} !== $userKey) {
+                $this->insertMetric($userMail, self::ACTION_ASSIGNED_AWAY, $issueKey, $timestamp);
             }
             // TODO: Add more supported event types
         }

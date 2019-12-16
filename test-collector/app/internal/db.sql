@@ -14,6 +14,13 @@ VALUES
   ('jira-noob', 'template-collector', 'JIRA Noob', 'Close at least one JIRA ticket', 1)
 ON CONFLICT ("id", "collector_id") DO NOTHING
 ;
+
+INSERT INTO main.achievements
+  ("id", "collector_id", "name", "description", "value")
+VALUES
+  ('not-my-job', 'template-collector', 'Not My Job', 'Assign at least 10 JIRA tickets to someone else', 5)
+ON CONFLICT ("id", "collector_id") DO NOTHING
+;
 -- ...
 
 
