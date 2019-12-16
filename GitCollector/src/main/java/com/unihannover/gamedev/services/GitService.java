@@ -17,11 +17,15 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Reader;
+import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
 import com.unihannover.gamedev.models.*;
+import com.unihannover.gamedev.CollectorConfig;
+import com.unihannover.gamedev.CollectorConfigParser;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**
@@ -33,8 +37,7 @@ public class GitService {
     private Repository git_repository;
     private Git git;
     private int lastCommitDate;
-    @Autowired
-    public MetricRepository repository;
+    private List<Achievement> achievementList;
     //private
     public GitService(Repository repository, Git git)
     {
@@ -68,9 +71,9 @@ public class GitService {
         }
     }
 
-    public void runTimer(CredentialsProvider user)
+    public void runTimer(CredentialsProvider user, MetricRepository repository,HttpService httpService, List<Achievement> achievementList1)
     {
-
+        achievementList = achievementList1;
         Thread thread = new Thread() {
             public void run() {
                 while (true) {
@@ -90,7 +93,7 @@ public class GitService {
 
                     if (result.isSuccessful()) {
                         System.out.println("\n\nPULL SUCCESS!\n\n");
-                        iterateBranches();
+                        iterateBranches(repository, httpService);
                     } else {
                         System.out.println("\n\nPULL FAILED!\n\n");
                     }
@@ -99,33 +102,60 @@ public class GitService {
         };
         thread.start();
     }
-    public void parseCommit(RevCommit commit){
-        System.out.println("Commiter_Email " + commit.getCommitterIdent().getEmailAddress());
-        String user_email = commit.getCommitterIdent().getEmailAddress();
-        int TimeStamp = commit.getCommitTime();
-        String commit_message = commit.getFullMessage();
-        if(user_email.equals("dev1@example.com")){
-            Metric m = repository.findByUseremail(user_email).get(0);
-            m.setIssue_created(m.getIssue_created() + 1);
+    public void updateAchievements(String user_email, HttpService httpService){
+        List<Model> uaList = new ArrayList<>();
+        UserAchievement newUserAchievement;
+        CollectorConfig config = CollectorConfigParser.configJsonToObject();
+
+        for(Achievement achievement: achievementList){
+            newUserAchievement = new UserAchievement();
+            newUserAchievement.setCollectorId(config.getCollectorId());
+            newUserAchievement.setUserEmail(user_email);
+            newUserAchievement.setAchievementId(achievement.getId());
+            newUserAchievement.setProgress(achievement.getLogic().complied(user_email));
+            newUserAchievement.setLastUpdated(new Timestamp(System.currentTimeMillis()));
+            uaList.add(newUserAchievement);
         }
+        httpService.sendList(uaList, "http://devgame:8080/api/user-achievements");
+        return;
+    }
+    public void parseCommit(RevCommit commit, MetricRepository repository,HttpService httpService){
+        String user_email = commit.getCommitterIdent().getEmailAddress();
+        //int TimeStamp = commit.getCommitTime();
+        //String commit_message = commit.getFullMessage();
+        try{
+            if(repository.findByUseremail(user_email).get(0) != null){
+                System.out.println("Committer_Email:|" + user_email +"|");
+                Metric m = repository.findByUseremail(user_email).get(0);
+                Metric new_metric = new Metric();
+                new_metric.setUseremail(user_email);
+                new_metric.setNumberOfCommits(m.getNumberOfCommits() + 1);
+                repository.save(new_metric);
+                updateAchievements(user_email, httpService);
+
+            }
+        }catch (Exception e){
+            System.out.println("email doesnt exist in Collector");
+            //e.printStackTrace();
+        }
+
 
         return;
     }
-    public void iterateBranches(){
+    public void iterateBranches(MetricRepository repository, HttpService httpService){
         try{
             List<Ref> call = git.branchList().setListMode(ListBranchCommand.ListMode.ALL).call();
             int latest_date = lastCommitDate;
             for(Ref ref : call)
             {
-                System.out.println("\n\n\nBranch: " + ref.getName()+ "\n\n\n");
+                System.out.println("\nBranch: " + ref.getName()+ "\n");
                 String treeName = ref.getName(); // tag or branch
                 for (RevCommit commit : git.log().add(git_repository.resolve(treeName)).call()) {
                     if(commit.getCommitTime() > lastCommitDate) {
                         if(latest_date < commit.getCommitTime()){
                             latest_date = commit.getCommitTime();
                         }
-                        parseCommit(commit);
-                        //System.out.println("Committer email: " + commit.getCommitterIdent().getEmailAddress() + "; Full Message: " + commit.getFullMessage() + "; Timestamp(int): " + commit.getCommitTime());
+                        parseCommit(commit, repository, httpService);
                     }
                 }
             }

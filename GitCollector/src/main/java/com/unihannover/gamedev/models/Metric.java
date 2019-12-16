@@ -25,11 +25,11 @@ public class Metric {
         this.useremail = useremail;
     }
 
-    public int getIssue_created() {
+    public int getNumberOfCommits() {
         return numberOfCommits;
     }
 
-    public void setIssue_created(int issue_created) {
-        this.numberOfCommits = issue_created;
+    public void setNumberOfCommits(int numberOfCommits) {
+        this.numberOfCommits = numberOfCommits;
     }
 }

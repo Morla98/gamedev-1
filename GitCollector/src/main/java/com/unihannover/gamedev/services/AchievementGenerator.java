@@ -34,12 +34,11 @@ public class AchievementGenerator {
             @Override
             public float complied(String useremail) {
                 Metric m = repository.findByUseremail(useremail).get(0); //TODO handle size != 1
-               /* float result = 0f;
-                if(m.getIssue_created() > 0){
-                    result = 100f;
+                float result = 0f;
+                if(m.getNumberOfCommits() > 0){
+                    result = (100 * m.getNumberOfCommits()) * 1f;
                 }
-                return result;*/
-                return m.getIssue_created();
+                return result;
             }
         };
         a1.setLogic(logic);

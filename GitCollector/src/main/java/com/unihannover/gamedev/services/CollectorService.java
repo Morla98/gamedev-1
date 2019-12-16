@@ -37,6 +37,8 @@ public class CollectorService {
 	@Value("${app.jwtSecret}")
 	private String jwtSecret;
 	private GitService gitservice;
+	@Autowired
+	public MetricRepository repository;
 	/*
 	@Autowired
 	CollectorConfig config;
@@ -138,10 +140,9 @@ public class CollectorService {
 			FileRepositoryBuilder repositoryBuilder = new FileRepositoryBuilder();
 			try{
 				Git git = Git.open(new File(repoFile + "/.git"));
-				Repository repository = repositoryBuilder.setGitDir(new File(repoFile + "/.git")).readEnvironment().findGitDir().setMustExist(true).build();
-				gitservice = new GitService(repository, git);
-				gitservice.runTimer(credentialsProvider);
-				gitservice.iterateBranches();
+				Repository git_repository = repositoryBuilder.setGitDir(new File(repoFile + "/.git")).readEnvironment().findGitDir().setMustExist(true).build();
+				gitservice = new GitService(git_repository, git);
+				gitservice.runTimer(credentialsProvider, repository,httpService, getAchievementList());
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -155,6 +156,14 @@ public class CollectorService {
 		CollectorConfig config = CollectorConfigParser.configJsonToObject();
 		achievementList = achievementGenerator.initAchievements();
 		List<User> uList = httpService.getUsers();
+		for(User user : uList){
+			Metric new_metric = new Metric();
+			new_metric.setUseremail(user.getEmail());
+			new_metric.setNumberOfCommits(0);
+			repository.save(new_metric);
+			Metric m = repository.findByUseremail(user.getEmail()).get(0);
+			System.out.println("Initializing git_collector_metrics:: user_email: " + user.getEmail() + "; #ofCommits: " + m.getNumberOfCommits());
+		}
 		List<UserAchievement> uaList = new ArrayList<>();
 
 
