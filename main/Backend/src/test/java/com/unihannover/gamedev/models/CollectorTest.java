@@ -6,21 +6,35 @@ import org.junit.jupiter.api.Test;
 
 import java.sql.Timestamp;
 
+/**
+ * JUnit-Tests for package models.
+ * Checks, if the methods in Collector work correctly.
+ */
 class CollectorTest{
+
+	/**
+	 * Tests if the Collector id (primary key) is set correctly.
+	 */
 	@Test
 	void setIdTest(){
 		Collector collector = new Collector();
 		collector.setId("ThisIsMyId");
 		assertEquals("ThisIsMyId", collector.getId());
 	}
-	
+
+	/**
+	 * Tests if the Collector name is set correctly.
+	 */
 	@Test
 	void setNameTest(){
 		Collector collector = new Collector();
 		collector.setName("Collector1");
 		assertEquals("Collector1", collector.getName());
 	}
-	
+
+	/**
+	 * Tests if the Collector timestamp is set correctly.
+	 */
 	@Test
 	void setLastSeenTest(){
 		Collector collector = new Collector();
@@ -28,7 +42,10 @@ class CollectorTest{
 		collector.setLastSeen(timestamp);
 		assertEquals(timestamp, collector.getLastSeen());
 	}
-	
+
+	/**
+	 * Tests if the Collector token is set correctly.
+	 */
 	@Test
 	void setTokenTest(){
 		Collector collector = new Collector();
