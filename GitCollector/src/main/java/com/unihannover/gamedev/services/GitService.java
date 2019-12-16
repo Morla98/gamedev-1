@@ -10,12 +10,15 @@ import org.eclipse.jgit.lib.Repository;
 import org.eclipse.jgit.revwalk.RevCommit;
 import org.eclipse.jgit.transport.CredentialsProvider;
 
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
 public class GitService {
     private Repository repository;
     private Git git;
+    private int lastCommitDate = 0;
+    //private
     public GitService(Repository repository, Git git)
     {
         this.repository = repository;
@@ -53,19 +56,24 @@ public class GitService {
         thread.start();
     }
 
-
     public void iterateBranches(){
-        //List<Ref> call = null;
         try{
             List<Ref> call = git.branchList().setListMode(ListBranchCommand.ListMode.ALL).call();
+            int latest_date = lastCommitDate;
             for(Ref ref : call)
             {
                 System.out.println("\n\n\nBranch: " + ref.getName()+ "\n\n\n");
                 String treeName = ref.getName(); // tag or branch
                 for (RevCommit commit : git.log().add(repository.resolve(treeName)).call()) {
-                    System.out.println(commit.getFullMessage());
+                    if(commit.getCommitTime() > lastCommitDate) {
+                        if(latest_date < commit.getCommitTime()){
+                            latest_date = commit.getCommitTime();
+                        }
+                        System.out.println("Full Message: " + commit.getFullMessage() + "; Timestamp(int): " + commit.getCommitTime());
+                    }
                 }
             }
+            lastCommitDate = latest_date;
         }catch (Exception e){
             e.printStackTrace();
         }
