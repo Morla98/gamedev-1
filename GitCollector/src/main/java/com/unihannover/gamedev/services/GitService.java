@@ -19,10 +19,7 @@ import org.json.simple.parser.JSONParser;
 
 import java.io.*;
 import java.sql.Timestamp;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 
 import com.unihannover.gamedev.models.*;
 import com.unihannover.gamedev.CollectorConfig;
@@ -37,9 +34,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 public class GitService {
     private Repository git_repository;
     private Git git;
+    //TODO: entweder lastCommitDate oder int benutzen
     private int lastCommitDate;
+    //TODO: alle benötigten Daten aus CollectorService nicht durch Funktionsuafrufe bekommen, entweder neu initialisiern oder GitService von CollectorSerivce erben lassen
     private List<Achievement> achievementList;
     private ArrayList<String> seenCommits = new ArrayList<>();
+    private Date minDate;
+    private Calendar calendar;
     //private
     public GitService(Repository repository, Git git)
     {
@@ -136,18 +137,29 @@ public class GitService {
 
         }
     }
-
+    //TODO: richtige Timezone benutzen
+    public int getTimeRelatedAchievement(RevCommit commit, Metric m){
+        calendar = GregorianCalendar.getInstance();
+        calendar.setTime(commit.getCommitterIdent().getWhen());
+        System.out.println("HOUR OF DAY: " + calendar.get(Calendar.HOUR_OF_DAY));
+        if((calendar.get(Calendar.HOUR_OF_DAY) > 12)){
+            if((calendar.get(Calendar.HOUR_OF_DAY) < 13)){
+                return m.getDinnerCommits() + 1;
+            }
+        }
+        return m.getDinnerCommits();
+    }
     public void parseCommit(RevCommit commit, MetricRepository repository,HttpService httpService){
         String user_email = commit.getCommitterIdent().getEmailAddress();
-        //int TimeStamp = commit.getCommitTime();
         //String commit_message = commit.getFullMessage();
         try{
             if(repository.findByUseremail(user_email).get(0) != null){
-                System.out.println("Committer_Email:|" + user_email +"|");
+                System.out.println("Committer_Email:|" + user_email +"| Commit time: " + commit.getCommitTime() + "; Commit get When(): " + commit.getCommitterIdent().getWhen().getHours());
                 Metric m = repository.findByUseremail(user_email).get(0);
                 Metric new_metric = new Metric();
                 new_metric.setUseremail(user_email);
                 new_metric.setNumberOfCommits(m.getNumberOfCommits() + 1);
+                new_metric.setDinnerCommits(getTimeRelatedAchievement(commit, new_metric));
                 getDiffs(commit);
                 repository.save(new_metric);
                 updateAchievements(user_email, httpService);
@@ -161,6 +173,8 @@ public class GitService {
 
         return;
     }
+    //TODO: eher getWhen() anstatt getCommitTime benutzen
+    //TODO: Exceptions richtig handeln, insbesondere leeres email repo <--> user existiert nicht exception vorher abfragen
     public void iterateBranches(MetricRepository repository, HttpService httpService){
         try{
             List<Ref> call = git.branchList().setListMode(ListBranchCommand.ListMode.ALL).call();

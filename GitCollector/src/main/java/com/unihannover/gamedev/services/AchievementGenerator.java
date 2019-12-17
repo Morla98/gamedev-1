@@ -34,32 +34,24 @@ public class AchievementGenerator {
             @Override
             public float complied(String useremail) {
                 Metric m = repository.findByUseremail(useremail).get(0); //TODO handle size != 1
-                float result = 0f;
-                if(m.getNumberOfCommits() > 0){
-                    result = (100 * m.getNumberOfCommits()) * 1f;
-                }
-                return result;
+                return (m.getNumberOfCommits() > 0) ? 100 : 0;
             }
         };
         a1.setLogic(logic);
         aList.add(a1);
-/*
+
         Achievement a2 = new Achievement();
         a2.setCollectorId(config.getCollectorId());
         a2.setId("c" + config.getCollectorId() + "2");
-        a2.setName("Step by Step");
-        a2.setDescription("Move your first Ticket");
+        a2.setName("Experienced Committer");
+        a2.setDescription("Commit 50 times");
         a2.setValue(1);
         a2.setRepository(repository);
         logic = new AchievementLogic() {
             @Override
             public float complied(String useremail) {
-                Metric m = repository.findByUseremail(useremail).get(0);
-                float result = 0f;
-                if(m.getIssue_updated() > 0){
-                    result = 100f;
-                }
-                return result;
+                Metric m = repository.findByUseremail(useremail).get(0); //TODO handle size != 1
+                return (m.getNumberOfCommits() > 49) ? 100 : ((m.getNumberOfCommits() / 50f) * 100f);
             }
         };
         a2.setLogic(logic);
@@ -68,28 +60,19 @@ public class AchievementGenerator {
         Achievement a3 = new Achievement();
         a3.setCollectorId(config.getCollectorId());
         a3.setId("c" + config.getCollectorId() + "3");
-        a3.setName("Step by Step x5");
-        a3.setDescription("Move five Tickets");
-        a3.setValue(1);
+        a3.setName("Commit, Push, Eat, Repeat");
+        a3.setDescription("Push 100 times between 12am and 1pm");
+        a3.setValue(10);
         a3.setRepository(repository);
         logic = new AchievementLogic() {
             @Override
             public float complied(String useremail) {
                 Metric m = repository.findByUseremail(useremail).get(0);
-                float result = 0f;
-                if(m.getIssue_updated() >= 5){
-                    result = (float)100;
-                }else{
-                    result = (m.getIssue_updated() / (float)5)*(float)100;
-                    if(result >= 100){
-                        result = (float)100;
-                    }
-                }
-                return result;
+                return (m.getDinnerCommits() > 99) ? 100 : ((m.getDinnerCommits() / 100f) * 100f);
             }
         };
         a3.setLogic(logic);
-        aList.add(a3);*/
+        aList.add(a3);
 
         return aList;
 

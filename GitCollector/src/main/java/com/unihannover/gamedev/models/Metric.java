@@ -17,6 +17,17 @@ public class Metric {
     @Column(name = "numberOfCommits")
     private int numberOfCommits;
 
+    public int getDinnerCommits() {
+        return DinnerCommits;
+    }
+
+    public void setDinnerCommits(int dinnerCommits) {
+        DinnerCommits = dinnerCommits;
+    }
+
+    @Column(name = "DinnerCommits")
+    private int DinnerCommits;
+
     public String getUseremail() {
         return useremail;
     }
@@ -32,4 +43,5 @@ public class Metric {
     public void setNumberOfCommits(int numberOfCommits) {
         this.numberOfCommits = numberOfCommits;
     }
+
 }
