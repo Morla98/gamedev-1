@@ -28,6 +28,9 @@ public class UserAchievementController extends BaseController {
     @Autowired
     private CollectorRepository colRepository;
 
+    @Autowired
+    private AchievementRepository achRepository;
+
     /**
      * Returns all achievements in the repository, regardless of the user it belongs to.
      *
@@ -50,25 +53,26 @@ public class UserAchievementController extends BaseController {
         }
 
         /**
-         * Returns the preview of all achievements.
+         * Returns the previews of all achievements in a List of PreviewDtos.
          * Previews contain the most important user achievements that have more progress than 0%.
          *
          * @param userEmail The user to generate the preview for
          * @return The list of most interesting achievements for the given user
          */
         @RequestMapping(value="/user-achievements/preview", method = RequestMethod.GET)
-        public List<List<UserAchievement>> getUserAchievementsPreview(@RequestParam(value="userEmail") String userEmail) {
+        public List<PreviewDto> getUserAchievementsPreview(@RequestParam(value="userEmail") String userEmail) {
 
             List<Collector> collectorList = colRepository.findAll();
             List<String> collectorIds = new ArrayList<>();
+            List<PreviewDto> dtoList = new ArrayList<>();
 
             for(Collector c : collectorList) {
-                collectorIds.add(c.getName());
+                String collectorName = c.getName();
+                PreviewDto dto = getUserAchievementsCollectorPreview(userEmail, collectorName);
+                dtoList.add(dto);
             }
 
-            CollectorPreviewDto dto = new CollectorPreviewDto(repository);
-            dto.createPreviews(userEmail, collectorIds);
-            return dto.getPreviewObject();
+            return dtoList;
 
             /*
         List <UserAchievement> preview = new ArrayList<>();
@@ -91,8 +95,18 @@ public class UserAchievementController extends BaseController {
         */
     }
 
+    public Achievement findAchievement(String id){
+        List<Achievement> achievementList = achRepository.findAll();
+        for(Achievement a : achievementList) {
+            if(a.getId().equals(id)){
+                return a;
+            }
+        }
+        return null;
+    }
+
     /**
-     * Returns the preview of all achievements in a given collector.
+     * Returns the preview of all achievements in a given collector in form of a PreviewDto.
      * Previews contain the most important user achievements that have more progress than 0%.
      *
      * @param userEmail The user to generate the preview for
@@ -100,11 +114,23 @@ public class UserAchievementController extends BaseController {
      * @return The list of most interesting achievements for the given user
      */
     @RequestMapping(value="/user-achievements/preview-for-collector", method = RequestMethod.GET)
-    public List<UserAchievement> getUserAchievementsCollectorPreview(@RequestParam(value="userEmail") String userEmail, String collectorId) {
+    public PreviewDto getUserAchievementsCollectorPreview(@RequestParam(value="userEmail") String userEmail, String collectorId) {
 
-        CollectorPreviewDto dto = new CollectorPreviewDto(repository);
+        CollectorPreviewDto cDto = new CollectorPreviewDto(repository);
 
-        return dto.getPreviewForController(userEmail, collectorId);
+        List<UserAchievement> list = cDto.getPreviewForController(userEmail, collectorId);
+
+        List<PreviewDto> dtoList = new ArrayList<>();
+
+        PreviewDto dto = new PreviewDto(collectorId);
+        for(int i = 0; i < 4 || i < list.size(); i++){
+            UserAchievement ua = list.get(i);
+            Achievement a = findAchievement(ua.getAchievementId());
+
+            dto.addUserAchievement(a.getName(), a.getDescription(), ua.getProgress(), i);
+        }
+
+        return dto;
 
         /*
         List <UserAchievement> preview = new ArrayList<>();

@@ -97,7 +97,7 @@ public class CollectorPreviewDto{
      *
      * @param userEmail The user that owns the Userachievements
      * @param collectorId The collector to search for
-     * @return
+     * @return A List of all preview lists
      */
     public List<List<UserAchievement>> getAllPreviews(String userEmail, List<String> collectorIds) {
         generateAllPreviews(userEmail, collectorIds);
