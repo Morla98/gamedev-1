@@ -5,18 +5,19 @@ import org.eclipse.jgit.api.Git;
 import org.eclipse.jgit.api.ListBranchCommand;
 import org.eclipse.jgit.api.PullResult;
 import org.eclipse.jgit.api.errors.GitAPIException;
+import org.eclipse.jgit.diff.DiffEntry;
+import org.eclipse.jgit.diff.DiffFormatter;
 import org.eclipse.jgit.internal.storage.file.FileRepository;
+import org.eclipse.jgit.lib.ObjectReader;
 import org.eclipse.jgit.lib.Ref;
 import org.eclipse.jgit.lib.Repository;
 import org.eclipse.jgit.revwalk.RevCommit;
 import org.eclipse.jgit.transport.CredentialsProvider;
+import org.eclipse.jgit.treewalk.CanonicalTreeParser;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.Reader;
+import java.io.*;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Date;
@@ -120,6 +121,22 @@ public class GitService {
         httpService.sendList(uaList, "http://devgame:8080/api/user-achievements");
         return;
     }
+    //TODO Diff quantisieren und in Metrics abspeichern + passende Metric Spalte anlegen
+    public void getDiffs(RevCommit commit){
+        RevCommit parent = commit.getParent(0);
+        System.out.println("Printing diff between tree: " + parent + " and " + commit);
+        FileOutputStream stdout = new FileOutputStream(FileDescriptor.out);
+        try (DiffFormatter diffFormatter = new DiffFormatter(stdout)) {
+            diffFormatter.setRepository(git_repository);
+            for (DiffEntry entry : diffFormatter.scan(parent, commit)) {
+                diffFormatter.format(diffFormatter.toFileHeader(entry));
+                break;
+            }
+        }catch (Exception e){
+
+        }
+    }
+
     public void parseCommit(RevCommit commit, MetricRepository repository,HttpService httpService){
         String user_email = commit.getCommitterIdent().getEmailAddress();
         //int TimeStamp = commit.getCommitTime();
@@ -131,13 +148,14 @@ public class GitService {
                 Metric new_metric = new Metric();
                 new_metric.setUseremail(user_email);
                 new_metric.setNumberOfCommits(m.getNumberOfCommits() + 1);
+                getDiffs(commit);
                 repository.save(new_metric);
                 updateAchievements(user_email, httpService);
 
             }
         }catch (Exception e){
             System.out.println("email doesnt exist in Collector");
-            //e.printStackTrace();
+            e.printStackTrace();
         }
 
 
