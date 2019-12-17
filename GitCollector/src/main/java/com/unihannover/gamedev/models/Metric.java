@@ -5,6 +5,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.lang.reflect.Method;
 
 @Entity
 @Table(name = "GitCollector_Metrics", schema="metrics")
@@ -16,6 +17,17 @@ public class Metric {
 
     @Column(name = "numberOfCommits")
     private int numberOfCommits;
+
+    public String getTest() {
+        return test;
+    }
+
+    public void setTest(String test) {
+        this.test = test;
+    }
+
+    @Column(name = "test")
+    private String test;
 
     public int getDinnerCommits() {
         return DinnerCommits;
@@ -39,9 +51,7 @@ public class Metric {
     public int getNumberOfCommits() {
         return numberOfCommits;
     }
-
     public void setNumberOfCommits(int numberOfCommits) {
         this.numberOfCommits = numberOfCommits;
     }
-
 }

@@ -142,10 +142,8 @@ public class GitService {
         calendar = GregorianCalendar.getInstance();
         calendar.setTime(commit.getCommitterIdent().getWhen());
         System.out.println("HOUR OF DAY: " + calendar.get(Calendar.HOUR_OF_DAY));
-        if((calendar.get(Calendar.HOUR_OF_DAY) > 12)){
-            if((calendar.get(Calendar.HOUR_OF_DAY) < 13)){
+        if((calendar.get(Calendar.HOUR_OF_DAY) > 12) && (calendar.get(Calendar.HOUR_OF_DAY) < 13)){
                 return m.getDinnerCommits() + 1;
-            }
         }
         return m.getDinnerCommits();
     }
