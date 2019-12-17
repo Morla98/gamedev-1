@@ -38,6 +38,7 @@ public class GitService {
     private Git git;
     private int lastCommitDate;
     private List<Achievement> achievementList;
+    private ArrayList<String> seenCommits = new ArrayList<>();
     //private
     public GitService(Repository repository, Git git)
     {
@@ -155,7 +156,10 @@ public class GitService {
                         if(latest_date < commit.getCommitTime()){
                             latest_date = commit.getCommitTime();
                         }
-                        parseCommit(commit, repository, httpService);
+                        if(!seenCommits.contains(commit.getName())){
+                            seenCommits.add(commit.getName());
+                            parseCommit(commit, repository, httpService);
+                        }
                     }
                 }
             }
