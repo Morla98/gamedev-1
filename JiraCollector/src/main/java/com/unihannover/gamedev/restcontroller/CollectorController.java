@@ -10,6 +10,7 @@ import com.unihannover.gamedev.models.Metric;
 import com.unihannover.gamedev.models.Model;
 import com.unihannover.gamedev.models.UserAchievement;
 import com.unihannover.gamedev.repositories.MetricRepository;
+import com.unihannover.gamedev.services.AchievementGenerator;
 import com.unihannover.gamedev.services.CollectorService;
 
 import com.unihannover.gamedev.services.HttpService;
@@ -33,6 +34,8 @@ public class CollectorController {
     CollectorService service;
     @Autowired
     HttpService httpService;
+    @Autowired
+    AchievementGenerator achievementGenerator;
 
 
     CollectorConfig config = CollectorConfigParser.configJsonToObject();
@@ -44,12 +47,12 @@ public class CollectorController {
         List<Model> uaList = new ArrayList<>();
         UserAchievement newUserAchievement;
 
-        for(Achievement achievement: service.getAchievementList()){
+        for(Achievement achievement: achievementGenerator.getAchievementList()){
                 newUserAchievement = new UserAchievement();
                 newUserAchievement.setCollectorId(config.getCollectorId());
                 newUserAchievement.setUserEmail(useremail);
                 newUserAchievement.setAchievementId(achievement.getId());
-                newUserAchievement.setProgress(achievement.getLogic().complied(useremail));
+                newUserAchievement.setProgress(achievement.getLogic().complete(useremail));
                 newUserAchievement.setLastUpdated(new Timestamp(System.currentTimeMillis()));
                 uaList.add(newUserAchievement);
         }
@@ -77,21 +80,19 @@ public class CollectorController {
             initMetric.setIssue_updated(0);
             repository.save(initMetric);
         }
-        oldMetricList = repository.findByUseremail(useremail);
+        Metric oldMetric = repository.findByUseremail(useremail).get(0);
+
         if(event.equals("jira:issue_created")){
-            Metric newMetric = new Metric();
-            newMetric.setUseremail(useremail);
-            newMetric.setIssue_created(oldMetricList.get(0).getIssue_created()+1);
+            Metric newMetric = new Metric(oldMetric);
+            newMetric.setIssue_created(newMetric.getIssue_created()+1);
             repository.save(newMetric);
         }
 
         if(event.equals("jira:issue_updated")){
-            Metric newMetric = new Metric();
-            newMetric.setUseremail(useremail);
-            newMetric.setIssue_updated(oldMetricList.get(0).getIssue_updated()+1);
+            Metric newMetric = new Metric(oldMetric);
+            newMetric.setIssue_updated(newMetric.getIssue_updated()+1);
             repository.save(newMetric);
         }
-
 
         updateAchievements(useremail);
 

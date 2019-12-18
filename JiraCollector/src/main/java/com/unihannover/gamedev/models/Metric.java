@@ -20,6 +20,15 @@ public class Metric {
     @Column(name = "issue_updated")
     private int issue_updated;
 
+    public Metric(){
+        super();
+    }
+    public Metric(Metric metric) {
+        this.useremail = metric.getUseremail();
+        this.issue_created = metric.getIssue_created();
+        this.issue_updated = metric.getIssue_updated();
+    }
+
     public String getUseremail() {
         return useremail;
     }
