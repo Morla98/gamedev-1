@@ -1,20 +1,44 @@
 [
   {
-    "description": "This is a simple Test Achievement",
-    "id": "1",
-    "name": "Test_Achievement1",
-    "value": "1.0"
+    "description": "Push for the first time",
+    "upperbound": "1.0",
+    "name": "Hello Git",
+    "value": 10,
+    "command": "getNumberOfCommits"
   },
   {
-    "description": "This is a simple Test Achievement",
-    "id": "2",
-    "name": "Test_Achievement2",
-    "value": "3.0"
+    "description": "Push 100 times",
+    "upperbound": "100.0",
+    "name": "Experienced Commiter",
+    "value": 50,
+    "command": "getNumberOfCommits"
   },
   {
-    "description": "This is a simple Test Achievement",
-    "id": "3",
-    "name": "Test_Achievement3",
-    "value": "10.0"
+    "description": "Push 100 times between 12am and 1pm",
+    "upperbound": "100.0",
+    "name": "Push, Eat, Repeat",
+    "value": 50,
+    "command": "getDinnerCommits"
+  },
+  {
+    "description": "100 commits with correct message format",
+    "upperbound": "100.0",
+    "name": "Approved by Dominik",
+    "value": 5,
+    "command": "getNumberOfCorrectCommitMessages"
+  },
+  {
+    "description": "Create 100 Files",
+    "upperbound": "100.0",
+    "name": "Creater of Files",
+    "value": 20,
+    "command": "getNumberOfNewFiles"
+  },
+  {
+    "description": "Make 50 Commits between 0am and 4am",
+    "upperbound": "50.0",
+    "name": "Get some Sleep",
+    "value": 0,
+    "command": "getNightCommits"
   }
 ]
