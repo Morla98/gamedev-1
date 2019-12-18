@@ -20,6 +20,8 @@ import org.json.simple.parser.JSONParser;
 import java.io.*;
 import java.sql.Timestamp;
 import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import com.unihannover.gamedev.models.*;
 import com.unihannover.gamedev.CollectorConfig;
@@ -138,14 +140,29 @@ public class GitService {
         }
     }
     //TODO: richtige Timezone benutzen
-    public int getTimeRelatedAchievement(RevCommit commit, Metric m){
+    public Metric getTimeRelatedAchievement(RevCommit commit, Metric m){
         calendar = GregorianCalendar.getInstance();
         calendar.setTime(commit.getCommitterIdent().getWhen());
         System.out.println("HOUR OF DAY: " + calendar.get(Calendar.HOUR_OF_DAY));
         if((calendar.get(Calendar.HOUR_OF_DAY) > 12) && (calendar.get(Calendar.HOUR_OF_DAY) < 13)){
-                return m.getDinnerCommits() + 1;
+                m.setDinnerCommits(m.getDinnerCommits() + 1);
         }
-        return m.getDinnerCommits();
+        return m;
+    }
+    public Metric getCommitMessageRelatedAchievement(RevCommit commit, Metric m){
+        try {
+            String msg = commit.getFullMessage();
+            String string_pattern = "(feat|fix|chore|test)(.*):.*\\s";//"(feat|fix|chore|test)(.+)(:)(.+)";
+            System.out.println("/n/nMessage:" + msg + "     HERE COMES THE MATCH: " + msg.matches(string_pattern));
+            //Pattern pattern = Pattern.compile(string_pattern);
+            if (msg.matches(string_pattern)) {
+                m.setNumberOfCorrectCommitMessages(m.getNumberOfCorrectCommitMessages() + 1);
+                return m;
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return m;
     }
     public void parseCommit(RevCommit commit, MetricRepository repository,HttpService httpService){
         String user_email = commit.getCommitterIdent().getEmailAddress();
@@ -154,10 +171,12 @@ public class GitService {
             if(repository.findByUseremail(user_email).get(0) != null){
                 System.out.println("Committer_Email:|" + user_email +"| Commit time: " + commit.getCommitTime() + "; Commit get When(): " + commit.getCommitterIdent().getWhen().getHours());
                 Metric m = repository.findByUseremail(user_email).get(0);
-                Metric new_metric = new Metric();
+                Metric new_metric = m;
                 new_metric.setUseremail(user_email);
                 new_metric.setNumberOfCommits(m.getNumberOfCommits() + 1);
-                new_metric.setDinnerCommits(getTimeRelatedAchievement(commit, new_metric));
+                new_metric = getTimeRelatedAchievement(commit, new_metric);
+                new_metric = getCommitMessageRelatedAchievement(commit, new_metric);
+ //               new_metric.setNumberOfCorrectCommitMessages(m.getNumberOfCorrectCommitMessages() + getCommitMessageRelatedAchievement(commit, new_metric));
                 getDiffs(commit);
                 repository.save(new_metric);
                 updateAchievements(user_email, httpService);
@@ -167,8 +186,6 @@ public class GitService {
             System.out.println("email doesnt exist in Collector");
             e.printStackTrace();
         }
-
-
         return;
     }
     //TODO: eher getWhen() anstatt getCommitTime benutzen
@@ -201,7 +218,6 @@ public class GitService {
 
         }
     }
-
     //TODO: Persistence of current Head
     //TODO: Generate achievements from the data
     //TODO: Update Achievements

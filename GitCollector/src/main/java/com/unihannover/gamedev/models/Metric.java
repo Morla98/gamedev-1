@@ -18,16 +18,16 @@ public class Metric {
     @Column(name = "numberOfCommits")
     private int numberOfCommits;
 
-    public String getTest() {
-        return test;
+    public int getNumberOfCorrectCommitMessages() {
+        return numberOfCorrectCommitMessages;
     }
 
-    public void setTest(String test) {
-        this.test = test;
+    public void setNumberOfCorrectCommitMessages(int numberOfCorrectCommitMessages) {
+        this.numberOfCorrectCommitMessages = numberOfCorrectCommitMessages;
     }
 
-    @Column(name = "test")
-    private String test;
+    @Column(name = "numberOfCorrectCommitMessages")
+    private int numberOfCorrectCommitMessages;
 
     public int getDinnerCommits() {
         return DinnerCommits;
