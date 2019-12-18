@@ -162,7 +162,7 @@ public class GitService {
         }
         return m;
     }
-    
+
     public Metric getTimeRelatedAchievement(RevCommit commit, Metric m){
         calendar = GregorianCalendar.getInstance();
         calendar.setTime(commit.getCommitterIdent().getWhen());

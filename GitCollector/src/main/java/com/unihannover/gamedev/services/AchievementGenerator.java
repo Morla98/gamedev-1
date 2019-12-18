@@ -59,7 +59,7 @@ public class AchievementGenerator {
         Achievement a2 = generateAchievement("Experienced Commiter", "Push 100 times", 50, "getNumberOfCommits", 100);
         Achievement a3 = generateAchievement("push, Eat, Repeat", "Push 100 times between 12am and 1pm", 50, "getDinnerCommits", 100);
         aList.add(a1); aList.add(a2); aList.add(a3);
-        Achievement a4 = generateAchievement("Correct Commit Messages", "100 commits with correct message format", 5, "getNumberOfCorrectCommitMessages", 100);
+        Achievement a4 = generateAchievement("Approved by Dominik", "100 commits with correct message format", 5, "getNumberOfCorrectCommitMessages", 100);
         aList.add(a4);
         Achievement a5 = generateAchievement("Creator of Files", "Create 100 Files", 20, "getNumberOfNewFiles", 100);
         aList.add(a5);
