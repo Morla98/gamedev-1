@@ -8,6 +8,7 @@ import java.util.List;
 import com.unihannover.gamedev.models.*;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpStatus;
+import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.util.EntityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -67,8 +68,8 @@ public class CollectorService {
 		me.setLastSeen(t);
 		// config.setCollectorId(me.getId());
 
-		HttpEntity result = httpService.sendSingleModel(me, "http://devgame:8080/api/collectors?secret=" + jwtSecret);
-
+		CloseableHttpResponse response = httpService.sendSingleModel(me, "http://devgame:8080/api/collectors?secret=" + jwtSecret);
+		HttpEntity result = response.getEntity();
 		ObjectMapper mapper = new ObjectMapper();
 		Collector c = null;
 		if (result != null) {
@@ -98,9 +99,13 @@ public class CollectorService {
 				System.out.println("\nInit Collector\n");
 			}
 		}
-		// TODO: reported should be true if collector is already known by server so that he doesnt (re)send his Achievements
-		boolean reported = false;
-		initAchievements(reported);
+
+		int status = response.getStatusLine().getStatusCode();
+		if(status == HttpStatus.SC_OK){
+			initAchievements(false);
+		}else if(status == HttpStatus.SC_ACCEPTED){
+			initAchievements(true);
+		}
 
 
 	}
