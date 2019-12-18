@@ -15,8 +15,12 @@ public class AchievementGenerator {
     @Autowired
     MetricRepository repository;
 
-    List<Achievement> aList = new ArrayList<>();
+    List<Achievement> achievementList = new ArrayList<>();
     List<UserAchievement> uaList;
+
+    public List<Achievement> getAchievementList() {
+        return achievementList;
+    }
 
     public List<Achievement> initAchievements(){
 
@@ -32,7 +36,7 @@ public class AchievementGenerator {
         a1.setRepository(repository);
         logic = new AchievementLogic() {
             @Override
-            public float complied(String useremail) {
+            public float complete(String useremail) {
                 Metric m = repository.findByUseremail(useremail).get(0); //TODO handle size != 1
                 float result = 0f;
                 if(m.getIssue_created() > 0){
@@ -42,7 +46,7 @@ public class AchievementGenerator {
             }
         };
         a1.setLogic(logic);
-        aList.add(a1);
+        achievementList.add(a1);
 
         Achievement a2 = new Achievement();
         a2.setCollectorId(config.getCollectorId());
@@ -53,7 +57,7 @@ public class AchievementGenerator {
         a2.setRepository(repository);
         logic = new AchievementLogic() {
             @Override
-            public float complied(String useremail) {
+            public float complete(String useremail) {
                 Metric m = repository.findByUseremail(useremail).get(0);
                 float result = 0f;
                 if(m.getIssue_updated() > 0){
@@ -63,7 +67,7 @@ public class AchievementGenerator {
             }
         };
         a2.setLogic(logic);
-        aList.add(a2);
+        achievementList.add(a2);
 
         Achievement a3 = new Achievement();
         a3.setCollectorId(config.getCollectorId());
@@ -74,7 +78,7 @@ public class AchievementGenerator {
         a3.setRepository(repository);
         logic = new AchievementLogic() {
             @Override
-            public float complied(String useremail) {
+            public float complete(String useremail) {
                 Metric m = repository.findByUseremail(useremail).get(0);
                 float result = 0f;
                 if(m.getIssue_updated() >= 5){
@@ -89,9 +93,8 @@ public class AchievementGenerator {
             }
         };
         a3.setLogic(logic);
-        aList.add(a3);
-
-        return aList;
+        achievementList.add(a3);
+        return this.achievementList;
 
     }
 }

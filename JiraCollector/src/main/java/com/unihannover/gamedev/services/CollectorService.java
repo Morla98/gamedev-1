@@ -41,16 +41,6 @@ public class CollectorService {
 	@Autowired
 	AchievementGenerator achievementGenerator;
 
-	List<Achievement> achievementList;
-
-	public List<Achievement> getAchievementList() {
-		return achievementList;
-	}
-
-	public void setAchievementList(List<Achievement> achievementList) {
-		this.achievementList = achievementList;
-	}
-
 	@Bean
 	public void initCollector() {
 		CollectorConfig config = CollectorConfigParser.configJsonToObject();
@@ -112,7 +102,7 @@ public class CollectorService {
 
 	private void initAchievements(boolean reported) {
 		CollectorConfig config = CollectorConfigParser.configJsonToObject();
-		achievementList = achievementGenerator.initAchievements();
+		List<Achievement> achievementList = achievementGenerator.initAchievements();
 		List<User> uList = httpService.getUsers();
 		List<UserAchievement> uaList = new ArrayList<>();
 
