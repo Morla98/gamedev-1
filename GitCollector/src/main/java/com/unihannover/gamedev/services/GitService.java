@@ -124,28 +124,55 @@ public class GitService {
         httpService.sendList(uaList, "http://devgame:8080/api/user-achievements");
         return;
     }
+    public Metric getDiffRelatedAchievements(String diff, Metric m){
+        String lines[] = diff.split("\\r?\\n");
+        if(lines[1] != null){
+            if(lines[1].startsWith("new file mode ")){
+                m.setNumberOfNewFiles(m.getNumberOfNewFiles() + 1);
+                return m;
+            }
+        }
+        return m;
+    }
     //TODO Diff quantisieren und in Metrics abspeichern + passende Metric Spalte anlegen
-    public void getDiffs(RevCommit commit){
+    public Metric getDiffs(RevCommit commit, Metric m){
         RevCommit parent = commit.getParent(0);
         System.out.println("Printing diff between tree: " + parent + " and " + commit);
-        FileOutputStream stdout = new FileOutputStream(FileDescriptor.out);
-        try (DiffFormatter diffFormatter = new DiffFormatter(stdout)) {
-            diffFormatter.setRepository(git_repository);
-            for (DiffEntry entry : diffFormatter.scan(parent, commit)) {
-                diffFormatter.format(diffFormatter.toFileHeader(entry));
-                break;
+        try{
+            FileOutputStream fout = new FileOutputStream("fout.txt");
+            try (DiffFormatter diffFormatter = new DiffFormatter(fout)) {
+                diffFormatter.setRepository(git_repository);
+                for (DiffEntry entry : diffFormatter.scan(parent, commit)) {
+                    diffFormatter.format(diffFormatter.toFileHeader(entry));
+                    break;
+                }
+                FileInputStream fin = new FileInputStream(new File("fout.txt"));
+                java.util.Scanner scanner = new java.util.Scanner(fin,"UTF-8").useDelimiter("/n");
+                String theString = scanner.hasNext() ? scanner.next() : "";
+                System.out.println("/n/n/n COMMIT STRING:");
+                System.out.println(theString);
+                scanner.close();
+                return getDiffRelatedAchievements(theString, m);
+
+            }catch (Exception e){
+                e.printStackTrace();
             }
         }catch (Exception e){
-
+            e.printStackTrace();
         }
+        return m;
     }
-    //TODO: richtige Timezone benutzen
+    
     public Metric getTimeRelatedAchievement(RevCommit commit, Metric m){
         calendar = GregorianCalendar.getInstance();
         calendar.setTime(commit.getCommitterIdent().getWhen());
+        calendar.setTimeZone(commit.getCommitterIdent().getTimeZone());
         System.out.println("HOUR OF DAY: " + calendar.get(Calendar.HOUR_OF_DAY));
         if((calendar.get(Calendar.HOUR_OF_DAY) > 12) && (calendar.get(Calendar.HOUR_OF_DAY) < 13)){
                 m.setDinnerCommits(m.getDinnerCommits() + 1);
+        }
+        if(calendar.get(Calendar.HOUR_OF_DAY) < 4){
+            m.setNightCommits(m.getNightCommits() + 1);
         }
         return m;
     }
@@ -177,7 +204,7 @@ public class GitService {
                 new_metric = getTimeRelatedAchievement(commit, new_metric);
                 new_metric = getCommitMessageRelatedAchievement(commit, new_metric);
  //               new_metric.setNumberOfCorrectCommitMessages(m.getNumberOfCorrectCommitMessages() + getCommitMessageRelatedAchievement(commit, new_metric));
-                getDiffs(commit);
+                new_metric = getDiffs(commit, new_metric);
                 repository.save(new_metric);
                 updateAchievements(user_email, httpService);
 
@@ -189,7 +216,7 @@ public class GitService {
         return;
     }
     //TODO: eher getWhen() anstatt getCommitTime benutzen
-    //TODO: Exceptions richtig handeln, insbesondere leeres email repo <--> user existiert nicht exception vorher abfragen
+    //TODO: Exceptions richtig handeln, insbesondere leeres email repo <--> user existiert nicht exception vorher abfragen, entweder mit userlist oder länge von Repo
     public void iterateBranches(MetricRepository repository, HttpService httpService){
         try{
             List<Ref> call = git.branchList().setListMode(ListBranchCommand.ListMode.ALL).call();
