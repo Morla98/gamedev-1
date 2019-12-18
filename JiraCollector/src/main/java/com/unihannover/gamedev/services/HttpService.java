@@ -46,9 +46,8 @@ public class HttpService {
 			}
 			response = httpClient.execute(get);
 			String responsestring = EntityUtils.toString(response.getEntity(), "UTF-8");
-			// System.out.println("Responsestring: " + responsestring);
-			// User[] uArray = objectMapper.readValue(responsestring, new TypeReference<List<User>>(){}););
-			List<User> uList = objectMapper.readValue(responsestring, new TypeReference<List<User>>(){}); // Arrays.asList(uArray);
+
+			List<User> uList = objectMapper.readValue(responsestring, new TypeReference<List<User>>(){});
 			return uList;
 		} catch (ClientProtocolException e) {
 			e.printStackTrace();
@@ -78,7 +77,7 @@ public class HttpService {
 				post.setHeader("X-Auth-Token", config.getToken());
 			}
 			post.setEntity(new StringEntity(json.toString()));
-			System.out.println(json.toString());
+			// System.out.println(json.toString()); // Print json of to sending List
 			response = httpClient.execute(post);
 			result = response.getEntity();
 			if (response.getStatusLine().getStatusCode() < 300) {
@@ -113,12 +112,11 @@ public class HttpService {
 				post.setHeader("X-Auth-Token", config.getToken());
 			}
 			post.setEntity(new StringEntity(json.toString()));
-			System.out.println(json.toString());
+			// System.out.println(json.toString()); // Print json of to sending List
 			response = httpClient.execute(post);
 			result = response.getEntity();
 			if (response.getStatusLine().getStatusCode() < 300) {
 				return response;
-				// updateWithToken(result);
 			} else {
 				System.out.println("Post failed: " + response.getStatusLine().getStatusCode());
 				return null;
@@ -129,40 +127,6 @@ public class HttpService {
 		} catch (ClientProtocolException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		return null;
-	}
-
-	public HttpEntity sendTest(String url) {
-		HttpEntity result = null;
-		httpClient = HttpClients.createDefault();
-		CloseableHttpResponse response;
-		try {
-			// send a JSON data
-			HttpPost post = new HttpPost(url);
-			post.setHeader("Accept", "*/*");
-			post.setHeader("Content-type", "text/plain");
-			StringEntity entity = new StringEntity("TestEntityBody\n");
-			post.setEntity(entity);
-			System.out.println("Sending post: \n");
-			System.out.println(post.getMethod()+"\n");
-			response = httpClient.execute(post);
-			result = response.getEntity();
-			if (response.getStatusLine().getStatusCode() < 300) {
-				return result;
-				// updateWithToken(result);
-			} else {
-				System.out.println("Post failed: " + response.getStatusLine().getStatusCode());
-				return null;
-			}
-
-		} catch (UnsupportedEncodingException e) {
-			System.out.println("Post failed: UnsupportedEncodingException");
-		} catch (ClientProtocolException e) {
-			System.out.println("Post failed: ClientProtocolException");
-		} catch (IOException e) {
-			System.out.println("Post failed: IOException");
 			e.printStackTrace();
 		}
 		return null;

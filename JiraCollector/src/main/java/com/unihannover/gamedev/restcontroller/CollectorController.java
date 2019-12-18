@@ -64,7 +64,7 @@ public class CollectorController {
     public void update(@RequestBody String data) {
         // Debug
         Timestamp t = new Timestamp(System.currentTimeMillis());
-        System.out.println("Hook confirmed: " + t.getHours()+":"+t.getMinutes()+":"+t.getSeconds());
+        // System.out.println("Hook confirmed: " + t.getHours()+":"+t.getMinutes()+":"+t.getSeconds());
         Gson gson = new GsonBuilder().create();
         JsonObject job = gson.fromJson(data, JsonObject.class);
         String event = job.getAsJsonPrimitive("webhookEvent").getAsString(); // webhookEvent

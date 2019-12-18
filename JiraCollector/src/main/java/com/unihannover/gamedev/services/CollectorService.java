@@ -56,8 +56,6 @@ public class CollectorService {
 		}
 		Timestamp t = new Timestamp(System.currentTimeMillis());
 		me.setLastSeen(t);
-		// config.setCollectorId(me.getId());
-
 		CloseableHttpResponse response = httpService.sendSingleModel(me, "http://devgame:8080/api/collectors?secret=" + jwtSecret);
 		HttpEntity result = response.getEntity();
 		ObjectMapper mapper = new ObjectMapper();
@@ -66,7 +64,6 @@ public class CollectorService {
 			try {
 				// getting the JsonString
 				String responseObject = EntityUtils.toString(result);
-				System.out.println("response: " + responseObject);
 				// Parsing the JsonString
 				c = mapper.readValue(responseObject, Collector.class);
 			} catch (org.apache.http.ParseException e) {
@@ -77,8 +74,6 @@ public class CollectorService {
 				e.printStackTrace();
 			}
 			if (c != null) {
-				System.out.println("Found in Response: " + c.getToken() + " " + c.getId());
-				// updateWithToken(c.getToken());
 				if (c.getToken() != null && tokenProvider.validateToken(c.getToken())) {
 					config.setToken(c.getToken());
 				}
@@ -86,7 +81,7 @@ public class CollectorService {
 					config.setCollectorId(c.getId());
 				}
 				CollectorConfigParser.configCollectorToJson(config);
-				System.out.println("\nInit Collector\n");
+				System.out.println("Init Collector");
 			}
 		}
 
@@ -133,7 +128,7 @@ public class CollectorService {
 			httpService.sendList(aModelList, "http://devgame:8080/api/achievements");
 			httpService.sendList(uaModelList, "http://devgame:8080/api/user-achievements");
 		}
-		System.out.println("\nInit Achievements\n");
+		System.out.println("Init Achievements");
 
 	}
 }
