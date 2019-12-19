@@ -14,12 +14,14 @@ import org.eclipse.jgit.lib.Repository;
 import org.eclipse.jgit.revwalk.RevCommit;
 import org.eclipse.jgit.transport.CredentialsProvider;
 import org.eclipse.jgit.treewalk.CanonicalTreeParser;
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
 import java.io.*;
 import java.sql.Timestamp;
 import java.util.*;
+import java.text.SimpleDateFormat;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -33,41 +35,75 @@ import org.springframework.beans.factory.annotation.Autowired;
  *
  * @author Felix Volodarskis, Lukas Niehus, Leon Curth
  */
-public class GitService {
+public class GitService{
     private Repository git_repository;
     private Git git;
-    //TODO: entweder lastCommitDate oder int benutzen
-    private int lastCommitDate;
-    //TODO: alle benötigten Daten aus CollectorService nicht durch Funktionsuafrufe bekommen, entweder neu initialisiern oder GitService von CollectorSerivce erben lassen
-    private List<Achievement> achievementList;
     private ArrayList<String> seenCommits = new ArrayList<>();
-    private Date minDate;
+    private Date minDate = new Date();
     private Calendar calendar;
+    private List<Achievement> achievementList;
+    private HttpService httpService;
+    private MetricRepository repository;
+    private List<User> userList;
+    private	List<UserAchievement> uaList;
+    private List<Model> uaModelList;
+    private List<String> regexList = new ArrayList<String>();
+    CollectorConfig config = CollectorConfigParser.configJsonToObject();
     //private
-    public GitService(Repository repository, Git git)
+    public GitService(Repository git_repository, Git git, List<Achievement> achievementList, HttpService httpService,MetricRepository repository,List<User> userList, List<UserAchievement> uaList, List<Model> uaModelList)
     {
-        this.git_repository = repository;
+        this.git_repository = git_repository;
         this.git = git;
+        this.achievementList = achievementList;
+        this.httpService = httpService;
+        this.repository = repository;
+        this.userList = new ArrayList<User>();
+        this.uaList = uaList;
+        this.uaModelList = uaModelList;
         setLastCommitDate();
-    }
 
+    }
+    /**
+     * Get the User specified LastCommitDate from the gitTimeStamp.json
+     * Set the internal LastCommitDate which is used to exclude Commits that were pushed before the LastCommitDate
+     */
     public void setLastCommitDate() {
         JSONParser parser = new JSONParser();
         try {
-            Reader reader = new FileReader("config/collectorConfiguration/gitTimestamp.json");
+            Reader reader = new FileReader("config/collectorConfiguration/gitTimeStamp.json");
             JSONObject jsonObject = (JSONObject) parser.parse(reader);
-            lastCommitDate = ((Long) jsonObject.get("timestamp")).intValue();
+            SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy HH:mm:ss");
+            minDate = formatter.parse(jsonObject.get("timestamp").toString());
+            reader.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    public void writeTimestamptoJSON(int timestamp)
+    /**
+     * Parse the legalRegex.json to set the legal Regex Strings
+     * The Regex Strings specify which commit messages are legal
+     */
+    public void setRegex(){
+        JSONParser parser = new JSONParser();
+        try{
+            Reader reader = new FileReader("config/collectorConfiguration/legalRegex.json");
+            JSONArray jsonArray = (JSONArray) parser.parse(reader);
+            for (Object obj : jsonArray){
+                JSONObject a = (JSONObject) obj;
+                regexList.add((String)a.get("regex"));
+            }
+            reader.close();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+    public void writeTimeStampToJSON()
     {
         JSONObject time = new JSONObject();
-        time.put("timestamp", timestamp);
+        time.put("curr_head", minDate);
         try {
-            FileWriter file = new FileWriter("config/collectorConfiguration/gitTimestamp.json");
+            FileWriter file = new FileWriter("config/collectorConfiguration/gitTimeStamp.json");
             file.write(time.toJSONString());
             file.flush();
             file.close();
@@ -76,9 +112,12 @@ public class GitService {
         }
     }
 
-    public void runTimer(CredentialsProvider user, MetricRepository repository,HttpService httpService, List<Achievement> achievementList1)
+    //TODO: Timer durch Pseudo Hook ersetzen
+    public void runTimer(CredentialsProvider user)
     {
-        achievementList = achievementList1;
+        setLastCommitDate();
+        setRegex();
+        System.out.println(minDate);
         Thread thread = new Thread() {
             public void run() {
                 while (true) {
@@ -98,7 +137,7 @@ public class GitService {
 
                     if (result.isSuccessful()) {
                         System.out.println("\n\nPULL SUCCESS!\n\n");
-                        iterateBranches(repository, httpService);
+                        iterateBranches();
                     } else {
                         System.out.println("\n\nPULL FAILED!\n\n");
                     }
@@ -107,7 +146,12 @@ public class GitService {
         };
         thread.start();
     }
-    public void updateAchievements(String user_email, HttpService httpService){
+
+    /**
+     * Send all Updated Achievements to the main Application
+     * @param user_email the email of the user you wish to update
+     */
+    public void updateAchievements(String user_email){
         List<Model> uaList = new ArrayList<>();
         UserAchievement newUserAchievement;
         CollectorConfig config = CollectorConfigParser.configJsonToObject();
@@ -124,18 +168,27 @@ public class GitService {
         httpService.sendList(uaList, "http://devgame:8080/api/user-achievements");
         return;
     }
-    public Metric getDiffRelatedAchievements(String diff, Metric m){
+
+    /**
+     * Update the metrics concerning the diffs of the commit
+     * @param diff The diff String of the changed file
+     * @param metric the Metric of the associated user
+     */
+    public void getDiffRelatedAchievements(String diff, Metric metric){
         String lines[] = diff.split("\\r?\\n");
         if(lines[1] != null){
             if(lines[1].startsWith("new file mode ")){
-                m.setNumberOfNewFiles(m.getNumberOfNewFiles() + 1);
-                return m;
+                metric.setNumberOfNewFiles(metric.getNumberOfNewFiles() + 1);
             }
         }
-        return m;
     }
-    //TODO Diff quantisieren und in Metrics abspeichern + passende Metric Spalte anlegen
-    public Metric getDiffs(RevCommit commit, Metric m){
+
+    /**
+     * extract the diff from the commit and call getDiffRelatedAchievements to extract Achievements
+     * @param commit the commit from which the metrics Data should be generated
+     * @param metric the Metric of the associated user
+     */
+    public void getDiffs(RevCommit commit, Metric metric){
         RevCommit parent = commit.getParent(0);
         System.out.println("Printing diff between tree: " + parent + " and " + commit);
         try{
@@ -149,10 +202,10 @@ public class GitService {
                 FileInputStream fin = new FileInputStream(new File("fout.txt"));
                 java.util.Scanner scanner = new java.util.Scanner(fin,"UTF-8").useDelimiter("/n");
                 String theString = scanner.hasNext() ? scanner.next() : "";
-                System.out.println("/n/n/n COMMIT STRING:");
+                System.out.println("/n COMMIT STRING:");
                 System.out.println(theString);
                 scanner.close();
-                return getDiffRelatedAchievements(theString, m);
+                getDiffRelatedAchievements(theString, metric);
 
             }catch (Exception e){
                 e.printStackTrace();
@@ -160,54 +213,120 @@ public class GitService {
         }catch (Exception e){
             e.printStackTrace();
         }
-        return m;
     }
 
-    public Metric getTimeRelatedAchievement(RevCommit commit, Metric m){
+    /**
+     * extract Metric Data from the concerning the time of the commit
+     * @param commit the commit from which the metrics Data should be generated
+     * @param metric the Metric of the associated user
+     */
+    public void getTimeRelatedAchievement(RevCommit commit, Metric metric){
         calendar = GregorianCalendar.getInstance();
         calendar.setTime(commit.getCommitterIdent().getWhen());
         calendar.setTimeZone(commit.getCommitterIdent().getTimeZone());
-        System.out.println("HOUR OF DAY: " + calendar.get(Calendar.HOUR_OF_DAY));
         if((calendar.get(Calendar.HOUR_OF_DAY) > 12) && (calendar.get(Calendar.HOUR_OF_DAY) < 13)){
-                m.setDinnerCommits(m.getDinnerCommits() + 1);
+                metric.setDinnerCommits(metric.getDinnerCommits() + 1);
         }
         if(calendar.get(Calendar.HOUR_OF_DAY) < 4){
-            m.setNightCommits(m.getNightCommits() + 1);
+            metric.setNightCommits(metric.getNightCommits() + 1);
         }
-        return m;
     }
-    public Metric getCommitMessageRelatedAchievement(RevCommit commit, Metric m){
+
+    /**
+     * extract Metric Data from the Commit Message of the commit
+     * @param commit the commit from which the metrics Data should be generated
+     * @param metric the Metric of the associated user
+     */
+    public void getCommitMessageRelatedAchievement(RevCommit commit, Metric metric){
         try {
             String msg = commit.getFullMessage();
-            String string_pattern = "(feat|fix|chore|test)(.*):.*\\s";//"(feat|fix|chore|test)(.+)(:)(.+)";
-            System.out.println("/n/nMessage:" + msg + "     HERE COMES THE MATCH: " + msg.matches(string_pattern));
-            //Pattern pattern = Pattern.compile(string_pattern);
-            if (msg.matches(string_pattern)) {
-                m.setNumberOfCorrectCommitMessages(m.getNumberOfCorrectCommitMessages() + 1);
-                return m;
+            for(String string_pattern : regexList){
+                if(msg.matches(string_pattern)){
+                    metric.setNumberOfCorrectCommitMessages(metric.getNumberOfCorrectCommitMessages() + 1);
+                    break;
+                }
             }
         }catch (Exception e){
             e.printStackTrace();
         }
-        return m;
     }
-    public void parseCommit(RevCommit commit, MetricRepository repository,HttpService httpService){
+
+    /**
+     * Initialize a users Achievements in the Main Application
+     * @param user_email the email of the user which Achievemnts should be initialized
+     */
+    public void addUserByEmail(String user_email){
+        System.out.println("User " + user_email + " has logged in for the first time and is being added to databases ...");
+        UserAchievement userAchievement;
+        for(Achievement achievement: achievementList){
+            userAchievement = new UserAchievement();
+            userAchievement.setAchievementId(achievement.getId());
+            userAchievement.setCollectorId(config.getCollectorId());
+            userAchievement.setUserEmail(user_email);
+            userAchievement.setProgress(0f);
+            userAchievement.setLastUpdated(new Timestamp(System.currentTimeMillis()));
+            uaList.add(userAchievement);
+            uaModelList.add(userAchievement);
+        }
+        System.out.println("... Sending User " + user_email + " to Main Application ...");
+        httpService.sendList(uaModelList, "http://devgame:8080/api/user-achievements");
+        System.out.println("... User " + user_email + " has been succesfully send");
+
+    }
+
+    /**
+     * Check IF the given List contains the User specified by his user_email
+      * @param list The list containing Users that you wish to search through
+     * @param user_email the email of the sought User
+     * @return
+     */
+    public boolean checkUser(List<User> list, String user_email){
+        for(User user : list){
+            if(user.getEmail().equals(user_email)){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * Check if the User is known to the Git Collector, THEN generate Data from his commit
+     * ELSE Check if the User is known to the Main Application, THEN initilize his Data and generate Data from his commit
+     * ElSE Igonre this commit
+     * @param commit the commit from which data should be generated
+     */
+    public void checkParseUser(RevCommit commit){
         String user_email = commit.getCommitterIdent().getEmailAddress();
-        //String commit_message = commit.getFullMessage();
+        if(checkUser(userList, user_email)){
+            parseCommit(commit);
+        }else{
+            userList = httpService.getUsers();
+            if(checkUser(userList, user_email)){
+                addUserByEmail(user_email);
+                parseCommit(commit);
+            }else{
+                System.out.println("User " + user_email + " is not recognized by Main Application and Commit "+ commit.getName() +" will be ignored");
+            }
+        }
+    }
+
+    /**
+     * process an incoming commit
+     * @param commit the commit to process
+     */
+    public void parseCommit(RevCommit commit){
+        String user_email = commit.getCommitterIdent().getEmailAddress();
         try{
             if(repository.findByUseremail(user_email).get(0) != null){
-                System.out.println("Committer_Email:|" + user_email +"| Commit time: " + commit.getCommitTime() + "; Commit get When(): " + commit.getCommitterIdent().getWhen().getHours());
                 Metric m = repository.findByUseremail(user_email).get(0);
                 Metric new_metric = m;
                 new_metric.setUseremail(user_email);
                 new_metric.setNumberOfCommits(m.getNumberOfCommits() + 1);
-                new_metric = getTimeRelatedAchievement(commit, new_metric);
-                new_metric = getCommitMessageRelatedAchievement(commit, new_metric);
- //               new_metric.setNumberOfCorrectCommitMessages(m.getNumberOfCorrectCommitMessages() + getCommitMessageRelatedAchievement(commit, new_metric));
-                new_metric = getDiffs(commit, new_metric);
+                getTimeRelatedAchievement(commit, new_metric);
+                getCommitMessageRelatedAchievement(commit, new_metric);
+                getDiffs(commit, new_metric);
                 repository.save(new_metric);
-                updateAchievements(user_email, httpService);
-
+                updateAchievements(user_email);
             }
         }catch (Exception e){
             System.out.println("email doesnt exist in Collector");
@@ -217,28 +336,39 @@ public class GitService {
     }
     //TODO: eher getWhen() anstatt getCommitTime benutzen
     //TODO: Exceptions richtig handeln, insbesondere leeres email repo <--> user existiert nicht exception vorher abfragen, entweder mit userlist oder länge von Repo
-    public void iterateBranches(MetricRepository repository, HttpService httpService){
+
+    /**
+     * Get all eligible Commits and process them
+     */
+    public void iterateBranches(){
         try{
             List<Ref> call = git.branchList().setListMode(ListBranchCommand.ListMode.ALL).call();
-            int latest_date = lastCommitDate;
+            //TODO: Zeit Zonen Fehler
+            Date latest_date_t = minDate;
+            System.out.println(minDate);
+            //TODO: warum gibt dass hier nicht alle User die sich eingeloggt haben?
+            System.out.println("Alle User von httpService.getUsers(): ");
+            for(User user : httpService.getUsers()){
+                System.out.println(user.getEmail());
+            }
             for(Ref ref : call)
             {
                 System.out.println("\nBranch: " + ref.getName()+ "\n");
                 String treeName = ref.getName(); // tag or branch
                 for (RevCommit commit : git.log().add(git_repository.resolve(treeName)).call()) {
-                    if(commit.getCommitTime() > lastCommitDate) {
-                        if(latest_date < commit.getCommitTime()){
-                            latest_date = commit.getCommitTime();
+                    if(commit.getCommitterIdent().getWhen().after(minDate)) {
+                        if(latest_date_t.before(commit.getCommitterIdent().getWhen())){
+                            latest_date_t = commit.getCommitterIdent().getWhen();
                         }
                         if(!seenCommits.contains(commit.getName())){
                             seenCommits.add(commit.getName());
-                            parseCommit(commit, repository, httpService);
+                            checkParseUser(commit);
                         }
                     }
                 }
             }
-            lastCommitDate = latest_date;
-            writeTimestamptoJSON(lastCommitDate);
+            minDate = latest_date_t;
+            //writeTimeStampToJSON();
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -246,8 +376,6 @@ public class GitService {
         }
     }
     //TODO: Persistence of current Head
-    //TODO: Generate achievements from the data
-    //TODO: Update Achievements
 
 
 

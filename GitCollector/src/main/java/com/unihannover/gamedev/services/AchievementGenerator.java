@@ -68,6 +68,7 @@ public class AchievementGenerator {
                 JSONObject a = (JSONObject) obj;
                 aList.add(generateAchievement((String) a.get("name"), (String) a.get("description"), ((Long) a.get("value")).intValue(), (String) a.get("command"), parseFloat(((String) a.get("upperbound")))));
             }
+            reader.close();
         } catch (Exception e) {
             e.printStackTrace();
         }

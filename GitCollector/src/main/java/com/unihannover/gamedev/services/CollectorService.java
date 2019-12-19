@@ -39,6 +39,8 @@ public class CollectorService {
 	private GitService gitservice;
 	@Autowired
 	public MetricRepository repository;
+	private	List<UserAchievement> uaList;
+	private List<Model> uaModelList;
 	/*
 	@Autowired
 	CollectorConfig config;
@@ -141,8 +143,8 @@ public class CollectorService {
 			try{
 				Git git = Git.open(new File(repoFile + "/.git"));
 				Repository git_repository = repositoryBuilder.setGitDir(new File(repoFile + "/.git")).readEnvironment().findGitDir().setMustExist(true).build();
-				gitservice = new GitService(git_repository, git);
-				gitservice.runTimer(credentialsProvider, repository,httpService, getAchievementList());
+				gitservice = new GitService(git_repository, git, achievementList, httpService, repository, httpService.getUsers(), uaList, uaModelList);
+				gitservice.runTimer(credentialsProvider);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -164,12 +166,12 @@ public class CollectorService {
 			Metric m = repository.findByUseremail(user.getEmail()).get(0);
 			System.out.println("Initializing git_collector_metrics:: user_email: " + user.getEmail() + "; #ofCommits: " + m.getNumberOfCommits());
 		}
-		List<UserAchievement> uaList = new ArrayList<>();
+		uaList = new ArrayList<>();
 
 
 		// remake lists as model lists because httpService.sendList() can only take models...
 		List<Model> aModelList = new ArrayList<>();
-		List<Model> uaModelList = new ArrayList<>();
+		uaModelList = new ArrayList<>();
 		for(Achievement achievement: achievementList){
 			aModelList.add(achievement);
 		}
