@@ -28,7 +28,7 @@ import java.util.regex.Pattern;
 import com.unihannover.gamedev.models.*;
 import com.unihannover.gamedev.CollectorConfig;
 import com.unihannover.gamedev.CollectorConfigParser;
-import org.springframework.beans.factory.annotation.Autowired;
+
 
 /**
  * Represents a Service that handles Git Requests.
@@ -258,6 +258,7 @@ public class GitService{
     public void addUserByEmail(String user_email){
         System.out.println("User " + user_email + " has logged in for the first time and is being added to databases ...");
         UserAchievement userAchievement;
+        List<Model> iList = new ArrayList<>();
         for(Achievement achievement: achievementList){
             userAchievement = new UserAchievement();
             userAchievement.setAchievementId(achievement.getId());
@@ -265,13 +266,20 @@ public class GitService{
             userAchievement.setUserEmail(user_email);
             userAchievement.setProgress(0f);
             userAchievement.setLastUpdated(new Timestamp(System.currentTimeMillis()));
-            uaList.add(userAchievement);
-            uaModelList.add(userAchievement);
+            iList.add(userAchievement);
         }
         System.out.println("... Sending User " + user_email + " to Main Application ...");
-        httpService.sendList(uaModelList, "http://devgame:8080/api/user-achievements");
+        httpService.sendList(iList, "http://devgame:8080/api/user-achievements");
         System.out.println("... User " + user_email + " has been succesfully send");
-
+        System.out.println("Initializing Metric for " + user_email);
+        Metric new_Metric = new Metric();
+        new_Metric.setNightCommits(0);
+        new_Metric.setNumberOfNewFiles(0);
+        new_Metric.setNumberOfCorrectCommitMessages(0);
+        new_Metric.setDinnerCommits(0);
+        new_Metric.setUseremail(user_email);
+        new_Metric.setNumberOfCommits(0);
+        repository.save(new_Metric);
     }
 
     /**
@@ -317,11 +325,10 @@ public class GitService{
     public void parseCommit(RevCommit commit){
         String user_email = commit.getCommitterIdent().getEmailAddress();
         try{
-            if(repository.findByUseremail(user_email).get(0) != null){
-                Metric m = repository.findByUseremail(user_email).get(0);
-                Metric new_metric = m;
+            if(repository.findByUseremail(user_email).size() == 1){
+                Metric new_metric = repository.findByUseremail(user_email).get(0);
                 new_metric.setUseremail(user_email);
-                new_metric.setNumberOfCommits(m.getNumberOfCommits() + 1);
+                new_metric.setNumberOfCommits(new_metric.getNumberOfCommits() + 1);
                 getTimeRelatedAchievement(commit, new_metric);
                 getCommitMessageRelatedAchievement(commit, new_metric);
                 getDiffs(commit, new_metric);
@@ -334,13 +341,14 @@ public class GitService{
         }
         return;
     }
-    //TODO: eher getWhen() anstatt getCommitTime benutzen
+
     //TODO: Exceptions richtig handeln, insbesondere leeres email repo <--> user existiert nicht exception vorher abfragen, entweder mit userlist oder länge von Repo
 
     /**
      * Get all eligible Commits and process them
      */
     public void iterateBranches(){
+
         try{
             List<Ref> call = git.branchList().setListMode(ListBranchCommand.ListMode.ALL).call();
             //TODO: Zeit Zonen Fehler
@@ -372,7 +380,6 @@ public class GitService{
         }catch (Exception e){
             e.printStackTrace();
         }
-
         }
     }
     //TODO: Persistence of current Head

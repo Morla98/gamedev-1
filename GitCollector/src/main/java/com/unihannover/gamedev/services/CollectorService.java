@@ -11,6 +11,7 @@ import java.util.List;
 import com.unihannover.gamedev.models.*;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpStatus;
+import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.util.EntityUtils;
 import org.eclipse.jgit.api.CloneCommand;
 import org.eclipse.jgit.api.Git;
@@ -84,8 +85,8 @@ public class CollectorService {
 		me.setLastSeen(t);
 		// config.setCollectorId(me.getId());
 
-		HttpEntity result = httpService.sendSingleModel(me, "http://devgame:8080/api/collectors?secret=" + jwtSecret);
-
+		CloseableHttpResponse response = httpService.sendSingleModel(me, "http://devgame:8080/api/collectors?secret=" + jwtSecret);
+		HttpEntity result = response.getEntity();
 		ObjectMapper mapper = new ObjectMapper();
 		Collector c = null;
 		if (result != null) {
