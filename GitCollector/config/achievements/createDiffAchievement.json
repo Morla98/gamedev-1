@@ -1,0 +1,10 @@
+[
+    {
+        "command": "NumberOfComments",
+        "regex": "//"
+    },
+    {
+        "command": "NumberOfHelloWorlds",
+        "regex": "Hello World"
+    }
+]

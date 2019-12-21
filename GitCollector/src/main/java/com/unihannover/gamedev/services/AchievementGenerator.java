@@ -23,12 +23,12 @@ import static java.lang.Float.parseFloat;
 public class AchievementGenerator {
     @Autowired
     MetricRepository repository;
+    CollectorConfig config = CollectorConfigParser.configJsonToObject();
     int count = 0;
     List<Achievement> aList = new ArrayList<>();
     List<UserAchievement> uaList;
     public Achievement generateAchievement(String name, String description, int value, final String command, float upper_bound){
         Achievement a1 = new Achievement();
-        CollectorConfig config = CollectorConfigParser.configJsonToObject();
         a1.setCollectorId(config.getCollectorId());
         a1.setId("c" + config.getCollectorId() + count);
         count++;
@@ -72,21 +72,6 @@ public class AchievementGenerator {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-        /*
-        Achievement atest = generateAchievement("TestGeneretedAchieveemnt", "TestGeneretedAch", 10, "getNumberOfCommits", 200);
-        aList.add(atest);
-        Achievement a1 = generateAchievement("Hello Git", "Push for the First Time", 10, "getNumberOfCommits", 1);
-        Achievement a2 = generateAchievement("Experienced Commiter", "Push 100 times", 50, "getNumberOfCommits", 100);
-        Achievement a3 = generateAchievement("push, Eat, Repeat", "Push 100 times between 12am and 1pm", 50, "getDinnerCommits", 100);
-        aList.add(a1); aList.add(a2); aList.add(a3);
-        Achievement a4 = generateAchievement("Correct Commit Messages", "100 commits with correct message format", 5, "getNumberOfCorrectCommitMessages", 100);
-        aList.add(a4);
-        Achievement a5 = generateAchievement("Creator of Files", "Create 100 Files", 20, "getNumberOfNewFiles", 100);
-        aList.add(a5);
-        Achievement a6 = generateAchievement("Get some Sleep", "make 50 commits between 0am and 4am", 0, "getNightCommits", 50);
-        aList.add(a6);
-        */
         return aList;
     }
 }

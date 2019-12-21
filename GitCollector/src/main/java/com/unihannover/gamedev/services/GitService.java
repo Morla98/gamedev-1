@@ -11,6 +11,8 @@ import org.eclipse.jgit.internal.storage.file.FileRepository;
 import org.eclipse.jgit.lib.ObjectReader;
 import org.eclipse.jgit.lib.Ref;
 import org.eclipse.jgit.lib.Repository;
+import org.eclipse.jgit.patch.FileHeader;
+import org.eclipse.jgit.patch.HunkHeader;
 import org.eclipse.jgit.revwalk.RevCommit;
 import org.eclipse.jgit.transport.CredentialsProvider;
 import org.eclipse.jgit.treewalk.CanonicalTreeParser;
@@ -19,6 +21,7 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
 import java.io.*;
+import java.lang.reflect.Method;
 import java.sql.Timestamp;
 import java.util.*;
 import java.text.SimpleDateFormat;
@@ -48,7 +51,9 @@ public class GitService{
     private	List<UserAchievement> uaList;
     private List<Model> uaModelList;
     private List<String> regexList = new ArrayList<String>();
-    CollectorConfig config = CollectorConfigParser.configJsonToObject();
+    private List<LambdaInterface> createDiffList = new ArrayList<LambdaInterface>();
+    private CollectorConfig config = CollectorConfigParser.configJsonToObject();
+    private List<NameLambdaInterface> nameLambdaList = new ArrayList<NameLambdaInterface>();
     //private
     public GitService(Repository git_repository, Git git, List<Achievement> achievementList, HttpService httpService,MetricRepository repository,List<User> userList, List<UserAchievement> uaList, List<Model> uaModelList)
     {
@@ -112,11 +117,64 @@ public class GitService{
         }
     }
 
+    public void setCreateDiffList() {
+        List<LambdaInterface> list = new ArrayList<LambdaInterface>();
+        JSONParser parser = new JSONParser();
+        try{
+            Reader reader = new FileReader("config/achievements/createDiffAchievement.json");
+            JSONArray jsonArray = (JSONArray) parser.parse(reader);
+            for(Object obj : jsonArray){
+                JSONObject a = (JSONObject) obj;
+                String setter = "set" + (String)a.get("command");
+                String getter = "get" + (String)a.get("command");
+                list.add((string, metric) -> {
+                    Pattern pattern = Pattern.compile((String)a.get("regex"));
+                    Matcher matcher = pattern.matcher(string);
+                    int count = 0;
+                    while (matcher.find()){
+                        count++;
+                    }
+                    try{
+                        Class parttypes[] = new Class[1];
+                        parttypes[0] = Integer.TYPE;
+                        Method setter_method = Metric.class.getMethod(setter, parttypes);
+                        Method getter_method = Metric.class.getMethod(getter);
+                        Object arglist[] = new Object[1];
+                        arglist[0] = (int)getter_method.invoke(metric) + count;
+                        setter_method.invoke(metric, arglist);
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
+                });
+            }
+            reader.close();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        this.createDiffList = list;
+    }
+
+    public void setNameLambdaList(){
+        nameLambdaList.add((name, metric) -> {
+            String ending = name.substring(name.lastIndexOf(".") + 1);
+            if(ending.equals("java")){
+                metric.setJavaCommits(metric.getJavaCommits() + 1);
+            }
+        });
+        nameLambdaList.add((name,metric) -> {
+            String ending = name.substring(name.lastIndexOf(".") + 1);
+            if(ending.equals("js")){
+                metric.setJavaScriptCommits(metric.getJavaScriptCommits() + 1);
+            }
+        });
+    }
     //TODO: Timer durch Pseudo Hook ersetzen
     public void runTimer(CredentialsProvider user)
     {
         setLastCommitDate();
         setRegex();
+        setCreateDiffList();
+        setNameLambdaList();
         System.out.println(minDate);
         Thread thread = new Thread() {
             public void run() {
@@ -134,7 +192,6 @@ public class GitService{
                     } catch (GitAPIException e) {
                         e.printStackTrace();
                     }
-
                     if (result.isSuccessful()) {
                         System.out.println("\n\nPULL SUCCESS!\n\n");
                         iterateBranches();
@@ -169,6 +226,38 @@ public class GitService{
         return;
     }
 
+    public void getCreateDiffRelatedAchievemnets(String diff_string, Metric metric){
+        String lines[] = diff_string.split("\\r?\\n");
+        getNameRelatedAchievements(lines[0].substring(lines[0].lastIndexOf("/")), metric);
+        for(LambdaInterface ele : createDiffList){
+            ele.createDiff(diff_string, metric);
+        }
+    }
+
+    public void getNameRelatedAchievements(String name, Metric metric){
+        for(NameLambdaInterface ele : nameLambdaList){
+            ele.createName(name, metric);
+        }
+    }
+
+    public void getChangeDiffRelatedAChievements(String[] lines, Metric metric){
+        String added_diff = "";
+        String deleted_diff = "";
+        String file_name = lines[3].substring(lines[3].lastIndexOf("/") + 1);
+        String old_name = lines[2].substring(lines[2].lastIndexOf("/") + 1);
+        System.out.println("This is the name of the changed file: " + file_name);
+        getNameRelatedAchievements(file_name, metric);
+        for(int i = 5; i < lines.length; i++){
+            if(lines[i].startsWith("+")){
+                added_diff.concat(lines[i]);
+            }
+            if(lines[i].startsWith("-")){
+                deleted_diff.concat(lines[i]);
+            }
+        }
+        getCreateDiffRelatedAchievemnets(added_diff, metric);
+    }
+
     /**
      * Update the metrics concerning the diffs of the commit
      * @param diff The diff String of the changed file
@@ -177,8 +266,15 @@ public class GitService{
     public void getDiffRelatedAchievements(String diff, Metric metric){
         String lines[] = diff.split("\\r?\\n");
         if(lines[1] != null){
+            //new file
             if(lines[1].startsWith("new file mode ")){
                 metric.setNumberOfNewFiles(metric.getNumberOfNewFiles() + 1);
+                getCreateDiffRelatedAchievemnets(diff, metric);
+            // changing file
+            }else if(lines[1].startsWith("index")){
+                getChangeDiffRelatedAChievements(lines, metric);
+            }else if(true){
+
             }
         }
     }
@@ -191,21 +287,29 @@ public class GitService{
     public void getDiffs(RevCommit commit, Metric metric){
         RevCommit parent = commit.getParent(0);
         System.out.println("Printing diff between tree: " + parent + " and " + commit);
+        //File file = new File("fout.txt");
         try{
             FileOutputStream fout = new FileOutputStream("fout.txt");
             try (DiffFormatter diffFormatter = new DiffFormatter(fout)) {
                 diffFormatter.setRepository(git_repository);
+                diffFormatter.setContext(0);
                 for (DiffEntry entry : diffFormatter.scan(parent, commit)) {
                     diffFormatter.format(diffFormatter.toFileHeader(entry));
-                    break;
+                    FileHeader fileHeader = diffFormatter.toFileHeader( entry );
+                    List<? extends HunkHeader> hunks = fileHeader.getHunks();
+                    for( HunkHeader hunk : hunks ) {
+                        System.out.println( hunk );
+                    }
+                    FileInputStream fin = new FileInputStream(new File("fout.txt"));
+                    java.util.Scanner scanner = new java.util.Scanner(fin,"UTF-8").useDelimiter("\\Z");
+                    String theString = scanner.hasNext() ? scanner.next() : "";
+                    System.out.println("/n COMMIT DIFF STRING Of A File: ");
+                    System.out.println(theString);
+                    scanner.close();
+                    getDiffRelatedAchievements(theString, metric);
+                    PrintWriter pw = new PrintWriter("fout.txt");
+                    pw.close();
                 }
-                FileInputStream fin = new FileInputStream(new File("fout.txt"));
-                java.util.Scanner scanner = new java.util.Scanner(fin,"UTF-8").useDelimiter("/n");
-                String theString = scanner.hasNext() ? scanner.next() : "";
-                System.out.println("/n COMMIT STRING:");
-                System.out.println(theString);
-                scanner.close();
-                getDiffRelatedAchievements(theString, metric);
 
             }catch (Exception e){
                 e.printStackTrace();
@@ -382,7 +486,15 @@ public class GitService{
         }
         }
     }
+
     //TODO: Persistence of current Head
+
+interface LambdaInterface{
+    void createDiff(String diff_string, Metric metric);
+}
+interface NameLambdaInterface{
+    void createName(String name, Metric metric);
+}
 
 
 

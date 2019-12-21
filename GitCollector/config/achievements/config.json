@@ -40,5 +40,33 @@
     "name": "Get some Sleep",
     "value": 0,
     "command": "getNightCommits"
+  },
+  {
+    "description": "Make 100 Comments",
+    "upperbound": "100.0",
+    "name": "Tutorial Maker",
+    "value": 20,
+    "command": "getNumberOfComments",
+  },
+  {
+    "description": "write 10 Hello Worlds",
+    "upperbound": "10.0",
+    "name": "Hello There",
+    "value": 10,
+    "command": "getNumberOfHelloWorlds",
+  },
+  {
+    "description": "Work on 100 Java Files",
+    "upperbound": "100.0",
+    "name": "Java Developer",
+    "value": 10,
+    "command": "getJavaCommits",
+  },
+  {
+    "description": "Work on 100 JavaScript Files",
+    "upperbound": "100.0",
+    "name": "Tortured Soul",
+    "value": 30,
+    "command": "getJavaScriptCommits",
   }
 ]
