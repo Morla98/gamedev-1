@@ -17,4 +17,7 @@ public interface MetricRepository extends JpaRepository<Metric, Long> {
 
     @Query("SELECT DISTINCT m.issueKey From Metric m WHERE m.userEmail = :userEmail AND m.action = :action AND m.issueType = :issueType")
     List<String> getDistinctIssueKeysByUserAndActionAndIssueType(@Param("userEmail") String userEmail, @Param("action") String action, @Param("issueType") String issueType);
+
+    @Query("SELECT DISTINCT m.issueKey From Metric m WHERE m.userEmail = :userEmail AND m.eventType = :eventType AND m.issueType = :issueType")
+    List<String> getDistinctIssueKeysByUserEmailAndEventTypeAndIssueType(@Param("userEmail") String userEmail, @Param("eventType") String eventType, @Param("issueType") String issueType);
 }
