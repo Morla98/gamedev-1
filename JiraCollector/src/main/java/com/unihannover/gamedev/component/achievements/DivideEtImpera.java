@@ -24,7 +24,7 @@ public class DivideEtImpera extends AbstractAchievementComponent {
      */
     public float getProgress(String userEmail) {
 
-        // Get ammount of distinct issues that this user has created and that are Stories
+        // Get ammount of distinct issues that this user has created and that are subtasks
         long amount = this.metricRepository.getDistinctIssueKeysByUserEmailAndEventTypeAndIssueType(userEmail, Metric.EVENT_ISSUE_CREATED, Metric.ISSUE_TYPE_SUBTASK).size();
 
         return (float) Math.min(100, amount * 10);
