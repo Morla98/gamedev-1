@@ -25,7 +25,7 @@ public class EpicKiller extends AbstractAchievementComponent {
     public float getProgress(String userEmail) {
 
         // Get ammount of distinct issues that this user has completed and who are an Epic
-        long amount = this.metricRepository.getDistinctIssueKeysByUserAndActionAndIssueType(userEmail, Metric.ACTION_ISSUE_DONE, "Epic").size();
+        long amount = this.metricRepository.getDistinctIssueKeysByUserAndActionAndIssueType(userEmail, Metric.ACTION_ISSUE_DONE, Metric.ISSUE_TYPE_EPIC).size();
 
         return (float) Math.min(100, amount * 10);
     }

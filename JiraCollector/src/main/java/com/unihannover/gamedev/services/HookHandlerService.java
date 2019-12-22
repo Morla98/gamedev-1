@@ -1,6 +1,7 @@
 package com.unihannover.gamedev.services;
 
 import com.google.gson.*;
+import com.unihannover.gamedev.models.Configuration;
 import com.unihannover.gamedev.models.Metric;
 import com.unihannover.gamedev.repositories.MetricRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,9 @@ public class HookHandlerService {
 
     @Autowired
     private UserAchievementUpdaterService userAchievementUpdaterService;
+
+    @Autowired
+    private ConfigurationService configurationService;
 
     /**
      * Processes a JIRA webhook object
@@ -63,7 +67,7 @@ public class HookHandlerService {
         String userEmail  = jsonObject.getAsJsonObject("user").getAsJsonPrimitive("emailAddress").getAsString();
         String userKey    = jsonObject.getAsJsonObject("user").getAsJsonPrimitive("key").getAsString();
         String issueKey   = jsonObject.getAsJsonObject("issue").getAsJsonPrimitive("key").getAsString();
-        String issueType  = jsonObject.getAsJsonObject("issue").getAsJsonObject("fields").getAsJsonObject("issuetype").getAsJsonPrimitive("name").getAsString();
+        String issueType  = getIssueTypeHelper(jsonObject);
         String timestamp  = jsonObject.getAsJsonPrimitive("timestamp").getAsString();
 
         // TODO: Remove debug output
@@ -83,7 +87,7 @@ public class HookHandlerService {
         String userEmail = jsonObject.getAsJsonObject("user").getAsJsonPrimitive("emailAddress").getAsString();
         String userKey   = jsonObject.getAsJsonObject("user").getAsJsonPrimitive("key").getAsString();
         String issueKey  = jsonObject.getAsJsonObject("issue").getAsJsonPrimitive("key").getAsString();
-        String issueType = jsonObject.getAsJsonObject("issue").getAsJsonObject("fields").getAsJsonObject("issuetype").getAsJsonPrimitive("name").getAsString();
+        String issueType = getIssueTypeHelper(jsonObject);
         String timestamp = jsonObject.getAsJsonPrimitive("timestamp").getAsString();
 
         // TODO: Remove debug output
@@ -104,7 +108,7 @@ public class HookHandlerService {
         String userEmail = jsonObject.getAsJsonObject("user").getAsJsonPrimitive("emailAddress").getAsString();
         String userKey   = jsonObject.getAsJsonObject("user").getAsJsonPrimitive("key").getAsString();
         String issueKey  = jsonObject.getAsJsonObject("issue").getAsJsonPrimitive("key").getAsString();
-        String issueType = jsonObject.getAsJsonObject("issue").getAsJsonObject("fields").getAsJsonObject("issuetype").getAsJsonPrimitive("name").getAsString();
+        String issueType = getIssueTypeHelper(jsonObject);
         String timestamp = jsonObject.getAsJsonPrimitive("timestamp").getAsString();
 
         // TODO: Remove debug output
@@ -167,6 +171,34 @@ public class HookHandlerService {
         JsonElement temp = obj.get(propertyName);
 
         return (temp instanceof JsonNull) ? "" : temp.getAsString();
+    }
+
+    /**
+     * Determines the internal issue type.
+     * Since issue types like "Epic", "Story", etc. are not part of every Jira project and configurable by the user,
+     * we have to look up the issue-type-ids in the configuration.
+     */
+    private String getIssueTypeHelper(JsonObject jsonObject) {
+
+        // Get the configuration
+        Configuration config = configurationService.getConfig();
+
+        // Get the issue type id
+        String issueTypeId = jsonObject.getAsJsonObject("issue").getAsJsonObject("fields").getAsJsonObject("issuetype").getAsJsonPrimitive("id").getAsString();
+
+        if (issueTypeId.equals(config.getJiraIssueTypeIdEpic())) {
+            return Metric.ISSUE_TYPE_EPIC;
+        }
+
+        if (issueTypeId.equals(config.getJiraIssueTypeIdStory())) {
+            return Metric.ISSUE_TYPE_STORY;
+        }
+
+        if (issueTypeId.equals(config.getJiraIssueTypeIdSubtask())) {
+            return Metric.ISSUE_TYPE_SUBTASK;
+        }
+
+        return Metric.ISSUE_TYPE_UNKNOWN;
     }
 
     /**

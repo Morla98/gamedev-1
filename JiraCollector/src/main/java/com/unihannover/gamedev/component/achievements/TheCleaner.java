@@ -27,6 +27,6 @@ public class TheCleaner extends AbstractAchievementComponent {
         // Get ammount of distinct issues that this user has deleted
         long amount = this.metricRepository.getDistinctIssueKeysByUserAndEvent(userEmail, Metric.EVENT_ISSUE_DELETED).size();
 
-        return (float) Math.min(100, amount * 100);
+        return (float) Math.min(100, amount * 20);
     }
 }

@@ -24,6 +24,14 @@ public class Metric {
     public static final String ACTION_ISSUE_COMMENT_EDITED = "issue-comment-edited";
 
     /**
+     * Issue types
+     */
+    public static final String ISSUE_TYPE_UNKNOWN = "";
+    public static final String ISSUE_TYPE_EPIC = "epic";
+    public static final String ISSUE_TYPE_STORY = "story";
+    public static final String ISSUE_TYPE_SUBTASK = "subtask";
+
+    /**
      * Auto-generated Id, we do not bother it
      */
     @Id
