@@ -5,7 +5,7 @@ import java.sql.Timestamp;
 /**
  * Represents a collector
  */
-public class Collector implements Model{
+public class Collector implements Model {
 
     private String id;
     private String name;

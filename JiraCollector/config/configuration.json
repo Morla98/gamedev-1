@@ -1,0 +1,7 @@
+{
+  "name" : "JiraCollector",
+  "collectorId" : "jira",
+  "token" : "",
+  "mainApiUrl" : "http://devgame:8080/api",
+  "jwtSecret": "GamerControlDINGS"
+}
