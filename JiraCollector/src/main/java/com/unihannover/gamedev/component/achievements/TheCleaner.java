@@ -15,7 +15,7 @@ public class TheCleaner extends AbstractAchievementComponent {
         this.setCollectorId(config.getCollectorId());
         this.setId("c" + config.getCollectorId() + "4");
         this.setName("The Cleaner");
-        this.setDescription("Delete five tickets");
+        this.setDescription("Delete 5 issues");
         this.setValue(5);
     }
 
@@ -24,7 +24,7 @@ public class TheCleaner extends AbstractAchievementComponent {
      */
     public float getProgress(String userEmail) {
 
-        // Get ammount of distinct tickets that this user has deleted
+        // Get ammount of distinct issues that this user has deleted
         long amount = this.metricRepository.getDistinctIssueKeysByUserAndEvent(userEmail, Metric.EVENT_ISSUE_DELETED).size();
 
         return (float) Math.min(100, amount * 100);

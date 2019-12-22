@@ -15,7 +15,7 @@ public class TheReporter extends AbstractAchievementComponent {
         this.setCollectorId(config.getCollectorId());
         this.setId("c" + config.getCollectorId() + "5");
         this.setName("The Reporter");
-        this.setDescription("Create 50 tickets");
+        this.setDescription("Create 50 issues");
         this.setValue(50);
     }
 
@@ -24,7 +24,7 @@ public class TheReporter extends AbstractAchievementComponent {
      */
     public float getProgress(String userEmail) {
 
-        // Get ammount of distinct tickets that this user has created
+        // Get ammount of distinct issues that this user has created
         long amount = this.metricRepository.getDistinctIssueKeysByUserAndEvent(userEmail, Metric.EVENT_ISSUE_CREATED).size();
 
         return (float) Math.min(100, amount * 2);

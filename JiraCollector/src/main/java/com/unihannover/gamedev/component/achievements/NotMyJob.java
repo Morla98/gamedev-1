@@ -15,8 +15,8 @@ public class NotMyJob extends AbstractAchievementComponent {
         this.setCollectorId(config.getCollectorId());
         this.setId("c" + config.getCollectorId() + "3");
         this.setName("Not my job!");
-        this.setDescription("Assign five different tickets from yourself to someone else");
-        this.setValue(5);
+        this.setDescription("Assign 10 different issues from yourself to someone else");
+        this.setValue(10);
     }
 
     /**
@@ -24,9 +24,9 @@ public class NotMyJob extends AbstractAchievementComponent {
      */
     public float getProgress(String userEmail) {
 
-        // Get ammount of distinct tickets that this user has assigned to someone else
+        // Get ammount of distinct issues that this user has assigned to someone else
         long amount = this.metricRepository.getDistinctIssueKeysByUserAndAction(userEmail, Metric.ACTION_ISSUE_ASSIGNED_AWAY).size();
 
-        return (float) Math.min(100, amount * 20);
+        return (float) Math.min(100, amount * 10);
     }
 }

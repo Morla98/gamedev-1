@@ -15,7 +15,7 @@ public class HelloJira extends AbstractAchievementComponent {
         this.setCollectorId(config.getCollectorId());
         this.setId("c" + config.getCollectorId() + "1");
         this.setName("Hello Jira");
-        this.setDescription("Create your first Jira ticket");
+        this.setDescription("Create your first issue");
         this.setValue(1);
     }
 
@@ -24,7 +24,7 @@ public class HelloJira extends AbstractAchievementComponent {
      */
     public float getProgress(String userEmail) {
 
-        // Get ammount of distinct tickets that this user has created
+        // Get ammount of distinct issues that this user has created
         long amount = this.metricRepository.getDistinctIssueKeysByUserAndEvent(userEmail, Metric.EVENT_ISSUE_CREATED).size();
 
         return (float) Math.min(100, amount * 100);

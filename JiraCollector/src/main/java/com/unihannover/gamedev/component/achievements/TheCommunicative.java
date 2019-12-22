@@ -15,7 +15,7 @@ public class TheCommunicative extends AbstractAchievementComponent {
         this.setCollectorId(config.getCollectorId());
         this.setId("c" + config.getCollectorId() + "6");
         this.setName("The Communicative");
-        this.setDescription("Comment on 50 different tickets");
+        this.setDescription("Comment on 50 different issues");
         this.setValue(50);
     }
 
@@ -24,7 +24,7 @@ public class TheCommunicative extends AbstractAchievementComponent {
      */
     public float getProgress(String userEmail) {
 
-        // Get ammount of distinct tickets that this user has commented on
+        // Get ammount of distinct issues that this user has commented on
         long amount = this.metricRepository.getDistinctIssueKeysByUserAndAction(userEmail, Metric.ACTION_ISSUE_COMMENTED).size();
 
         return (float) Math.min(100, amount * 2);

@@ -58,17 +58,18 @@ public class HookHandlerService {
     private void handleIssueCreated(JsonObject jsonObject) {
 
         // Extract required information
-        String eventType    = jsonObject.getAsJsonPrimitive("webhookEvent").getAsString();
+        String eventType  = jsonObject.getAsJsonPrimitive("webhookEvent").getAsString();
 
-        String userEmail    = jsonObject.getAsJsonObject("user").getAsJsonPrimitive("emailAddress").getAsString();
-        String userKey      = jsonObject.getAsJsonObject("user").getAsJsonPrimitive("key").getAsString();
-        String issueKey     = jsonObject.getAsJsonObject("issue").getAsJsonPrimitive("key").getAsString();
-        String timestamp    = jsonObject.getAsJsonPrimitive("timestamp").getAsString();
+        String userEmail  = jsonObject.getAsJsonObject("user").getAsJsonPrimitive("emailAddress").getAsString();
+        String userKey    = jsonObject.getAsJsonObject("user").getAsJsonPrimitive("key").getAsString();
+        String issueKey   = jsonObject.getAsJsonObject("issue").getAsJsonPrimitive("key").getAsString();
+        String issueType  = jsonObject.getAsJsonObject("issue").getAsJsonObject("fields").getAsJsonObject("issuetype").getAsJsonPrimitive("name").getAsString();
+        String timestamp  = jsonObject.getAsJsonPrimitive("timestamp").getAsString();
 
         // TODO: Remove debug output
         System.out.printf("User %s (%s) triggered event %s on issue %s at %s.\n", userEmail, userKey, eventType, issueKey, timestamp);
 
-        this.insertMetric(userEmail, issueKey, Metric.EVENT_ISSUE_CREATED, Metric.ACTION_NONE, timestamp);
+        this.insertMetric(userEmail, issueKey, issueType, Metric.EVENT_ISSUE_CREATED, Metric.ACTION_NONE, timestamp);
     }
 
     /**
@@ -77,17 +78,18 @@ public class HookHandlerService {
     private void handleIssueDeleted(JsonObject jsonObject) {
 
         // Extract required information
-        String eventType    = jsonObject.getAsJsonPrimitive("webhookEvent").getAsString();
+        String eventType = jsonObject.getAsJsonPrimitive("webhookEvent").getAsString();
 
-        String userEmail    = jsonObject.getAsJsonObject("user").getAsJsonPrimitive("emailAddress").getAsString();
-        String userKey      = jsonObject.getAsJsonObject("user").getAsJsonPrimitive("key").getAsString();
-        String issueKey     = jsonObject.getAsJsonObject("issue").getAsJsonPrimitive("key").getAsString();
-        String timestamp    = jsonObject.getAsJsonPrimitive("timestamp").getAsString();
+        String userEmail = jsonObject.getAsJsonObject("user").getAsJsonPrimitive("emailAddress").getAsString();
+        String userKey   = jsonObject.getAsJsonObject("user").getAsJsonPrimitive("key").getAsString();
+        String issueKey  = jsonObject.getAsJsonObject("issue").getAsJsonPrimitive("key").getAsString();
+        String issueType = jsonObject.getAsJsonObject("issue").getAsJsonObject("fields").getAsJsonObject("issuetype").getAsJsonPrimitive("name").getAsString();
+        String timestamp = jsonObject.getAsJsonPrimitive("timestamp").getAsString();
 
         // TODO: Remove debug output
         System.out.printf("User %s (%s) triggered event %s on issue %s at %s.\n", userEmail, userKey, eventType, issueKey, timestamp);
 
-        this.insertMetric(userEmail, issueKey, Metric.EVENT_ISSUE_DELETED, Metric.ACTION_NONE, timestamp);
+        this.insertMetric(userEmail, issueKey, issueType, Metric.EVENT_ISSUE_DELETED, Metric.ACTION_NONE, timestamp);
     }
 
     /**
@@ -99,20 +101,21 @@ public class HookHandlerService {
         String eventType    = jsonObject.getAsJsonPrimitive("webhookEvent").getAsString();
         String issueEventType = jsonObject.getAsJsonPrimitive("issue_event_type_name").getAsString();
 
-        String userEmail    = jsonObject.getAsJsonObject("user").getAsJsonPrimitive("emailAddress").getAsString();
-        String userKey      = jsonObject.getAsJsonObject("user").getAsJsonPrimitive("key").getAsString();
-        String issueKey     = jsonObject.getAsJsonObject("issue").getAsJsonPrimitive("key").getAsString();
-        String timestamp    = jsonObject.getAsJsonPrimitive("timestamp").getAsString();
+        String userEmail = jsonObject.getAsJsonObject("user").getAsJsonPrimitive("emailAddress").getAsString();
+        String userKey   = jsonObject.getAsJsonObject("user").getAsJsonPrimitive("key").getAsString();
+        String issueKey  = jsonObject.getAsJsonObject("issue").getAsJsonPrimitive("key").getAsString();
+        String issueType = jsonObject.getAsJsonObject("issue").getAsJsonObject("fields").getAsJsonObject("issuetype").getAsJsonPrimitive("name").getAsString();
+        String timestamp = jsonObject.getAsJsonPrimitive("timestamp").getAsString();
 
         // TODO: Remove debug output
         System.out.printf("User %s (%s) triggered event %s (exactly: %s) on issue %s at %s.\n", userEmail, userKey, eventType, issueEventType, issueKey, timestamp);
 
         // Handling of specialized issueEventTypes
         if (issueEventType.equals("issue_commented")) { // User commented on issue
-            this.insertMetric(userEmail, issueKey, Metric.EVENT_ISSUE_UPDATED, Metric.ACTION_ISSUE_COMMENTED, timestamp);
+            this.insertMetric(userEmail, issueKey, issueType, Metric.EVENT_ISSUE_UPDATED, Metric.ACTION_ISSUE_COMMENTED, timestamp);
             return;
         } else if (issueEventType.equals("issue_comment_edited")) { // User edited comment on issue
-            this.insertMetric(userEmail, issueKey, Metric.EVENT_ISSUE_UPDATED, Metric.ACTION_ISSUE_COMMENT_EDITED, timestamp);
+            this.insertMetric(userEmail, issueKey, issueType, Metric.EVENT_ISSUE_UPDATED, Metric.ACTION_ISSUE_COMMENT_EDITED, timestamp);
             return;
         }
 
@@ -139,19 +142,19 @@ public class HookHandlerService {
 
             // Issue status is now "Done"
             if (field.equals("status") && !fromString.equals("Done") && toString.equals("Done")) {
-                this.insertMetric(userEmail, issueKey, Metric.EVENT_ISSUE_UPDATED, Metric.ACTION_ISSUE_DONE, timestamp);
+                this.insertMetric(userEmail, issueKey, issueType, Metric.EVENT_ISSUE_UPDATED, Metric.ACTION_ISSUE_DONE, timestamp);
                 continue;
             }
 
             // Issue assigned to me (from someone else)
             if (field.equals("assignee") && !from.equals(userKey) && to.equals(userKey)) {
-                this.insertMetric(userEmail, issueKey, Metric.EVENT_ISSUE_UPDATED, Metric.ACTION_ISSUE_ASSIGNED_TO_ME, timestamp);
+                this.insertMetric(userEmail, issueKey, issueType, Metric.EVENT_ISSUE_UPDATED, Metric.ACTION_ISSUE_ASSIGNED_TO_ME, timestamp);
                 continue;
             }
 
             // Issue assigned away (from me)
             if (field.equals("assignee") && from.equals(userKey) && !to.equals(userKey)) {
-                this.insertMetric(userEmail, issueKey, Metric.EVENT_ISSUE_UPDATED, Metric.ACTION_ISSUE_ASSIGNED_AWAY, timestamp);
+                this.insertMetric(userEmail, issueKey, issueType, Metric.EVENT_ISSUE_UPDATED, Metric.ACTION_ISSUE_ASSIGNED_AWAY, timestamp);
                 continue;
             }
         }
@@ -169,10 +172,10 @@ public class HookHandlerService {
     /**
      * Insert a new metric entry into the metrics repository/database
      */
-    private void insertMetric(String userEmail, String issueKey, String eventType, String action, String timestamp) {
+    private void insertMetric(String userEmail, String issueKey, String issueType, String eventType, String action, String timestamp) {
 
         // Create new model
-        Metric metric = new Metric(userEmail, issueKey, eventType, action, timestamp);
+        Metric metric = new Metric(userEmail, issueKey, issueType, eventType, action, timestamp);
 
         // Persist model in repository
         this.metricRepository.save(metric);

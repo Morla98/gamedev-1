@@ -5,7 +5,7 @@ import com.unihannover.gamedev.models.Metric;
 import org.springframework.stereotype.Component;
 
 @Component
-public class MyJob extends AbstractAchievementComponent {
+public class EpicKiller extends AbstractAchievementComponent {
 
     /**
      * {@inheritDoc}
@@ -13,9 +13,9 @@ public class MyJob extends AbstractAchievementComponent {
     public void applyConfiguration(Configuration config) {
 
         this.setCollectorId(config.getCollectorId());
-        this.setId("c" + config.getCollectorId() + "2");
-        this.setName("My job!");
-        this.setDescription("Assign 10 different issues to yourself");
+        this.setId("c" + config.getCollectorId() + "7");
+        this.setName("Epic Killer");
+        this.setDescription("Complete 10 Epics");
         this.setValue(10);
     }
 
@@ -24,8 +24,8 @@ public class MyJob extends AbstractAchievementComponent {
      */
     public float getProgress(String userEmail) {
 
-        // Get ammount of distinct issues that this user has assigned to himself
-        long amount = this.metricRepository.getDistinctIssueKeysByUserAndAction(userEmail, Metric.ACTION_ISSUE_ASSIGNED_TO_ME).size();
+        // Get ammount of distinct issues that this user has completed and who are an Epic
+        long amount = this.metricRepository.getDistinctIssueKeysByUserAndActionAndIssueType(userEmail, Metric.ACTION_ISSUE_DONE, "Epic").size();
 
         return (float) Math.min(100, amount * 10);
     }
