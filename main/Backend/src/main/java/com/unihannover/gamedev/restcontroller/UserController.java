@@ -1,5 +1,6 @@
 package com.unihannover.gamedev.restcontroller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,10 +24,11 @@ public class UserController extends BaseController {
     @RequestMapping(value="/users/all", method = RequestMethod.GET)
     public List<User> getAllUsers() {
     	
-        List<User> result =  repository.findAll();
-        for (User u: result) {
-        	if (u.isAnonymous()) {
-        		result.remove(u);
+        List<User> users =  repository.findAll();
+        List<User> result = new ArrayList<User>();
+        for (User u: users) {
+        	if (!u.isAnonymous()) {
+        		result.add(u);
         	}
         }
         return result;
