@@ -7,6 +7,7 @@ import { StrictHttpResponse as __StrictHttpResponse } from '../strict-http-respo
 import { Observable as __Observable } from 'rxjs';
 import { map as __map, filter as __filter } from 'rxjs/operators';
 
+import { ResponseEntity } from '../models/response-entity';
 import { CollectorWOT } from '../models/collector-wot';
 import { Collector } from '../models/collector';
 
@@ -37,7 +38,7 @@ class CollectorControllerService extends __BaseService {
    *
    * @return OK
    */
-  addCollectorUsingPOSTResponse(params: CollectorControllerService.AddCollectorUsingPOSTParams): __Observable<__StrictHttpResponse<string>> {
+  addCollectorUsingPOSTResponse(params: CollectorControllerService.AddCollectorUsingPOSTParams): __Observable<__StrictHttpResponse<ResponseEntity>> {
     let __params = this.newParams();
     let __headers = new HttpHeaders();
     let __body: any = null;
@@ -50,13 +51,13 @@ class CollectorControllerService extends __BaseService {
       {
         headers: __headers,
         params: __params,
-        responseType: 'text'
+        responseType: 'json'
       });
 
     return this.http.request<any>(req).pipe(
       __filter(_r => _r instanceof HttpResponse),
       __map((_r) => {
-        return _r as __StrictHttpResponse<string>;
+        return _r as __StrictHttpResponse<ResponseEntity>;
       })
     );
   }
@@ -69,9 +70,9 @@ class CollectorControllerService extends __BaseService {
    *
    * @return OK
    */
-  addCollectorUsingPOST(params: CollectorControllerService.AddCollectorUsingPOSTParams): __Observable<string> {
+  addCollectorUsingPOST(params: CollectorControllerService.AddCollectorUsingPOSTParams): __Observable<ResponseEntity> {
     return this.addCollectorUsingPOSTResponse(params).pipe(
-      __map(_r => _r.body as string)
+      __map(_r => _r.body as ResponseEntity)
     );
   }
 
