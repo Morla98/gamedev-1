@@ -71,6 +71,11 @@ mat-sidenav-container {
   }
 }
 
+mat-icon{
+  &:hover {
+    cursor: pointer;
+  }
+}
 mat-sidenav-content {
   padding: 2rem;
 }

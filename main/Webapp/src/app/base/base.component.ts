@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { AuthenticationService } from '../authentication/authentication.service';
+import { Subscription } from 'rxjs';
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-base',
@@ -11,6 +13,8 @@ import { AuthenticationService } from '../authentication/authentication.service'
 export class BaseComponent implements OnInit {
   public selectedLanguage: string;
   public user;
+
+  private subs: Subscription[] = [];
   constructor(
     private router: Router,
     private translateService: TranslateService,
@@ -22,17 +26,19 @@ export class BaseComponent implements OnInit {
     } else {
       this.selectedLanguage = this.translateService.defaultLang;
     }
-    this.user = {
-      name: 'Jhon Doe',
-      points: 82,
-      level: 4
-    };
+
+    this.subs.push(
+      this.authenticationService.user$
+        .pipe(filter(data => data !== undefined))
+        .subscribe(data => (this.user = data))
+    );
+    this.authenticationService.loadUserInfo();
   }
 
   ngOnInit() {}
 
   logout() {
-    this.router.navigate(['login']);
+    this.authenticationService.logout();
   }
 
   setLanguage(lang: string) {

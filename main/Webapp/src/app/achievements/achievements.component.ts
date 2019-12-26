@@ -144,6 +144,10 @@ export class AchievementsComponent implements OnInit {
     this.loadAchievements();
   }
 
+  backToOverview() {
+    this.selectedService = undefined;
+  }
+
   // getSelectedAchievements() {
   //   const service = this.services.find(s => s.name === this.selectedService);
   //   if (service !== undefined) {
