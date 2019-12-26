@@ -24,14 +24,7 @@ public class UserController extends BaseController {
     @RequestMapping(value="/users/all", method = RequestMethod.GET)
     public List<User> getAllUsers() {
     	
-        List<User> users =  repository.findAll();
-        List<User> result = new ArrayList<User>();
-        for (User u: users) {
-        	if (!u.isAnonymous()) {
-        		result.add(u);
-        	}
-        }
-        return result;
+        return repository.findByAnonymousFalse();
     }
 
     @RequestMapping(value="/users/by-email", method = RequestMethod.GET)
