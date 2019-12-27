@@ -12,6 +12,7 @@ import com.unihannover.gamedev.models.UserAchievement;
 import com.unihannover.gamedev.repositories.MetricRepository;
 import com.unihannover.gamedev.services.CollectorService;
 
+import com.unihannover.gamedev.services.GitService;
 import com.unihannover.gamedev.services.HttpService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -26,7 +27,7 @@ import java.util.List;
 @RestController
 public class CollectorController {
 
-
+    private static GitService git;
     @Autowired
     MetricRepository repository;
     @Autowired
@@ -56,10 +57,13 @@ public class CollectorController {
         httpService.sendList(uaList, "http://devgame:8080/api/user-achievements");
 
     }
+
+    public static void setGit(GitService git){ CollectorController.git = git; }
+
     // URL IS: http://GitCollector:8080/update
     @RequestMapping(value="/update", method = RequestMethod.POST)
     public void update(@RequestBody String data) {
-
+        git.gitPull();
     }
 
 }

@@ -54,8 +54,9 @@ public class GitService{
     private List<LambdaInterface> createDiffList = new ArrayList<LambdaInterface>();
     private CollectorConfig config = CollectorConfigParser.configJsonToObject();
     private List<NameLambdaInterface> nameLambdaList = new ArrayList<NameLambdaInterface>();
-    //private
-    public GitService(Repository git_repository, Git git, List<Achievement> achievementList, HttpService httpService,MetricRepository repository,List<User> userList, List<UserAchievement> uaList, List<Model> uaModelList)
+    private CredentialsProvider user;
+
+    public GitService(Repository git_repository, Git git, List<Achievement> achievementList, HttpService httpService,MetricRepository repository,List<User> userList, List<UserAchievement> uaList, List<Model> uaModelList, CredentialsProvider user)
     {
         this.git_repository = git_repository;
         this.git = git;
@@ -66,7 +67,10 @@ public class GitService{
         this.uaList = uaList;
         this.uaModelList = uaModelList;
         setLastCommitDate();
-
+        setRegex();
+        setCreateDiffList();
+        setNameLambdaList();
+        this.user = user;
     }
     /**
      * Get the User specified LastCommitDate from the gitTimeStamp.json
@@ -168,7 +172,27 @@ public class GitService{
             }
         });
     }
-    //TODO: Timer durch Pseudo Hook ersetzen
+
+
+    public void gitPull()
+    {
+        PullResult result = null;
+        try {
+            result = git.pull()
+                    .setCredentialsProvider(user)
+                    .call();
+        } catch (GitAPIException e) {
+            e.printStackTrace();
+        }
+        if (result.isSuccessful()) {
+            System.out.println("\n\nWEBHOOK PULL SUCCESS!\n\n");
+            iterateBranches();
+        } else {
+            System.out.println("\n\nWEBHOOK PULL FAILED!\n\n");
+        }
+    }
+
+    //VERALTETE METHODE!!!
     public void runTimer(CredentialsProvider user)
     {
         setLastCommitDate();

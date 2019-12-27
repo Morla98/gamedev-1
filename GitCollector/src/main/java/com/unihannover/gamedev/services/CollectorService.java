@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.unihannover.gamedev.models.*;
+import com.unihannover.gamedev.restcontroller.CollectorController;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpStatus;
 import org.apache.http.client.methods.CloseableHttpResponse;
@@ -144,8 +145,10 @@ public class CollectorService {
 			try{
 				Git git = Git.open(new File(repoFile + "/.git"));
 				Repository git_repository = repositoryBuilder.setGitDir(new File(repoFile + "/.git")).readEnvironment().findGitDir().setMustExist(true).build();
-				gitservice = new GitService(git_repository, git, achievementList, httpService, repository, httpService.getUsers(), uaList, uaModelList);
-				gitservice.runTimer(credentialsProvider);
+				gitservice = new GitService(git_repository, git, achievementList, httpService, repository, httpService.getUsers(), uaList, uaModelList, credentialsProvider);
+				CollectorController.setGit(gitservice);
+				//VERALTET!
+				//gitservice.runTimer(credentialsProvider);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
