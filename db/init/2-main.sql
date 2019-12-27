@@ -55,15 +55,15 @@ BEGIN
     -- Update every users score attribute as the sum of every user_achievement's value that was achieved by that user
     UPDATE main.users u
     SET score = (
-	    SELECT COALESCE(SUM(a.value), 0)
-	    FROM main.user_achievements ua
-	    JOIN main.achievements a ON(ua.achievement_id=a.id AND ua.collector_id=a.collector_id)
-	    WHERE
-	        ua.progress >= 100
-	       AND ua.user_email=u.email
+        SELECT COALESCE(SUM(a.value), 0)
+        FROM main.user_achievements ua
+        JOIN main.achievements a ON(ua.achievement_id = a.id AND ua.collector_id = a.collector_id)
+        WHERE
+            ua.progress >= 100
+            AND ua.user_email = u.email
     );
 
-   RETURN NEW;
+    RETURN NEW;
 END;
 $$ LANGUAGE plpgsql;
 
