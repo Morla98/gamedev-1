@@ -251,8 +251,6 @@ public class GitService{
     }
 
     public void getCreateDiffRelatedAchievemnets(String diff_string, Metric metric){
-        String lines[] = diff_string.split("\\r?\\n");
-        getNameRelatedAchievements(lines[0].substring(lines[0].lastIndexOf("/")), metric);
         for(LambdaInterface ele : createDiffList){
             ele.createDiff(diff_string, metric);
         }
@@ -293,6 +291,7 @@ public class GitService{
             //new file
             if(lines[1].startsWith("new file mode ")){
                 metric.setNumberOfNewFiles(metric.getNumberOfNewFiles() + 1);
+                getNameRelatedAchievements(lines[0].substring(lines[0].lastIndexOf("/")), metric);
                 getCreateDiffRelatedAchievemnets(diff, metric);
             // changing file
             }else if(lines[1].startsWith("index")){

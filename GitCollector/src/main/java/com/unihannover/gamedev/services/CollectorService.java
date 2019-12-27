@@ -197,7 +197,9 @@ public class CollectorService {
 		// only if collector was not known he should send the initalize Achievementlist and UserAchievementList
 		if(!reported){
 			httpService.sendList(aModelList, "http://devgame:8080/api/achievements");
-			httpService.sendList(uaModelList, "http://devgame:8080/api/user-achievements");
+			if(uaModelList.size() > 0) {
+				httpService.sendList(uaModelList, "http://devgame:8080/api/user-achievements");
+			}
 		}
 		System.out.println("\nInit Achievements\n");
 
