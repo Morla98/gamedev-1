@@ -50,19 +50,6 @@ services:
     ports:
       - 8082:8080
 
-  # A first test connector
-  test-collector:
-    container_name: devgame_test-collector
-    restart: always
-    build:
-      context: ./test-collector
-    networks:
-      - network1
-    ports:
-      - 9001:80
-    depends_on:
-      - "db"
-
   # OpenLDAP server
   ldap-server:
     container_name: devgame_ldap-server
