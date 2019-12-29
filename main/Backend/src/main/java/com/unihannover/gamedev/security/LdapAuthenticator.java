@@ -38,10 +38,7 @@ public class LdapAuthenticator {
 	        serviceEnv.put(Context.SECURITY_CREDENTIALS, ldapConfiguration.LDAP_SERVICE_USER_PW);
 	        serviceCtx = new InitialDirContext(serviceEnv);
 
-	        // we don't need all attributes, just let it get the identifying one
-	        String[] attributeFilter = { ldapConfiguration.LDAP_IDENTIFYING_ATTRIBUTE };
 	        SearchControls sc = new SearchControls();
-	        sc.setReturningAttributes(attributeFilter);
 	        sc.setSearchScope(SearchControls.SUBTREE_SCOPE);
 
 	        // Construct the search filter
