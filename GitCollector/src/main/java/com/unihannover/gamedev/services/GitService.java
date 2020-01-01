@@ -56,6 +56,11 @@ public class GitService{
     private List<NameLambdaInterface> nameLambdaList = new ArrayList<NameLambdaInterface>();
     private CredentialsProvider user;
 
+    //lastPull is 0 at the beginning because the first hook has to be taken
+    //can be changed in gitTimeStamp.json
+    private long lastPull = 0;
+    private long threshold = 10000;
+
     public GitService(Repository git_repository, Git git, List<Achievement> achievementList, HttpService httpService,MetricRepository repository,List<User> userList, List<UserAchievement> uaList, List<Model> uaModelList, CredentialsProvider user)
     {
         this.git_repository = git_repository;
@@ -79,10 +84,11 @@ public class GitService{
     public void setLastCommitDate() {
         JSONParser parser = new JSONParser();
         try {
-            Reader reader = new FileReader("config/collectorConfiguration/gitTimeStamp.json");
+            Reader reader = new FileReader("../../config/collectorConfiguration/gitTimeStamp.json");
             JSONObject jsonObject = (JSONObject) parser.parse(reader);
             SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy HH:mm:ss");
             minDate = formatter.parse(jsonObject.get("timestamp").toString());
+            threshold = (long) jsonObject.get("threshold");
             reader.close();
         } catch (Exception e) {
             e.printStackTrace();
@@ -96,7 +102,7 @@ public class GitService{
     public void setRegex(){
         JSONParser parser = new JSONParser();
         try{
-            Reader reader = new FileReader("config/collectorConfiguration/legalRegex.json");
+            Reader reader = new FileReader("../../config/collectorConfiguration/legalRegex.json");
             JSONArray jsonArray = (JSONArray) parser.parse(reader);
             for (Object obj : jsonArray){
                 JSONObject a = (JSONObject) obj;
@@ -112,7 +118,7 @@ public class GitService{
         JSONObject time = new JSONObject();
         time.put("curr_head", minDate);
         try {
-            FileWriter file = new FileWriter("config/collectorConfiguration/gitTimeStamp.json");
+            FileWriter file = new FileWriter("../../config/collectorConfiguration/gitTimeStamp.json");
             file.write(time.toJSONString());
             file.flush();
             file.close();
@@ -125,7 +131,7 @@ public class GitService{
         List<LambdaInterface> list = new ArrayList<LambdaInterface>();
         JSONParser parser = new JSONParser();
         try{
-            Reader reader = new FileReader("config/achievements/createDiffAchievement.json");
+            Reader reader = new FileReader("../../config/achievements/createDiffAchievement.json");
             JSONArray jsonArray = (JSONArray) parser.parse(reader);
             for(Object obj : jsonArray){
                 JSONObject a = (JSONObject) obj;
@@ -176,19 +182,23 @@ public class GitService{
 
     public void gitPull()
     {
-        PullResult result = null;
-        try {
-            result = git.pull()
-                    .setCredentialsProvider(user)
-                    .call();
-        } catch (GitAPIException e) {
-            e.printStackTrace();
-        }
-        if (result.isSuccessful()) {
-            System.out.println("\n\nWEBHOOK PULL SUCCESS!\n\n");
-            iterateBranches();
-        } else {
-            System.out.println("\n\nWEBHOOK PULL FAILED!\n\n");
+        if((System.currentTimeMillis() - lastPull) >= threshold)
+        {
+            PullResult result = null;
+            try {
+                result = git.pull()
+                        .setCredentialsProvider(user)
+                        .call();
+            } catch (GitAPIException e) {
+                e.printStackTrace();
+            }
+            if (result.isSuccessful()) {
+                System.out.println("\n\nWEBHOOK PULL SUCCESS!\n\n");
+                lastPull = System.currentTimeMillis();
+                iterateBranches();
+            } else {
+                System.out.println("\n\nWEBHOOK PULL FAILED!\n\n");
+            }
         }
     }
 

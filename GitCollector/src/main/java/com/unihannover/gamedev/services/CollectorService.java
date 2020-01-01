@@ -125,7 +125,7 @@ public class CollectorService {
 
 		JSONParser parser = new JSONParser();
 
-		try (Reader reader = new FileReader("config/collectorConfiguration/gitCredentials.json")) {
+		try (Reader reader = new FileReader("../../config/collectorConfiguration/gitCredentials.json")) {
 			JSONObject jsonObject = (JSONObject) parser.parse(reader);
 			CloneCommand cloneCommand = Git.cloneRepository();
 			String repoURL = (String) jsonObject.get("repoURL");
