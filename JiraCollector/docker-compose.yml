@@ -10,6 +10,8 @@ services:
   jiracollector:
     container_name: JiraCollector
     restart: always
+    volumes:
+      - ./config:/config
     build:
       context: .
     ports:
