@@ -13,7 +13,7 @@ public class ConfigurationService {
     /**
      * Location of the configuration file
      */
-    private static final String CONFIG_FILEPATH = "config/configuration.json";
+    private static final String CONFIG_FILEPATH = "../../config/configuration.json";
 
     /**
      * Returns the collector configuration object
