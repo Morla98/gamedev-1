@@ -1,8 +1,6 @@
 package com.unihannover.gamedev;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 
 import java.io.File;
 import java.io.IOException;
@@ -41,8 +39,7 @@ public class LdapConfigParser {
         ObjectMapper Obj = new ObjectMapper();
         try {
             // get LdapConfig object as a json string
-            String jsonStr = Obj.writeValueAsString(configuration);
-            return jsonStr;
+            return Obj.writeValueAsString(configuration);
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -53,8 +50,6 @@ public class LdapConfigParser {
     /**
      * Print the parsed configuration into the stdout.
      * TODO: Remove in production?!
-     *
-     * @param configuration
      */
     private static void printConfig(LdapConfiguration configuration) {
         System.out.println("-------------");
