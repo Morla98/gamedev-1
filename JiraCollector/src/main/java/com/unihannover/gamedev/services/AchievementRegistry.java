@@ -26,7 +26,7 @@ public class AchievementRegistry {
 
         // Apply the configuration to each achievement transparently
         Configuration config = configurationService.getConfig();
-        for(AbstractAchievementComponent achievement : this.achievements) {
+        for (AbstractAchievementComponent achievement : this.achievements) {
             achievement.applyConfiguration(config);
         }
 
