@@ -16,7 +16,7 @@ public class CollectorController {
     /**
      * WebHook endpoint for JIRA
      */
-    @RequestMapping(value="/update", method = RequestMethod.POST)
+    @RequestMapping(value = "/update", method = RequestMethod.POST)
     public void update(@RequestBody String data) {
         // Pass object to hook handler
         hookHandlerService.handle(data);
