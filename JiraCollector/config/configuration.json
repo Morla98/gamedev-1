@@ -1,0 +1,10 @@
+{
+  "name" : "JiraCollector",
+  "collectorId" : "jira",
+  "token" : "",
+  "mainApiUrl" : "http://devgame:8080/api",
+  "jwtSecret": "GamerControlDINGS",
+  "jiraIssueTypeIdEpic": "10000",
+  "jiraIssueTypeIdStory": "10001",
+  "jiraIssueTypeIdSubtask": "10003"
+}

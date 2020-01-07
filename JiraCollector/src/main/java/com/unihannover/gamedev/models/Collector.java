@@ -5,7 +5,7 @@ import java.sql.Timestamp;
 /**
  * Represents a collector
  */
-public class Collector implements Model{
+public class Collector implements Model {
 
     private String id;
     private String name;
@@ -46,7 +46,7 @@ public class Collector implements Model{
         this.token = token;
     }
 
-    public String toJSON(){
+    public String toJSON() {
         StringBuilder json = new StringBuilder();
         json.append("{");
         json.append("\"id\": \"" + this.id + "\", ");

@@ -16,9 +16,10 @@ import { User } from '../models/user';
   providedIn: 'root',
 })
 class UserControllerService extends __BaseService {
-  static readonly updateProfileUsingPOSTPath = '/api/users';
+  static readonly addUserUsingPUTPath = '/api/users';
   static readonly getAllUsersUsingGETPath = '/api/users/all';
   static readonly getUsersByEmailUsingGETPath = '/api/users/by-email';
+  static readonly getProfileUsingGETPath = '/api/users/profile';
 
   constructor(
     config: __Configuration,
@@ -30,13 +31,13 @@ class UserControllerService extends __BaseService {
   /**
    * @param u u
    */
-  updateProfileUsingPOSTResponse(u: User): __Observable<__StrictHttpResponse<null>> {
+  addUserUsingPUTResponse(u: User): __Observable<__StrictHttpResponse<null>> {
     let __params = this.newParams();
     let __headers = new HttpHeaders();
     let __body: any = null;
     __body = u;
     let req = new HttpRequest<any>(
-      'POST',
+      'PUT',
       this.rootUrl + `/api/users`,
       __body,
       {
@@ -55,8 +56,8 @@ class UserControllerService extends __BaseService {
   /**
    * @param u u
    */
-  updateProfileUsingPOST(u: User): __Observable<null> {
-    return this.updateProfileUsingPOSTResponse(u).pipe(
+  addUserUsingPUT(u: User): __Observable<null> {
+    return this.addUserUsingPUTResponse(u).pipe(
       __map(_r => _r.body as null)
     );
   }
@@ -98,7 +99,7 @@ class UserControllerService extends __BaseService {
    * @param email email
    * @return OK
    */
-  getUsersByEmailUsingGETResponse(email: string): __Observable<__StrictHttpResponse<Array<User>>> {
+  getUsersByEmailUsingGETResponse(email: string): __Observable<__StrictHttpResponse<User>> {
     let __params = this.newParams();
     let __headers = new HttpHeaders();
     let __body: any = null;
@@ -116,7 +117,7 @@ class UserControllerService extends __BaseService {
     return this.http.request<any>(req).pipe(
       __filter(_r => _r instanceof HttpResponse),
       __map((_r) => {
-        return _r as __StrictHttpResponse<Array<User>>;
+        return _r as __StrictHttpResponse<User>;
       })
     );
   }
@@ -124,9 +125,42 @@ class UserControllerService extends __BaseService {
    * @param email email
    * @return OK
    */
-  getUsersByEmailUsingGET(email: string): __Observable<Array<User>> {
+  getUsersByEmailUsingGET(email: string): __Observable<User> {
     return this.getUsersByEmailUsingGETResponse(email).pipe(
-      __map(_r => _r.body as Array<User>)
+      __map(_r => _r.body as User)
+    );
+  }
+
+  /**
+   * @return OK
+   */
+  getProfileUsingGETResponse(): __Observable<__StrictHttpResponse<User>> {
+    let __params = this.newParams();
+    let __headers = new HttpHeaders();
+    let __body: any = null;
+    let req = new HttpRequest<any>(
+      'GET',
+      this.rootUrl + `/api/users/profile`,
+      __body,
+      {
+        headers: __headers,
+        params: __params,
+        responseType: 'json'
+      });
+
+    return this.http.request<any>(req).pipe(
+      __filter(_r => _r instanceof HttpResponse),
+      __map((_r) => {
+        return _r as __StrictHttpResponse<User>;
+      })
+    );
+  }
+  /**
+   * @return OK
+   */
+  getProfileUsingGET(): __Observable<User> {
+    return this.getProfileUsingGETResponse().pipe(
+      __map(_r => _r.body as User)
     );
   }
 }

@@ -8,3 +8,6 @@ down:
 
 follow-logs:
 	docker-compose logs --follow
+
+clean:
+	find . -type f -name ".DS_Store" -delete
