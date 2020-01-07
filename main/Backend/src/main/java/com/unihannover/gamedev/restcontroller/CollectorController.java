@@ -16,6 +16,11 @@ import com.unihannover.gamedev.models.CollectorWOT;
 import com.unihannover.gamedev.repositories.CollectorRepository;
 import com.unihannover.gamedev.security.JwtTokenProvider;
 
+/**
+ *A controller to handle HTTP requests about Collectors.
+ *
+ * @author Lukas Niehus
+ */
 @RestController
 public class CollectorController extends BaseController {
 	private final String SECRET = "GamerControlDINGS";
@@ -26,16 +31,36 @@ public class CollectorController extends BaseController {
 	@Autowired
 	JwtTokenProvider tokenProvider;
 
+	/**
+	 * Returns all collectors in the repository.
+	 *
+	 * @return A list containg all collectors.
+	 */
 	@RequestMapping(value = "/collectors/all", method = RequestMethod.GET)
 	public List<Collector> getAllCollectors() {
 		return repository.findAll();
 	}
 
+	/**
+	 * Returns all collectors with a given id.
+	 *
+	 * @param id The id to search for
+	 * @return A list containing all collectors with given id
+	 */
 	@RequestMapping(value = "/collectors/by-id", method = RequestMethod.GET)
 	public List<Collector> getCollectorsById(@RequestParam(value = "id") String id) {
 		return repository.findById(id);
 	}
 
+	/**
+	 * Adds a collector to the repository.
+	 *
+	 * Before adding the collector, the method will validate a JWt with a given secret.
+	 *
+	 * @param secret The JWT secret
+	 * @param collectorWOTs The collector to be added
+	 * @return
+	 */
 	@RequestMapping(value = "/collectors", method = RequestMethod.POST)
 	public ResponseEntity addCollector(@RequestParam(value = "secret") String secret,
 			@RequestBody CollectorWOT collectorWOT) {
