@@ -62,13 +62,13 @@ public class HookHandlerService {
     private void handleIssueCreated(JsonObject jsonObject) {
 
         // Extract required information
-        String eventType  = jsonObject.getAsJsonPrimitive("webhookEvent").getAsString();
+        String eventType = jsonObject.getAsJsonPrimitive("webhookEvent").getAsString();
 
-        String userEmail  = jsonObject.getAsJsonObject("user").getAsJsonPrimitive("emailAddress").getAsString();
-        String userKey    = jsonObject.getAsJsonObject("user").getAsJsonPrimitive("key").getAsString();
-        String issueKey   = jsonObject.getAsJsonObject("issue").getAsJsonPrimitive("key").getAsString();
-        String issueType  = getIssueTypeHelper(jsonObject);
-        String timestamp  = jsonObject.getAsJsonPrimitive("timestamp").getAsString();
+        String userEmail = jsonObject.getAsJsonObject("user").getAsJsonPrimitive("emailAddress").getAsString();
+        String userKey = jsonObject.getAsJsonObject("user").getAsJsonPrimitive("key").getAsString();
+        String issueKey = jsonObject.getAsJsonObject("issue").getAsJsonPrimitive("key").getAsString();
+        String issueType = getIssueTypeHelper(jsonObject);
+        String timestamp = jsonObject.getAsJsonPrimitive("timestamp").getAsString();
 
         // TODO: Remove debug output
         System.out.printf("User %s (%s) triggered event %s on issue %s at %s.\n", userEmail, userKey, eventType, issueKey, timestamp);
@@ -85,8 +85,8 @@ public class HookHandlerService {
         String eventType = jsonObject.getAsJsonPrimitive("webhookEvent").getAsString();
 
         String userEmail = jsonObject.getAsJsonObject("user").getAsJsonPrimitive("emailAddress").getAsString();
-        String userKey   = jsonObject.getAsJsonObject("user").getAsJsonPrimitive("key").getAsString();
-        String issueKey  = jsonObject.getAsJsonObject("issue").getAsJsonPrimitive("key").getAsString();
+        String userKey = jsonObject.getAsJsonObject("user").getAsJsonPrimitive("key").getAsString();
+        String issueKey = jsonObject.getAsJsonObject("issue").getAsJsonPrimitive("key").getAsString();
         String issueType = getIssueTypeHelper(jsonObject);
         String timestamp = jsonObject.getAsJsonPrimitive("timestamp").getAsString();
 
@@ -102,12 +102,12 @@ public class HookHandlerService {
     private void handleIssueUpdated(JsonObject jsonObject) {
 
         // Extract required information
-        String eventType    = jsonObject.getAsJsonPrimitive("webhookEvent").getAsString();
+        String eventType = jsonObject.getAsJsonPrimitive("webhookEvent").getAsString();
         String issueEventType = jsonObject.getAsJsonPrimitive("issue_event_type_name").getAsString();
 
         String userEmail = jsonObject.getAsJsonObject("user").getAsJsonPrimitive("emailAddress").getAsString();
-        String userKey   = jsonObject.getAsJsonObject("user").getAsJsonPrimitive("key").getAsString();
-        String issueKey  = jsonObject.getAsJsonObject("issue").getAsJsonPrimitive("key").getAsString();
+        String userKey = jsonObject.getAsJsonObject("user").getAsJsonPrimitive("key").getAsString();
+        String issueKey = jsonObject.getAsJsonObject("issue").getAsJsonPrimitive("key").getAsString();
         String issueType = getIssueTypeHelper(jsonObject);
         String timestamp = jsonObject.getAsJsonPrimitive("timestamp").getAsString();
 
@@ -132,17 +132,17 @@ public class HookHandlerService {
         JsonArray changelogItems = jsonObject.getAsJsonObject("changelog").getAsJsonArray("items");
 
         // ... and iterate over them
-        for(JsonElement changelogEntry : changelogItems) {
+        for (JsonElement changelogEntry : changelogItems) {
 
             // Extract properties (null-aware)
-            String field        = getStringValueHelper(changelogEntry.getAsJsonObject(), "field");
-            String from         = getStringValueHelper(changelogEntry.getAsJsonObject(), "from");
-            String fromString   = getStringValueHelper(changelogEntry.getAsJsonObject(), "fromString");
-            String to           = getStringValueHelper(changelogEntry.getAsJsonObject(), "to");
-            String toString     = getStringValueHelper(changelogEntry.getAsJsonObject(), "toString");
+            String field = getStringValueHelper(changelogEntry.getAsJsonObject(), "field");
+            String from = getStringValueHelper(changelogEntry.getAsJsonObject(), "from");
+            String fromString = getStringValueHelper(changelogEntry.getAsJsonObject(), "fromString");
+            String to = getStringValueHelper(changelogEntry.getAsJsonObject(), "to");
+            String toString = getStringValueHelper(changelogEntry.getAsJsonObject(), "toString");
 
             // TODO: Remove debug output
-            System.out.printf("Field '%s' was updated from '%s' ('%s') to '%s' ('%s').\n" , field, from, fromString, to, toString);
+            System.out.printf("Field '%s' was updated from '%s' ('%s') to '%s' ('%s').\n", field, from, fromString, to, toString);
 
             // Issue status is now "Done"
             if (field.equals("status") && !fromString.equals("Done") && toString.equals("Done")) {

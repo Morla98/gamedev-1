@@ -46,7 +46,7 @@ public class Collector implements Model {
         this.token = token;
     }
 
-    public String toJSON(){
+    public String toJSON() {
         StringBuilder json = new StringBuilder();
         json.append("{");
         json.append("\"id\": \"" + this.id + "\", ");

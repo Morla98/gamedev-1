@@ -29,7 +29,7 @@ public class UserAchievementUpdaterService {
      */
     public void updateForAllUsers() {
         // Query all known users from main application (via API call /users/all)
-        for(User u : httpService.getUsers()) {
+        for (User u : httpService.getUsers()) {
             this.updateForUser(u.getEmail(), true);
         }
     }
@@ -54,7 +54,7 @@ public class UserAchievementUpdaterService {
         List<Model> list = new ArrayList<>();
 
         // For each achievement
-        for(AbstractAchievementComponent achievement : achievementRegistry.getAchievementList()) {
+        for (AbstractAchievementComponent achievement : achievementRegistry.getAchievementList()) {
 
             // Create userAchievement model ...
             UserAchievement userAchievement = new UserAchievement();
