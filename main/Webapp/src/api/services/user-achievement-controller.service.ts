@@ -10,6 +10,7 @@ import { map as __map, filter as __filter } from 'rxjs/operators';
 import { UserAchievementWOT } from '../models/user-achievement-wot';
 import { UserAchievement } from '../models/user-achievement';
 import { AchievementDto } from '../models/achievement-dto';
+import { PreviewDto } from '../models/preview-dto';
 
 /**
  * User Achievement Controller
@@ -19,8 +20,8 @@ import { AchievementDto } from '../models/achievement-dto';
 })
 class UserAchievementControllerService extends __BaseService {
   static readonly updateUserAchievementsUsingPOSTPath = '/api/user-achievements';
-  static readonly getAllUserssUsingGETPath = '/api/user-achievements/all';
-  static readonly getUserAchievementsByUserEmailUsingGETPath = '/api/user-achievements/by-user-email';
+  static readonly getAllUsersUsingGETPath = '/api/user-achievements/all';
+  static readonly getUserAchievementsByCollectorIdUsingGETPath = '/api/user-achievements/by-collector-id';
   static readonly getUserAchievementsPreviewUsingGETPath = '/api/user-achievements/preview';
   static readonly getUserAchievementsCollectorPreviewUsingGETPath = '/api/user-achievements/preview-for-collector';
 
@@ -68,7 +69,7 @@ class UserAchievementControllerService extends __BaseService {
   /**
    * @return OK
    */
-  getAllUserssUsingGETResponse(): __Observable<__StrictHttpResponse<Array<UserAchievement>>> {
+  getAllUsersUsingGETResponse(): __Observable<__StrictHttpResponse<Array<UserAchievement>>> {
     let __params = this.newParams();
     let __headers = new HttpHeaders();
     let __body: any = null;
@@ -92,30 +93,24 @@ class UserAchievementControllerService extends __BaseService {
   /**
    * @return OK
    */
-  getAllUserssUsingGET(): __Observable<Array<UserAchievement>> {
-    return this.getAllUserssUsingGETResponse().pipe(
+  getAllUsersUsingGET(): __Observable<Array<UserAchievement>> {
+    return this.getAllUsersUsingGETResponse().pipe(
       __map(_r => _r.body as Array<UserAchievement>)
     );
   }
 
   /**
-   * @param params The `UserAchievementControllerService.GetUserAchievementsByUserEmailUsingGETParams` containing the following parameters:
-   *
-   * - `userEmail`: userEmail
-   *
-   * - `collectorId`: collectorId
-   *
+   * @param collectorId collectorId
    * @return OK
    */
-  getUserAchievementsByUserEmailUsingGETResponse(params: UserAchievementControllerService.GetUserAchievementsByUserEmailUsingGETParams): __Observable<__StrictHttpResponse<Array<AchievementDto>>> {
+  getUserAchievementsByCollectorIdUsingGETResponse(collectorId: string): __Observable<__StrictHttpResponse<Array<AchievementDto>>> {
     let __params = this.newParams();
     let __headers = new HttpHeaders();
     let __body: any = null;
-    if (params.userEmail != null) __params = __params.set('userEmail', params.userEmail.toString());
-    if (params.collectorId != null) __params = __params.set('collectorId', params.collectorId.toString());
+    if (collectorId != null) __params = __params.set('collectorId', collectorId.toString());
     let req = new HttpRequest<any>(
       'GET',
-      this.rootUrl + `/api/user-achievements/by-user-email`,
+      this.rootUrl + `/api/user-achievements/by-collector-id`,
       __body,
       {
         headers: __headers,
@@ -131,29 +126,22 @@ class UserAchievementControllerService extends __BaseService {
     );
   }
   /**
-   * @param params The `UserAchievementControllerService.GetUserAchievementsByUserEmailUsingGETParams` containing the following parameters:
-   *
-   * - `userEmail`: userEmail
-   *
-   * - `collectorId`: collectorId
-   *
+   * @param collectorId collectorId
    * @return OK
    */
-  getUserAchievementsByUserEmailUsingGET(params: UserAchievementControllerService.GetUserAchievementsByUserEmailUsingGETParams): __Observable<Array<AchievementDto>> {
-    return this.getUserAchievementsByUserEmailUsingGETResponse(params).pipe(
+  getUserAchievementsByCollectorIdUsingGET(collectorId: string): __Observable<Array<AchievementDto>> {
+    return this.getUserAchievementsByCollectorIdUsingGETResponse(collectorId).pipe(
       __map(_r => _r.body as Array<AchievementDto>)
     );
   }
 
   /**
-   * @param userEmail userEmail
    * @return OK
    */
-  getUserAchievementsPreviewUsingGETResponse(userEmail: string): __Observable<__StrictHttpResponse<Array<UserAchievement>>> {
+  getUserAchievementsPreviewUsingGETResponse(): __Observable<__StrictHttpResponse<Array<PreviewDto>>> {
     let __params = this.newParams();
     let __headers = new HttpHeaders();
     let __body: any = null;
-    if (userEmail != null) __params = __params.set('userEmail', userEmail.toString());
     let req = new HttpRequest<any>(
       'GET',
       this.rootUrl + `/api/user-achievements/preview`,
@@ -167,35 +155,28 @@ class UserAchievementControllerService extends __BaseService {
     return this.http.request<any>(req).pipe(
       __filter(_r => _r instanceof HttpResponse),
       __map((_r) => {
-        return _r as __StrictHttpResponse<Array<UserAchievement>>;
+        return _r as __StrictHttpResponse<Array<PreviewDto>>;
       })
     );
   }
   /**
-   * @param userEmail userEmail
    * @return OK
    */
-  getUserAchievementsPreviewUsingGET(userEmail: string): __Observable<Array<UserAchievement>> {
-    return this.getUserAchievementsPreviewUsingGETResponse(userEmail).pipe(
-      __map(_r => _r.body as Array<UserAchievement>)
+  getUserAchievementsPreviewUsingGET(): __Observable<Array<PreviewDto>> {
+    return this.getUserAchievementsPreviewUsingGETResponse().pipe(
+      __map(_r => _r.body as Array<PreviewDto>)
     );
   }
 
   /**
-   * @param params The `UserAchievementControllerService.GetUserAchievementsCollectorPreviewUsingGETParams` containing the following parameters:
-   *
-   * - `userEmail`: userEmail
-   *
-   * - `collectorId`: collectorId
-   *
+   * @param collectorId collectorId
    * @return OK
    */
-  getUserAchievementsCollectorPreviewUsingGETResponse(params: UserAchievementControllerService.GetUserAchievementsCollectorPreviewUsingGETParams): __Observable<__StrictHttpResponse<Array<AchievementDto>>> {
+  getUserAchievementsCollectorPreviewUsingGETResponse(collectorId: string): __Observable<__StrictHttpResponse<PreviewDto>> {
     let __params = this.newParams();
     let __headers = new HttpHeaders();
     let __body: any = null;
-    if (params.userEmail != null) __params = __params.set('userEmail', params.userEmail.toString());
-    if (params.collectorId != null) __params = __params.set('collectorId', params.collectorId.toString());
+    if (collectorId != null) __params = __params.set('collectorId', collectorId.toString());
     let req = new HttpRequest<any>(
       'GET',
       this.rootUrl + `/api/user-achievements/preview-for-collector`,
@@ -209,59 +190,22 @@ class UserAchievementControllerService extends __BaseService {
     return this.http.request<any>(req).pipe(
       __filter(_r => _r instanceof HttpResponse),
       __map((_r) => {
-        return _r as __StrictHttpResponse<Array<AchievementDto>>;
+        return _r as __StrictHttpResponse<PreviewDto>;
       })
     );
   }
   /**
-   * @param params The `UserAchievementControllerService.GetUserAchievementsCollectorPreviewUsingGETParams` containing the following parameters:
-   *
-   * - `userEmail`: userEmail
-   *
-   * - `collectorId`: collectorId
-   *
+   * @param collectorId collectorId
    * @return OK
    */
-  getUserAchievementsCollectorPreviewUsingGET(params: UserAchievementControllerService.GetUserAchievementsCollectorPreviewUsingGETParams): __Observable<Array<AchievementDto>> {
-    return this.getUserAchievementsCollectorPreviewUsingGETResponse(params).pipe(
-      __map(_r => _r.body as Array<AchievementDto>)
+  getUserAchievementsCollectorPreviewUsingGET(collectorId: string): __Observable<PreviewDto> {
+    return this.getUserAchievementsCollectorPreviewUsingGETResponse(collectorId).pipe(
+      __map(_r => _r.body as PreviewDto)
     );
   }
 }
 
 module UserAchievementControllerService {
-
-  /**
-   * Parameters for getUserAchievementsByUserEmailUsingGET
-   */
-  export interface GetUserAchievementsByUserEmailUsingGETParams {
-
-    /**
-     * userEmail
-     */
-    userEmail: string;
-
-    /**
-     * collectorId
-     */
-    collectorId: string;
-  }
-
-  /**
-   * Parameters for getUserAchievementsCollectorPreviewUsingGET
-   */
-  export interface GetUserAchievementsCollectorPreviewUsingGETParams {
-
-    /**
-     * userEmail
-     */
-    userEmail: string;
-
-    /**
-     * collectorId
-     */
-    collectorId: number;
-  }
 }
 
 export { UserAchievementControllerService }

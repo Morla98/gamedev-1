@@ -8,7 +8,7 @@ import {
 } from 'src/api/services';
 import { map, catchError } from 'rxjs/operators';
 import { of } from 'rxjs';
-import { Achievement, Collector } from 'src/api/models';
+import { Achievement, Collector, PreviewDto, AchievementDto } from 'src/api/models';
 import { MatSnackBar } from '@angular/material';
 
 const achievementsMock: Achievement[] = [
@@ -60,6 +60,7 @@ const servicesMock: Service[] = [
 })
 export class AchievementsComponent implements OnInit {
   public services: Collector[];
+  public previews: PreviewDto[];
   public userEmail: string;
   public achievements;
   private _selectedServiceId: string;
@@ -75,6 +76,7 @@ export class AchievementsComponent implements OnInit {
     }
     this.achievements = achievementsMock;
     this.loadServices();
+    this.loadPreviews();
   }
 
   set selectedService(id: string) {
@@ -92,10 +94,7 @@ export class AchievementsComponent implements OnInit {
     );
     if (currentService !== undefined) {
       this.achievementService
-        .getUserAchievementsByUserEmailUsingGET({
-          userEmail: this.userEmail,
-          collectorId: currentService.id
-        })
+        .getUserAchievementsByCollectorIdUsingGET(currentService.id)
         .pipe(
           map(data => {
             if (data !== undefined) {
@@ -111,6 +110,24 @@ export class AchievementsComponent implements OnInit {
         )
         .subscribe(data => {});
     }
+  }
+
+  loadPreviews() {
+    this.achievementService
+      .getUserAchievementsPreviewUsingGET()
+      .pipe(
+        map(data => {
+          if (data !== undefined) {
+            this.previews = data;
+            this.cd.markForCheck();
+          }
+        }),
+        catchError(err => {
+          this.matSnackBar.open(err.message);
+          return of(undefined);
+        })
+      )
+      .subscribe(data => {});
   }
 
   loadServices() {
@@ -131,10 +148,10 @@ export class AchievementsComponent implements OnInit {
       .subscribe(data => {});
   }
 
-  getOverallCompletion(achievements: Achievement[]) {
+  getOverallCompletion(achievements: AchievementDto[]) {
     let result = 0;
     for (const a of achievements) {
-      //result += a.completion;
+      result += a.progress;
     }
     return result / achievements.length;
   }

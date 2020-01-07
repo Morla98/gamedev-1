@@ -14,18 +14,18 @@
     
 
       <div *ngIf="selectedService === undefined" class="flex-container">
-        <mat-card *ngFor="let service of services">
+        <mat-card *ngFor="let preview of previews">
           <mat-card-header>
             <span>
-              {{service.name}}
+              {{preview.collectorName}}
             </span>
             <span>
-              {{getOverallCompletion(achievements) | number:'1.0-0'}}%
+              {{getOverallCompletion(preview.achievements) | number:'1.0-0'}}%
             </span>
           </mat-card-header>
           <mat-card-content>
             <ul>
-              <li *ngFor="let achievement of achievements"> {{achievement.name}}: {{achievement.progress | number:'1.0-0'}}%</li>
+              <li *ngFor="let achievement of preview.achievements"> {{achievement.name}}: {{achievement.progress | number:'1.0-0'}}%</li>
             </ul>
           </mat-card-content>
         </mat-card>
