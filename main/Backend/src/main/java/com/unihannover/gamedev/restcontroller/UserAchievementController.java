@@ -47,7 +47,7 @@ public class UserAchievementController extends BaseController {
      * @param collectorId The collector to get achievements from
      * @return All achievements in the repository that belong to the given user
      */
-    @RequestMapping(value = "/user-achievements/by-user-email", method = RequestMethod.GET)
+    @RequestMapping(value = "/user-achievements/by-collector-id", method = RequestMethod.GET)
     public List<AchievementDto> getUserAchievementsByCollectorId(@RequestParam(value = "collectorId") String collectorId) {
 
         String userEmail = ((UserPrincipal) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getUsername();
