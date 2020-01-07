@@ -3,7 +3,7 @@ package com.unihannover.gamedev.models;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "JiraCollector_Metrics", schema = "metrics")
+@Table(name = "JiraCollector_Metrics", schema="metrics")
 public class Metric {
 
     /**
@@ -36,7 +36,7 @@ public class Metric {
      */
     @Id
     @Column(name = "id")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy=GenerationType.AUTO)
     private long id;
 
     /**

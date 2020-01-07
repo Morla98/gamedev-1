@@ -14,6 +14,16 @@ public class LdapConfiguration {
     public  String LDAP_SERVICE_USER_PW;
 
     /**
+     * The name of the identifying user attribute
+     */
+    public String LDAP_IDENTIFYING_ATTRIBUTE;
+
+    /**
+     * The groups gidNumber the users is required to be member of
+     */
+    public String LDAP_GROUP_ID;
+
+    /**
      * Base to search in
      */
     public String LDAP_BASE;

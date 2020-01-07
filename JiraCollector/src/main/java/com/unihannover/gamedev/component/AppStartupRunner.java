@@ -2,9 +2,7 @@ package com.unihannover.gamedev.component;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.unihannover.gamedev.component.achievements.AbstractAchievementComponent;
-import com.unihannover.gamedev.models.Collector;
-import com.unihannover.gamedev.models.Configuration;
-import com.unihannover.gamedev.models.Model;
+import com.unihannover.gamedev.models.*;
 import com.unihannover.gamedev.security.JwtTokenProvider;
 import com.unihannover.gamedev.services.AchievementRegistry;
 import com.unihannover.gamedev.services.ConfigurationService;
@@ -119,7 +117,7 @@ public class AppStartupRunner implements ApplicationRunner {
 
         // Remake list to list of models
         List<Model> achievementModelList = new ArrayList<>();
-        for (AbstractAchievementComponent achievement : achievements) {
+        for(AbstractAchievementComponent achievement: achievements) {
             achievementModelList.add((Model) achievement);
         }
 

@@ -27,6 +27,6 @@ public class Workaholic extends AbstractAchievementComponent {
         // Get ammount of distinct issues that this user has completed
         long amount = this.metricRepository.getDistinctIssueKeysByUserAndAction(userEmail, Metric.ACTION_ISSUE_DONE).size();
 
-        return (float) Math.min(100, (float) 100 / 999 * amount);
+        return (float) Math.min(100, (float)100 / 999 * amount);
     }
 }

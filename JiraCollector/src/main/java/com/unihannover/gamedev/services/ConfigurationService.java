@@ -51,6 +51,10 @@ public class ConfigurationService {
 
     /**
      * Writes the collector configuration as JSON into the config file
+     *
+     * TODO: Implement
+     *
+     * @param config
      */
     private static void writeToFile(Configuration config) {
         try {
