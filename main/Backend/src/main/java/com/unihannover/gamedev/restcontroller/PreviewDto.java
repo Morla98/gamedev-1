@@ -13,11 +13,20 @@ public class PreviewDto{
 
     public String collectorName;
 
+    /*
+    public List<String> names;
+    public List<String> descriptions;
+     */
+
     public List<Achievement> achievements;
     public List<Double> progress;
 
 
     public PreviewDto(String collectorName) {
+        /*
+        this.names = new ArrayList<String>();
+        this.sectriptions = new ArrayList<String>();
+        */
         this.achievements = new ArrayList<Achievement>();
         this.progress = new ArrayList<Double>();
         this.collectorName = collectorName;
@@ -34,5 +43,13 @@ public class PreviewDto{
         this.achievements.add(a);
         this.progress.add((Double)prog);
     }
+
+    /*
+    public void addUserAchievement(String name, String description, double prog){
+        this.names.add(a.getName());
+        this.names.add(a.getDescription());
+        this.progress.add((Double)prog);
+    }
+     */
 
 }
