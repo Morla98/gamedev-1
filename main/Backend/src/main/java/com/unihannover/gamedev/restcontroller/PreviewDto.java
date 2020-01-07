@@ -1,5 +1,6 @@
 package com.unihannover.gamedev.restcontroller;
 
+import com.unihannover.gamedev.models.*;
 import java.util.List;
 import java.util.ArrayList;
 
@@ -12,24 +13,13 @@ public class PreviewDto{
 
     public String collectorName;
 
-    public String name0;
-    public String description0;
-    public float progress0;
-
-    public String name1;
-    public String description1;
-    public float progress1;
-
-    public String name2;
-    public String description2;
-    public float progress2;
-
-    public String name3;
-    public String description3;
-    public float progress3;
+    public List<Achievement> achievements;
+    public List<Double> progress;
 
 
     public PreviewDto(String collectorName) {
+        this.achievements = new ArrayList<Achievement>();
+        this.progress = new ArrayList<Double>();
         this.collectorName = collectorName;
     }
 
@@ -40,36 +30,9 @@ public class PreviewDto{
      * @param description The UserAchievements description
      * @param progress The UserAchievements progress
      */
-    public void addUserAchievement(String name, String description, float progress, int number){
-        switch(number){
-            case 0: {
-                this.name0 = name;
-                this.description0 = description;
-                this.progress0 = progress;
-                break;
-            }
-            case 1: {
-                this.name1 = name;
-                this.description1 = description;
-                this.progress1 = progress;
-                break;
-            }
-            case 2: {
-                this.name2 = name;
-                this.description2 = description;
-                this.progress2 = progress;
-                break;
-            }
-            case 3: {
-                this.name3 = name;
-                this.description3 = description;
-                this.progress3 = progress;
-                break;
-            }
-            default: {
-                break;
-            }
-        }
+    public void addUserAchievement(Achievement a, double prog){
+        this.achievements.add(a);
+        this.progress.add((Double)prog);
     }
 
 }

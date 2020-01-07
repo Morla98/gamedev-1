@@ -116,6 +116,40 @@ public class UserAchievementController extends BaseController {
     @RequestMapping(value="/user-achievements/preview-for-collector", method = RequestMethod.GET)
     public PreviewDto getUserAchievementsCollectorPreview(@RequestParam(value="userEmail") String userEmail, String collectorId) {
 
+
+        int achievementCount = 4;
+
+        List<UserAchievement> list = new ArrayList<>();
+        //add non finished achievements
+        for(UserAchievement u : repository.findByUserEmail(userEmail)) {
+            if(u.getProgress() < 1.0 && u.getProgress() > 0.0) {
+                if (collectorId.equals(u.getCollectorId())) {
+                    list.add(u);
+                }
+            }
+        }
+        //add finished achievements
+        for(UserAchievement u : repository.findByUserEmail(userEmail)) {
+            if(u.getProgress() == 1.0) {
+                if (collectorId.equals(u.getCollectorId())) {
+                    list.add(u);
+                }
+            }
+        }
+
+        List<PreviewDto> dtoList = new ArrayList<>();
+
+        PreviewDto dto = new PreviewDto(collectorId);
+        for(int i = 0; i < achievementCount || i < list.size(); i++){
+            UserAchievement ua = list.get(i);
+            Achievement a = findAchievement(ua.getAchievementId());
+
+            dto.addUserAchievement(a, ua.getProgress());
+        }
+
+        return dto;
+
+        /*
         CollectorPreviewDto cDto = new CollectorPreviewDto(repository);
 
         List<UserAchievement> list = cDto.getPreviewForController(userEmail, collectorId);
@@ -131,33 +165,6 @@ public class UserAchievementController extends BaseController {
         }
 
         return dto;
-
-        /*
-        List <UserAchievement> preview = new ArrayList<>();
-        List <UserAchievement> all = new ArrayList<>();
-
-        //Only include the UserAchievements with correct collector id
-        for(UserAchievement u : repository.findByUserEmail(userEmail)) {
-            if(collectorId.equals(u.getCollectorId())) {
-                all.add(u);
-            }
-        }
-
-        //add non finished achievements
-        for(UserAchievement u : all) {
-            if(u.getProgress() < 1.0 && u.getProgress() > 0.0) {
-                preview.add(u);
-            }
-        }
-
-        //add finished achievements
-        for(UserAchievement u : all) {
-            if(u.getProgress() == 1.0) {
-                preview.add(u);
-            }
-        }
-
-        return preview;
         */
     }
 
