@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.unihannover.gamedev.models.User;
+import com.unihannover.gamedev.repositories.UserRepository;
 import com.unihannover.gamedev.security.JwtTokenProvider;
 import com.unihannover.gamedev.security.LdapAuthenticator;
 
@@ -24,12 +26,19 @@ public class AuthenticationController extends BaseController {
 	LdapAuthenticator ldapauthenticator;
 	
 	@Autowired
+	UserRepository userRepository;
+	
+	@Autowired
 	JwtTokenProvider tokenProvider;
 
 	@RequestMapping(value = "/auth/login", method = RequestMethod.GET)
 	public ResponseEntity<String> login(@RequestParam(value = "email") String email,
 			@RequestParam(value = "password") String password) {
 		if (ldapauthenticator.performAuthentication(email, password)) {
+			User currentUser = userRepository.findByEmail(email);
+			if (currentUser == null) {
+				userRepository.save(new User(email, true));
+			}
 			String token = tokenProvider.generateToken(email);
 			return new ResponseEntity<>(token, HttpStatus.OK);
 		}

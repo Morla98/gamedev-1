@@ -25,6 +25,9 @@ public class JwtTokenProvider {
 
 	@Value("${app.jwtSecret}")
 	private String jwtSecret;
+	
+	@Value("${app.jwtCollectorSecret}")
+	private String jwtCollectorSecret;
 
 	@Value("${app.jwtExpirationInMs}")
 	private int jwtExpirationInMs;
@@ -57,6 +60,29 @@ public class JwtTokenProvider {
 	public boolean validateToken(String authToken) {
 		try {
 			Jwts.parser().setSigningKey(jwtSecret).parseClaimsJws(authToken);
+			return true;
+		} catch (SignatureException ex) {
+			System.out.println("JwtTokenProvider: Invalid JWT signature");
+			// logger.error("Invalid JWT signature");
+		} catch (MalformedJwtException ex) {
+			System.out.println("JwtTokenProvider: Invalid JWT token");
+			// logger.error("Invalid JWT token");
+		} catch (ExpiredJwtException ex) {
+			System.out.println("JwtTokenProvider: Expired JWT token");
+			// logger.error("Expired JWT token");
+		} catch (UnsupportedJwtException ex) {
+			// logger.error("Unsupported JWT token");
+			System.out.println("JwtTokenProvider: Unsupported JWT token");
+		} catch (IllegalArgumentException ex) {
+			// logger.error("JWT claims string is empty.");
+			System.out.println("JwtTokenProvider: JWT claims string is empty.");
+		}
+		return false;
+	}
+	
+	public boolean validateCollectorToken(String authToken) {
+		try {
+			Jwts.parser().setSigningKey(jwtCollectorSecret).parseClaimsJws(authToken);
 			return true;
 		} catch (SignatureException ex) {
 			System.out.println("JwtTokenProvider: Invalid JWT signature");

@@ -83,8 +83,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/**/*.css",
                         "/**/*.js")
                         .permitAll()
-                    .antMatchers("/api/**") // UNDONE: Change back this hack in production use, used to test the API via swagger without passing a JWT every time
+                    .antMatchers("/api/**") // WAS: '/api/auth/**' UNDONE: Change back this hack in production use, used to test the API via swagger without passing a JWT every time
                         .permitAll()
+                    .antMatchers(HttpMethod.POST, "/api/collectors")
+                    	.permitAll()
                     .antMatchers(HttpMethod.GET, "/v2/api-docs/**")
                     	.permitAll()
                     .antMatchers("/swagger-resources/**")

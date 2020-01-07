@@ -1,10 +1,15 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { Service } from '../services/service.models';
 import { cloneDeep } from 'lodash-es';
-import { AchievementControllerService } from 'src/api/services';
+import {
+  AchievementControllerService,
+  CollectorControllerService,
+  UserAchievementControllerService
+} from 'src/api/services';
 import { map, catchError } from 'rxjs/operators';
 import { of } from 'rxjs';
-import { Achievement } from 'src/api/models';
+import { Achievement, Collector } from 'src/api/models';
+import { MatSnackBar } from '@angular/material';
 
 const achievementsMock: Achievement[] = [
   {
@@ -54,49 +59,76 @@ const servicesMock: Service[] = [
   styleUrls: ['./achievements.component.scss']
 })
 export class AchievementsComponent implements OnInit {
-  public services: Service[];
+  public services: Collector[];
+  public userEmail: string;
   public achievements;
-  private _selectedService: string;
+  private _selectedServiceId: string;
   constructor(
-    private achievementService: AchievementControllerService,
-    private cd: ChangeDetectorRef
+    private achievementService: UserAchievementControllerService,
+    private cd: ChangeDetectorRef,
+    private collectorService: CollectorControllerService,
+    private matSnackBar: MatSnackBar
   ) {
-    this.services = servicesMock;
+    const foundMail = sessionStorage.getItem('email');
+    if (foundMail !== undefined) {
+      this.userEmail = foundMail;
+    }
     this.achievements = achievementsMock;
+    this.loadServices();
   }
 
-  set selectedService(name: string) {
-    this._selectedService = name;
+  set selectedService(id: string) {
+    this._selectedServiceId = id;
     this.loadAchievements();
   }
   get selectedService(): string {
-    return this._selectedService;
+    return this._selectedServiceId;
   }
   ngOnInit() {}
 
   loadAchievements() {
     const currentService = this.services.find(
-      s => s.name === this.selectedService
+      s => s.id === this.selectedService
     );
     if (currentService !== undefined) {
       this.achievementService
-        .getAchievementByCollectorIdUsingGET(currentService.id)
+        .getUserAchievementsByUserEmailUsingGET({
+          userEmail: this.userEmail,
+          collectorId: currentService.id
+        })
         .pipe(
           map(data => {
-            console.log(data);
             if (data !== undefined) {
               this.achievements = data;
               this.cd.markForCheck();
             }
           }),
           catchError(err => {
-            //this.matSnackBar.open(err.message);
+            this.matSnackBar.open(err.message);
             console.error(err);
             return of(undefined);
           })
         )
         .subscribe(data => {});
     }
+  }
+
+  loadServices() {
+    this.collectorService
+      .getAllCollectorsUsingGET()
+      .pipe(
+        map(data => {
+          if (data !== undefined) {
+            this.services = data;
+            this.cd.markForCheck();
+          }
+        }),
+        catchError(err => {
+          this.matSnackBar.open(err.message);
+          return of(undefined);
+        })
+      )
+      .subscribe(data => {});
   }
 
   getOverallCompletion(achievements: Achievement[]) {
@@ -107,16 +139,20 @@ export class AchievementsComponent implements OnInit {
     return result / achievements.length;
   }
 
-  selectService(name: string) {
-    this.selectedService = name;
+  selectService(id: string) {
+    this.selectedService = id;
     this.loadAchievements();
   }
 
-  getSelectedAchievements() {
-    const service = this.services.find(s => s.name === this.selectedService);
-    if (service !== undefined) {
-      return service.achievements;
-    }
-    return [];
+  backToOverview() {
+    this.selectedService = undefined;
   }
+
+  // getSelectedAchievements() {
+  //   const service = this.services.find(s => s.name === this.selectedService);
+  //   if (service !== undefined) {
+  //     return service.achievements;
+  //   }
+  //   return [];
+  // }
 }

@@ -5,6 +5,9 @@ import { ApiConfiguration, ApiConfigurationInterface } from './api-configuration
 
 import { AchievementControllerService } from './services/achievement-controller.service';
 import { AuthenticationControllerService } from './services/authentication-controller.service';
+import { CollectorControllerService } from './services/collector-controller.service';
+import { UserAchievementControllerService } from './services/user-achievement-controller.service';
+import { UserControllerService } from './services/user-controller.service';
 
 /**
  * Provider for all Api services, plus ApiConfiguration
@@ -20,7 +23,10 @@ import { AuthenticationControllerService } from './services/authentication-contr
   providers: [
     ApiConfiguration,
     AchievementControllerService,
-    AuthenticationControllerService
+    AuthenticationControllerService,
+    CollectorControllerService,
+    UserAchievementControllerService,
+    UserControllerService
   ],
 })
 export class ApiModule {

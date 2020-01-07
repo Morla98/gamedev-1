@@ -1,11 +1,9 @@
 package com.unihannover.gamedev.restcontroller;
 
-import java.util.List;
 import java.util.ArrayList;
+import java.util.List;
 
-import com.unihannover.gamedev.models.UserAchievementWOT;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -22,14 +20,14 @@ import com.unihannover.gamedev.repositories.*;
 @RestController
 public class UserAchievementController extends BaseController {
 
-    @Autowired
-    private UserAchievementRepository repository;
+	@Autowired
+	private UserAchievementRepository userAchievementRepo;
 
     @Autowired
-    private CollectorRepository colRepository;
+    private CollectorRepository collectorRepo;
 
     @Autowired
-    private AchievementRepository achRepository;
+    private AchievementRepository achievementRepo;
 
     /**
      * Returns all achievements in the repository, regardless of the user it belongs to.
@@ -38,7 +36,7 @@ public class UserAchievementController extends BaseController {
      */
     @RequestMapping(value="/user-achievements/all", method = RequestMethod.GET)
     public List<UserAchievement> getAllUserss() {
-                return repository.findAll();
+                return userAchievementRepo.findAll();
             }
 
     /**
@@ -49,7 +47,7 @@ public class UserAchievementController extends BaseController {
      */
     @RequestMapping(value="/user-achievements/by-user-email", method = RequestMethod.GET)
     public List<UserAchievement> getUserAchievementsByUserEmail(@RequestParam(value="userEmail") String userEmail) {
-        return repository.findByUserEmail(userEmail);
+        return userAchievementRepo.findByUserEmail(userEmail);
         }
 
         /**
@@ -62,7 +60,7 @@ public class UserAchievementController extends BaseController {
         @RequestMapping(value="/user-achievements/preview", method = RequestMethod.GET)
         public List<PreviewDto> getUserAchievementsPreview(@RequestParam(value="userEmail") String userEmail) {
 
-            List<Collector> collectorList = colRepository.findAll();
+            List<Collector> collectorList = collectorRepo.findAll();
             List<String> collectorIds = new ArrayList<>();
             List<PreviewDto> dtoList = new ArrayList<>();
 
@@ -96,7 +94,7 @@ public class UserAchievementController extends BaseController {
     }
 
     public Achievement findAchievement(String id){
-        List<Achievement> achievementList = achRepository.findAll();
+        List<Achievement> achievementList = achievementRepo.findAll();
         for(Achievement a : achievementList) {
             if(a.getId().equals(id)){
                 return a;
@@ -121,7 +119,7 @@ public class UserAchievementController extends BaseController {
 
         List<UserAchievement> list = new ArrayList<>();
         //add non finished achievements
-        for(UserAchievement u : repository.findByUserEmail(userEmail)) {
+        for(UserAchievement u : userAchievementRepo.findByUserEmail(userEmail)) {
             if(u.getProgress() < 1.0 && u.getProgress() > 0.0) {
                 if (collectorId.equals(u.getCollectorId())) {
                     list.add(u);
@@ -129,7 +127,7 @@ public class UserAchievementController extends BaseController {
             }
         }
         //add finished achievements
-        for(UserAchievement u : repository.findByUserEmail(userEmail)) {
+        for(UserAchievement u : userAchievementRepo.findByUserEmail(userEmail)) {
             if(u.getProgress() == 1.0) {
                 if (collectorId.equals(u.getCollectorId())) {
                     list.add(u);
@@ -178,7 +176,7 @@ public class UserAchievementController extends BaseController {
     @RequestMapping(value="/user-achievements", method = RequestMethod.POST)
     public void updateUserAchievements(@RequestBody UserAchievementWOT[] u) {
         for(UserAchievementWOT uWOT: u){
-            repository.save(new UserAchievement(uWOT));
+            userAchievementRepo.save(new UserAchievement(uWOT));
         }
         //repository.save(u);
     }

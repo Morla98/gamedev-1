@@ -145,9 +145,6 @@
 							<rules>
 								<rule>
 									<element>CLASS</element>
-									<includes>
-										<include>com.unihannover.gamedev.models</include>
-									</includes>
 									<limits>
 										<limit>
 											<counter>LINE</counter>
