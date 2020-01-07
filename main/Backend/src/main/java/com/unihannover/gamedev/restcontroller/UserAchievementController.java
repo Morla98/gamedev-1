@@ -44,18 +44,40 @@ public class UserAchievementController extends BaseController {
     /**
      * Returns all achievements of a given user.
      *
-     * @param userEmail The user to search for
+     * @param collectorId The collector to get achievements from
      * @return All achievements in the repository that belong to the given user
      */
-    @RequestMapping(value="/user-achievements/by-user-email", method = RequestMethod.GET)
-    public List<UserAchievement> getUserAchievementsByUserEmail() {
+    @RequestMapping(value = "/user-achievements/by-user-email", method = RequestMethod.GET)
+    public List<AchievementDto> getUserAchievementsByCollectorId(@RequestParam(value = "collectorId") String collectorId) {
 
-        String userMail = ((UserPrincipal) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getUsername();
+        String userEmail = ((UserPrincipal) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getUsername();
 
-        return userAchievementRepo.findByUserEmail(userMail);
+        List<UserAchievement> achievements = userAchievementRepo.findByUserEmail(userEmail);
+        List<AchievementDto> dtos = new ArrayList<AchievementDto>();
+        for (UserAchievement u : achievements) {
+            //System.out.println(u.getUserEmail() + " c" + u.getCollectorId() + " a" + u.getAchievementId());
+            //System.out.println("searching for collector: " + collectorId);
+            if (u.getCollectorId().equals(collectorId)) {
+
+                List<Achievement> aList = achievementRepo.findByCollectorId(collectorId);
+                Achievement a = null;
+                for (Achievement ach : aList) {
+                    //System.out.println(ach.getDescription() + " c" + ach.getCollectorId() + " a" + ach.getId());
+                    if (ach.getId().equals(u.getAchievementId())) {
+                        a = ach;
+                    }
+                }
+                if (a != null) {
+                    dtos.add(new AchievementDto(u.getCollectorId(), a.getName(), a.getDescription(), userEmail,
+                            u.getProgress(), null, a.getValue()));
+                }
+            }
         }
+        return dtos;
+    }
 
-        /**
+
+    /**
          * Returns the previews of all achievements in a List of PreviewDtos.
          * Previews contain the most important user achievements that have more progress than 0%.
          *
