@@ -172,7 +172,7 @@ public class UserAchievementController extends BaseController {
             UserAchievement ua = list.get(i);
             Achievement a = findAchievement(ua.getAchievementId());
 
-            dto.addUserAchievement(a, ua.getProgress());
+            dto.addUserAchievement(a, ua);
         }
 
         return dto;
