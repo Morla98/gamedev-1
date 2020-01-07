@@ -24,19 +24,12 @@ public class CollectorConfigParser{
             //Read JSON file
             Object obj = jsonParser.parse(reader);
             JSONArray collectorConfigList = (JSONArray) obj;
-            
-            //print the json configuration string
-            System.out.println(collectorConfigList); 
+           
             //just to get into array token of json file 
             //maybe requires polishing, but works for now 
             CollectorConfig[] config = new ObjectMapper().readValue(collectorConfigList.toString(), CollectorConfig[].class);
             //get the first object, will always be one 
             CollectorConfig collectorConfig = config[0];
-            
-            //for debugging should be removed, tested and works 
-            System.out.println(collectorConfig.getName());
-		    System.out.println(collectorConfig.getCollectorId());
-		    System.out.println(collectorConfig.getToken());
 		    return collectorConfig;
 		    
         } catch (FileNotFoundException e) {
@@ -60,14 +53,12 @@ public class CollectorConfigParser{
 			try { 
 				// get collectorConfig object as a json string 
 				String jsonStr = Obj.writeValueAsString(collectorConfig); 
-		        
-				// Displaying JSON String 
-		        System.out.println(jsonStr);
 		        return jsonStr;
+		        
 		     } catch (IOException e) { 
 		        e.printStackTrace(); 
 		     }
-			 return "";
+			 return null;
 	}
 	
 	
