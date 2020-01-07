@@ -34,7 +34,7 @@ class UserAchievementControllerService extends __BaseService {
   /**
    * @param u u
    */
-  updateUserAchievementsUsingPOSTResponse(u: Array<UserAchievementWOT>): __Observable<__StrictHttpResponse<null>> {
+  updateUserAchievementsUsingPOSTResponse(u: UserAchievementWOT): __Observable<__StrictHttpResponse<null>> {
     let __params = this.newParams();
     let __headers = new HttpHeaders();
     let __body: any = null;
@@ -59,7 +59,7 @@ class UserAchievementControllerService extends __BaseService {
   /**
    * @param u u
    */
-  updateUserAchievementsUsingPOST(u: Array<UserAchievementWOT>): __Observable<null> {
+  updateUserAchievementsUsingPOST(u: UserAchievementWOT): __Observable<null> {
     return this.updateUserAchievementsUsingPOSTResponse(u).pipe(
       __map(_r => _r.body as null)
     );

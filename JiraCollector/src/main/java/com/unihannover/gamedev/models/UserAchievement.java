@@ -1,12 +1,18 @@
 package com.unihannover.gamedev.models;
 
-import java.io.Serializable;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.IdClass;
+import javax.persistence.Table;
+
 import java.sql.Timestamp;
+import java.io.Serializable;
 
 /**
  * Represents an achievement achieved by a user
  */
-public class UserAchievement implements Model {
+public class UserAchievement implements Model{
 
 	public UserAchievement(){
 		super();

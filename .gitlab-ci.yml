@@ -3,8 +3,6 @@ stages:
 
 main-build-and-test:
   stage: build-and-test
-  allow_failure: true
   script:
     - docker build -t registry.se.uni-hannover.de/swp1920/gamedev-1 ./main
     - docker run --rm registry.se.uni-hannover.de/swp1920/gamedev-1 mvn clean test
-    - docker run --rm registry.se.uni-hannover.de/swp1920/gamedev-1 mvn clean verify

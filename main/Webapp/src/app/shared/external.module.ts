@@ -8,8 +8,7 @@ import {
   MatSelectModule,
   MatTableModule,
   MatIconModule,
-  MatSnackBarModule,
-  MatCheckboxModule
+  MatSnackBarModule
 } from '@angular/material';
 
 @NgModule({
@@ -24,8 +23,7 @@ import {
     MatTableModule,
     MatCardModule,
     MatSnackBarModule,
-    MatIconModule,
-    MatCheckboxModule
+    MatIconModule
   ]
 })
 export class ExternalModule {}

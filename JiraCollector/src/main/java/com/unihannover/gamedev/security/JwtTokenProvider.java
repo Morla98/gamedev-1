@@ -1,18 +1,24 @@
 package com.unihannover.gamedev.security;
 
-import com.unihannover.gamedev.services.ConfigurationService;
-import io.jsonwebtoken.*;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
+
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.ExpiredJwtException;
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.MalformedJwtException;
+import io.jsonwebtoken.SignatureException;
+import io.jsonwebtoken.UnsupportedJwtException;
 
 @Component
 public class JwtTokenProvider {
 
-	@Autowired
-	private ConfigurationService configurationService;
+	//private static final Logger logger = LoggerFactory.getLogger(JwtTokenProvider.class);
+
+	@Value("${app.jwtSecret}")
+	private String jwtSecret;
 
 	public String getCollectorIdFromJWT(String token) {
-		String jwtSecret = configurationService.getConfig().getJwtSecret();
 		Claims claims = Jwts.parser().setSigningKey(jwtSecret).parseClaimsJws(token).getBody();
 
 		return claims.getSubject();
@@ -20,7 +26,6 @@ public class JwtTokenProvider {
 
 	public boolean validateToken(String authToken) {
 		try {
-			String jwtSecret = configurationService.getConfig().getJwtSecret();
 			Jwts.parser().setSigningKey(jwtSecret).parseClaimsJws(authToken);
 			return true;
 		} catch (SignatureException ex) {

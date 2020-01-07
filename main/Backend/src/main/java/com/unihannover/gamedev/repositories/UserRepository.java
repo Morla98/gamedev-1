@@ -11,7 +11,6 @@ import com.unihannover.gamedev.models.User;
 public interface UserRepository extends PagingAndSortingRepository<User, Long> {
 
     List<User> findAll();
-    List<User> findByAnonymousFalse();
-    User findByEmail(@Param("email") String email);
-    User findByUid(@Param("uid") String uid);
+    List<User> findByEmail(@Param("email") String email);
+    List<User> findByUid(@Param("uid") String uid);
 }

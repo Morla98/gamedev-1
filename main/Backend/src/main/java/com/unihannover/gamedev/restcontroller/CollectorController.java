@@ -47,16 +47,15 @@ public class CollectorController extends BaseController {
 			}
 		}
 		if (secret.equals(SECRET)) {
+			if (matchingCollector) {
+				return ResponseEntity.status(HttpStatus.OK).body(null);
+			}
 			Collector newCollector = new Collector(collectorWOT);
 			String token = tokenProvider.generateTokenWithSecretAndId(newCollector.getId(), SECRET);
 			newCollector.setToken(token);
+			repository.save(newCollector);
 			collectorWOT.setToken(token);
-			if (!matchingCollector) {
-				repository.save(newCollector);
-				return ResponseEntity.status(HttpStatus.OK).body(collectorWOT);
-			}
-			return ResponseEntity.status(HttpStatus.ACCEPTED).body(collectorWOT);
-
+			return ResponseEntity.status(HttpStatus.OK).body(collectorWOT);
 		}
 		// System.out.println(collector.toString()); // UNDONE: Debug print
 		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Could not verify Collector");

@@ -30,7 +30,7 @@ public class UserPrincipal implements UserDetails {
 
 	@Override
 	public String getUsername() {
-		return this.email;
+		return null;
 	}
 	
 	@Override

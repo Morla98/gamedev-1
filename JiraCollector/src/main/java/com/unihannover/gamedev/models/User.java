@@ -1,9 +1,14 @@
 package com.unihannover.gamedev.models;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 /**
  * Represents a user
  */
-public class User implements Model {
+public class User implements Model{
 	private String email;
 	private String uid;
 	private String userName;

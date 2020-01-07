@@ -10,8 +10,7 @@
   </mat-sidenav>
   <mat-sidenav-content>
 
-    <h2><mat-icon *ngIf="selectedService !== undefined" (click)="backToOverview()" >arrow_back</mat-icon>{{'ACHIEVEMENTS' | translate}} </h2>
-    
+    <h2>{{'ACHIEVEMENTS' | translate}}</h2>
 
       <div *ngIf="selectedService === undefined" class="flex-container">
         <mat-card *ngFor="let service of services">
