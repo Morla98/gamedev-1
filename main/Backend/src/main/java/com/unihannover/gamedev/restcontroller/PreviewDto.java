@@ -19,7 +19,7 @@ public class PreviewDto{
      */
 
     public List<Achievement> achievements;
-    public List<Double> progress;
+    public List<UserAchievement> uAchievements;
 
 
     public PreviewDto(String collectorName) {
@@ -28,27 +28,26 @@ public class PreviewDto{
         this.sectriptions = new ArrayList<String>();
         */
         this.achievements = new ArrayList<Achievement>();
-        this.progress = new ArrayList<Double>();
+        this.progress = new ArrayList<UserAchievement>();
         this.collectorName = collectorName;
     }
 
     /**
      * Adds a new UserAchievement to the preview by adding 1 item to each List.
      *
-     * @param name The UserAchievements name
-     * @param description The UserAchievements description
-     * @param progress The UserAchievements progress
+     * @param a The Achievement to transfer
+     * @param ua The userAchievement to transfer
      */
-    public void addUserAchievement(Achievement a, double prog){
+    public void addUserAchievement(Achievement a, UserAchievement ua){
         this.achievements.add(a);
-        this.progress.add((Double)prog);
+        this.progress.add(ua);
     }
 
     /*
-    public void addUserAchievement(String name, String description, double prog){
+    public void addUserAchievement(String name, String description, UserAchievement ua){
         this.names.add(a.getName());
         this.names.add(a.getDescription());
-        this.progress.add((Double)prog);
+        this.progress.add(ua);
     }
      */
 
