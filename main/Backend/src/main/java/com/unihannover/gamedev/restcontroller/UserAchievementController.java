@@ -3,6 +3,7 @@ package com.unihannover.gamedev.restcontroller;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.unihannover.gamedev.models.*;
 import com.unihannover.gamedev.repositories.*;
+import com.unihannover.gamedev.security.*;
 
 
 /**
@@ -35,7 +37,7 @@ public class UserAchievementController extends BaseController {
      * @return all UserAchievements
      */
     @RequestMapping(value="/user-achievements/all", method = RequestMethod.GET)
-    public List<UserAchievement> getAllUserss() {
+    public List<UserAchievement> getAllUsers() {
                 return userAchievementRepo.findAll();
             }
 
@@ -46,8 +48,11 @@ public class UserAchievementController extends BaseController {
      * @return All achievements in the repository that belong to the given user
      */
     @RequestMapping(value="/user-achievements/by-user-email", method = RequestMethod.GET)
-    public List<UserAchievement> getUserAchievementsByUserEmail(@RequestParam(value="userEmail") String userEmail) {
-        return userAchievementRepo.findByUserEmail(userEmail);
+    public List<UserAchievement> getUserAchievementsByUserEmail() {
+
+        String userMail = ((UserPrincipal) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getUsername();
+
+        return userAchievementRepo.findByUserEmail(userMail);
         }
 
         /**
@@ -58,15 +63,17 @@ public class UserAchievementController extends BaseController {
          * @return The list of most interesting achievements for the given user
          */
         @RequestMapping(value="/user-achievements/preview", method = RequestMethod.GET)
-        public List<PreviewDto> getUserAchievementsPreview(@RequestParam(value="userEmail") String userEmail) {
+        public List<PreviewDto> getUserAchievementsPreview() {
+
+            String userMail = ((UserPrincipal) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getUsername();
 
             List<Collector> collectorList = collectorRepo.findAll();
             List<String> collectorIds = new ArrayList<>();
             List<PreviewDto> dtoList = new ArrayList<>();
 
             for(Collector c : collectorList) {
-                String collectorName = c.getName();
-                PreviewDto dto = getUserAchievementsCollectorPreview(userEmail, collectorName);
+                String collectorId = c.getId();
+                PreviewDto dto = getUserAchievementsCollectorPreview(collectorId);
                 dtoList.add(dto);
             }
 
@@ -112,14 +119,15 @@ public class UserAchievementController extends BaseController {
      * @return The list of most interesting achievements for the given user
      */
     @RequestMapping(value="/user-achievements/preview-for-collector", method = RequestMethod.GET)
-    public PreviewDto getUserAchievementsCollectorPreview(@RequestParam(value="userEmail") String userEmail, String collectorId) {
+    public PreviewDto getUserAchievementsCollectorPreview(@RequestParam(value="collectorId") String collectorId) {
 
+        String userMail = ((UserPrincipal) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getUsername();
 
         int achievementCount = 4;
 
         List<UserAchievement> list = new ArrayList<>();
         //add non finished achievements
-        for(UserAchievement u : userAchievementRepo.findByUserEmail(userEmail)) {
+        for(UserAchievement u : userAchievementRepo.findByUserEmail(userMail)) {
             if(u.getProgress() < 1.0 && u.getProgress() > 0.0) {
                 if (collectorId.equals(u.getCollectorId())) {
                     list.add(u);
@@ -127,7 +135,7 @@ public class UserAchievementController extends BaseController {
             }
         }
         //add finished achievements
-        for(UserAchievement u : userAchievementRepo.findByUserEmail(userEmail)) {
+        for(UserAchievement u : userAchievementRepo.findByUserEmail(userMail)) {
             if(u.getProgress() == 1.0) {
                 if (collectorId.equals(u.getCollectorId())) {
                     list.add(u);
