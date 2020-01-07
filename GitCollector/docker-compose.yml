@@ -10,10 +10,16 @@ services:
   gitcollector:
     container_name: GitCollector
     restart: always
+    volumes:
+      - ./config:/config
     build:
       context: .
     ports:
       - 9084:8080
+
+#volumes:
+#  config-volume:
+#    external: false
 
 networks:
   default:

@@ -58,13 +58,13 @@ public class HttpService {
 		return null;
 	}
 
-    public HttpEntity sendModel(Model m, String url) {
+    public CloseableHttpResponse sendModel(Model m, String url) {
 		List<Model> mList = new ArrayList<>();
 		mList.add(m);
 		return sendList(mList, url);
 	}
 
-	public HttpEntity sendList(List<Model> mList, String url) {
+	public CloseableHttpResponse sendList(List<Model> mList, String url) {
 		HttpEntity result = null;
 		String json = ListToJSON(mList);
 		httpClient = HttpClients.createDefault();
@@ -82,7 +82,7 @@ public class HttpService {
 			response = httpClient.execute(post);
 			result = response.getEntity();
 			if (response.getStatusLine().getStatusCode() < 300) {
-				return result;
+				return response;
 				// updateWithToken(result);
 			} else {
 				System.out.println("Post failed: " + response.getStatusLine().getStatusCode());
@@ -99,7 +99,7 @@ public class HttpService {
 		return null;
 	}
 	
-	public HttpEntity sendSingleModel(Model m, String url) {
+	public CloseableHttpResponse sendSingleModel(Model m, String url) {
 		HttpEntity result = null;
 		String json = m.toJSON();
 		httpClient = HttpClients.createDefault();
@@ -117,7 +117,7 @@ public class HttpService {
 			response = httpClient.execute(post);
 			result = response.getEntity();
 			if (response.getStatusLine().getStatusCode() < 300) {
-				return result;
+				return response;
 				// updateWithToken(result);
 			} else {
 				System.out.println("Post failed: " + response.getStatusLine().getStatusCode());

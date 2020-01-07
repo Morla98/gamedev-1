@@ -9,8 +9,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.unihannover.gamedev.models.*;
+import com.unihannover.gamedev.restcontroller.CollectorController;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpStatus;
+import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.util.EntityUtils;
 import org.eclipse.jgit.api.CloneCommand;
 import org.eclipse.jgit.api.Git;
@@ -39,6 +41,8 @@ public class CollectorService {
 	private GitService gitservice;
 	@Autowired
 	public MetricRepository repository;
+	private	List<UserAchievement> uaList;
+	private List<Model> uaModelList;
 	/*
 	@Autowired
 	CollectorConfig config;
@@ -82,8 +86,8 @@ public class CollectorService {
 		me.setLastSeen(t);
 		// config.setCollectorId(me.getId());
 
-		HttpEntity result = httpService.sendSingleModel(me, "http://devgame:8080/api/collectors?secret=" + jwtSecret);
-
+		CloseableHttpResponse response = httpService.sendSingleModel(me, "http://devgame:8080/api/collectors?secret=" + jwtSecret);
+		HttpEntity result = response.getEntity();
 		ObjectMapper mapper = new ObjectMapper();
 		Collector c = null;
 		if (result != null) {
@@ -114,14 +118,17 @@ public class CollectorService {
 			}
 		}
 		// TODO: reported should be true if collector is already known by server so that he doesnt (re)send his Achievements
+		int status = response.getStatusLine().getStatusCode();
 		boolean reported = false;
+		if (status == HttpStatus.SC_OK){ reported = false; }
+		else if (status == HttpStatus.SC_ACCEPTED){ reported = true; }
 		initAchievements(reported);
 
 
 
 		JSONParser parser = new JSONParser();
 
-		try (Reader reader = new FileReader("config/collectorConfiguration/gitCredentials.json")) {
+		try (Reader reader = new FileReader("../../config/collectorConfiguration/gitCredentials.json")) {
 			JSONObject jsonObject = (JSONObject) parser.parse(reader);
 			CloneCommand cloneCommand = Git.cloneRepository();
 			String repoURL = (String) jsonObject.get("repoURL");
@@ -141,8 +148,10 @@ public class CollectorService {
 			try{
 				Git git = Git.open(new File(repoFile + "/.git"));
 				Repository git_repository = repositoryBuilder.setGitDir(new File(repoFile + "/.git")).readEnvironment().findGitDir().setMustExist(true).build();
-				gitservice = new GitService(git_repository, git);
-				gitservice.runTimer(credentialsProvider, repository,httpService, getAchievementList());
+				gitservice = new GitService(git_repository, git, achievementList, httpService, repository, httpService.getUsers(), uaList, uaModelList, credentialsProvider);
+				CollectorController.setGit(gitservice);
+				//VERALTET!
+				//gitservice.runTimer(credentialsProvider);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -164,12 +173,12 @@ public class CollectorService {
 			Metric m = repository.findByUseremail(user.getEmail()).get(0);
 			System.out.println("Initializing git_collector_metrics:: user_email: " + user.getEmail() + "; #ofCommits: " + m.getNumberOfCommits());
 		}
-		List<UserAchievement> uaList = new ArrayList<>();
+		uaList = new ArrayList<>();
 
 
 		// remake lists as model lists because httpService.sendList() can only take models...
 		List<Model> aModelList = new ArrayList<>();
-		List<Model> uaModelList = new ArrayList<>();
+		uaModelList = new ArrayList<>();
 		for(Achievement achievement: achievementList){
 			aModelList.add(achievement);
 		}
@@ -191,7 +200,9 @@ public class CollectorService {
 		// only if collector was not known he should send the initalize Achievementlist and UserAchievementList
 		if(!reported){
 			httpService.sendList(aModelList, "http://devgame:8080/api/achievements");
-			httpService.sendList(uaModelList, "http://devgame:8080/api/user-achievements");
+			if(uaModelList.size() > 0) {
+				httpService.sendList(uaModelList, "http://devgame:8080/api/user-achievements");
+			}
 		}
 		System.out.println("\nInit Achievements\n");
 
