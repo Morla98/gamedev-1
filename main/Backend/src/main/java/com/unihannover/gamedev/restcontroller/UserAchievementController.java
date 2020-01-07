@@ -164,6 +164,14 @@ public class UserAchievementController extends BaseController {
                 }
             }
         }
+        //add non-progress achievements
+        for(UserAchievement u : userAchievementRepo.findByUserEmail(userMail)) {
+            if(u.getProgress() == 0.0) {
+                if (collectorId.equals(u.getCollectorId())) {
+                    list.add(u);
+                }
+            }
+        }
 
         List<PreviewDto> dtoList = new ArrayList<>();
 
@@ -172,7 +180,10 @@ public class UserAchievementController extends BaseController {
             UserAchievement ua = list.get(i);
             Achievement a = findAchievement(ua.getAchievementId());
 
-            dto.addUserAchievement(a, ua.getProgress());
+            AchievementDto aDto = new AchievementDto(a.getCollectorId(), a.getName(), a.getDescription(), userMail, ua.getProgress(),
+            null, a.value());
+
+            dto.addUserAchievement(aDto);
         }
 
         return dto;
