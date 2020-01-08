@@ -43,10 +43,9 @@ public class CollectorService {
 	public MetricRepository repository;
 	private	List<UserAchievement> uaList;
 	private List<Model> uaModelList;
-	/*
-	@Autowired
-	CollectorConfig config;
-	*/
+
+
+
 
 	@Autowired
 	JwtTokenProvider tokenProvider;
@@ -71,6 +70,7 @@ public class CollectorService {
 
 	@Bean
 	public void initCollector() {
+		//CollectorConfig config = CollectorConfigParser.configJsonToObject();
 		CollectorConfig config = CollectorConfigParser.configJsonToObject();
 		Collector me = new Collector();
 		if (config != null) {
@@ -108,6 +108,7 @@ public class CollectorService {
 				System.out.println("Found in Response: " + c.getToken() + " " + c.getId());
 				// updateWithToken(c.getToken());
 				if (c.getToken() != null && tokenProvider.validateToken(c.getToken())) {
+					System.out.println("BRUH I GOT A VALID TOKEN!");
 					config.setToken(c.getToken());
 				}
 				if (c.getId() != null) {

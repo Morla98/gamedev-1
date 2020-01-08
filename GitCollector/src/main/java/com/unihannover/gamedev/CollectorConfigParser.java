@@ -1,5 +1,6 @@
 package com.unihannover.gamedev;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -7,6 +8,7 @@ import org.json.simple.JSONArray;
 import org.json.simple.parser.JSONParser;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 
 public class CollectorConfigParser{
 		
@@ -14,42 +16,48 @@ public class CollectorConfigParser{
 	 * reads the collectorconfig.json file and parse it into object  
 	 * @return CollectorConfig object
 	 */
+	private static final String CONFIG_FILEPATH ="../../config/collectorConfiguration/collectorConfig.json";
+	@Autowired
+	static CollectorConfig config;
+
 	@SuppressWarnings("unchecked")
+
 	public static CollectorConfig configJsonToObject() {
-		
-        //JSON parser object to parse read file
-        JSONParser jsonParser = new JSONParser(); 
-        try (FileReader reader = new FileReader("../../config/collectorConfiguration/collectorConfig.json"))
+		try
         {
-            //Read JSON file
-            Object obj = jsonParser.parse(reader);
-            JSONArray collectorConfigList = (JSONArray) obj;
-       
-            //just to get into array token of json file 
-            //maybe requires polishing, but works for now 
-            CollectorConfig[] config = new ObjectMapper().readValue(collectorConfigList.toString(), CollectorConfig[].class);
-            //get the first object, will always be one 
-            CollectorConfig collectorConfig = config[0];
-		    return collectorConfig;
-		    
+            CollectorConfig collectorConfig = new ObjectMapper().readValue(new File(CONFIG_FILEPATH), CollectorConfig.class);;
+            if (config == null)
+			{
+				config = new CollectorConfig();
+				config.setCollectorId(collectorConfig.getCollectorId());
+				config.setToken(collectorConfig.getToken());
+				config.setName(collectorConfig.getName());
+
+			}
+		    else if (!(config.getToken().equals(collectorConfig.getToken()) && config.getName().equals(collectorConfig.getName()) && config.getCollectorId().equals(collectorConfig.getCollectorId())))
+		    {
+				config.setCollectorId(collectorConfig.getCollectorId());
+				config.setToken(collectorConfig.getToken());
+				config.setCollectorId(collectorConfig.getName());
+			}
+		    return config;
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
-        } catch (org.json.simple.parser.ParseException e) {
-			e.printStackTrace();
-		}
+        }
 		return null;
 	}
 	
 	/**
 	 * converts the CollectorConfig objects to Json String 
 	 * @param collectorConfig
-	 * @return json string of collectorConfig object 
+	 * @return json string of collectorConfig object
 	 */
-	public static String configCollectorToJson(CollectorConfig collectorConfig) {		
+	public static CollectorConfig configCollectorToJson(CollectorConfig collectorConfig) {
 		// Creating Object of ObjectMapper define in Jakson-Api 
-	    ObjectMapper Obj = new ObjectMapper();
+	    /*
+		ObjectMapper Obj = new ObjectMapper();
 			try { 
 				// get collectorConfig object as a json string 
 				String jsonStr = Obj.writeValueAsString(collectorConfig); 
@@ -57,7 +65,15 @@ public class CollectorConfigParser{
 		     } catch (IOException e) { 
 		        e.printStackTrace(); 
 		     }
-			 return null;
+			 return null;*/
+		try {
+			(new ObjectMapper()).writeValue(new File(CONFIG_FILEPATH), collectorConfig);
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+		return null;
 	}
 	
 	

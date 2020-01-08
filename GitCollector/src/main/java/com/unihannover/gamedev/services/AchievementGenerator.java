@@ -21,13 +21,15 @@ import static java.lang.Float.parseFloat;
 
 @Service
 public class AchievementGenerator {
+
     @Autowired
     MetricRepository repository;
-    CollectorConfig config = CollectorConfigParser.configJsonToObject();
+    //CollectorConfig config = CollectorConfigParser.configJsonToObject();
     int count = 0;
     List<Achievement> aList = new ArrayList<>();
     List<UserAchievement> uaList;
     public Achievement generateAchievement(String name, String description, int value, final String command, float upper_bound){
+        CollectorConfig config = CollectorConfigParser.configJsonToObject();
         Achievement a1 = new Achievement();
         a1.setCollectorId(config.getCollectorId());
         a1.setId("c" + config.getCollectorId() + count);

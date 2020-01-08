@@ -45,6 +45,7 @@ public class HttpService {
                 get.setHeader("X-Auth-Token", config.getToken());
             }
             response = httpClient.execute(get);
+            System.out.println("THIS IS THE HTTP RESPONSE " + response);
             String responsestring = EntityUtils.toString(response.getEntity(), "UTF-8");
 
             List<User> uList = objectMapper.readValue(responsestring, new TypeReference<List<User>>() {
