@@ -31,8 +31,12 @@ public class UserController extends BaseController {
      */
     @RequestMapping(value = "/users/all", method = RequestMethod.GET)
     public List<User> getAllUsers() {
-
-        return repository.findByAnonymousFalse();
+       if (((UserPrincipal) SecurityContextHolder.getContext().getAuthentication().getPrincipal()) != null &&
+    		   ((UserPrincipal) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getUsername() != null
+    		   ) {
+        	return repository.findByAnonymousFalse();
+        }
+        else return repository.findAll();
     }
 
     /**
