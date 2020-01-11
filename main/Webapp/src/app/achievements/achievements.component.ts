@@ -11,48 +11,6 @@ import { of } from 'rxjs';
 import { Achievement, Collector, PreviewDto, AchievementDto } from 'src/api/models';
 import { MatSnackBar } from '@angular/material';
 
-const achievementsMock: Achievement[] = [
-  {
-    name: 'Morning Person',
-    description: 'Check in before 8'
-  },
-  {
-    name: 'Busy Person',
-    description: 'Commit 5 things before Lunch'
-  },
-  {
-    name: 'Quantity is everything',
-    description: 'Reach 500 Commits'
-  },
-  {
-    name: 'Hold my Coffee',
-    description: 'Check in before 7'
-  }
-];
-
-const servicesMock: Service[] = [
-  {
-    id: 0,
-    name: 'Jira',
-    achievements: cloneDeep(achievementsMock)
-  },
-  {
-    id: 1,
-    name: 'Git',
-    achievements: cloneDeep(achievementsMock)
-  },
-  {
-    id: 2,
-    name: 'Bamboo',
-    achievements: cloneDeep(achievementsMock)
-  },
-  {
-    id: 3,
-    name: 'Fancy Service',
-    achievements: cloneDeep(achievementsMock)
-  }
-];
-
 @Component({
   selector: 'app-achievements',
   templateUrl: './achievements.component.html',
@@ -74,7 +32,6 @@ export class AchievementsComponent implements OnInit {
     if (foundMail !== undefined) {
       this.userEmail = foundMail;
     }
-    this.achievements = achievementsMock;
     this.loadServices();
     this.loadPreviews();
   }
