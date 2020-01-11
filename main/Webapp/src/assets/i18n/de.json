@@ -17,7 +17,8 @@
     "ACHIEVEMENTS": "Errungenschaffen",
     "PROGRESS": "Fortschritt",
     "LEVEL": "Level",
-    "LOGOUT": "Logout",
+    "LOGOUT": "Abmelden",
     "LOGIN_SUCCESS": "Login erfolgreich",
-    "LOGIN_FAILED": "Login fehlgeschlagen"
+    "LOGIN_FAILED": "Login fehlgeschlagen",
+    "USER_UPDATED": "Benutzer aktualisiert"
 }
