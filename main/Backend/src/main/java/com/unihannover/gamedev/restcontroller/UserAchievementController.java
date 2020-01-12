@@ -181,7 +181,7 @@ public class UserAchievementController extends BaseController {
             Achievement a = findAchievement(ua.getAchievementId());
 
             AchievementDto aDto = new AchievementDto(a.getCollectorId(), a.getName(), a.getDescription(), userMail, ua.getProgress(),
-            null, a.value());
+            null, a.getValue());
 
             dto.addUserAchievement(aDto);
         }
