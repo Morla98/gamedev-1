@@ -1,0 +1,29 @@
+				Setup für GitCollector:
+		1. Starte die Hauptanwendung an.
+		 		docker-compose up --build
+		2. Setzte die Webhook ein
+				i). Für GitLab:
+					1. Klicke auf AdminArea 
+					2. Klicke auf settings 
+							Klicke auf Network
+					3. setze outbound request als expand 
+							Hacke request zu lokalen Netzwerk von Webhook und services ein 
+					4. Geh zu Projekteinstellung ein 
+							a. Klicke auf Settings
+							b. Klicke auf Integrations
+							c. gebe die URL von den server ein, Wo die Json gepostet wird. 
+								zb:
+							d. (optional) falls man möchte, kann man auch secret einlegen.
+							e. Klicke auf "Add Webhook"
+					
+				Einmal noch link für die GitLab:
+					https://docs.gitlab.com/ee/user/project/integrations/webhooks.html
+						
+					
+				ii) Für die GitHub bitte die Links anscauen.
+						https://developer.github.com/webhooks/creating/
+						  
+			    iii) Für die BitBucket bitte die Links anschauen.
+			    		https://confluence.atlassian.com/bitbucket/manage-webhooks-735643732.html
+			    		
+		3. Starte die GitCollector an.
