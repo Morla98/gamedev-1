@@ -68,6 +68,9 @@ public class CollectorService {
 		this.achievementList = achievementList;
 	}
 
+	/**
+	 * setting up the Collector and initially clone the git repository and intitialize all Achievements
+	 */
 	@Bean
 	public void initCollector() {
 		//CollectorConfig config = CollectorConfigParser.configJsonToObject();
@@ -162,6 +165,10 @@ public class CollectorService {
 
 	}
 
+	/**
+	 * generate all Achievements and send them to the Main Application if the Collector isnt known yet
+	 * @param reported indicates whether the Collector is already known to the Main Application
+	 */
 	private void initAchievements(boolean reported) {
 		CollectorConfig config = CollectorConfigParser.configJsonToObject();
 		achievementList = achievementGenerator.initAchievements();
