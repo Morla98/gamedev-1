@@ -68,7 +68,7 @@ public class UserAchievementWOT {
         this.userEmail = userEmail;
     }
 
-    public flodoubleat getProgress() {
+    public double getProgress() {
         return progress;
     }
 

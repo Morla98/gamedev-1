@@ -147,8 +147,8 @@ public class UserAchievementController extends BaseController {
 
         List<UserAchievement> list = new ArrayList<>();
         //add non finished achievements
-        for(UserAchievement u : userAchievementRepo.findByUserEmail(userMail).sort(progress)) {
-            if(u.getProgress() != 0.0) {
+        for(UserAchievement u : userAchievementRepo.findByUserEmail(userMail)) {
+            if(u.getProgress() < 1.0 && u.getProgress() > 0.0) {
                 if (collectorId.equals(u.getCollectorId())) {
                     list.add(u);
                 }
@@ -157,6 +157,14 @@ public class UserAchievementController extends BaseController {
         //add finished achievements
         for(UserAchievement u : userAchievementRepo.findByUserEmail(userMail)) {
             if(u.getProgress() == 0.0) {
+                if (collectorId.equals(u.getCollectorId())) {
+                    list.add(u);
+                }
+            }
+        }
+        //add non-progress achievements
+        for(UserAchievement u : userAchievementRepo.findByUserEmail(userMail)) {
+            if(u.getProgress() == 1.0) {
                 if (collectorId.equals(u.getCollectorId())) {
                     list.add(u);
                 }
