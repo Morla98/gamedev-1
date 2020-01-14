@@ -145,26 +145,16 @@ public class UserAchievementController extends BaseController {
 
         String userMail = ((UserPrincipal) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getUsername();
 
-        int achievementCount = 4;
-
         List<UserAchievement> list = new ArrayList<>();
         //add non finished achievements
-        for(UserAchievement u : userAchievementRepo.findByUserEmail(userMail)) {
-            if(u.getProgress() < 1.0 && u.getProgress() > 0.0) {
+        for(UserAchievement u : userAchievementRepo.findByUserEmail(userMail).sort(progress)) {
+            if(u.getProgress() != 0.0) {
                 if (collectorId.equals(u.getCollectorId())) {
                     list.add(u);
                 }
             }
         }
         //add finished achievements
-        for(UserAchievement u : userAchievementRepo.findByUserEmail(userMail)) {
-            if(u.getProgress() == 1.0) {
-                if (collectorId.equals(u.getCollectorId())) {
-                    list.add(u);
-                }
-            }
-        }
-        //add non-progress achievements
         for(UserAchievement u : userAchievementRepo.findByUserEmail(userMail)) {
             if(u.getProgress() == 0.0) {
                 if (collectorId.equals(u.getCollectorId())) {
@@ -175,13 +165,16 @@ public class UserAchievementController extends BaseController {
 
         List<PreviewDto> dtoList = new ArrayList<>();
 
+        //Can be used to send shorter lists
+        int achievementCount = list.size();
+
         PreviewDto dto = new PreviewDto(collectorId);
         for(int i = 0; i < achievementCount || i < list.size(); i++){
             UserAchievement ua = list.get(i);
             Achievement a = findAchievement(ua.getAchievementId());
 
             AchievementDto aDto = new AchievementDto(a.getCollectorId(), a.getName(), a.getDescription(), userMail, ua.getProgress(),
-            null, a.value());
+            null, a.getValue());
 
             dto.addUserAchievement(aDto);
         }
