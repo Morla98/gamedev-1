@@ -270,7 +270,6 @@ public class GitService{
         }
     }
 
-    //VERALTETE METHODE!!!
     /**
      * pull the git repository in fixed time intervals
      * @deprecated use {@link #gitPull()}instead

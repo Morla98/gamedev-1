@@ -25,9 +25,29 @@ public class AchievementGenerator {
     @Autowired
     MetricRepository repository;
     //CollectorConfig config = CollectorConfigParser.configJsonToObject();
+    /**
+     * counter to determine the Achievement ID
+     * must be incremented when manually adding a Achievement
+     */
     int count = 0;
+    /**
+     * List of all Achievements
+     */
     List<Achievement> aList = new ArrayList<>();
+    /**
+     * List of all UserAchievements
+     */
+    @Deprecated
     List<UserAchievement> uaList;
+    /**
+     * auto generate an Achievement references one column of the MetricRepository
+     * @param name of the Achievement
+     * @param description describing the Achievement
+     * @param value deciding the worth of the Achievement
+     * @param command that is used to get the corresponding MetricRepository column
+     * @param upper_bound specifying the minimum value that is needed to complete the Achievement
+     * @return generated Achievement
+     */
     public Achievement generateAchievement(String name, String description, int value, final String command, float upper_bound){
         CollectorConfig config = CollectorConfigParser.configJsonToObject();
         Achievement a1 = new Achievement();
@@ -58,6 +78,11 @@ public class AchievementGenerator {
         }
         return a1;
     }
+
+    /**
+     * initialize all Achievements specified in the config
+     * @return List of all generated Achievements
+     */
     public List<Achievement> initAchievements(){
 
         CollectorConfig config = CollectorConfigParser.configJsonToObject();
