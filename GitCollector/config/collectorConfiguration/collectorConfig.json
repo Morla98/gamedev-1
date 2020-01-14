@@ -1,5 +1,1 @@
-{
-  "name":"GitCollector",
-  "collectorId":"git",
-  "token":"eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJnaXQiLCJpYXQiOjE1Nzg1MjI3ODN9.Gk9bHq8LifxUgMQ4NsTKT7K82ilrDdsd4OyWoBQKuchmheKKkbb7bKwFKbrpRbBaHu8GWqZNWPDsl7VGF9on1w"
-}
+{"name":"GitCollector","collectorId":"git","token":"eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJnaXQiLCJpYXQiOjE1NzkwNDA5Nzh9.VmuRaZERklQ8RGcPXFUgYcrKBaWb4GC5D2yDuWk4P9j4z2sdW5hZJ3N228-_hYo5ydDIrXLJ1Xnb9OOwbVhCYQ"}
