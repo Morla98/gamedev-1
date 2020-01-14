@@ -3,10 +3,8 @@
                opened>
     <div class=""></div>
   </mat-sidenav>
-  <mat-sidenav-content>
-
-
-    <h2> Profile </h2>
+  <mat-sidenav-content id="profile-wrapper">
+    <h2> {{ 'PROFILE' | translate }}</h2>
 
     <mat-card>
       <!-- <mat-card-header>{{user.name}}</mat-card-header> -->
@@ -15,19 +13,19 @@
              height="100"
              width="100">
         <div class="fields">
-          <mat-form-field>
+          <mat-form-field hintLabel="{{ 'HINT_PROFILE_NAME' | translate }}">
             <input matInput
                    [placeholder]="'NAME' | translate"
                    [(ngModel)]="user.userName">
           </mat-form-field>
-          <mat-form-field>
+          <mat-form-field hintLabel="{{ 'HINT_PROFILE_EMAIL' | translate }}">
             <input matInput
                    [placeholder]="'EMAIL' | translate"
                    [(ngModel)]="user.email"
                    [disabled]="true">
           </mat-form-field>
-          <mat-checkbox [(ngModel)]="user.anonymous">
-            {{'ANONYMOUS' | translate}}</mat-checkbox>
+          <mat-checkbox [(ngModel)]="user.anonymous">{{'ANONYMOUS' | translate}}</mat-checkbox>
+          <small>{{ 'HINT_PROFILE_ANONYMOUS' | translate }}</small>
         </div>
       </div>
     <button mat-raised-button (click)="save()"> {{'SAVE' | translate}}</button>

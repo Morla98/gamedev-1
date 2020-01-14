@@ -1,4 +1,11 @@
 @import '../../scss/variables';
+h2 {
+  color: map-get($color, primary);
+}
+
+#profile-wrapper {
+  min-width: 800px;
+}
 
 .flex-container{
     display: flex;
@@ -7,6 +14,12 @@
         display: flex;
         flex-direction: column;
         margin: 1rem;
+        width: 650px;
+        min-width: 650px;
+
+        .mat-form-field {
+          margin-bottom: 1.5rem;
+        }
     }
     img{
         margin: 1rem;

@@ -41,5 +41,6 @@ export class ProfileComponent implements OnInit {
         })
       )
       .subscribe(data => {});
+    this.matSnackBar.open(this.translateService.instant('USER_UPDATED'));
   }
 }
