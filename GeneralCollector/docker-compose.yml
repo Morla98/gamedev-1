@@ -7,9 +7,11 @@ version: '3.0'
 #
 services:
   # Main
-  main:
-    container_name: GeneralCollector_main
+  generalcollector:
+    container_name: generalcollector
     restart: always
+    volumes:
+      - ./config:/config
     build:
       context: .
     ports:
