@@ -67,5 +67,23 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
+-- Function for updating user levels
+CREATE OR REPLACE FUNCTION main.update_user_levels()
+RETURNS trigger AS
+$$
+BEGIN
+    UPDATE main.users u
+    SET level = trunc((
+        SELECT score
+        FROM main.users
+        WHERE main.users.email = u.email
+        ) / 10);
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
 -- Add trigger to user_achievements table
 CREATE TRIGGER changed AFTER INSERT OR UPDATE OR DELETE OR TRUNCATE ON main.user_achievements FOR STATEMENT EXECUTE PROCEDURE main.update_user_scores();
+
+-- Add trigger to user table
+CREATE TRIGGER changed AFTER UPDATE ON main.users FOR EACH ROW WHEN (OLD.* IS DISTINCT FROM NEW.*) EXECUTE PROCEDURE main.update_user_levels();
