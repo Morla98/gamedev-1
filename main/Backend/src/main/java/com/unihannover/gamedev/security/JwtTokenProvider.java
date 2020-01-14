@@ -13,6 +13,11 @@ import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.SignatureException;
 import io.jsonwebtoken.UnsupportedJwtException;
 
+/**
+ *
+ *
+ * @author Dominit Andrae
+ */
 @Component
 public class JwtTokenProvider {
 

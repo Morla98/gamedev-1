@@ -14,6 +14,10 @@ import javax.naming.directory.SearchResult;
 import java.util.Properties;
 import java.util.regex.Pattern;
 
+/**
+ *
+ * @author Dominik Andrae
+ */
 @Service
 public class LdapAuthenticator {
     LdapConfiguration ldapConfiguration = null;

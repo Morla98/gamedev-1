@@ -14,6 +14,11 @@ import com.unihannover.gamedev.repositories.UserRepository;
 import com.unihannover.gamedev.security.JwtTokenProvider;
 import com.unihannover.gamedev.security.LdapAuthenticator;
 
+/**
+ * A controller used to handle login requests.
+ *
+ * @author Dominik Andrae
+ */
 @RestController
 public class AuthenticationController extends BaseController {
 

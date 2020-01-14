@@ -16,6 +16,7 @@ import { User } from '../models/user';
   providedIn: 'root',
 })
 class UserControllerService extends __BaseService {
+  static readonly updateProfileUsingPOSTPath = '/api/users';
   static readonly addUserUsingPUTPath = '/api/users';
   static readonly getAllUsersUsingGETPath = '/api/users/all';
   static readonly getUsersByEmailUsingGETPath = '/api/users/by-email';
@@ -26,6 +27,40 @@ class UserControllerService extends __BaseService {
     http: HttpClient
   ) {
     super(config, http);
+  }
+
+  /**
+   * @param u u
+   */
+  updateProfileUsingPOSTResponse(u: User): __Observable<__StrictHttpResponse<null>> {
+    let __params = this.newParams();
+    let __headers = new HttpHeaders();
+    let __body: any = null;
+    __body = u;
+    let req = new HttpRequest<any>(
+      'POST',
+      this.rootUrl + `/api/users`,
+      __body,
+      {
+        headers: __headers,
+        params: __params,
+        responseType: 'json'
+      });
+
+    return this.http.request<any>(req).pipe(
+      __filter(_r => _r instanceof HttpResponse),
+      __map((_r) => {
+        return _r as __StrictHttpResponse<null>;
+      })
+    );
+  }
+  /**
+   * @param u u
+   */
+  updateProfileUsingPOST(u: User): __Observable<null> {
+    return this.updateProfileUsingPOSTResponse(u).pipe(
+      __map(_r => _r.body as null)
+    );
   }
 
   /**

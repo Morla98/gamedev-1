@@ -9,6 +9,11 @@ import org.springframework.security.core.userdetails.UserDetails;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.unihannover.gamedev.models.User;
 
+/**
+ *
+ *
+ * @author Dominik Andrae
+ */
 public class UserPrincipal implements UserDetails {
 
 	private Long id;
@@ -19,20 +24,44 @@ public class UserPrincipal implements UserDetails {
 	private String email;
 
 
+	/**
+	 * Constructor.
+	 *
+	 * @param username The user name
+	 * @param email The user emain (primary key)
+	 */
 	public UserPrincipal(String username, String email) {
 		this.username = username;
 		this.email = email;
 	}
 
+	/**
+	 * Creates a UserPrincipal, given a User.
+	 *
+	 * @param user The Given User
+	 * @return The principal of the User
+	 */
 	public static UserPrincipal create(User user) {
 		return new UserPrincipal(user.getUserName(), user.getEmail());
 	}
 
+	/**
+	 * Returns the name of a User.
+	 * Currently returns null every time(?)
+	 *
+	 * @return
+	 */
 	@Override
 	public String getUsername() {
 		return this.email;
 	}
-	
+
+	/**
+	 * Checks, if this UserPrincipal is the same object or contains the same information than the given object.
+	 *
+	 * @param o The object to compare
+	 * @return If this object and the given object are equal
+	 */
 	@Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -41,7 +70,12 @@ public class UserPrincipal implements UserDetails {
         return Objects.equals(id, that.id);
     }
 
-    @Override
+	/**
+	 * Returns the hash code of the UserPrincipals id.
+	 *
+	 * @return The hash
+	 */
+	@Override
     public int hashCode() {
 
         return Objects.hash(id);

@@ -24,20 +24,67 @@ h2 {
 
 .flex-column-container {
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: left;
     overflow-y: auto;
-    padding-bottom: 2rem;
+    padding-bottom: 4rem;
   .achievement {
-    background-color: map-get($color, primary);
-    color: map-get($color, primary-background);
-    height: 7rem;
-    width: 90%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 150%;
+    background-color: #ffffff;
+    color: #313030;
+    height: 200px;
+    min-height: 200px;
+    width: 300px;
+    min-width: 300px;
     margin: 2rem;
+    padding: 20px;
+    border-radius: 2px;
+
+    .achievement-title {
+      font-size: 130%;
+      font-weight: bold;
+      text-transform: uppercase;
+      text-align: center;
+      margin-top: 10px;
+      margin-bottom: 15px;
+    }
+
+    .achievement-description {
+      height: 110px;
+      max-height: 110px;
+      overflow: hidden;
+      margin-left: 10px;
+      margin-right: 10px;
+      font-size: 90%;
+    }
+
+    .achievement-progress {
+      .achievement-progress-description {
+        text-align: center;
+        font-weight: lighter;
+        font-size: 80%;
+        margin-bottom: 5px;
+      }
+
+      .achievement-progress-bar {
+        /* Customize the progress bar */
+        .mat-progress-bar {
+          height: 10px;
+        }
+
+        ::ng-deep .mat-progress-bar-fill::after {
+          background-color: map-get($color, primary);
+        }
+
+        ::ng-deep .mat-progress-bar-buffer {
+          background: #E4E8EB;
+        }
+
+        ::ng-deep .mat-progress-bar {
+          border-radius: 2px;
+        }
+      }
+    }
   }
 }
 
