@@ -8,6 +8,7 @@ import java.util.List;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.unihannover.gamedev.CollectorConfigParser;
 import com.unihannover.gamedev.models.User;
 import org.apache.http.HttpEntity;
 import org.apache.http.client.ClientProtocolException;
@@ -29,11 +30,12 @@ public class HttpService {
 
 	CloseableHttpClient httpClient;
 
-	@Autowired
-	CollectorConfig config;
 
     public List<User> getUsers() {
-		httpClient = HttpClients.createDefault();
+    	CollectorConfig config = CollectorConfigParser.configJsonToObject();
+    	System.out.println(config.getCollectorId());
+
+    	httpClient = HttpClients.createDefault();
 		CloseableHttpResponse response;
 		HttpEntity result;
 		ObjectMapper objectMapper = new ObjectMapper();
@@ -44,6 +46,7 @@ public class HttpService {
 			if (config.getToken() != null) {
 				get.setHeader("X-Auth-Token", config.getToken());
 			}
+			System.out.println("THIS IS THE TOKEN BRUH: " + config.getToken());
 			response = httpClient.execute(get);
 			String responsestring = EntityUtils.toString(response.getEntity(), "UTF-8");
 			// System.out.println("Responsestring: " + responsestring);
@@ -65,7 +68,8 @@ public class HttpService {
 	}
 
 	public CloseableHttpResponse sendList(List<Model> mList, String url) {
-		HttpEntity result = null;
+		CollectorConfig config = CollectorConfigParser.configJsonToObject();
+    	HttpEntity result = null;
 		String json = ListToJSON(mList);
 		httpClient = HttpClients.createDefault();
 		CloseableHttpResponse response;
@@ -100,7 +104,8 @@ public class HttpService {
 	}
 	
 	public CloseableHttpResponse sendSingleModel(Model m, String url) {
-		HttpEntity result = null;
+		CollectorConfig config = CollectorConfigParser.configJsonToObject();
+    	HttpEntity result = null;
 		String json = m.toJSON();
 		httpClient = HttpClients.createDefault();
 		CloseableHttpResponse response;

@@ -2,19 +2,24 @@ package com.unihannover.gamedev;
 
 import org.springframework.context.annotation.Configuration;
 
+
 @Configuration
 public class CollectorConfig {
 	private String name;
 	private String collectorId;
     private String token;
-    
+
+
+
     public CollectorConfig() {}
     public CollectorConfig(String name, String collectorId, String token) {
     	this.name = name;
     	this.collectorId = collectorId;
     	this.token = token;
     }
-    
+
+
+
     public String getName() {
 		return name;
 	}

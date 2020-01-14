@@ -36,7 +36,7 @@ public class CollectorController {
     HttpService httpService;
 
 
-    CollectorConfig config = CollectorConfigParser.configJsonToObject();
+
 
     /**
      * for User check each achievement with MetricDB and send updated values to main application
@@ -44,7 +44,7 @@ public class CollectorController {
     private void updateAchievements(String useremail){
         List<Model> uaList = new ArrayList<>();
         UserAchievement newUserAchievement;
-
+        CollectorConfig config = CollectorConfigParser.configJsonToObject();
         for(Achievement achievement: service.getAchievementList()){
                 newUserAchievement = new UserAchievement();
                 newUserAchievement.setCollectorId(config.getCollectorId());

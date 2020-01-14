@@ -12,8 +12,9 @@ import org.springframework.stereotype.Component;
 public class AppStartupRunner implements ApplicationRunner {
     @Autowired
     CollectorService service;
+
     @Autowired
-    CollectorConfig config;
+    static CollectorConfig config;
 
 
 
