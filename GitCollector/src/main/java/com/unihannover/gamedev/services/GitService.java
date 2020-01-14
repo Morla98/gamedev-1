@@ -39,21 +39,72 @@ import com.unihannover.gamedev.CollectorConfigParser;
  * @author Felix Volodarskis, Lukas Niehus, Leon Curth
  */
 public class GitService{
+    /**
+     * RepositoryObject this Service is working with
+     */
     private Repository git_repository;
+    /**
+     * Git Object this Service is working with
+     */
     private Git git;
+    /**
+     * List of all commits that already have been processed
+     * used to avoid processing a commit more than once
+     */
     private ArrayList<String> seenCommits = new ArrayList<>();
+    /**
+     * the minimum required Date of a commit to be processed, rather redundant
+     */
     private Date minDate = new Date();
+    /**
+     * Calendar Object which is used to specify this Timezone
+     */
     private Calendar calendar;
+    /**
+     * List of all the Achievements this Collector is offering
+     */
     private List<Achievement> achievementList;
+    /**
+     * Corresponding HttpService Object
+     */
     private HttpService httpService;
+    /**
+     * corresponding MetricRepository Object
+     */
     private MetricRepository repository;
+    /**
+     * List of all Users
+     */
     private List<User> userList;
+    /**
+     * List of all UserAchievements, redundant
+     */
     private	List<UserAchievement> uaList;
+    /**
+     * List of all UserAchievements as Models, redundant
+     */
     private List<Model> uaModelList;
+    /**
+     * List if all legalRegexes
+     * Used for "approved by Dominik" Achievement
+     */
     private List<String> regexList = new ArrayList<String>();
+    /**
+     * List of Lambda functions that process a diff string containing the added lines of the commit
+     */
     private List<LambdaInterface> createDiffList = new ArrayList<LambdaInterface>();
+    /**
+     * Config object of this Collector
+     * Specifies name, id and Token
+     */
     private CollectorConfig config = CollectorConfigParser.configJsonToObject();
+    /**
+     * List of Lambda functions that process the name of a changed File in the commit diff
+     */
     private List<NameLambdaInterface> nameLambdaList = new ArrayList<NameLambdaInterface>();
+    /**
+     * Credential provider Object which must have pull permission for specified git repository
+     */
     private CredentialsProvider user;
 
     //lastPull is 0 at the beginning because the first hook has to be taken
@@ -80,6 +131,7 @@ public class GitService{
     /**
      * Get the User specified LastCommitDate from the gitTimeStamp.json
      * Set the internal LastCommitDate which is used to exclude Commits that were pushed before the LastCommitDate
+     * "timestamp: <TIMESTAMP>"
      */
     public void setLastCommitDate() {
         JSONParser parser = new JSONParser();
@@ -98,6 +150,7 @@ public class GitService{
     /**
      * Parse the legalRegex.json to set the legal Regex Strings
      * The Regex Strings specify which commit messages are legal
+     * "regex" specifies the regex that should be added to the list
      */
     public void setRegex(){
         JSONParser parser = new JSONParser();
@@ -127,6 +180,14 @@ public class GitService{
         }
     }
 
+    /**
+     * Initializes all Lambda functions in createDiffList
+     * use Data from createDiffAchievement.json
+     * all added Lambda Functions get the diff String of added lines and the metric repository of the user as input
+     * all Lambdas must then process the string and store their themselves
+     * "command" specifies which command should be used to get and set the current amount of database entries for the commit and must exist in the Metric class
+     * the function iterates over the string and counts the occurances of the "regex" string
+     */
     public void setCreateDiffList() {
         List<LambdaInterface> list = new ArrayList<LambdaInterface>();
         JSONParser parser = new JSONParser();
@@ -164,6 +225,10 @@ public class GitService{
         this.createDiffList = list;
     }
 
+    /**
+     * Initialize NameLambdaList
+     * get the name of the file as input
+     */
     public void setNameLambdaList(){
         nameLambdaList.add((name, metric) -> {
             String ending = name.substring(name.lastIndexOf(".") + 1);
@@ -179,7 +244,10 @@ public class GitService{
         });
     }
 
-
+    /**
+     * pulling from the specified git repository
+     * a maximum pull frequency can be set by using the threshold attribute
+     */
     public void gitPull()
     {
         if((System.currentTimeMillis() - lastPull) >= threshold)
@@ -203,6 +271,11 @@ public class GitService{
     }
 
     //VERALTETE METHODE!!!
+    /**
+     * pull the git repository in fixed time intervals
+     * @deprecated use {@link #gitPull()}instead
+     */
+    @Deprecated
     public void runTimer(CredentialsProvider user)
     {
         setLastCommitDate();
@@ -260,18 +333,33 @@ public class GitService{
         return;
     }
 
+    /**
+     * iterate over createDiffList and call every funtion with the diff_string and the metric of the user
+     * @param diff_string String only containing the added lines of the commit
+     * @param metric Metric Object of the User who made the commit
+     */
     public void getCreateDiffRelatedAchievemnets(String diff_string, Metric metric){
         for(LambdaInterface ele : createDiffList){
             ele.createDiff(diff_string, metric);
         }
     }
 
+    /**
+     * iterate over nameLambdaList and call every function with the name of the file and the metric of the user
+     * @param name Name of the changed File
+     * @param metric Metric Object of the User who made the commit
+     */
     public void getNameRelatedAchievements(String name, Metric metric){
         for(NameLambdaInterface ele : nameLambdaList){
             ele.createName(name, metric);
         }
     }
 
+    /**
+     * Extracts the lines from the diff which have been added and calls all function that process the commit difference
+     * @param lines Lines of the commit diff
+     * @param metric Metric Object of the User who made the commit
+     */
     public void getChangeDiffRelatedAChievements(String[] lines, Metric metric){
         String added_diff = "";
         String deleted_diff = "";
@@ -390,7 +478,7 @@ public class GitService{
 
     /**
      * Initialize a users Achievements in the Main Application
-     * @param user_email the email of the user which Achievemnts should be initialized
+     * @param user_email the email of the user whose Achievements should be initialized
      */
     public void addUserByEmail(String user_email){
         System.out.println("User " + user_email + " has logged in for the first time and is being added to databases ...");
@@ -421,9 +509,9 @@ public class GitService{
 
     /**
      * Check IF the given List contains the User specified by his user_email
-      * @param list The list containing Users that you wish to search through
+     * @param list The list containing Users that you wish to search through
      * @param user_email the email of the sought User
-     * @return
+     * @return true IF the User exists; ELSE False
      */
     public boolean checkUser(List<User> list, String user_email){
         for(User user : list){
@@ -435,8 +523,8 @@ public class GitService{
     }
 
     /**
-     * Check if the User is known to the Git Collector, THEN generate Data from his commit
-     * ELSE Check if the User is known to the Main Application, THEN initilize his Data and generate Data from his commit
+     * Check IF the User is known to the Git Collector, THEN generate Data from his commit
+     * ELSE Check IF the User is known to the Main Application, THEN initilize his Data and generate Data from his commit
      * ElSE Igonre this commit
      * @param commit the commit from which data should be generated
      */
@@ -482,7 +570,8 @@ public class GitService{
     //TODO: Exceptions richtig handeln, insbesondere leeres email repo <--> user existiert nicht exception vorher abfragen, entweder mit userlist oder länge von Repo
 
     /**
-     * Get all eligible Commits and process them
+     * Get all eligible Commits and process them by calling checkParseUser
+     * Add processed Commits to the seenCommit list
      */
     public void iterateBranches(){
 
@@ -522,9 +611,15 @@ public class GitService{
 
     //TODO: Persistence of current Head
 
+/**
+ * Interace for lambda functions that expect a String and a Metric and return void
+ */
 interface LambdaInterface{
     void createDiff(String diff_string, Metric metric);
 }
+/**
+ * Interace for lambda functions that expect a String and a Metric and return void
+ */
 interface NameLambdaInterface{
     void createName(String name, Metric metric);
 }
