@@ -1,10 +1,16 @@
+@import '../../scss/variables';
 
 mat-card{
     margin: 30vh auto;
+    width: 30rem;
+
     .flex-container{
         display: flex;
         flex-direction: column;
         justify-content: space-around;
     }
-    width: 30rem;
+
+    button {
+        background-color: map-get($color, primary-background);
+    }
 }

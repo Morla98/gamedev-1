@@ -18,7 +18,11 @@
     "PROGRESS": "Progress",
     "LEVEL": "Level",
     "LOGOUT": "Logout",
+    "LOGIN": "Login",
     "LOGIN_SUCCESS": "Login successful",
     "LOGIN_FAILED": "Login failed",
-    "USER_UPDATED": "Benutzer aktualisiert"
+    "USER_UPDATED": "Benutzer aktualisiert",
+    "PASSWORD": "Password",
+    "USERNAME": "Username",
+    "SCORE": "Score"
 }

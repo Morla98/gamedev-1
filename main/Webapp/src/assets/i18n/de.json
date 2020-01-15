@@ -18,7 +18,11 @@
     "PROGRESS": "Fortschritt",
     "LEVEL": "Level",
     "LOGOUT": "Abmelden",
-    "LOGIN_SUCCESS": "Login erfolgreich",
-    "LOGIN_FAILED": "Login fehlgeschlagen",
-    "USER_UPDATED": "Benutzer aktualisiert"
+    "LOGIN": "Anmeldung",
+    "LOGIN_SUCCESS": "Anmeldung erfolgreich",
+    "LOGIN_FAILED": "Anmeldung fehlgeschlagen",
+    "USER_UPDATED": "Benutzer aktualisiert",
+    "PASSWORD": "Passwort",
+    "USERNAME": "Nutzername",
+    "SCORE": "Score"
 }
