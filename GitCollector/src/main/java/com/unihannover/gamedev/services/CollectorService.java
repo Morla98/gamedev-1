@@ -122,10 +122,10 @@ public class CollectorService {
 			}
 		}
 		// TODO: reported should be true if collector is already known by server so that he doesnt (re)send his Achievements
-		int status = response.getStatusLine().getStatusCode();
+		//int status = response.getStatusLine().getStatusCode();
 		boolean reported = false;
-		if (status == HttpStatus.SC_OK){ reported = false; }
-		else if (status == HttpStatus.SC_ACCEPTED){ reported = true; }
+		//if (status == HttpStatus.SC_OK){ reported = false; }
+		//else if (status == HttpStatus.SC_ACCEPTED){ reported = true; }
 		initAchievements(reported);
 
 
