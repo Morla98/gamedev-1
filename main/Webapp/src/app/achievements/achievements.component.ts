@@ -55,7 +55,7 @@ export class AchievementsComponent implements OnInit {
         .pipe(
           map(data => {
             if (data !== undefined) {
-              this.achievements = data;
+              this.achievements = data.sort((a,b) => a.name.localeCompare(b.name));
               this.cd.markForCheck();
             }
           }),

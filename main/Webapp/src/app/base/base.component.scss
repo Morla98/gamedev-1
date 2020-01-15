@@ -2,47 +2,53 @@
 .header {
   background-color: map-get($color, primary);
   display: flex;
-  .menu{
-    font-size: 250%;
-    color: map-get($color, primary-background);
-  }
+  flex-direction: row;
+  justify-content: flex-end;
 
-  justify-content: space-between;
   .toolbar {
     display: flex;
-    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
 
     mat-icon {
       color: map-get($color, primary-background);
-      font-size: 200%;
-      padding-top: 0.25rem;
-      margin-right: 1rem;
+      font-size: 180%;
+      margin-right: 0.5rem;
       &:hover {
         cursor: pointer;
       }
     }
     .toolbar-item {
-      height: 100%;
-      padding: 0.25rem;
-      font-size: 170%;
+      display: flex;
+      align-items: center;
+      font-size: 130%;
       color: map-get($color, primary-background);
-      margin-right: 1rem;
+      margin-left: 0.4rem;
+      margin-right: 0.4rem;
+
       &:hover {
         cursor: pointer;
       }
       span {
+        display: flex;
+        align-items: center;
         background-color: map-get($color, primary-background);
-        height: 90%;
-        padding: 0 0.5rem;
+        height: 80%;
+        padding: 0 0.4rem;
         color: map-get($color, primary);
+        margin-left: 0.4rem;
       }
     }
 
     .language {
       width: 8rem;
-      font-size: 170%;
+      font-size: 130%;
+      display: flex;
+      align-items: center;
+      margin-left: 0.4rem;
+      margin-right: 0.4rem;
+
       .mat-select {
-        padding-top: 0.25rem;
         text-align: left;
         margin-bottom: 0;
         ::ng-deep {
@@ -61,11 +67,10 @@
       }
     }
     button {
-      font-size: 170%;
+      font-size: 130%;
       &:hover {
         cursor: pointer;
       }
     }
   }
 }
-

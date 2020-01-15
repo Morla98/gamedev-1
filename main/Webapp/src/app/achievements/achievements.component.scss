@@ -108,6 +108,7 @@ mat-sidenav-container {
       align-items: center;
       background-color: map-get($color, primary-background);
       color: map-get($color, primary);
+      border-radius: 2px;
       &:hover {
         cursor: pointer;
       }
