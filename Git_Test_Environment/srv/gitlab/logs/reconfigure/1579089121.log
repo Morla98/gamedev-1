@@ -1,0 +1,109 @@
+# Logfile created on 2020-01-15 11:52:01 +0000 by logger.rb/66358
+[2020-01-15T11:52:02+00:00] INFO: Started chef-zero at chefzero://localhost:1 with repository at /opt/gitlab/embedded
+  One version per cookbook
+
+[2020-01-15T11:52:02+00:00] INFO: *** Chef 14.13.11 ***
+[2020-01-15T11:52:02+00:00] INFO: Platform: x86_64-linux
+[2020-01-15T11:52:02+00:00] INFO: Chef-client pid: 25
+[2020-01-15T11:52:02+00:00] INFO: The plugin path /etc/chef/ohai/plugins does not exist. Skipping...
+[2020-01-15T11:52:02+00:00] WARN: Plugin Network: unable to detect ipaddress
+[2020-01-15T11:52:04+00:00] INFO: Setting the run_list to ["recipe[gitlab]"] from CLI options
+[2020-01-15T11:52:04+00:00] INFO: Run List is [recipe[gitlab]]
+[2020-01-15T11:52:04+00:00] INFO: Run List expands to [gitlab]
+[2020-01-15T11:52:04+00:00] INFO: Starting Chef Run for b2742740c304
+[2020-01-15T11:52:04+00:00] INFO: Running start handlers
+[2020-01-15T11:52:04+00:00] INFO: Start handlers complete.
+[2020-01-15T11:52:06+00:00] INFO: Loading cookbooks [gitlab@0.0.1, package@0.1.0, postgresql@0.1.0, redis@0.1.0, monitoring@0.1.0, registry@0.1.0, mattermost@0.1.0, consul@0.1.0, gitaly@0.1.0, praefect@0.1.0, letsencrypt@0.1.0, nginx@0.1.0, runit@4.3.0, acme@4.0.0, crond@0.1.0]
+[2020-01-15T11:52:11+00:00] INFO: Skipped selecting an init system because it was explicitly disabled
+[2020-01-15T11:52:12+00:00] INFO: The plugin path /etc/chef/ohai/plugins does not exist. Skipping...
+[2020-01-15T11:52:14+00:00] WARN: only_if block for templatesymlink[Create a gitlab_pages_secret and create a symlink to Rails root] returned a string, did you mean to run a command?
+[2020-01-15T11:52:15+00:00] INFO: link[/opt/gitlab/service/redis] created
+[2020-01-15T11:52:15+00:00] INFO: link[/opt/gitlab/service/gitaly] created
+[2020-01-15T11:52:15+00:00] INFO: link[/opt/gitlab/service/postgresql] created
+[2020-01-15T11:52:15+00:00] INFO: file[/opt/gitlab/sv/postgresql/supervise/status] owner changed to 996
+[2020-01-15T11:52:15+00:00] INFO: file[/opt/gitlab/sv/postgresql/supervise/status] group changed to 996
+[2020-01-15T11:52:15+00:00] INFO: file[/opt/gitlab/sv/postgresql/supervise/status] updated atime and mtime to 2020-01-15 11:52:15 +0000
+[2020-01-15T11:52:16+00:00] INFO: bash[set ownership of old migration log files] ran successfully
+[2020-01-15T11:52:16+00:00] INFO: runit_service[unicorn] running why-run enable action to support before action
+[2020-01-15T11:52:17+00:00] INFO: runit_service[unicorn] sending stop action to service[puma] (before)
+[2020-01-15T11:52:17+00:00] INFO: link[/opt/gitlab/service/unicorn] created
+[2020-01-15T11:52:17+00:00] INFO: link[/opt/gitlab/service/sidekiq] created
+[2020-01-15T11:52:18+00:00] INFO: link[/opt/gitlab/service/gitlab-workhorse] created
+[2020-01-15T11:52:18+00:00] INFO: link[/opt/gitlab/service/nginx] created
+[2020-01-15T11:52:19+00:00] INFO: link[/opt/gitlab/service/logrotate] created
+[2020-01-15T11:52:19+00:00] INFO: link[/opt/gitlab/service/gitlab-exporter] created
+[2020-01-15T11:52:19+00:00] INFO: link[/opt/gitlab/service/redis-exporter] created
+[2020-01-15T11:52:20+00:00] INFO: link[/opt/gitlab/service/prometheus] created
+[2020-01-15T11:52:21+00:00] INFO: link[/opt/gitlab/service/alertmanager] created
+[2020-01-15T11:52:22+00:00] INFO: link[/opt/gitlab/service/postgres-exporter] created
+[2020-01-15T11:52:22+00:00] WARN: Connecting to GitLab to generate new app_id and app_secret for GitLab Grafana.
+[2020-01-15T11:54:38+00:00] INFO: Updated the gitlab-secrets.json file.
+[2020-01-15T11:54:38+00:00] INFO: ruby_block[authorize Grafana with GitLab] called
+[2020-01-15T11:54:38+00:00] INFO: ruby_block[populate Grafana configuration options] called
+[2020-01-15T11:54:38+00:00] INFO: file[/opt/gitlab/etc/grafana/env/SSL_CERT_DIR] created file /opt/gitlab/etc/grafana/env/SSL_CERT_DIR
+[2020-01-15T11:54:38+00:00] INFO: file[/opt/gitlab/etc/grafana/env/SSL_CERT_DIR] updated file contents /opt/gitlab/etc/grafana/env/SSL_CERT_DIR
+[2020-01-15T11:54:38+00:00] INFO: template[/var/opt/gitlab/grafana/grafana.ini] created file /var/opt/gitlab/grafana/grafana.ini
+[2020-01-15T11:54:38+00:00] INFO: template[/var/opt/gitlab/grafana/grafana.ini] updated file contents /var/opt/gitlab/grafana/grafana.ini
+[2020-01-15T11:54:39+00:00] INFO: template[/var/opt/gitlab/grafana/grafana.ini] owner changed to 992
+[2020-01-15T11:54:39+00:00] INFO: template[/var/opt/gitlab/grafana/grafana.ini] mode changed to 644
+[2020-01-15T11:54:39+00:00] INFO: template[/var/opt/gitlab/grafana/grafana.ini] not queuing delayed action restart on service[grafana] (delayed), as it's already been queued
+[2020-01-15T11:54:39+00:00] INFO: file[/var/opt/gitlab/grafana/provisioning/dashboards/gitlab_dashboards.yml] created file /var/opt/gitlab/grafana/provisioning/dashboards/gitlab_dashboards.yml
+[2020-01-15T11:54:39+00:00] INFO: file[/var/opt/gitlab/grafana/provisioning/dashboards/gitlab_dashboards.yml] updated file contents /var/opt/gitlab/grafana/provisioning/dashboards/gitlab_dashboards.yml
+[2020-01-15T11:54:39+00:00] INFO: file[/var/opt/gitlab/grafana/provisioning/dashboards/gitlab_dashboards.yml] owner changed to 992
+[2020-01-15T11:54:39+00:00] INFO: file[/var/opt/gitlab/grafana/provisioning/dashboards/gitlab_dashboards.yml] mode changed to 644
+[2020-01-15T11:54:39+00:00] INFO: file[/var/opt/gitlab/grafana/provisioning/dashboards/gitlab_dashboards.yml] not queuing delayed action restart on service[grafana] (delayed), as it's already been queued
+[2020-01-15T11:54:39+00:00] INFO: file[/var/opt/gitlab/grafana/provisioning/datasources/gitlab_datasources.yml] created file /var/opt/gitlab/grafana/provisioning/datasources/gitlab_datasources.yml
+[2020-01-15T11:54:39+00:00] INFO: file[/var/opt/gitlab/grafana/provisioning/datasources/gitlab_datasources.yml] updated file contents /var/opt/gitlab/grafana/provisioning/datasources/gitlab_datasources.yml
+[2020-01-15T11:54:39+00:00] INFO: file[/var/opt/gitlab/grafana/provisioning/datasources/gitlab_datasources.yml] owner changed to 992
+[2020-01-15T11:54:39+00:00] INFO: file[/var/opt/gitlab/grafana/provisioning/datasources/gitlab_datasources.yml] mode changed to 644
+[2020-01-15T11:54:39+00:00] INFO: file[/var/opt/gitlab/grafana/provisioning/datasources/gitlab_datasources.yml] not queuing delayed action restart on service[grafana] (delayed), as it's already been queued
+[2020-01-15T11:54:39+00:00] INFO: directory[/opt/gitlab/sv/grafana] created directory /opt/gitlab/sv/grafana
+[2020-01-15T11:54:39+00:00] INFO: directory[/opt/gitlab/sv/grafana] owner changed to 0
+[2020-01-15T11:54:39+00:00] INFO: directory[/opt/gitlab/sv/grafana] group changed to 0
+[2020-01-15T11:54:39+00:00] INFO: directory[/opt/gitlab/sv/grafana] mode changed to 755
+[2020-01-15T11:54:39+00:00] INFO: template[/opt/gitlab/sv/grafana/run] created file /opt/gitlab/sv/grafana/run
+[2020-01-15T11:54:39+00:00] INFO: template[/opt/gitlab/sv/grafana/run] updated file contents /opt/gitlab/sv/grafana/run
+[2020-01-15T11:54:39+00:00] INFO: template[/opt/gitlab/sv/grafana/run] owner changed to 0
+[2020-01-15T11:54:39+00:00] INFO: template[/opt/gitlab/sv/grafana/run] group changed to 0
+[2020-01-15T11:54:39+00:00] INFO: template[/opt/gitlab/sv/grafana/run] mode changed to 755
+[2020-01-15T11:54:39+00:00] INFO: directory[/opt/gitlab/sv/grafana/log] created directory /opt/gitlab/sv/grafana/log
+[2020-01-15T11:54:39+00:00] INFO: directory[/opt/gitlab/sv/grafana/log] owner changed to 0
+[2020-01-15T11:54:39+00:00] INFO: directory[/opt/gitlab/sv/grafana/log] group changed to 0
+[2020-01-15T11:54:39+00:00] INFO: directory[/opt/gitlab/sv/grafana/log] mode changed to 755
+[2020-01-15T11:54:39+00:00] INFO: directory[/opt/gitlab/sv/grafana/log/main] created directory /opt/gitlab/sv/grafana/log/main
+[2020-01-15T11:54:39+00:00] INFO: directory[/opt/gitlab/sv/grafana/log/main] owner changed to 0
+[2020-01-15T11:54:39+00:00] INFO: directory[/opt/gitlab/sv/grafana/log/main] group changed to 0
+[2020-01-15T11:54:39+00:00] INFO: directory[/opt/gitlab/sv/grafana/log/main] mode changed to 755
+[2020-01-15T11:54:39+00:00] INFO: template[/opt/gitlab/sv/grafana/log/run] created file /opt/gitlab/sv/grafana/log/run
+[2020-01-15T11:54:39+00:00] INFO: template[/opt/gitlab/sv/grafana/log/run] updated file contents /opt/gitlab/sv/grafana/log/run
+[2020-01-15T11:54:39+00:00] INFO: template[/opt/gitlab/sv/grafana/log/run] owner changed to 0
+[2020-01-15T11:54:39+00:00] INFO: template[/opt/gitlab/sv/grafana/log/run] group changed to 0
+[2020-01-15T11:54:39+00:00] INFO: template[/opt/gitlab/sv/grafana/log/run] mode changed to 755
+[2020-01-15T11:54:39+00:00] INFO: template[/var/log/gitlab/grafana/config] created file /var/log/gitlab/grafana/config
+[2020-01-15T11:54:39+00:00] INFO: template[/var/log/gitlab/grafana/config] updated file contents /var/log/gitlab/grafana/config
+[2020-01-15T11:54:39+00:00] INFO: template[/var/log/gitlab/grafana/config] owner changed to 0
+[2020-01-15T11:54:39+00:00] INFO: template[/var/log/gitlab/grafana/config] group changed to 0
+[2020-01-15T11:54:39+00:00] INFO: template[/var/log/gitlab/grafana/config] mode changed to 644
+[2020-01-15T11:54:39+00:00] INFO: template[/var/log/gitlab/grafana/config] sending create action to ruby_block[verify_chown_persisted_on_grafana] (immediate)
+[2020-01-15T11:54:39+00:00] INFO: ruby_block[verify_chown_persisted_on_grafana] called
+[2020-01-15T11:54:39+00:00] INFO: directory[/opt/gitlab/sv/grafana/env] created directory /opt/gitlab/sv/grafana/env
+[2020-01-15T11:54:39+00:00] INFO: directory[/opt/gitlab/sv/grafana/env] owner changed to 0
+[2020-01-15T11:54:39+00:00] INFO: directory[/opt/gitlab/sv/grafana/env] group changed to 0
+[2020-01-15T11:54:39+00:00] INFO: directory[/opt/gitlab/sv/grafana/env] mode changed to 755
+[2020-01-15T11:54:39+00:00] INFO: directory[/opt/gitlab/sv/grafana/control] created directory /opt/gitlab/sv/grafana/control
+[2020-01-15T11:54:39+00:00] INFO: directory[/opt/gitlab/sv/grafana/control] owner changed to 0
+[2020-01-15T11:54:39+00:00] INFO: directory[/opt/gitlab/sv/grafana/control] group changed to 0
+[2020-01-15T11:54:39+00:00] INFO: directory[/opt/gitlab/sv/grafana/control] mode changed to 755
+[2020-01-15T11:54:39+00:00] INFO: link[/opt/gitlab/init/grafana] created
+[2020-01-15T11:54:39+00:00] INFO: template[/opt/gitlab/sv/grafana/run] sending run action to ruby_block[restart_service] (delayed)
+[2020-01-15T11:54:39+00:00] INFO: template[/opt/gitlab/sv/grafana/log/run] sending create action to ruby_block[restart_log_service] (delayed)
+[2020-01-15T11:54:40+00:00] INFO: link[/opt/gitlab/service/grafana] created
+[2020-01-15T11:54:45+00:00] INFO: ruby_block[wait for grafana service socket] called
+[2020-01-15T11:54:46+00:00] INFO: ruby_block[restart_log_service] called
+[2020-01-15T11:54:46+00:00] INFO: template[/var/log/gitlab/grafana/config] sending create action to ruby_block[reload_log_service] (delayed)
+[2020-01-15T11:54:48+00:00] INFO: ruby_block[reload_log_service] called
+[2020-01-15T11:54:48+00:00] INFO: env_dir[/opt/gitlab/etc/grafana/env] sending restart action to service[grafana] (delayed)
+[2020-01-15T11:54:48+00:00] INFO: service[grafana] restarted
+[2020-01-15T11:54:49+00:00] INFO: Chef Run complete in 164.225274777 seconds
+[2020-01-15T11:54:49+00:00] INFO: Running report handlers
+[2020-01-15T11:54:49+00:00] INFO: Report handlers complete

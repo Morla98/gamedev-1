@@ -1,0 +1,5 @@
+2020-01-15_12:02:39.85095 time="2020-01-15T12:02:39Z" level=info msg="Established new database connection to \"/var/opt/gitlab/postgresql:5432\"." source="postgres_exporter.go:777"
+2020-01-15_12:02:39.90775 time="2020-01-15T12:02:39Z" level=error msg="Error opening connection to database (user=gitlab-psql%20host=/var/opt/gitlab/postgresql%20database=postgres): pq: the database system is starting up" source="postgres_exporter.go:1336"
+2020-01-15_12:02:39.90845 time="2020-01-15T12:02:39Z" level=info msg="Starting Server: localhost:9187" source="postgres_exporter.go:1437"
+2020-01-15_12:03:07.06096 time="2020-01-15T12:03:07Z" level=info msg="Established new database connection to \"/var/opt/gitlab/postgresql:5432\"." source="postgres_exporter.go:777"
+2020-01-15_12:03:07.22645 time="2020-01-15T12:03:07Z" level=info msg="Semantic Version Changed on \"/var/opt/gitlab/postgresql:5432\": 0.0.0 -> 10.9.0" source="postgres_exporter.go:1229"

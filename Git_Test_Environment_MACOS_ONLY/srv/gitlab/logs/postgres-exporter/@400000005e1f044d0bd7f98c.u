@@ -1,0 +1,5 @@
+2020-01-15_12:21:00.33182 time="2020-01-15T12:21:00Z" level=info msg="Established new database connection to \"/var/opt/gitlab/postgresql:5432\"." source="postgres_exporter.go:777"
+2020-01-15_12:21:00.34514 time="2020-01-15T12:21:00Z" level=error msg="Error opening connection to database (user=gitlab-psql%20host=/var/opt/gitlab/postgresql%20database=postgres): dial unix /var/opt/gitlab/postgresql/.s.PGSQL.5432: connect: no such file or directory" source="postgres_exporter.go:1336"
+2020-01-15_12:21:00.34847 time="2020-01-15T12:21:00Z" level=info msg="Starting Server: localhost:9187" source="postgres_exporter.go:1437"
+2020-01-15_12:21:20.23043 time="2020-01-15T12:21:20Z" level=info msg="Established new database connection to \"/var/opt/gitlab/postgresql:5432\"." source="postgres_exporter.go:777"
+2020-01-15_12:21:20.41449 time="2020-01-15T12:21:20Z" level=info msg="Semantic Version Changed on \"/var/opt/gitlab/postgresql:5432\": 0.0.0 -> 10.9.0" source="postgres_exporter.go:1229"

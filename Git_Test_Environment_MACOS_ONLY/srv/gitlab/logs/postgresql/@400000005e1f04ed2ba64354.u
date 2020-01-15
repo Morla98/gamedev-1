@@ -1,0 +1,9 @@
+2020-01-15_12:22:29.71644 LOG:  listening on Unix socket "/var/opt/gitlab/postgresql/.s.PGSQL.5432"
+2020-01-15_12:22:30.19855 LOG:  database system was shut down at 2020-01-15 12:21:35 GMT
+2020-01-15_12:22:30.42397 LOG:  database system is ready to accept connections
+2020-01-15_12:25:04.01985 received TERM from runit, sending INT instead to force quit connections
+2020-01-15_12:25:04.03640 LOG:  received fast shutdown request
+2020-01-15_12:25:04.05601 LOG:  aborting any active transactions
+2020-01-15_12:25:04.06959 LOG:  worker process: logical replication launcher (PID 364) exited with exit code 1
+2020-01-15_12:25:04.10155 LOG:  shutting down
+2020-01-15_12:25:04.23321 LOG:  database system is shut down

@@ -1,0 +1,1446 @@
+{"level":"info","msg":"Wrapper started","time":"2020-01-15T12:22:23Z","wrapper":252}
+{"level":"info","msg":"finding gitaly","pid_file":"/var/opt/gitlab/gitaly/gitaly.pid","time":"2020-01-15T12:22:23Z","wrapper":252}
+{"level":"info","msg":"spawning a process","time":"2020-01-15T12:22:23Z","wrapper":252}
+{"gitaly":258,"level":"info","msg":"monitoring gitaly","time":"2020-01-15T12:22:23Z","wrapper":252}
+time="2020-01-15T12:22:23Z" level=info msg="Starting Gitaly" version="Gitaly, version 1.77.1"
+time="2020-01-15T12:22:23Z" level=warning msg="git path not configured. Using default path resolution" resolvedPath=/opt/gitlab/embedded/bin/git
+time="2020-01-15T12:22:23Z" level=fatal msg="load config" config_path=/var/opt/gitlab/gitaly/config.toml error="socket could not be created in /var/opt/gitlab/gitaly/internal_sockets: listen unix /var/opt/gitlab/gitaly/internal_sockets/test-170f7f1f.sock: bind: file name too long"
+{"gitaly":258,"level":"warning","msg":"forwarding signal","signal":17,"time":"2020-01-15T12:22:23Z","wrapper":252}
+{"error":"os: process already finished","gitaly":258,"level":"error","msg":"can't forward the signal","signal":17,"time":"2020-01-15T12:22:23Z","wrapper":252}
+{"gitaly":258,"level":"error","msg":"wrapper for gitaly shutting down","time":"2020-01-15T12:22:24Z","wrapper":252}
+{"level":"info","msg":"Wrapper started","time":"2020-01-15T12:22:24Z","wrapper":273}
+{"level":"info","msg":"finding gitaly","pid_file":"/var/opt/gitlab/gitaly/gitaly.pid","time":"2020-01-15T12:22:24Z","wrapper":273}
+{"level":"info","msg":"spawning a process","time":"2020-01-15T12:22:24Z","wrapper":273}
+{"gitaly":279,"level":"info","msg":"monitoring gitaly","time":"2020-01-15T12:22:24Z","wrapper":273}
+time="2020-01-15T12:22:24Z" level=info msg="Starting Gitaly" version="Gitaly, version 1.77.1"
+time="2020-01-15T12:22:24Z" level=warning msg="git path not configured. Using default path resolution" resolvedPath=/opt/gitlab/embedded/bin/git
+time="2020-01-15T12:22:24Z" level=fatal msg="load config" config_path=/var/opt/gitlab/gitaly/config.toml error="socket could not be created in /var/opt/gitlab/gitaly/internal_sockets: listen unix /var/opt/gitlab/gitaly/internal_sockets/test-7887c510.sock: bind: file name too long"
+{"gitaly":279,"level":"warning","msg":"forwarding signal","signal":17,"time":"2020-01-15T12:22:24Z","wrapper":273}
+{"error":"os: process already finished","gitaly":279,"level":"error","msg":"can't forward the signal","signal":17,"time":"2020-01-15T12:22:24Z","wrapper":273}
+{"gitaly":279,"level":"error","msg":"wrapper for gitaly shutting down","time":"2020-01-15T12:22:25Z","wrapper":273}
+{"level":"info","msg":"Wrapper started","time":"2020-01-15T12:22:25Z","wrapper":289}
+{"level":"info","msg":"finding gitaly","pid_file":"/var/opt/gitlab/gitaly/gitaly.pid","time":"2020-01-15T12:22:25Z","wrapper":289}
+{"level":"info","msg":"spawning a process","time":"2020-01-15T12:22:25Z","wrapper":289}
+{"gitaly":296,"level":"info","msg":"monitoring gitaly","time":"2020-01-15T12:22:25Z","wrapper":289}
+time="2020-01-15T12:22:25Z" level=info msg="Starting Gitaly" version="Gitaly, version 1.77.1"
+time="2020-01-15T12:22:25Z" level=warning msg="git path not configured. Using default path resolution" resolvedPath=/opt/gitlab/embedded/bin/git
+time="2020-01-15T12:22:25Z" level=fatal msg="load config" config_path=/var/opt/gitlab/gitaly/config.toml error="socket could not be created in /var/opt/gitlab/gitaly/internal_sockets: listen unix /var/opt/gitlab/gitaly/internal_sockets/test-de636e82.sock: bind: file name too long"
+{"gitaly":296,"level":"warning","msg":"forwarding signal","signal":17,"time":"2020-01-15T12:22:25Z","wrapper":289}
+{"error":"os: process already finished","gitaly":296,"level":"error","msg":"can't forward the signal","signal":17,"time":"2020-01-15T12:22:25Z","wrapper":289}
+{"gitaly":296,"level":"error","msg":"wrapper for gitaly shutting down","time":"2020-01-15T12:22:26Z","wrapper":289}
+{"level":"info","msg":"Wrapper started","time":"2020-01-15T12:22:26Z","wrapper":302}
+{"level":"info","msg":"finding gitaly","pid_file":"/var/opt/gitlab/gitaly/gitaly.pid","time":"2020-01-15T12:22:26Z","wrapper":302}
+{"level":"info","msg":"spawning a process","time":"2020-01-15T12:22:26Z","wrapper":302}
+{"gitaly":308,"level":"info","msg":"monitoring gitaly","time":"2020-01-15T12:22:27Z","wrapper":302}
+time="2020-01-15T12:22:27Z" level=info msg="Starting Gitaly" version="Gitaly, version 1.77.1"
+time="2020-01-15T12:22:27Z" level=warning msg="git path not configured. Using default path resolution" resolvedPath=/opt/gitlab/embedded/bin/git
+time="2020-01-15T12:22:27Z" level=fatal msg="load config" config_path=/var/opt/gitlab/gitaly/config.toml error="socket could not be created in /var/opt/gitlab/gitaly/internal_sockets: listen unix /var/opt/gitlab/gitaly/internal_sockets/test-88e1cec1.sock: bind: file name too long"
+{"gitaly":308,"level":"warning","msg":"forwarding signal","signal":17,"time":"2020-01-15T12:22:27Z","wrapper":302}
+{"error":"os: process already finished","gitaly":308,"level":"error","msg":"can't forward the signal","signal":17,"time":"2020-01-15T12:22:27Z","wrapper":302}
+{"gitaly":308,"level":"error","msg":"wrapper for gitaly shutting down","time":"2020-01-15T12:22:28Z","wrapper":302}
+{"level":"info","msg":"Wrapper started","time":"2020-01-15T12:22:28Z","wrapper":316}
+{"level":"info","msg":"finding gitaly","pid_file":"/var/opt/gitlab/gitaly/gitaly.pid","time":"2020-01-15T12:22:28Z","wrapper":316}
+{"level":"info","msg":"spawning a process","time":"2020-01-15T12:22:28Z","wrapper":316}
+{"gitaly":322,"level":"info","msg":"monitoring gitaly","time":"2020-01-15T12:22:28Z","wrapper":316}
+time="2020-01-15T12:22:28Z" level=info msg="Starting Gitaly" version="Gitaly, version 1.77.1"
+time="2020-01-15T12:22:28Z" level=warning msg="git path not configured. Using default path resolution" resolvedPath=/opt/gitlab/embedded/bin/git
+time="2020-01-15T12:22:28Z" level=fatal msg="load config" config_path=/var/opt/gitlab/gitaly/config.toml error="socket could not be created in /var/opt/gitlab/gitaly/internal_sockets: listen unix /var/opt/gitlab/gitaly/internal_sockets/test-879572c1.sock: bind: file name too long"
+{"gitaly":322,"level":"warning","msg":"forwarding signal","signal":17,"time":"2020-01-15T12:22:28Z","wrapper":316}
+{"error":"os: process already finished","gitaly":322,"level":"error","msg":"can't forward the signal","signal":17,"time":"2020-01-15T12:22:28Z","wrapper":316}
+{"gitaly":322,"level":"error","msg":"wrapper for gitaly shutting down","time":"2020-01-15T12:22:29Z","wrapper":316}
+{"level":"info","msg":"Wrapper started","time":"2020-01-15T12:22:29Z","wrapper":329}
+{"level":"info","msg":"finding gitaly","pid_file":"/var/opt/gitlab/gitaly/gitaly.pid","time":"2020-01-15T12:22:29Z","wrapper":329}
+{"level":"info","msg":"spawning a process","time":"2020-01-15T12:22:29Z","wrapper":329}
+{"gitaly":336,"level":"info","msg":"monitoring gitaly","time":"2020-01-15T12:22:29Z","wrapper":329}
+time="2020-01-15T12:22:29Z" level=info msg="Starting Gitaly" version="Gitaly, version 1.77.1"
+time="2020-01-15T12:22:29Z" level=warning msg="git path not configured. Using default path resolution" resolvedPath=/opt/gitlab/embedded/bin/git
+time="2020-01-15T12:22:29Z" level=fatal msg="load config" config_path=/var/opt/gitlab/gitaly/config.toml error="socket could not be created in /var/opt/gitlab/gitaly/internal_sockets: listen unix /var/opt/gitlab/gitaly/internal_sockets/test-f3574e52.sock: bind: file name too long"
+{"gitaly":336,"level":"warning","msg":"forwarding signal","signal":17,"time":"2020-01-15T12:22:29Z","wrapper":329}
+{"error":"os: process already finished","gitaly":336,"level":"error","msg":"can't forward the signal","signal":17,"time":"2020-01-15T12:22:29Z","wrapper":329}
+{"gitaly":336,"level":"error","msg":"wrapper for gitaly shutting down","time":"2020-01-15T12:22:30Z","wrapper":329}
+{"level":"info","msg":"Wrapper started","time":"2020-01-15T12:22:30Z","wrapper":346}
+{"level":"info","msg":"finding gitaly","pid_file":"/var/opt/gitlab/gitaly/gitaly.pid","time":"2020-01-15T12:22:30Z","wrapper":346}
+{"level":"info","msg":"spawning a process","time":"2020-01-15T12:22:30Z","wrapper":346}
+{"gitaly":352,"level":"info","msg":"monitoring gitaly","time":"2020-01-15T12:22:30Z","wrapper":346}
+time="2020-01-15T12:22:30Z" level=info msg="Starting Gitaly" version="Gitaly, version 1.77.1"
+time="2020-01-15T12:22:30Z" level=warning msg="git path not configured. Using default path resolution" resolvedPath=/opt/gitlab/embedded/bin/git
+time="2020-01-15T12:22:30Z" level=fatal msg="load config" config_path=/var/opt/gitlab/gitaly/config.toml error="socket could not be created in /var/opt/gitlab/gitaly/internal_sockets: listen unix /var/opt/gitlab/gitaly/internal_sockets/test-1f2b5bb4.sock: bind: file name too long"
+{"gitaly":352,"level":"warning","msg":"forwarding signal","signal":17,"time":"2020-01-15T12:22:30Z","wrapper":346}
+{"error":"os: process already finished","gitaly":352,"level":"error","msg":"can't forward the signal","signal":17,"time":"2020-01-15T12:22:30Z","wrapper":346}
+{"gitaly":352,"level":"error","msg":"wrapper for gitaly shutting down","time":"2020-01-15T12:22:31Z","wrapper":346}
+{"level":"info","msg":"Wrapper started","time":"2020-01-15T12:22:31Z","wrapper":366}
+{"level":"info","msg":"finding gitaly","pid_file":"/var/opt/gitlab/gitaly/gitaly.pid","time":"2020-01-15T12:22:31Z","wrapper":366}
+{"level":"info","msg":"spawning a process","time":"2020-01-15T12:22:31Z","wrapper":366}
+{"gitaly":373,"level":"info","msg":"monitoring gitaly","time":"2020-01-15T12:22:31Z","wrapper":366}
+time="2020-01-15T12:22:31Z" level=info msg="Starting Gitaly" version="Gitaly, version 1.77.1"
+time="2020-01-15T12:22:31Z" level=warning msg="git path not configured. Using default path resolution" resolvedPath=/opt/gitlab/embedded/bin/git
+time="2020-01-15T12:22:31Z" level=fatal msg="load config" config_path=/var/opt/gitlab/gitaly/config.toml error="socket could not be created in /var/opt/gitlab/gitaly/internal_sockets: listen unix /var/opt/gitlab/gitaly/internal_sockets/test-330dc8d2.sock: bind: file name too long"
+{"gitaly":373,"level":"warning","msg":"forwarding signal","signal":17,"time":"2020-01-15T12:22:31Z","wrapper":366}
+{"error":"os: process already finished","gitaly":373,"level":"error","msg":"can't forward the signal","signal":17,"time":"2020-01-15T12:22:31Z","wrapper":366}
+{"gitaly":373,"level":"error","msg":"wrapper for gitaly shutting down","time":"2020-01-15T12:22:32Z","wrapper":366}
+{"level":"info","msg":"Wrapper started","time":"2020-01-15T12:22:32Z","wrapper":403}
+{"level":"info","msg":"finding gitaly","pid_file":"/var/opt/gitlab/gitaly/gitaly.pid","time":"2020-01-15T12:22:32Z","wrapper":403}
+{"level":"info","msg":"spawning a process","time":"2020-01-15T12:22:32Z","wrapper":403}
+{"gitaly":410,"level":"info","msg":"monitoring gitaly","time":"2020-01-15T12:22:32Z","wrapper":403}
+time="2020-01-15T12:22:32Z" level=info msg="Starting Gitaly" version="Gitaly, version 1.77.1"
+time="2020-01-15T12:22:32Z" level=warning msg="git path not configured. Using default path resolution" resolvedPath=/opt/gitlab/embedded/bin/git
+time="2020-01-15T12:22:32Z" level=fatal msg="load config" config_path=/var/opt/gitlab/gitaly/config.toml error="socket could not be created in /var/opt/gitlab/gitaly/internal_sockets: listen unix /var/opt/gitlab/gitaly/internal_sockets/test-30c2add7.sock: bind: file name too long"
+{"gitaly":410,"level":"warning","msg":"forwarding signal","signal":17,"time":"2020-01-15T12:22:32Z","wrapper":403}
+{"error":"os: process already finished","gitaly":410,"level":"error","msg":"can't forward the signal","signal":17,"time":"2020-01-15T12:22:32Z","wrapper":403}
+{"gitaly":410,"level":"error","msg":"wrapper for gitaly shutting down","time":"2020-01-15T12:22:33Z","wrapper":403}
+{"level":"info","msg":"Wrapper started","time":"2020-01-15T12:22:33Z","wrapper":470}
+{"level":"info","msg":"finding gitaly","pid_file":"/var/opt/gitlab/gitaly/gitaly.pid","time":"2020-01-15T12:22:33Z","wrapper":470}
+{"level":"info","msg":"spawning a process","time":"2020-01-15T12:22:33Z","wrapper":470}
+{"gitaly":477,"level":"info","msg":"monitoring gitaly","time":"2020-01-15T12:22:33Z","wrapper":470}
+time="2020-01-15T12:22:33Z" level=info msg="Starting Gitaly" version="Gitaly, version 1.77.1"
+time="2020-01-15T12:22:33Z" level=warning msg="git path not configured. Using default path resolution" resolvedPath=/opt/gitlab/embedded/bin/git
+time="2020-01-15T12:22:33Z" level=fatal msg="load config" config_path=/var/opt/gitlab/gitaly/config.toml error="socket could not be created in /var/opt/gitlab/gitaly/internal_sockets: listen unix /var/opt/gitlab/gitaly/internal_sockets/test-031089e3.sock: bind: file name too long"
+{"gitaly":477,"level":"warning","msg":"forwarding signal","signal":17,"time":"2020-01-15T12:22:33Z","wrapper":470}
+{"error":"os: process already finished","gitaly":477,"level":"error","msg":"can't forward the signal","signal":17,"time":"2020-01-15T12:22:33Z","wrapper":470}
+{"gitaly":477,"level":"error","msg":"wrapper for gitaly shutting down","time":"2020-01-15T12:22:34Z","wrapper":470}
+{"level":"info","msg":"Wrapper started","time":"2020-01-15T12:22:34Z","wrapper":499}
+{"level":"info","msg":"finding gitaly","pid_file":"/var/opt/gitlab/gitaly/gitaly.pid","time":"2020-01-15T12:22:34Z","wrapper":499}
+{"level":"info","msg":"spawning a process","time":"2020-01-15T12:22:34Z","wrapper":499}
+{"gitaly":506,"level":"info","msg":"monitoring gitaly","time":"2020-01-15T12:22:34Z","wrapper":499}
+time="2020-01-15T12:22:34Z" level=info msg="Starting Gitaly" version="Gitaly, version 1.77.1"
+time="2020-01-15T12:22:34Z" level=warning msg="git path not configured. Using default path resolution" resolvedPath=/opt/gitlab/embedded/bin/git
+time="2020-01-15T12:22:34Z" level=fatal msg="load config" config_path=/var/opt/gitlab/gitaly/config.toml error="socket could not be created in /var/opt/gitlab/gitaly/internal_sockets: listen unix /var/opt/gitlab/gitaly/internal_sockets/test-c566cd90.sock: bind: file name too long"
+{"gitaly":506,"level":"warning","msg":"forwarding signal","signal":17,"time":"2020-01-15T12:22:34Z","wrapper":499}
+{"error":"os: process already finished","gitaly":506,"level":"error","msg":"can't forward the signal","signal":17,"time":"2020-01-15T12:22:34Z","wrapper":499}
+{"gitaly":506,"level":"error","msg":"wrapper for gitaly shutting down","time":"2020-01-15T12:22:35Z","wrapper":499}
+{"level":"info","msg":"Wrapper started","time":"2020-01-15T12:22:35Z","wrapper":513}
+{"level":"info","msg":"finding gitaly","pid_file":"/var/opt/gitlab/gitaly/gitaly.pid","time":"2020-01-15T12:22:35Z","wrapper":513}
+{"level":"info","msg":"spawning a process","time":"2020-01-15T12:22:35Z","wrapper":513}
+{"gitaly":520,"level":"info","msg":"monitoring gitaly","time":"2020-01-15T12:22:35Z","wrapper":513}
+time="2020-01-15T12:22:35Z" level=info msg="Starting Gitaly" version="Gitaly, version 1.77.1"
+time="2020-01-15T12:22:35Z" level=warning msg="git path not configured. Using default path resolution" resolvedPath=/opt/gitlab/embedded/bin/git
+time="2020-01-15T12:22:35Z" level=fatal msg="load config" config_path=/var/opt/gitlab/gitaly/config.toml error="socket could not be created in /var/opt/gitlab/gitaly/internal_sockets: listen unix /var/opt/gitlab/gitaly/internal_sockets/test-05bb3af5.sock: bind: file name too long"
+{"gitaly":520,"level":"warning","msg":"forwarding signal","signal":17,"time":"2020-01-15T12:22:35Z","wrapper":513}
+{"error":"os: process already finished","gitaly":520,"level":"error","msg":"can't forward the signal","signal":17,"time":"2020-01-15T12:22:35Z","wrapper":513}
+{"gitaly":520,"level":"error","msg":"wrapper for gitaly shutting down","time":"2020-01-15T12:22:36Z","wrapper":513}
+{"level":"info","msg":"Wrapper started","time":"2020-01-15T12:22:36Z","wrapper":543}
+{"level":"info","msg":"finding gitaly","pid_file":"/var/opt/gitlab/gitaly/gitaly.pid","time":"2020-01-15T12:22:36Z","wrapper":543}
+{"level":"info","msg":"spawning a process","time":"2020-01-15T12:22:36Z","wrapper":543}
+{"gitaly":550,"level":"info","msg":"monitoring gitaly","time":"2020-01-15T12:22:36Z","wrapper":543}
+time="2020-01-15T12:22:36Z" level=info msg="Starting Gitaly" version="Gitaly, version 1.77.1"
+time="2020-01-15T12:22:36Z" level=warning msg="git path not configured. Using default path resolution" resolvedPath=/opt/gitlab/embedded/bin/git
+time="2020-01-15T12:22:36Z" level=fatal msg="load config" config_path=/var/opt/gitlab/gitaly/config.toml error="socket could not be created in /var/opt/gitlab/gitaly/internal_sockets: listen unix /var/opt/gitlab/gitaly/internal_sockets/test-6c4a8c9e.sock: bind: file name too long"
+{"gitaly":550,"level":"warning","msg":"forwarding signal","signal":17,"time":"2020-01-15T12:22:36Z","wrapper":543}
+{"error":"os: process already finished","gitaly":550,"level":"error","msg":"can't forward the signal","signal":17,"time":"2020-01-15T12:22:36Z","wrapper":543}
+{"gitaly":550,"level":"error","msg":"wrapper for gitaly shutting down","time":"2020-01-15T12:22:37Z","wrapper":543}
+{"level":"info","msg":"Wrapper started","time":"2020-01-15T12:22:37Z","wrapper":562}
+{"level":"info","msg":"finding gitaly","pid_file":"/var/opt/gitlab/gitaly/gitaly.pid","time":"2020-01-15T12:22:37Z","wrapper":562}
+{"level":"info","msg":"spawning a process","time":"2020-01-15T12:22:37Z","wrapper":562}
+{"gitaly":568,"level":"info","msg":"monitoring gitaly","time":"2020-01-15T12:22:37Z","wrapper":562}
+time="2020-01-15T12:22:38Z" level=info msg="Starting Gitaly" version="Gitaly, version 1.77.1"
+time="2020-01-15T12:22:38Z" level=warning msg="git path not configured. Using default path resolution" resolvedPath=/opt/gitlab/embedded/bin/git
+time="2020-01-15T12:22:38Z" level=fatal msg="load config" config_path=/var/opt/gitlab/gitaly/config.toml error="socket could not be created in /var/opt/gitlab/gitaly/internal_sockets: listen unix /var/opt/gitlab/gitaly/internal_sockets/test-8be47513.sock: bind: file name too long"
+{"gitaly":568,"level":"warning","msg":"forwarding signal","signal":17,"time":"2020-01-15T12:22:38Z","wrapper":562}
+{"error":"os: process already finished","gitaly":568,"level":"error","msg":"can't forward the signal","signal":17,"time":"2020-01-15T12:22:38Z","wrapper":562}
+{"gitaly":568,"level":"error","msg":"wrapper for gitaly shutting down","time":"2020-01-15T12:22:38Z","wrapper":562}
+{"level":"info","msg":"Wrapper started","time":"2020-01-15T12:22:39Z","wrapper":577}
+{"level":"info","msg":"finding gitaly","pid_file":"/var/opt/gitlab/gitaly/gitaly.pid","time":"2020-01-15T12:22:39Z","wrapper":577}
+{"level":"info","msg":"spawning a process","time":"2020-01-15T12:22:39Z","wrapper":577}
+{"gitaly":584,"level":"info","msg":"monitoring gitaly","time":"2020-01-15T12:22:39Z","wrapper":577}
+time="2020-01-15T12:22:39Z" level=info msg="Starting Gitaly" version="Gitaly, version 1.77.1"
+time="2020-01-15T12:22:39Z" level=warning msg="git path not configured. Using default path resolution" resolvedPath=/opt/gitlab/embedded/bin/git
+time="2020-01-15T12:22:39Z" level=fatal msg="load config" config_path=/var/opt/gitlab/gitaly/config.toml error="socket could not be created in /var/opt/gitlab/gitaly/internal_sockets: listen unix /var/opt/gitlab/gitaly/internal_sockets/test-5d1a7b5b.sock: bind: file name too long"
+{"gitaly":584,"level":"warning","msg":"forwarding signal","signal":17,"time":"2020-01-15T12:22:39Z","wrapper":577}
+{"error":"os: process already finished","gitaly":584,"level":"error","msg":"can't forward the signal","signal":17,"time":"2020-01-15T12:22:39Z","wrapper":577}
+{"gitaly":584,"level":"error","msg":"wrapper for gitaly shutting down","time":"2020-01-15T12:22:40Z","wrapper":577}
+{"level":"info","msg":"Wrapper started","time":"2020-01-15T12:22:40Z","wrapper":590}
+{"level":"info","msg":"finding gitaly","pid_file":"/var/opt/gitlab/gitaly/gitaly.pid","time":"2020-01-15T12:22:40Z","wrapper":590}
+{"level":"info","msg":"spawning a process","time":"2020-01-15T12:22:40Z","wrapper":590}
+{"gitaly":596,"level":"info","msg":"monitoring gitaly","time":"2020-01-15T12:22:40Z","wrapper":590}
+time="2020-01-15T12:22:40Z" level=info msg="Starting Gitaly" version="Gitaly, version 1.77.1"
+time="2020-01-15T12:22:40Z" level=warning msg="git path not configured. Using default path resolution" resolvedPath=/opt/gitlab/embedded/bin/git
+time="2020-01-15T12:22:40Z" level=fatal msg="load config" config_path=/var/opt/gitlab/gitaly/config.toml error="socket could not be created in /var/opt/gitlab/gitaly/internal_sockets: listen unix /var/opt/gitlab/gitaly/internal_sockets/test-e6f3803c.sock: bind: file name too long"
+{"gitaly":596,"level":"warning","msg":"forwarding signal","signal":17,"time":"2020-01-15T12:22:40Z","wrapper":590}
+{"error":"os: process already finished","gitaly":596,"level":"error","msg":"can't forward the signal","signal":17,"time":"2020-01-15T12:22:40Z","wrapper":590}
+{"gitaly":596,"level":"error","msg":"wrapper for gitaly shutting down","time":"2020-01-15T12:22:41Z","wrapper":590}
+{"level":"info","msg":"Wrapper started","time":"2020-01-15T12:22:41Z","wrapper":604}
+{"level":"info","msg":"finding gitaly","pid_file":"/var/opt/gitlab/gitaly/gitaly.pid","time":"2020-01-15T12:22:41Z","wrapper":604}
+{"level":"info","msg":"spawning a process","time":"2020-01-15T12:22:41Z","wrapper":604}
+{"gitaly":610,"level":"info","msg":"monitoring gitaly","time":"2020-01-15T12:22:41Z","wrapper":604}
+time="2020-01-15T12:22:41Z" level=info msg="Starting Gitaly" version="Gitaly, version 1.77.1"
+time="2020-01-15T12:22:41Z" level=warning msg="git path not configured. Using default path resolution" resolvedPath=/opt/gitlab/embedded/bin/git
+time="2020-01-15T12:22:41Z" level=fatal msg="load config" config_path=/var/opt/gitlab/gitaly/config.toml error="socket could not be created in /var/opt/gitlab/gitaly/internal_sockets: listen unix /var/opt/gitlab/gitaly/internal_sockets/test-0a148218.sock: bind: file name too long"
+{"gitaly":610,"level":"warning","msg":"forwarding signal","signal":17,"time":"2020-01-15T12:22:41Z","wrapper":604}
+{"error":"os: process already finished","gitaly":610,"level":"error","msg":"can't forward the signal","signal":17,"time":"2020-01-15T12:22:41Z","wrapper":604}
+{"gitaly":610,"level":"error","msg":"wrapper for gitaly shutting down","time":"2020-01-15T12:22:42Z","wrapper":604}
+{"level":"info","msg":"Wrapper started","time":"2020-01-15T12:22:42Z","wrapper":627}
+{"level":"info","msg":"finding gitaly","pid_file":"/var/opt/gitlab/gitaly/gitaly.pid","time":"2020-01-15T12:22:42Z","wrapper":627}
+{"level":"info","msg":"spawning a process","time":"2020-01-15T12:22:42Z","wrapper":627}
+{"gitaly":633,"level":"info","msg":"monitoring gitaly","time":"2020-01-15T12:22:42Z","wrapper":627}
+time="2020-01-15T12:22:42Z" level=info msg="Starting Gitaly" version="Gitaly, version 1.77.1"
+time="2020-01-15T12:22:42Z" level=warning msg="git path not configured. Using default path resolution" resolvedPath=/opt/gitlab/embedded/bin/git
+time="2020-01-15T12:22:42Z" level=fatal msg="load config" config_path=/var/opt/gitlab/gitaly/config.toml error="socket could not be created in /var/opt/gitlab/gitaly/internal_sockets: listen unix /var/opt/gitlab/gitaly/internal_sockets/test-068b5351.sock: bind: file name too long"
+{"gitaly":633,"level":"warning","msg":"forwarding signal","signal":17,"time":"2020-01-15T12:22:42Z","wrapper":627}
+{"error":"os: process already finished","gitaly":633,"level":"error","msg":"can't forward the signal","signal":17,"time":"2020-01-15T12:22:42Z","wrapper":627}
+{"gitaly":633,"level":"error","msg":"wrapper for gitaly shutting down","time":"2020-01-15T12:22:43Z","wrapper":627}
+{"level":"info","msg":"Wrapper started","time":"2020-01-15T12:22:43Z","wrapper":641}
+{"level":"info","msg":"finding gitaly","pid_file":"/var/opt/gitlab/gitaly/gitaly.pid","time":"2020-01-15T12:22:43Z","wrapper":641}
+{"level":"info","msg":"spawning a process","time":"2020-01-15T12:22:43Z","wrapper":641}
+{"gitaly":647,"level":"info","msg":"monitoring gitaly","time":"2020-01-15T12:22:43Z","wrapper":641}
+time="2020-01-15T12:22:43Z" level=info msg="Starting Gitaly" version="Gitaly, version 1.77.1"
+time="2020-01-15T12:22:43Z" level=warning msg="git path not configured. Using default path resolution" resolvedPath=/opt/gitlab/embedded/bin/git
+time="2020-01-15T12:22:43Z" level=fatal msg="load config" config_path=/var/opt/gitlab/gitaly/config.toml error="socket could not be created in /var/opt/gitlab/gitaly/internal_sockets: listen unix /var/opt/gitlab/gitaly/internal_sockets/test-c8a21190.sock: bind: file name too long"
+{"gitaly":647,"level":"warning","msg":"forwarding signal","signal":17,"time":"2020-01-15T12:22:43Z","wrapper":641}
+{"error":"os: process already finished","gitaly":647,"level":"error","msg":"can't forward the signal","signal":17,"time":"2020-01-15T12:22:43Z","wrapper":641}
+{"gitaly":647,"level":"error","msg":"wrapper for gitaly shutting down","time":"2020-01-15T12:22:44Z","wrapper":641}
+{"level":"info","msg":"Wrapper started","time":"2020-01-15T12:22:44Z","wrapper":655}
+{"level":"info","msg":"finding gitaly","pid_file":"/var/opt/gitlab/gitaly/gitaly.pid","time":"2020-01-15T12:22:44Z","wrapper":655}
+{"level":"info","msg":"spawning a process","time":"2020-01-15T12:22:44Z","wrapper":655}
+{"gitaly":661,"level":"info","msg":"monitoring gitaly","time":"2020-01-15T12:22:44Z","wrapper":655}
+time="2020-01-15T12:22:44Z" level=info msg="Starting Gitaly" version="Gitaly, version 1.77.1"
+time="2020-01-15T12:22:44Z" level=warning msg="git path not configured. Using default path resolution" resolvedPath=/opt/gitlab/embedded/bin/git
+time="2020-01-15T12:22:44Z" level=fatal msg="load config" config_path=/var/opt/gitlab/gitaly/config.toml error="socket could not be created in /var/opt/gitlab/gitaly/internal_sockets: listen unix /var/opt/gitlab/gitaly/internal_sockets/test-07cf4f06.sock: bind: file name too long"
+{"gitaly":661,"level":"warning","msg":"forwarding signal","signal":17,"time":"2020-01-15T12:22:44Z","wrapper":655}
+{"error":"os: process already finished","gitaly":661,"level":"error","msg":"can't forward the signal","signal":17,"time":"2020-01-15T12:22:44Z","wrapper":655}
+{"gitaly":661,"level":"error","msg":"wrapper for gitaly shutting down","time":"2020-01-15T12:22:45Z","wrapper":655}
+{"level":"info","msg":"Wrapper started","time":"2020-01-15T12:22:45Z","wrapper":670}
+{"level":"info","msg":"finding gitaly","pid_file":"/var/opt/gitlab/gitaly/gitaly.pid","time":"2020-01-15T12:22:45Z","wrapper":670}
+{"level":"info","msg":"spawning a process","time":"2020-01-15T12:22:45Z","wrapper":670}
+{"gitaly":677,"level":"info","msg":"monitoring gitaly","time":"2020-01-15T12:22:45Z","wrapper":670}
+time="2020-01-15T12:22:45Z" level=info msg="Starting Gitaly" version="Gitaly, version 1.77.1"
+time="2020-01-15T12:22:45Z" level=warning msg="git path not configured. Using default path resolution" resolvedPath=/opt/gitlab/embedded/bin/git
+time="2020-01-15T12:22:45Z" level=fatal msg="load config" config_path=/var/opt/gitlab/gitaly/config.toml error="socket could not be created in /var/opt/gitlab/gitaly/internal_sockets: listen unix /var/opt/gitlab/gitaly/internal_sockets/test-fc852f46.sock: bind: file name too long"
+{"gitaly":677,"level":"warning","msg":"forwarding signal","signal":17,"time":"2020-01-15T12:22:45Z","wrapper":670}
+{"error":"os: process already finished","gitaly":677,"level":"error","msg":"can't forward the signal","signal":17,"time":"2020-01-15T12:22:45Z","wrapper":670}
+{"gitaly":677,"level":"error","msg":"wrapper for gitaly shutting down","time":"2020-01-15T12:22:46Z","wrapper":670}
+{"level":"info","msg":"Wrapper started","time":"2020-01-15T12:22:46Z","wrapper":683}
+{"level":"info","msg":"finding gitaly","pid_file":"/var/opt/gitlab/gitaly/gitaly.pid","time":"2020-01-15T12:22:46Z","wrapper":683}
+{"level":"info","msg":"spawning a process","time":"2020-01-15T12:22:46Z","wrapper":683}
+{"gitaly":690,"level":"info","msg":"monitoring gitaly","time":"2020-01-15T12:22:46Z","wrapper":683}
+time="2020-01-15T12:22:46Z" level=info msg="Starting Gitaly" version="Gitaly, version 1.77.1"
+time="2020-01-15T12:22:46Z" level=warning msg="git path not configured. Using default path resolution" resolvedPath=/opt/gitlab/embedded/bin/git
+time="2020-01-15T12:22:46Z" level=fatal msg="load config" config_path=/var/opt/gitlab/gitaly/config.toml error="socket could not be created in /var/opt/gitlab/gitaly/internal_sockets: listen unix /var/opt/gitlab/gitaly/internal_sockets/test-e9073cc2.sock: bind: file name too long"
+{"gitaly":690,"level":"warning","msg":"forwarding signal","signal":17,"time":"2020-01-15T12:22:46Z","wrapper":683}
+{"error":"os: process already finished","gitaly":690,"level":"error","msg":"can't forward the signal","signal":17,"time":"2020-01-15T12:22:46Z","wrapper":683}
+{"gitaly":690,"level":"error","msg":"wrapper for gitaly shutting down","time":"2020-01-15T12:22:47Z","wrapper":683}
+{"level":"info","msg":"Wrapper started","time":"2020-01-15T12:22:47Z","wrapper":697}
+{"level":"info","msg":"finding gitaly","pid_file":"/var/opt/gitlab/gitaly/gitaly.pid","time":"2020-01-15T12:22:47Z","wrapper":697}
+{"level":"info","msg":"spawning a process","time":"2020-01-15T12:22:47Z","wrapper":697}
+{"gitaly":703,"level":"info","msg":"monitoring gitaly","time":"2020-01-15T12:22:47Z","wrapper":697}
+time="2020-01-15T12:22:47Z" level=info msg="Starting Gitaly" version="Gitaly, version 1.77.1"
+time="2020-01-15T12:22:47Z" level=warning msg="git path not configured. Using default path resolution" resolvedPath=/opt/gitlab/embedded/bin/git
+time="2020-01-15T12:22:47Z" level=fatal msg="load config" config_path=/var/opt/gitlab/gitaly/config.toml error="socket could not be created in /var/opt/gitlab/gitaly/internal_sockets: listen unix /var/opt/gitlab/gitaly/internal_sockets/test-f1f3f899.sock: bind: file name too long"
+{"gitaly":703,"level":"warning","msg":"forwarding signal","signal":17,"time":"2020-01-15T12:22:47Z","wrapper":697}
+{"error":"os: process already finished","gitaly":703,"level":"error","msg":"can't forward the signal","signal":17,"time":"2020-01-15T12:22:47Z","wrapper":697}
+{"gitaly":703,"level":"error","msg":"wrapper for gitaly shutting down","time":"2020-01-15T12:22:48Z","wrapper":697}
+{"level":"info","msg":"Wrapper started","time":"2020-01-15T12:22:48Z","wrapper":720}
+{"level":"info","msg":"finding gitaly","pid_file":"/var/opt/gitlab/gitaly/gitaly.pid","time":"2020-01-15T12:22:48Z","wrapper":720}
+{"level":"info","msg":"spawning a process","time":"2020-01-15T12:22:48Z","wrapper":720}
+{"gitaly":727,"level":"info","msg":"monitoring gitaly","time":"2020-01-15T12:22:48Z","wrapper":720}
+time="2020-01-15T12:22:48Z" level=info msg="Starting Gitaly" version="Gitaly, version 1.77.1"
+time="2020-01-15T12:22:48Z" level=warning msg="git path not configured. Using default path resolution" resolvedPath=/opt/gitlab/embedded/bin/git
+time="2020-01-15T12:22:48Z" level=fatal msg="load config" config_path=/var/opt/gitlab/gitaly/config.toml error="socket could not be created in /var/opt/gitlab/gitaly/internal_sockets: listen unix /var/opt/gitlab/gitaly/internal_sockets/test-6dc4e89f.sock: bind: file name too long"
+{"gitaly":727,"level":"warning","msg":"forwarding signal","signal":17,"time":"2020-01-15T12:22:48Z","wrapper":720}
+{"error":"os: process already finished","gitaly":727,"level":"error","msg":"can't forward the signal","signal":17,"time":"2020-01-15T12:22:48Z","wrapper":720}
+{"gitaly":727,"level":"error","msg":"wrapper for gitaly shutting down","time":"2020-01-15T12:22:49Z","wrapper":720}
+{"level":"info","msg":"Wrapper started","time":"2020-01-15T12:22:49Z","wrapper":735}
+{"level":"info","msg":"finding gitaly","pid_file":"/var/opt/gitlab/gitaly/gitaly.pid","time":"2020-01-15T12:22:49Z","wrapper":735}
+{"level":"info","msg":"spawning a process","time":"2020-01-15T12:22:49Z","wrapper":735}
+{"gitaly":742,"level":"info","msg":"monitoring gitaly","time":"2020-01-15T12:22:49Z","wrapper":735}
+time="2020-01-15T12:22:49Z" level=info msg="Starting Gitaly" version="Gitaly, version 1.77.1"
+time="2020-01-15T12:22:50Z" level=warning msg="git path not configured. Using default path resolution" resolvedPath=/opt/gitlab/embedded/bin/git
+time="2020-01-15T12:22:50Z" level=fatal msg="load config" config_path=/var/opt/gitlab/gitaly/config.toml error="socket could not be created in /var/opt/gitlab/gitaly/internal_sockets: listen unix /var/opt/gitlab/gitaly/internal_sockets/test-02a9a3a9.sock: bind: file name too long"
+{"gitaly":742,"level":"warning","msg":"forwarding signal","signal":17,"time":"2020-01-15T12:22:50Z","wrapper":735}
+{"error":"os: process already finished","gitaly":742,"level":"error","msg":"can't forward the signal","signal":17,"time":"2020-01-15T12:22:50Z","wrapper":735}
+{"gitaly":742,"level":"error","msg":"wrapper for gitaly shutting down","time":"2020-01-15T12:22:50Z","wrapper":735}
+{"level":"info","msg":"Wrapper started","time":"2020-01-15T12:22:51Z","wrapper":751}
+{"level":"info","msg":"finding gitaly","pid_file":"/var/opt/gitlab/gitaly/gitaly.pid","time":"2020-01-15T12:22:51Z","wrapper":751}
+{"level":"info","msg":"spawning a process","time":"2020-01-15T12:22:51Z","wrapper":751}
+{"gitaly":757,"level":"info","msg":"monitoring gitaly","time":"2020-01-15T12:22:51Z","wrapper":751}
+time="2020-01-15T12:22:51Z" level=info msg="Starting Gitaly" version="Gitaly, version 1.77.1"
+time="2020-01-15T12:22:51Z" level=warning msg="git path not configured. Using default path resolution" resolvedPath=/opt/gitlab/embedded/bin/git
+time="2020-01-15T12:22:51Z" level=fatal msg="load config" config_path=/var/opt/gitlab/gitaly/config.toml error="socket could not be created in /var/opt/gitlab/gitaly/internal_sockets: listen unix /var/opt/gitlab/gitaly/internal_sockets/test-539a8995.sock: bind: file name too long"
+{"gitaly":757,"level":"warning","msg":"forwarding signal","signal":17,"time":"2020-01-15T12:22:51Z","wrapper":751}
+{"error":"os: process already finished","gitaly":757,"level":"error","msg":"can't forward the signal","signal":17,"time":"2020-01-15T12:22:51Z","wrapper":751}
+{"gitaly":757,"level":"error","msg":"wrapper for gitaly shutting down","time":"2020-01-15T12:22:52Z","wrapper":751}
+{"level":"info","msg":"Wrapper started","time":"2020-01-15T12:22:52Z","wrapper":764}
+{"level":"info","msg":"finding gitaly","pid_file":"/var/opt/gitlab/gitaly/gitaly.pid","time":"2020-01-15T12:22:52Z","wrapper":764}
+{"level":"info","msg":"spawning a process","time":"2020-01-15T12:22:52Z","wrapper":764}
+{"gitaly":770,"level":"info","msg":"monitoring gitaly","time":"2020-01-15T12:22:52Z","wrapper":764}
+time="2020-01-15T12:22:52Z" level=info msg="Starting Gitaly" version="Gitaly, version 1.77.1"
+time="2020-01-15T12:22:52Z" level=warning msg="git path not configured. Using default path resolution" resolvedPath=/opt/gitlab/embedded/bin/git
+time="2020-01-15T12:22:52Z" level=fatal msg="load config" config_path=/var/opt/gitlab/gitaly/config.toml error="socket could not be created in /var/opt/gitlab/gitaly/internal_sockets: listen unix /var/opt/gitlab/gitaly/internal_sockets/test-c7b02c1d.sock: bind: file name too long"
+{"gitaly":770,"level":"warning","msg":"forwarding signal","signal":17,"time":"2020-01-15T12:22:52Z","wrapper":764}
+{"error":"os: process already finished","gitaly":770,"level":"error","msg":"can't forward the signal","signal":17,"time":"2020-01-15T12:22:52Z","wrapper":764}
+{"gitaly":770,"level":"error","msg":"wrapper for gitaly shutting down","time":"2020-01-15T12:22:53Z","wrapper":764}
+{"level":"info","msg":"Wrapper started","time":"2020-01-15T12:22:53Z","wrapper":777}
+{"level":"info","msg":"finding gitaly","pid_file":"/var/opt/gitlab/gitaly/gitaly.pid","time":"2020-01-15T12:22:53Z","wrapper":777}
+{"level":"info","msg":"spawning a process","time":"2020-01-15T12:22:53Z","wrapper":777}
+{"gitaly":783,"level":"info","msg":"monitoring gitaly","time":"2020-01-15T12:22:53Z","wrapper":777}
+time="2020-01-15T12:22:53Z" level=info msg="Starting Gitaly" version="Gitaly, version 1.77.1"
+time="2020-01-15T12:22:53Z" level=warning msg="git path not configured. Using default path resolution" resolvedPath=/opt/gitlab/embedded/bin/git
+time="2020-01-15T12:22:53Z" level=fatal msg="load config" config_path=/var/opt/gitlab/gitaly/config.toml error="socket could not be created in /var/opt/gitlab/gitaly/internal_sockets: listen unix /var/opt/gitlab/gitaly/internal_sockets/test-d4ebb557.sock: bind: file name too long"
+{"gitaly":783,"level":"warning","msg":"forwarding signal","signal":17,"time":"2020-01-15T12:22:53Z","wrapper":777}
+{"error":"os: process already finished","gitaly":783,"level":"error","msg":"can't forward the signal","signal":17,"time":"2020-01-15T12:22:53Z","wrapper":777}
+{"gitaly":783,"level":"error","msg":"wrapper for gitaly shutting down","time":"2020-01-15T12:22:54Z","wrapper":777}
+{"level":"info","msg":"Wrapper started","time":"2020-01-15T12:22:54Z","wrapper":798}
+{"level":"info","msg":"finding gitaly","pid_file":"/var/opt/gitlab/gitaly/gitaly.pid","time":"2020-01-15T12:22:54Z","wrapper":798}
+{"level":"info","msg":"spawning a process","time":"2020-01-15T12:22:54Z","wrapper":798}
+{"gitaly":805,"level":"info","msg":"monitoring gitaly","time":"2020-01-15T12:22:54Z","wrapper":798}
+time="2020-01-15T12:22:54Z" level=info msg="Starting Gitaly" version="Gitaly, version 1.77.1"
+time="2020-01-15T12:22:54Z" level=warning msg="git path not configured. Using default path resolution" resolvedPath=/opt/gitlab/embedded/bin/git
+time="2020-01-15T12:22:54Z" level=fatal msg="load config" config_path=/var/opt/gitlab/gitaly/config.toml error="socket could not be created in /var/opt/gitlab/gitaly/internal_sockets: listen unix /var/opt/gitlab/gitaly/internal_sockets/test-7905b118.sock: bind: file name too long"
+{"gitaly":805,"level":"warning","msg":"forwarding signal","signal":17,"time":"2020-01-15T12:22:54Z","wrapper":798}
+{"error":"os: process already finished","gitaly":805,"level":"error","msg":"can't forward the signal","signal":17,"time":"2020-01-15T12:22:54Z","wrapper":798}
+{"gitaly":805,"level":"error","msg":"wrapper for gitaly shutting down","time":"2020-01-15T12:22:55Z","wrapper":798}
+{"level":"info","msg":"Wrapper started","time":"2020-01-15T12:22:55Z","wrapper":816}
+{"level":"info","msg":"finding gitaly","pid_file":"/var/opt/gitlab/gitaly/gitaly.pid","time":"2020-01-15T12:22:55Z","wrapper":816}
+{"level":"info","msg":"spawning a process","time":"2020-01-15T12:22:55Z","wrapper":816}
+{"gitaly":822,"level":"info","msg":"monitoring gitaly","time":"2020-01-15T12:22:55Z","wrapper":816}
+time="2020-01-15T12:22:55Z" level=info msg="Starting Gitaly" version="Gitaly, version 1.77.1"
+time="2020-01-15T12:22:55Z" level=warning msg="git path not configured. Using default path resolution" resolvedPath=/opt/gitlab/embedded/bin/git
+time="2020-01-15T12:22:55Z" level=fatal msg="load config" config_path=/var/opt/gitlab/gitaly/config.toml error="socket could not be created in /var/opt/gitlab/gitaly/internal_sockets: listen unix /var/opt/gitlab/gitaly/internal_sockets/test-a5c6b864.sock: bind: file name too long"
+{"gitaly":822,"level":"warning","msg":"forwarding signal","signal":17,"time":"2020-01-15T12:22:55Z","wrapper":816}
+{"error":"os: process already finished","gitaly":822,"level":"error","msg":"can't forward the signal","signal":17,"time":"2020-01-15T12:22:55Z","wrapper":816}
+{"gitaly":822,"level":"error","msg":"wrapper for gitaly shutting down","time":"2020-01-15T12:22:56Z","wrapper":816}
+{"level":"info","msg":"Wrapper started","time":"2020-01-15T12:22:56Z","wrapper":831}
+{"level":"info","msg":"finding gitaly","pid_file":"/var/opt/gitlab/gitaly/gitaly.pid","time":"2020-01-15T12:22:56Z","wrapper":831}
+{"level":"info","msg":"spawning a process","time":"2020-01-15T12:22:56Z","wrapper":831}
+{"gitaly":837,"level":"info","msg":"monitoring gitaly","time":"2020-01-15T12:22:56Z","wrapper":831}
+time="2020-01-15T12:22:56Z" level=info msg="Starting Gitaly" version="Gitaly, version 1.77.1"
+time="2020-01-15T12:22:56Z" level=warning msg="git path not configured. Using default path resolution" resolvedPath=/opt/gitlab/embedded/bin/git
+time="2020-01-15T12:22:56Z" level=fatal msg="load config" config_path=/var/opt/gitlab/gitaly/config.toml error="socket could not be created in /var/opt/gitlab/gitaly/internal_sockets: listen unix /var/opt/gitlab/gitaly/internal_sockets/test-88a5a5b5.sock: bind: file name too long"
+{"gitaly":837,"level":"warning","msg":"forwarding signal","signal":17,"time":"2020-01-15T12:22:56Z","wrapper":831}
+{"error":"os: process already finished","gitaly":837,"level":"error","msg":"can't forward the signal","signal":17,"time":"2020-01-15T12:22:56Z","wrapper":831}
+{"gitaly":837,"level":"error","msg":"wrapper for gitaly shutting down","time":"2020-01-15T12:22:57Z","wrapper":831}
+{"level":"info","msg":"Wrapper started","time":"2020-01-15T12:22:57Z","wrapper":845}
+{"level":"info","msg":"finding gitaly","pid_file":"/var/opt/gitlab/gitaly/gitaly.pid","time":"2020-01-15T12:22:57Z","wrapper":845}
+{"level":"info","msg":"spawning a process","time":"2020-01-15T12:22:57Z","wrapper":845}
+{"gitaly":851,"level":"info","msg":"monitoring gitaly","time":"2020-01-15T12:22:57Z","wrapper":845}
+time="2020-01-15T12:22:57Z" level=info msg="Starting Gitaly" version="Gitaly, version 1.77.1"
+time="2020-01-15T12:22:57Z" level=warning msg="git path not configured. Using default path resolution" resolvedPath=/opt/gitlab/embedded/bin/git
+time="2020-01-15T12:22:57Z" level=fatal msg="load config" config_path=/var/opt/gitlab/gitaly/config.toml error="socket could not be created in /var/opt/gitlab/gitaly/internal_sockets: listen unix /var/opt/gitlab/gitaly/internal_sockets/test-6e54c1fc.sock: bind: file name too long"
+{"gitaly":851,"level":"warning","msg":"forwarding signal","signal":17,"time":"2020-01-15T12:22:57Z","wrapper":845}
+{"gitaly":851,"level":"error","msg":"wrapper for gitaly shutting down","time":"2020-01-15T12:22:58Z","wrapper":845}
+{"level":"info","msg":"Wrapper started","time":"2020-01-15T12:22:58Z","wrapper":866}
+{"level":"info","msg":"finding gitaly","pid_file":"/var/opt/gitlab/gitaly/gitaly.pid","time":"2020-01-15T12:22:58Z","wrapper":866}
+{"level":"info","msg":"spawning a process","time":"2020-01-15T12:22:58Z","wrapper":866}
+{"gitaly":872,"level":"info","msg":"monitoring gitaly","time":"2020-01-15T12:22:58Z","wrapper":866}
+time="2020-01-15T12:22:58Z" level=info msg="Starting Gitaly" version="Gitaly, version 1.77.1"
+time="2020-01-15T12:22:58Z" level=warning msg="git path not configured. Using default path resolution" resolvedPath=/opt/gitlab/embedded/bin/git
+time="2020-01-15T12:22:58Z" level=fatal msg="load config" config_path=/var/opt/gitlab/gitaly/config.toml error="socket could not be created in /var/opt/gitlab/gitaly/internal_sockets: listen unix /var/opt/gitlab/gitaly/internal_sockets/test-03504397.sock: bind: file name too long"
+{"gitaly":872,"level":"warning","msg":"forwarding signal","signal":17,"time":"2020-01-15T12:22:58Z","wrapper":866}
+{"error":"os: process already finished","gitaly":872,"level":"error","msg":"can't forward the signal","signal":17,"time":"2020-01-15T12:22:58Z","wrapper":866}
+{"gitaly":872,"level":"error","msg":"wrapper for gitaly shutting down","time":"2020-01-15T12:22:59Z","wrapper":866}
+{"level":"info","msg":"Wrapper started","time":"2020-01-15T12:22:59Z","wrapper":882}
+{"level":"info","msg":"finding gitaly","pid_file":"/var/opt/gitlab/gitaly/gitaly.pid","time":"2020-01-15T12:22:59Z","wrapper":882}
+{"level":"info","msg":"spawning a process","time":"2020-01-15T12:22:59Z","wrapper":882}
+{"gitaly":889,"level":"info","msg":"monitoring gitaly","time":"2020-01-15T12:22:59Z","wrapper":882}
+time="2020-01-15T12:22:59Z" level=info msg="Starting Gitaly" version="Gitaly, version 1.77.1"
+time="2020-01-15T12:22:59Z" level=warning msg="git path not configured. Using default path resolution" resolvedPath=/opt/gitlab/embedded/bin/git
+time="2020-01-15T12:22:59Z" level=fatal msg="load config" config_path=/var/opt/gitlab/gitaly/config.toml error="socket could not be created in /var/opt/gitlab/gitaly/internal_sockets: listen unix /var/opt/gitlab/gitaly/internal_sockets/test-729f9dee.sock: bind: file name too long"
+{"gitaly":889,"level":"warning","msg":"forwarding signal","signal":17,"time":"2020-01-15T12:22:59Z","wrapper":882}
+{"error":"os: process already finished","gitaly":889,"level":"error","msg":"can't forward the signal","signal":17,"time":"2020-01-15T12:22:59Z","wrapper":882}
+{"gitaly":889,"level":"error","msg":"wrapper for gitaly shutting down","time":"2020-01-15T12:23:00Z","wrapper":882}
+{"level":"info","msg":"Wrapper started","time":"2020-01-15T12:23:00Z","wrapper":903}
+{"level":"info","msg":"finding gitaly","pid_file":"/var/opt/gitlab/gitaly/gitaly.pid","time":"2020-01-15T12:23:00Z","wrapper":903}
+{"level":"info","msg":"spawning a process","time":"2020-01-15T12:23:00Z","wrapper":903}
+{"gitaly":909,"level":"info","msg":"monitoring gitaly","time":"2020-01-15T12:23:00Z","wrapper":903}
+time="2020-01-15T12:23:00Z" level=info msg="Starting Gitaly" version="Gitaly, version 1.77.1"
+time="2020-01-15T12:23:00Z" level=warning msg="git path not configured. Using default path resolution" resolvedPath=/opt/gitlab/embedded/bin/git
+time="2020-01-15T12:23:00Z" level=fatal msg="load config" config_path=/var/opt/gitlab/gitaly/config.toml error="socket could not be created in /var/opt/gitlab/gitaly/internal_sockets: listen unix /var/opt/gitlab/gitaly/internal_sockets/test-35b774b7.sock: bind: file name too long"
+{"gitaly":909,"level":"warning","msg":"forwarding signal","signal":17,"time":"2020-01-15T12:23:00Z","wrapper":903}
+{"error":"os: process already finished","gitaly":909,"level":"error","msg":"can't forward the signal","signal":17,"time":"2020-01-15T12:23:00Z","wrapper":903}
+{"gitaly":909,"level":"error","msg":"wrapper for gitaly shutting down","time":"2020-01-15T12:23:01Z","wrapper":903}
+{"level":"info","msg":"Wrapper started","time":"2020-01-15T12:23:01Z","wrapper":918}
+{"level":"info","msg":"finding gitaly","pid_file":"/var/opt/gitlab/gitaly/gitaly.pid","time":"2020-01-15T12:23:01Z","wrapper":918}
+{"level":"info","msg":"spawning a process","time":"2020-01-15T12:23:01Z","wrapper":918}
+{"gitaly":924,"level":"info","msg":"monitoring gitaly","time":"2020-01-15T12:23:01Z","wrapper":918}
+time="2020-01-15T12:23:02Z" level=info msg="Starting Gitaly" version="Gitaly, version 1.77.1"
+time="2020-01-15T12:23:02Z" level=warning msg="git path not configured. Using default path resolution" resolvedPath=/opt/gitlab/embedded/bin/git
+time="2020-01-15T12:23:02Z" level=fatal msg="load config" config_path=/var/opt/gitlab/gitaly/config.toml error="socket could not be created in /var/opt/gitlab/gitaly/internal_sockets: listen unix /var/opt/gitlab/gitaly/internal_sockets/test-2eb7269f.sock: bind: file name too long"
+{"gitaly":924,"level":"warning","msg":"forwarding signal","signal":17,"time":"2020-01-15T12:23:02Z","wrapper":918}
+{"error":"os: process already finished","gitaly":924,"level":"error","msg":"can't forward the signal","signal":17,"time":"2020-01-15T12:23:02Z","wrapper":918}
+{"gitaly":924,"level":"error","msg":"wrapper for gitaly shutting down","time":"2020-01-15T12:23:02Z","wrapper":918}
+{"level":"info","msg":"Wrapper started","time":"2020-01-15T12:23:03Z","wrapper":935}
+{"level":"info","msg":"finding gitaly","pid_file":"/var/opt/gitlab/gitaly/gitaly.pid","time":"2020-01-15T12:23:03Z","wrapper":935}
+{"level":"info","msg":"spawning a process","time":"2020-01-15T12:23:03Z","wrapper":935}
+{"gitaly":941,"level":"info","msg":"monitoring gitaly","time":"2020-01-15T12:23:03Z","wrapper":935}
+time="2020-01-15T12:23:03Z" level=info msg="Starting Gitaly" version="Gitaly, version 1.77.1"
+time="2020-01-15T12:23:03Z" level=warning msg="git path not configured. Using default path resolution" resolvedPath=/opt/gitlab/embedded/bin/git
+time="2020-01-15T12:23:03Z" level=fatal msg="load config" config_path=/var/opt/gitlab/gitaly/config.toml error="socket could not be created in /var/opt/gitlab/gitaly/internal_sockets: listen unix /var/opt/gitlab/gitaly/internal_sockets/test-a84251d2.sock: bind: file name too long"
+{"gitaly":941,"level":"warning","msg":"forwarding signal","signal":17,"time":"2020-01-15T12:23:03Z","wrapper":935}
+{"error":"os: process already finished","gitaly":941,"level":"error","msg":"can't forward the signal","signal":17,"time":"2020-01-15T12:23:03Z","wrapper":935}
+{"gitaly":941,"level":"error","msg":"wrapper for gitaly shutting down","time":"2020-01-15T12:23:04Z","wrapper":935}
+{"level":"info","msg":"Wrapper started","time":"2020-01-15T12:23:04Z","wrapper":948}
+{"level":"info","msg":"finding gitaly","pid_file":"/var/opt/gitlab/gitaly/gitaly.pid","time":"2020-01-15T12:23:04Z","wrapper":948}
+{"level":"info","msg":"spawning a process","time":"2020-01-15T12:23:04Z","wrapper":948}
+{"gitaly":955,"level":"info","msg":"monitoring gitaly","time":"2020-01-15T12:23:04Z","wrapper":948}
+time="2020-01-15T12:23:04Z" level=info msg="Starting Gitaly" version="Gitaly, version 1.77.1"
+time="2020-01-15T12:23:04Z" level=warning msg="git path not configured. Using default path resolution" resolvedPath=/opt/gitlab/embedded/bin/git
+time="2020-01-15T12:23:04Z" level=fatal msg="load config" config_path=/var/opt/gitlab/gitaly/config.toml error="socket could not be created in /var/opt/gitlab/gitaly/internal_sockets: listen unix /var/opt/gitlab/gitaly/internal_sockets/test-73eedd95.sock: bind: file name too long"
+{"gitaly":955,"level":"warning","msg":"forwarding signal","signal":17,"time":"2020-01-15T12:23:04Z","wrapper":948}
+{"error":"os: process already finished","gitaly":955,"level":"error","msg":"can't forward the signal","signal":17,"time":"2020-01-15T12:23:04Z","wrapper":948}
+{"gitaly":955,"level":"error","msg":"wrapper for gitaly shutting down","time":"2020-01-15T12:23:05Z","wrapper":948}
+{"level":"info","msg":"Wrapper started","time":"2020-01-15T12:23:05Z","wrapper":963}
+{"level":"info","msg":"finding gitaly","pid_file":"/var/opt/gitlab/gitaly/gitaly.pid","time":"2020-01-15T12:23:05Z","wrapper":963}
+{"level":"info","msg":"spawning a process","time":"2020-01-15T12:23:05Z","wrapper":963}
+{"gitaly":969,"level":"info","msg":"monitoring gitaly","time":"2020-01-15T12:23:05Z","wrapper":963}
+time="2020-01-15T12:23:05Z" level=info msg="Starting Gitaly" version="Gitaly, version 1.77.1"
+time="2020-01-15T12:23:05Z" level=warning msg="git path not configured. Using default path resolution" resolvedPath=/opt/gitlab/embedded/bin/git
+time="2020-01-15T12:23:05Z" level=fatal msg="load config" config_path=/var/opt/gitlab/gitaly/config.toml error="socket could not be created in /var/opt/gitlab/gitaly/internal_sockets: listen unix /var/opt/gitlab/gitaly/internal_sockets/test-aba3e880.sock: bind: file name too long"
+{"gitaly":969,"level":"warning","msg":"forwarding signal","signal":17,"time":"2020-01-15T12:23:05Z","wrapper":963}
+{"error":"os: process already finished","gitaly":969,"level":"error","msg":"can't forward the signal","signal":17,"time":"2020-01-15T12:23:05Z","wrapper":963}
+{"gitaly":969,"level":"error","msg":"wrapper for gitaly shutting down","time":"2020-01-15T12:23:06Z","wrapper":963}
+{"level":"info","msg":"Wrapper started","time":"2020-01-15T12:23:06Z","wrapper":981}
+{"level":"info","msg":"finding gitaly","pid_file":"/var/opt/gitlab/gitaly/gitaly.pid","time":"2020-01-15T12:23:06Z","wrapper":981}
+{"level":"info","msg":"spawning a process","time":"2020-01-15T12:23:06Z","wrapper":981}
+{"gitaly":987,"level":"info","msg":"monitoring gitaly","time":"2020-01-15T12:23:06Z","wrapper":981}
+time="2020-01-15T12:23:06Z" level=info msg="Starting Gitaly" version="Gitaly, version 1.77.1"
+time="2020-01-15T12:23:06Z" level=warning msg="git path not configured. Using default path resolution" resolvedPath=/opt/gitlab/embedded/bin/git
+time="2020-01-15T12:23:06Z" level=fatal msg="load config" config_path=/var/opt/gitlab/gitaly/config.toml error="socket could not be created in /var/opt/gitlab/gitaly/internal_sockets: listen unix /var/opt/gitlab/gitaly/internal_sockets/test-477eb30e.sock: bind: file name too long"
+{"gitaly":987,"level":"warning","msg":"forwarding signal","signal":17,"time":"2020-01-15T12:23:06Z","wrapper":981}
+{"error":"os: process already finished","gitaly":987,"level":"error","msg":"can't forward the signal","signal":17,"time":"2020-01-15T12:23:06Z","wrapper":981}
+{"gitaly":987,"level":"error","msg":"wrapper for gitaly shutting down","time":"2020-01-15T12:23:07Z","wrapper":981}
+{"level":"info","msg":"Wrapper started","time":"2020-01-15T12:23:07Z","wrapper":1000}
+{"level":"info","msg":"finding gitaly","pid_file":"/var/opt/gitlab/gitaly/gitaly.pid","time":"2020-01-15T12:23:07Z","wrapper":1000}
+{"level":"info","msg":"spawning a process","time":"2020-01-15T12:23:07Z","wrapper":1000}
+{"gitaly":1009,"level":"info","msg":"monitoring gitaly","time":"2020-01-15T12:23:07Z","wrapper":1000}
+time="2020-01-15T12:23:07Z" level=info msg="Starting Gitaly" version="Gitaly, version 1.77.1"
+time="2020-01-15T12:23:07Z" level=warning msg="git path not configured. Using default path resolution" resolvedPath=/opt/gitlab/embedded/bin/git
+time="2020-01-15T12:23:07Z" level=fatal msg="load config" config_path=/var/opt/gitlab/gitaly/config.toml error="socket could not be created in /var/opt/gitlab/gitaly/internal_sockets: listen unix /var/opt/gitlab/gitaly/internal_sockets/test-8d07a11c.sock: bind: file name too long"
+{"gitaly":1009,"level":"warning","msg":"forwarding signal","signal":17,"time":"2020-01-15T12:23:07Z","wrapper":1000}
+{"error":"os: process already finished","gitaly":1009,"level":"error","msg":"can't forward the signal","signal":17,"time":"2020-01-15T12:23:07Z","wrapper":1000}
+{"gitaly":1009,"level":"error","msg":"wrapper for gitaly shutting down","time":"2020-01-15T12:23:08Z","wrapper":1000}
+{"level":"info","msg":"Wrapper started","time":"2020-01-15T12:23:08Z","wrapper":1016}
+{"level":"info","msg":"finding gitaly","pid_file":"/var/opt/gitlab/gitaly/gitaly.pid","time":"2020-01-15T12:23:08Z","wrapper":1016}
+{"level":"info","msg":"spawning a process","time":"2020-01-15T12:23:08Z","wrapper":1016}
+{"gitaly":1024,"level":"info","msg":"monitoring gitaly","time":"2020-01-15T12:23:08Z","wrapper":1016}
+time="2020-01-15T12:23:08Z" level=info msg="Starting Gitaly" version="Gitaly, version 1.77.1"
+time="2020-01-15T12:23:08Z" level=warning msg="git path not configured. Using default path resolution" resolvedPath=/opt/gitlab/embedded/bin/git
+time="2020-01-15T12:23:08Z" level=fatal msg="load config" config_path=/var/opt/gitlab/gitaly/config.toml error="socket could not be created in /var/opt/gitlab/gitaly/internal_sockets: listen unix /var/opt/gitlab/gitaly/internal_sockets/test-06f31e30.sock: bind: file name too long"
+{"gitaly":1024,"level":"warning","msg":"forwarding signal","signal":17,"time":"2020-01-15T12:23:08Z","wrapper":1016}
+{"error":"os: process already finished","gitaly":1024,"level":"error","msg":"can't forward the signal","signal":17,"time":"2020-01-15T12:23:08Z","wrapper":1016}
+{"gitaly":1024,"level":"error","msg":"wrapper for gitaly shutting down","time":"2020-01-15T12:23:09Z","wrapper":1016}
+{"level":"info","msg":"Wrapper started","time":"2020-01-15T12:23:09Z","wrapper":1033}
+{"level":"info","msg":"finding gitaly","pid_file":"/var/opt/gitlab/gitaly/gitaly.pid","time":"2020-01-15T12:23:09Z","wrapper":1033}
+{"level":"info","msg":"spawning a process","time":"2020-01-15T12:23:09Z","wrapper":1033}
+{"gitaly":1039,"level":"info","msg":"monitoring gitaly","time":"2020-01-15T12:23:09Z","wrapper":1033}
+time="2020-01-15T12:23:09Z" level=info msg="Starting Gitaly" version="Gitaly, version 1.77.1"
+time="2020-01-15T12:23:09Z" level=warning msg="git path not configured. Using default path resolution" resolvedPath=/opt/gitlab/embedded/bin/git
+time="2020-01-15T12:23:09Z" level=fatal msg="load config" config_path=/var/opt/gitlab/gitaly/config.toml error="socket could not be created in /var/opt/gitlab/gitaly/internal_sockets: listen unix /var/opt/gitlab/gitaly/internal_sockets/test-e2a93b80.sock: bind: file name too long"
+{"gitaly":1039,"level":"warning","msg":"forwarding signal","signal":17,"time":"2020-01-15T12:23:09Z","wrapper":1033}
+{"error":"os: process already finished","gitaly":1039,"level":"error","msg":"can't forward the signal","signal":17,"time":"2020-01-15T12:23:09Z","wrapper":1033}
+{"gitaly":1039,"level":"error","msg":"wrapper for gitaly shutting down","time":"2020-01-15T12:23:10Z","wrapper":1033}
+{"level":"info","msg":"Wrapper started","time":"2020-01-15T12:23:10Z","wrapper":1047}
+{"level":"info","msg":"finding gitaly","pid_file":"/var/opt/gitlab/gitaly/gitaly.pid","time":"2020-01-15T12:23:10Z","wrapper":1047}
+{"level":"info","msg":"spawning a process","time":"2020-01-15T12:23:10Z","wrapper":1047}
+{"gitaly":1054,"level":"info","msg":"monitoring gitaly","time":"2020-01-15T12:23:10Z","wrapper":1047}
+time="2020-01-15T12:23:10Z" level=info msg="Starting Gitaly" version="Gitaly, version 1.77.1"
+time="2020-01-15T12:23:10Z" level=warning msg="git path not configured. Using default path resolution" resolvedPath=/opt/gitlab/embedded/bin/git
+time="2020-01-15T12:23:10Z" level=fatal msg="load config" config_path=/var/opt/gitlab/gitaly/config.toml error="socket could not be created in /var/opt/gitlab/gitaly/internal_sockets: listen unix /var/opt/gitlab/gitaly/internal_sockets/test-5fe980ad.sock: bind: file name too long"
+{"gitaly":1054,"level":"warning","msg":"forwarding signal","signal":17,"time":"2020-01-15T12:23:10Z","wrapper":1047}
+{"error":"os: process already finished","gitaly":1054,"level":"error","msg":"can't forward the signal","signal":17,"time":"2020-01-15T12:23:10Z","wrapper":1047}
+{"gitaly":1054,"level":"error","msg":"wrapper for gitaly shutting down","time":"2020-01-15T12:23:11Z","wrapper":1047}
+{"level":"info","msg":"Wrapper started","time":"2020-01-15T12:23:11Z","wrapper":1063}
+{"level":"info","msg":"finding gitaly","pid_file":"/var/opt/gitlab/gitaly/gitaly.pid","time":"2020-01-15T12:23:11Z","wrapper":1063}
+{"level":"info","msg":"spawning a process","time":"2020-01-15T12:23:11Z","wrapper":1063}
+{"gitaly":1070,"level":"info","msg":"monitoring gitaly","time":"2020-01-15T12:23:11Z","wrapper":1063}
+time="2020-01-15T12:23:11Z" level=info msg="Starting Gitaly" version="Gitaly, version 1.77.1"
+time="2020-01-15T12:23:11Z" level=warning msg="git path not configured. Using default path resolution" resolvedPath=/opt/gitlab/embedded/bin/git
+time="2020-01-15T12:23:11Z" level=fatal msg="load config" config_path=/var/opt/gitlab/gitaly/config.toml error="socket could not be created in /var/opt/gitlab/gitaly/internal_sockets: listen unix /var/opt/gitlab/gitaly/internal_sockets/test-2bbb4216.sock: bind: file name too long"
+{"gitaly":1070,"level":"warning","msg":"forwarding signal","signal":17,"time":"2020-01-15T12:23:11Z","wrapper":1063}
+{"error":"os: process already finished","gitaly":1070,"level":"error","msg":"can't forward the signal","signal":17,"time":"2020-01-15T12:23:11Z","wrapper":1063}
+{"gitaly":1070,"level":"error","msg":"wrapper for gitaly shutting down","time":"2020-01-15T12:23:12Z","wrapper":1063}
+{"level":"info","msg":"Wrapper started","time":"2020-01-15T12:23:12Z","wrapper":1084}
+{"level":"info","msg":"finding gitaly","pid_file":"/var/opt/gitlab/gitaly/gitaly.pid","time":"2020-01-15T12:23:12Z","wrapper":1084}
+{"level":"info","msg":"spawning a process","time":"2020-01-15T12:23:12Z","wrapper":1084}
+{"gitaly":1090,"level":"info","msg":"monitoring gitaly","time":"2020-01-15T12:23:12Z","wrapper":1084}
+time="2020-01-15T12:23:12Z" level=info msg="Starting Gitaly" version="Gitaly, version 1.77.1"
+time="2020-01-15T12:23:12Z" level=warning msg="git path not configured. Using default path resolution" resolvedPath=/opt/gitlab/embedded/bin/git
+time="2020-01-15T12:23:12Z" level=fatal msg="load config" config_path=/var/opt/gitlab/gitaly/config.toml error="socket could not be created in /var/opt/gitlab/gitaly/internal_sockets: listen unix /var/opt/gitlab/gitaly/internal_sockets/test-700339df.sock: bind: file name too long"
+{"gitaly":1090,"level":"warning","msg":"forwarding signal","signal":17,"time":"2020-01-15T12:23:12Z","wrapper":1084}
+{"error":"os: process already finished","gitaly":1090,"level":"error","msg":"can't forward the signal","signal":17,"time":"2020-01-15T12:23:12Z","wrapper":1084}
+{"gitaly":1090,"level":"error","msg":"wrapper for gitaly shutting down","time":"2020-01-15T12:23:13Z","wrapper":1084}
+{"level":"info","msg":"Wrapper started","time":"2020-01-15T12:23:14Z","wrapper":1099}
+{"level":"info","msg":"finding gitaly","pid_file":"/var/opt/gitlab/gitaly/gitaly.pid","time":"2020-01-15T12:23:14Z","wrapper":1099}
+{"level":"info","msg":"spawning a process","time":"2020-01-15T12:23:14Z","wrapper":1099}
+{"gitaly":1105,"level":"info","msg":"monitoring gitaly","time":"2020-01-15T12:23:14Z","wrapper":1099}
+time="2020-01-15T12:23:14Z" level=info msg="Starting Gitaly" version="Gitaly, version 1.77.1"
+time="2020-01-15T12:23:14Z" level=warning msg="git path not configured. Using default path resolution" resolvedPath=/opt/gitlab/embedded/bin/git
+time="2020-01-15T12:23:14Z" level=fatal msg="load config" config_path=/var/opt/gitlab/gitaly/config.toml error="socket could not be created in /var/opt/gitlab/gitaly/internal_sockets: listen unix /var/opt/gitlab/gitaly/internal_sockets/test-a35e7b1d.sock: bind: file name too long"
+{"gitaly":1105,"level":"warning","msg":"forwarding signal","signal":17,"time":"2020-01-15T12:23:14Z","wrapper":1099}
+{"error":"os: process already finished","gitaly":1105,"level":"error","msg":"can't forward the signal","signal":17,"time":"2020-01-15T12:23:14Z","wrapper":1099}
+{"gitaly":1105,"level":"error","msg":"wrapper for gitaly shutting down","time":"2020-01-15T12:23:15Z","wrapper":1099}
+{"level":"info","msg":"Wrapper started","time":"2020-01-15T12:23:15Z","wrapper":1115}
+{"level":"info","msg":"finding gitaly","pid_file":"/var/opt/gitlab/gitaly/gitaly.pid","time":"2020-01-15T12:23:15Z","wrapper":1115}
+{"level":"info","msg":"spawning a process","time":"2020-01-15T12:23:15Z","wrapper":1115}
+{"gitaly":1121,"level":"info","msg":"monitoring gitaly","time":"2020-01-15T12:23:15Z","wrapper":1115}
+time="2020-01-15T12:23:15Z" level=info msg="Starting Gitaly" version="Gitaly, version 1.77.1"
+time="2020-01-15T12:23:15Z" level=warning msg="git path not configured. Using default path resolution" resolvedPath=/opt/gitlab/embedded/bin/git
+time="2020-01-15T12:23:15Z" level=fatal msg="load config" config_path=/var/opt/gitlab/gitaly/config.toml error="socket could not be created in /var/opt/gitlab/gitaly/internal_sockets: listen unix /var/opt/gitlab/gitaly/internal_sockets/test-39676fb3.sock: bind: file name too long"
+{"gitaly":1121,"level":"warning","msg":"forwarding signal","signal":17,"time":"2020-01-15T12:23:15Z","wrapper":1115}
+{"error":"os: process already finished","gitaly":1121,"level":"error","msg":"can't forward the signal","signal":17,"time":"2020-01-15T12:23:15Z","wrapper":1115}
+{"gitaly":1121,"level":"error","msg":"wrapper for gitaly shutting down","time":"2020-01-15T12:23:16Z","wrapper":1115}
+{"level":"info","msg":"Wrapper started","time":"2020-01-15T12:23:16Z","wrapper":1128}
+{"level":"info","msg":"finding gitaly","pid_file":"/var/opt/gitlab/gitaly/gitaly.pid","time":"2020-01-15T12:23:16Z","wrapper":1128}
+{"level":"info","msg":"spawning a process","time":"2020-01-15T12:23:16Z","wrapper":1128}
+{"gitaly":1137,"level":"info","msg":"monitoring gitaly","time":"2020-01-15T12:23:16Z","wrapper":1128}
+time="2020-01-15T12:23:16Z" level=info msg="Starting Gitaly" version="Gitaly, version 1.77.1"
+time="2020-01-15T12:23:16Z" level=warning msg="git path not configured. Using default path resolution" resolvedPath=/opt/gitlab/embedded/bin/git
+time="2020-01-15T12:23:16Z" level=fatal msg="load config" config_path=/var/opt/gitlab/gitaly/config.toml error="socket could not be created in /var/opt/gitlab/gitaly/internal_sockets: listen unix /var/opt/gitlab/gitaly/internal_sockets/test-d774780f.sock: bind: file name too long"
+{"gitaly":1137,"level":"warning","msg":"forwarding signal","signal":17,"time":"2020-01-15T12:23:16Z","wrapper":1128}
+{"error":"os: process already finished","gitaly":1137,"level":"error","msg":"can't forward the signal","signal":17,"time":"2020-01-15T12:23:16Z","wrapper":1128}
+{"gitaly":1137,"level":"error","msg":"wrapper for gitaly shutting down","time":"2020-01-15T12:23:17Z","wrapper":1128}
+{"level":"info","msg":"Wrapper started","time":"2020-01-15T12:23:17Z","wrapper":1143}
+{"level":"info","msg":"finding gitaly","pid_file":"/var/opt/gitlab/gitaly/gitaly.pid","time":"2020-01-15T12:23:17Z","wrapper":1143}
+{"level":"info","msg":"spawning a process","time":"2020-01-15T12:23:17Z","wrapper":1143}
+{"gitaly":1149,"level":"info","msg":"monitoring gitaly","time":"2020-01-15T12:23:17Z","wrapper":1143}
+time="2020-01-15T12:23:17Z" level=info msg="Starting Gitaly" version="Gitaly, version 1.77.1"
+time="2020-01-15T12:23:17Z" level=warning msg="git path not configured. Using default path resolution" resolvedPath=/opt/gitlab/embedded/bin/git
+time="2020-01-15T12:23:17Z" level=fatal msg="load config" config_path=/var/opt/gitlab/gitaly/config.toml error="socket could not be created in /var/opt/gitlab/gitaly/internal_sockets: listen unix /var/opt/gitlab/gitaly/internal_sockets/test-716b8c4f.sock: bind: file name too long"
+{"gitaly":1149,"level":"warning","msg":"forwarding signal","signal":17,"time":"2020-01-15T12:23:17Z","wrapper":1143}
+{"error":"os: process already finished","gitaly":1149,"level":"error","msg":"can't forward the signal","signal":17,"time":"2020-01-15T12:23:17Z","wrapper":1143}
+{"gitaly":1149,"level":"error","msg":"wrapper for gitaly shutting down","time":"2020-01-15T12:23:18Z","wrapper":1143}
+{"level":"info","msg":"Wrapper started","time":"2020-01-15T12:23:18Z","wrapper":1167}
+{"level":"info","msg":"finding gitaly","pid_file":"/var/opt/gitlab/gitaly/gitaly.pid","time":"2020-01-15T12:23:18Z","wrapper":1167}
+{"level":"info","msg":"spawning a process","time":"2020-01-15T12:23:18Z","wrapper":1167}
+{"gitaly":1174,"level":"info","msg":"monitoring gitaly","time":"2020-01-15T12:23:18Z","wrapper":1167}
+time="2020-01-15T12:23:18Z" level=info msg="Starting Gitaly" version="Gitaly, version 1.77.1"
+time="2020-01-15T12:23:18Z" level=warning msg="git path not configured. Using default path resolution" resolvedPath=/opt/gitlab/embedded/bin/git
+time="2020-01-15T12:23:18Z" level=fatal msg="load config" config_path=/var/opt/gitlab/gitaly/config.toml error="socket could not be created in /var/opt/gitlab/gitaly/internal_sockets: listen unix /var/opt/gitlab/gitaly/internal_sockets/test-426a3e36.sock: bind: file name too long"
+{"gitaly":1174,"level":"warning","msg":"forwarding signal","signal":17,"time":"2020-01-15T12:23:18Z","wrapper":1167}
+{"error":"os: process already finished","gitaly":1174,"level":"error","msg":"can't forward the signal","signal":17,"time":"2020-01-15T12:23:18Z","wrapper":1167}
+{"gitaly":1174,"level":"error","msg":"wrapper for gitaly shutting down","time":"2020-01-15T12:23:19Z","wrapper":1167}
+{"level":"info","msg":"Wrapper started","time":"2020-01-15T12:23:19Z","wrapper":1187}
+{"level":"info","msg":"finding gitaly","pid_file":"/var/opt/gitlab/gitaly/gitaly.pid","time":"2020-01-15T12:23:19Z","wrapper":1187}
+{"level":"info","msg":"spawning a process","time":"2020-01-15T12:23:19Z","wrapper":1187}
+{"gitaly":1193,"level":"info","msg":"monitoring gitaly","time":"2020-01-15T12:23:19Z","wrapper":1187}
+time="2020-01-15T12:23:19Z" level=info msg="Starting Gitaly" version="Gitaly, version 1.77.1"
+time="2020-01-15T12:23:19Z" level=warning msg="git path not configured. Using default path resolution" resolvedPath=/opt/gitlab/embedded/bin/git
+time="2020-01-15T12:23:19Z" level=fatal msg="load config" config_path=/var/opt/gitlab/gitaly/config.toml error="socket could not be created in /var/opt/gitlab/gitaly/internal_sockets: listen unix /var/opt/gitlab/gitaly/internal_sockets/test-979fcbec.sock: bind: file name too long"
+{"gitaly":1193,"level":"warning","msg":"forwarding signal","signal":17,"time":"2020-01-15T12:23:19Z","wrapper":1187}
+{"error":"os: process already finished","gitaly":1193,"level":"error","msg":"can't forward the signal","signal":17,"time":"2020-01-15T12:23:19Z","wrapper":1187}
+{"gitaly":1193,"level":"error","msg":"wrapper for gitaly shutting down","time":"2020-01-15T12:23:20Z","wrapper":1187}
+{"level":"info","msg":"Wrapper started","time":"2020-01-15T12:23:20Z","wrapper":1203}
+{"level":"info","msg":"finding gitaly","pid_file":"/var/opt/gitlab/gitaly/gitaly.pid","time":"2020-01-15T12:23:20Z","wrapper":1203}
+{"level":"info","msg":"spawning a process","time":"2020-01-15T12:23:20Z","wrapper":1203}
+{"gitaly":1209,"level":"info","msg":"monitoring gitaly","time":"2020-01-15T12:23:20Z","wrapper":1203}
+time="2020-01-15T12:23:20Z" level=info msg="Starting Gitaly" version="Gitaly, version 1.77.1"
+time="2020-01-15T12:23:20Z" level=warning msg="git path not configured. Using default path resolution" resolvedPath=/opt/gitlab/embedded/bin/git
+time="2020-01-15T12:23:20Z" level=fatal msg="load config" config_path=/var/opt/gitlab/gitaly/config.toml error="socket could not be created in /var/opt/gitlab/gitaly/internal_sockets: listen unix /var/opt/gitlab/gitaly/internal_sockets/test-98a2ef64.sock: bind: file name too long"
+{"gitaly":1209,"level":"warning","msg":"forwarding signal","signal":17,"time":"2020-01-15T12:23:20Z","wrapper":1203}
+{"error":"os: process already finished","gitaly":1209,"level":"error","msg":"can't forward the signal","signal":17,"time":"2020-01-15T12:23:20Z","wrapper":1203}
+{"gitaly":1209,"level":"error","msg":"wrapper for gitaly shutting down","time":"2020-01-15T12:23:21Z","wrapper":1203}
+{"level":"info","msg":"Wrapper started","time":"2020-01-15T12:23:21Z","wrapper":1217}
+{"level":"info","msg":"finding gitaly","pid_file":"/var/opt/gitlab/gitaly/gitaly.pid","time":"2020-01-15T12:23:21Z","wrapper":1217}
+{"level":"info","msg":"spawning a process","time":"2020-01-15T12:23:21Z","wrapper":1217}
+{"gitaly":1223,"level":"info","msg":"monitoring gitaly","time":"2020-01-15T12:23:21Z","wrapper":1217}
+time="2020-01-15T12:23:21Z" level=info msg="Starting Gitaly" version="Gitaly, version 1.77.1"
+time="2020-01-15T12:23:21Z" level=warning msg="git path not configured. Using default path resolution" resolvedPath=/opt/gitlab/embedded/bin/git
+time="2020-01-15T12:23:21Z" level=fatal msg="load config" config_path=/var/opt/gitlab/gitaly/config.toml error="socket could not be created in /var/opt/gitlab/gitaly/internal_sockets: listen unix /var/opt/gitlab/gitaly/internal_sockets/test-2d37ab81.sock: bind: file name too long"
+{"gitaly":1223,"level":"warning","msg":"forwarding signal","signal":17,"time":"2020-01-15T12:23:21Z","wrapper":1217}
+{"error":"os: process already finished","gitaly":1223,"level":"error","msg":"can't forward the signal","signal":17,"time":"2020-01-15T12:23:21Z","wrapper":1217}
+{"gitaly":1223,"level":"error","msg":"wrapper for gitaly shutting down","time":"2020-01-15T12:23:22Z","wrapper":1217}
+{"level":"info","msg":"Wrapper started","time":"2020-01-15T12:23:22Z","wrapper":1232}
+{"level":"info","msg":"finding gitaly","pid_file":"/var/opt/gitlab/gitaly/gitaly.pid","time":"2020-01-15T12:23:22Z","wrapper":1232}
+{"level":"info","msg":"spawning a process","time":"2020-01-15T12:23:22Z","wrapper":1232}
+{"gitaly":1239,"level":"info","msg":"monitoring gitaly","time":"2020-01-15T12:23:22Z","wrapper":1232}
+time="2020-01-15T12:23:22Z" level=info msg="Starting Gitaly" version="Gitaly, version 1.77.1"
+time="2020-01-15T12:23:22Z" level=warning msg="git path not configured. Using default path resolution" resolvedPath=/opt/gitlab/embedded/bin/git
+time="2020-01-15T12:23:22Z" level=fatal msg="load config" config_path=/var/opt/gitlab/gitaly/config.toml error="socket could not be created in /var/opt/gitlab/gitaly/internal_sockets: listen unix /var/opt/gitlab/gitaly/internal_sockets/test-979dc66d.sock: bind: file name too long"
+{"gitaly":1239,"level":"warning","msg":"forwarding signal","signal":17,"time":"2020-01-15T12:23:23Z","wrapper":1232}
+{"error":"os: process already finished","gitaly":1239,"level":"error","msg":"can't forward the signal","signal":17,"time":"2020-01-15T12:23:23Z","wrapper":1232}
+{"gitaly":1239,"level":"error","msg":"wrapper for gitaly shutting down","time":"2020-01-15T12:23:23Z","wrapper":1232}
+{"level":"info","msg":"Wrapper started","time":"2020-01-15T12:23:24Z","wrapper":1245}
+{"level":"info","msg":"finding gitaly","pid_file":"/var/opt/gitlab/gitaly/gitaly.pid","time":"2020-01-15T12:23:24Z","wrapper":1245}
+{"level":"info","msg":"spawning a process","time":"2020-01-15T12:23:24Z","wrapper":1245}
+{"gitaly":1259,"level":"info","msg":"monitoring gitaly","time":"2020-01-15T12:23:24Z","wrapper":1245}
+time="2020-01-15T12:23:24Z" level=info msg="Starting Gitaly" version="Gitaly, version 1.77.1"
+time="2020-01-15T12:23:24Z" level=warning msg="git path not configured. Using default path resolution" resolvedPath=/opt/gitlab/embedded/bin/git
+time="2020-01-15T12:23:24Z" level=fatal msg="load config" config_path=/var/opt/gitlab/gitaly/config.toml error="socket could not be created in /var/opt/gitlab/gitaly/internal_sockets: listen unix /var/opt/gitlab/gitaly/internal_sockets/test-1ce95c73.sock: bind: file name too long"
+{"gitaly":1259,"level":"warning","msg":"forwarding signal","signal":17,"time":"2020-01-15T12:23:24Z","wrapper":1245}
+{"error":"os: process already finished","gitaly":1259,"level":"error","msg":"can't forward the signal","signal":17,"time":"2020-01-15T12:23:24Z","wrapper":1245}
+{"gitaly":1259,"level":"error","msg":"wrapper for gitaly shutting down","time":"2020-01-15T12:23:25Z","wrapper":1245}
+{"level":"info","msg":"Wrapper started","time":"2020-01-15T12:23:25Z","wrapper":1273}
+{"level":"info","msg":"finding gitaly","pid_file":"/var/opt/gitlab/gitaly/gitaly.pid","time":"2020-01-15T12:23:25Z","wrapper":1273}
+{"level":"info","msg":"spawning a process","time":"2020-01-15T12:23:25Z","wrapper":1273}
+{"gitaly":1282,"level":"info","msg":"monitoring gitaly","time":"2020-01-15T12:23:25Z","wrapper":1273}
+time="2020-01-15T12:23:25Z" level=info msg="Starting Gitaly" version="Gitaly, version 1.77.1"
+time="2020-01-15T12:23:25Z" level=warning msg="git path not configured. Using default path resolution" resolvedPath=/opt/gitlab/embedded/bin/git
+time="2020-01-15T12:23:25Z" level=fatal msg="load config" config_path=/var/opt/gitlab/gitaly/config.toml error="socket could not be created in /var/opt/gitlab/gitaly/internal_sockets: listen unix /var/opt/gitlab/gitaly/internal_sockets/test-06f35d37.sock: bind: file name too long"
+{"gitaly":1282,"level":"warning","msg":"forwarding signal","signal":17,"time":"2020-01-15T12:23:25Z","wrapper":1273}
+{"error":"os: process already finished","gitaly":1282,"level":"error","msg":"can't forward the signal","signal":17,"time":"2020-01-15T12:23:25Z","wrapper":1273}
+{"gitaly":1282,"level":"error","msg":"wrapper for gitaly shutting down","time":"2020-01-15T12:23:26Z","wrapper":1273}
+{"level":"info","msg":"Wrapper started","time":"2020-01-15T12:23:26Z","wrapper":1289}
+{"level":"info","msg":"finding gitaly","pid_file":"/var/opt/gitlab/gitaly/gitaly.pid","time":"2020-01-15T12:23:26Z","wrapper":1289}
+{"level":"info","msg":"spawning a process","time":"2020-01-15T12:23:26Z","wrapper":1289}
+{"gitaly":1299,"level":"info","msg":"monitoring gitaly","time":"2020-01-15T12:23:26Z","wrapper":1289}
+time="2020-01-15T12:23:26Z" level=info msg="Starting Gitaly" version="Gitaly, version 1.77.1"
+time="2020-01-15T12:23:26Z" level=warning msg="git path not configured. Using default path resolution" resolvedPath=/opt/gitlab/embedded/bin/git
+time="2020-01-15T12:23:26Z" level=fatal msg="load config" config_path=/var/opt/gitlab/gitaly/config.toml error="socket could not be created in /var/opt/gitlab/gitaly/internal_sockets: listen unix /var/opt/gitlab/gitaly/internal_sockets/test-fbbb049b.sock: bind: file name too long"
+{"gitaly":1299,"level":"warning","msg":"forwarding signal","signal":17,"time":"2020-01-15T12:23:26Z","wrapper":1289}
+{"error":"os: process already finished","gitaly":1299,"level":"error","msg":"can't forward the signal","signal":17,"time":"2020-01-15T12:23:26Z","wrapper":1289}
+{"gitaly":1299,"level":"error","msg":"wrapper for gitaly shutting down","time":"2020-01-15T12:23:27Z","wrapper":1289}
+{"level":"info","msg":"Wrapper started","time":"2020-01-15T12:23:27Z","wrapper":1312}
+{"level":"info","msg":"finding gitaly","pid_file":"/var/opt/gitlab/gitaly/gitaly.pid","time":"2020-01-15T12:23:27Z","wrapper":1312}
+{"level":"info","msg":"spawning a process","time":"2020-01-15T12:23:27Z","wrapper":1312}
+{"gitaly":1319,"level":"info","msg":"monitoring gitaly","time":"2020-01-15T12:23:27Z","wrapper":1312}
+time="2020-01-15T12:23:27Z" level=info msg="Starting Gitaly" version="Gitaly, version 1.77.1"
+time="2020-01-15T12:23:27Z" level=warning msg="git path not configured. Using default path resolution" resolvedPath=/opt/gitlab/embedded/bin/git
+time="2020-01-15T12:23:27Z" level=fatal msg="load config" config_path=/var/opt/gitlab/gitaly/config.toml error="socket could not be created in /var/opt/gitlab/gitaly/internal_sockets: listen unix /var/opt/gitlab/gitaly/internal_sockets/test-734ce742.sock: bind: file name too long"
+{"gitaly":1319,"level":"warning","msg":"forwarding signal","signal":17,"time":"2020-01-15T12:23:27Z","wrapper":1312}
+{"error":"os: process already finished","gitaly":1319,"level":"error","msg":"can't forward the signal","signal":17,"time":"2020-01-15T12:23:27Z","wrapper":1312}
+{"gitaly":1319,"level":"error","msg":"wrapper for gitaly shutting down","time":"2020-01-15T12:23:28Z","wrapper":1312}
+{"level":"info","msg":"Wrapper started","time":"2020-01-15T12:23:28Z","wrapper":1325}
+{"level":"info","msg":"finding gitaly","pid_file":"/var/opt/gitlab/gitaly/gitaly.pid","time":"2020-01-15T12:23:28Z","wrapper":1325}
+{"level":"info","msg":"spawning a process","time":"2020-01-15T12:23:28Z","wrapper":1325}
+{"gitaly":1331,"level":"info","msg":"monitoring gitaly","time":"2020-01-15T12:23:28Z","wrapper":1325}
+time="2020-01-15T12:23:28Z" level=info msg="Starting Gitaly" version="Gitaly, version 1.77.1"
+time="2020-01-15T12:23:28Z" level=warning msg="git path not configured. Using default path resolution" resolvedPath=/opt/gitlab/embedded/bin/git
+time="2020-01-15T12:23:28Z" level=fatal msg="load config" config_path=/var/opt/gitlab/gitaly/config.toml error="socket could not be created in /var/opt/gitlab/gitaly/internal_sockets: listen unix /var/opt/gitlab/gitaly/internal_sockets/test-7acc77b3.sock: bind: file name too long"
+{"gitaly":1331,"level":"warning","msg":"forwarding signal","signal":17,"time":"2020-01-15T12:23:28Z","wrapper":1325}
+{"error":"os: process already finished","gitaly":1331,"level":"error","msg":"can't forward the signal","signal":17,"time":"2020-01-15T12:23:28Z","wrapper":1325}
+{"gitaly":1331,"level":"error","msg":"wrapper for gitaly shutting down","time":"2020-01-15T12:23:29Z","wrapper":1325}
+{"level":"info","msg":"Wrapper started","time":"2020-01-15T12:23:29Z","wrapper":1339}
+{"level":"info","msg":"finding gitaly","pid_file":"/var/opt/gitlab/gitaly/gitaly.pid","time":"2020-01-15T12:23:29Z","wrapper":1339}
+{"level":"info","msg":"spawning a process","time":"2020-01-15T12:23:29Z","wrapper":1339}
+{"gitaly":1345,"level":"info","msg":"monitoring gitaly","time":"2020-01-15T12:23:29Z","wrapper":1339}
+time="2020-01-15T12:23:29Z" level=info msg="Starting Gitaly" version="Gitaly, version 1.77.1"
+time="2020-01-15T12:23:29Z" level=warning msg="git path not configured. Using default path resolution" resolvedPath=/opt/gitlab/embedded/bin/git
+time="2020-01-15T12:23:29Z" level=fatal msg="load config" config_path=/var/opt/gitlab/gitaly/config.toml error="socket could not be created in /var/opt/gitlab/gitaly/internal_sockets: listen unix /var/opt/gitlab/gitaly/internal_sockets/test-eec741b7.sock: bind: file name too long"
+{"gitaly":1345,"level":"warning","msg":"forwarding signal","signal":17,"time":"2020-01-15T12:23:29Z","wrapper":1339}
+{"error":"os: process already finished","gitaly":1345,"level":"error","msg":"can't forward the signal","signal":17,"time":"2020-01-15T12:23:29Z","wrapper":1339}
+{"gitaly":1345,"level":"error","msg":"wrapper for gitaly shutting down","time":"2020-01-15T12:23:30Z","wrapper":1339}
+{"level":"info","msg":"Wrapper started","time":"2020-01-15T12:23:30Z","wrapper":1354}
+{"level":"info","msg":"finding gitaly","pid_file":"/var/opt/gitlab/gitaly/gitaly.pid","time":"2020-01-15T12:23:30Z","wrapper":1354}
+{"level":"info","msg":"spawning a process","time":"2020-01-15T12:23:30Z","wrapper":1354}
+{"gitaly":1360,"level":"info","msg":"monitoring gitaly","time":"2020-01-15T12:23:30Z","wrapper":1354}
+time="2020-01-15T12:23:30Z" level=info msg="Starting Gitaly" version="Gitaly, version 1.77.1"
+time="2020-01-15T12:23:30Z" level=warning msg="git path not configured. Using default path resolution" resolvedPath=/opt/gitlab/embedded/bin/git
+time="2020-01-15T12:23:30Z" level=fatal msg="load config" config_path=/var/opt/gitlab/gitaly/config.toml error="socket could not be created in /var/opt/gitlab/gitaly/internal_sockets: listen unix /var/opt/gitlab/gitaly/internal_sockets/test-de5c8560.sock: bind: file name too long"
+{"gitaly":1360,"level":"warning","msg":"forwarding signal","signal":17,"time":"2020-01-15T12:23:30Z","wrapper":1354}
+{"error":"os: process already finished","gitaly":1360,"level":"error","msg":"can't forward the signal","signal":17,"time":"2020-01-15T12:23:30Z","wrapper":1354}
+{"gitaly":1360,"level":"error","msg":"wrapper for gitaly shutting down","time":"2020-01-15T12:23:31Z","wrapper":1354}
+{"level":"info","msg":"Wrapper started","time":"2020-01-15T12:23:32Z","wrapper":1378}
+{"level":"info","msg":"finding gitaly","pid_file":"/var/opt/gitlab/gitaly/gitaly.pid","time":"2020-01-15T12:23:32Z","wrapper":1378}
+{"level":"info","msg":"spawning a process","time":"2020-01-15T12:23:32Z","wrapper":1378}
+{"gitaly":1384,"level":"info","msg":"monitoring gitaly","time":"2020-01-15T12:23:32Z","wrapper":1378}
+time="2020-01-15T12:23:32Z" level=info msg="Starting Gitaly" version="Gitaly, version 1.77.1"
+time="2020-01-15T12:23:32Z" level=warning msg="git path not configured. Using default path resolution" resolvedPath=/opt/gitlab/embedded/bin/git
+time="2020-01-15T12:23:32Z" level=fatal msg="load config" config_path=/var/opt/gitlab/gitaly/config.toml error="socket could not be created in /var/opt/gitlab/gitaly/internal_sockets: listen unix /var/opt/gitlab/gitaly/internal_sockets/test-77183856.sock: bind: file name too long"
+{"gitaly":1384,"level":"warning","msg":"forwarding signal","signal":17,"time":"2020-01-15T12:23:32Z","wrapper":1378}
+{"error":"os: process already finished","gitaly":1384,"level":"error","msg":"can't forward the signal","signal":17,"time":"2020-01-15T12:23:32Z","wrapper":1378}
+{"gitaly":1384,"level":"error","msg":"wrapper for gitaly shutting down","time":"2020-01-15T12:23:33Z","wrapper":1378}
+{"level":"info","msg":"Wrapper started","time":"2020-01-15T12:23:33Z","wrapper":1392}
+{"level":"info","msg":"finding gitaly","pid_file":"/var/opt/gitlab/gitaly/gitaly.pid","time":"2020-01-15T12:23:33Z","wrapper":1392}
+{"level":"info","msg":"spawning a process","time":"2020-01-15T12:23:33Z","wrapper":1392}
+{"gitaly":1398,"level":"info","msg":"monitoring gitaly","time":"2020-01-15T12:23:33Z","wrapper":1392}
+time="2020-01-15T12:23:33Z" level=info msg="Starting Gitaly" version="Gitaly, version 1.77.1"
+time="2020-01-15T12:23:33Z" level=warning msg="git path not configured. Using default path resolution" resolvedPath=/opt/gitlab/embedded/bin/git
+time="2020-01-15T12:23:33Z" level=fatal msg="load config" config_path=/var/opt/gitlab/gitaly/config.toml error="socket could not be created in /var/opt/gitlab/gitaly/internal_sockets: listen unix /var/opt/gitlab/gitaly/internal_sockets/test-30991a81.sock: bind: file name too long"
+{"gitaly":1398,"level":"warning","msg":"forwarding signal","signal":17,"time":"2020-01-15T12:23:33Z","wrapper":1392}
+{"error":"os: process already finished","gitaly":1398,"level":"error","msg":"can't forward the signal","signal":17,"time":"2020-01-15T12:23:33Z","wrapper":1392}
+{"gitaly":1398,"level":"error","msg":"wrapper for gitaly shutting down","time":"2020-01-15T12:23:34Z","wrapper":1392}
+{"level":"info","msg":"Wrapper started","time":"2020-01-15T12:23:34Z","wrapper":1407}
+{"level":"info","msg":"finding gitaly","pid_file":"/var/opt/gitlab/gitaly/gitaly.pid","time":"2020-01-15T12:23:34Z","wrapper":1407}
+{"level":"info","msg":"spawning a process","time":"2020-01-15T12:23:34Z","wrapper":1407}
+{"gitaly":1415,"level":"info","msg":"monitoring gitaly","time":"2020-01-15T12:23:34Z","wrapper":1407}
+time="2020-01-15T12:23:34Z" level=info msg="Starting Gitaly" version="Gitaly, version 1.77.1"
+time="2020-01-15T12:23:34Z" level=warning msg="git path not configured. Using default path resolution" resolvedPath=/opt/gitlab/embedded/bin/git
+time="2020-01-15T12:23:34Z" level=fatal msg="load config" config_path=/var/opt/gitlab/gitaly/config.toml error="socket could not be created in /var/opt/gitlab/gitaly/internal_sockets: listen unix /var/opt/gitlab/gitaly/internal_sockets/test-83fb7e17.sock: bind: file name too long"
+{"gitaly":1415,"level":"warning","msg":"forwarding signal","signal":17,"time":"2020-01-15T12:23:34Z","wrapper":1407}
+{"error":"os: process already finished","gitaly":1415,"level":"error","msg":"can't forward the signal","signal":17,"time":"2020-01-15T12:23:34Z","wrapper":1407}
+{"gitaly":1415,"level":"error","msg":"wrapper for gitaly shutting down","time":"2020-01-15T12:23:35Z","wrapper":1407}
+{"level":"info","msg":"Wrapper started","time":"2020-01-15T12:23:35Z","wrapper":1424}
+{"level":"info","msg":"finding gitaly","pid_file":"/var/opt/gitlab/gitaly/gitaly.pid","time":"2020-01-15T12:23:35Z","wrapper":1424}
+{"level":"info","msg":"spawning a process","time":"2020-01-15T12:23:35Z","wrapper":1424}
+{"gitaly":1430,"level":"info","msg":"monitoring gitaly","time":"2020-01-15T12:23:35Z","wrapper":1424}
+time="2020-01-15T12:23:35Z" level=info msg="Starting Gitaly" version="Gitaly, version 1.77.1"
+time="2020-01-15T12:23:35Z" level=warning msg="git path not configured. Using default path resolution" resolvedPath=/opt/gitlab/embedded/bin/git
+time="2020-01-15T12:23:35Z" level=fatal msg="load config" config_path=/var/opt/gitlab/gitaly/config.toml error="socket could not be created in /var/opt/gitlab/gitaly/internal_sockets: listen unix /var/opt/gitlab/gitaly/internal_sockets/test-01dddc46.sock: bind: file name too long"
+{"gitaly":1430,"level":"warning","msg":"forwarding signal","signal":17,"time":"2020-01-15T12:23:35Z","wrapper":1424}
+{"error":"os: process already finished","gitaly":1430,"level":"error","msg":"can't forward the signal","signal":17,"time":"2020-01-15T12:23:35Z","wrapper":1424}
+{"gitaly":1430,"level":"error","msg":"wrapper for gitaly shutting down","time":"2020-01-15T12:23:36Z","wrapper":1424}
+{"level":"info","msg":"Wrapper started","time":"2020-01-15T12:23:36Z","wrapper":1442}
+{"level":"info","msg":"finding gitaly","pid_file":"/var/opt/gitlab/gitaly/gitaly.pid","time":"2020-01-15T12:23:36Z","wrapper":1442}
+{"level":"info","msg":"spawning a process","time":"2020-01-15T12:23:36Z","wrapper":1442}
+{"gitaly":1449,"level":"info","msg":"monitoring gitaly","time":"2020-01-15T12:23:36Z","wrapper":1442}
+time="2020-01-15T12:23:36Z" level=info msg="Starting Gitaly" version="Gitaly, version 1.77.1"
+time="2020-01-15T12:23:36Z" level=warning msg="git path not configured. Using default path resolution" resolvedPath=/opt/gitlab/embedded/bin/git
+time="2020-01-15T12:23:36Z" level=fatal msg="load config" config_path=/var/opt/gitlab/gitaly/config.toml error="socket could not be created in /var/opt/gitlab/gitaly/internal_sockets: listen unix /var/opt/gitlab/gitaly/internal_sockets/test-2043378f.sock: bind: file name too long"
+{"gitaly":1449,"level":"warning","msg":"forwarding signal","signal":17,"time":"2020-01-15T12:23:36Z","wrapper":1442}
+{"error":"os: process already finished","gitaly":1449,"level":"error","msg":"can't forward the signal","signal":17,"time":"2020-01-15T12:23:36Z","wrapper":1442}
+{"gitaly":1449,"level":"error","msg":"wrapper for gitaly shutting down","time":"2020-01-15T12:23:37Z","wrapper":1442}
+{"level":"info","msg":"Wrapper started","time":"2020-01-15T12:23:38Z","wrapper":1465}
+{"level":"info","msg":"finding gitaly","pid_file":"/var/opt/gitlab/gitaly/gitaly.pid","time":"2020-01-15T12:23:38Z","wrapper":1465}
+{"level":"info","msg":"spawning a process","time":"2020-01-15T12:23:38Z","wrapper":1465}
+{"gitaly":1472,"level":"info","msg":"monitoring gitaly","time":"2020-01-15T12:23:38Z","wrapper":1465}
+time="2020-01-15T12:23:38Z" level=info msg="Starting Gitaly" version="Gitaly, version 1.77.1"
+time="2020-01-15T12:23:38Z" level=warning msg="git path not configured. Using default path resolution" resolvedPath=/opt/gitlab/embedded/bin/git
+time="2020-01-15T12:23:38Z" level=fatal msg="load config" config_path=/var/opt/gitlab/gitaly/config.toml error="socket could not be created in /var/opt/gitlab/gitaly/internal_sockets: listen unix /var/opt/gitlab/gitaly/internal_sockets/test-7bde306c.sock: bind: file name too long"
+{"gitaly":1472,"level":"warning","msg":"forwarding signal","signal":17,"time":"2020-01-15T12:23:38Z","wrapper":1465}
+{"error":"os: process already finished","gitaly":1472,"level":"error","msg":"can't forward the signal","signal":17,"time":"2020-01-15T12:23:38Z","wrapper":1465}
+{"gitaly":1472,"level":"error","msg":"wrapper for gitaly shutting down","time":"2020-01-15T12:23:39Z","wrapper":1465}
+{"level":"info","msg":"Wrapper started","time":"2020-01-15T12:23:39Z","wrapper":1482}
+{"level":"info","msg":"finding gitaly","pid_file":"/var/opt/gitlab/gitaly/gitaly.pid","time":"2020-01-15T12:23:39Z","wrapper":1482}
+{"level":"info","msg":"spawning a process","time":"2020-01-15T12:23:39Z","wrapper":1482}
+{"gitaly":1491,"level":"info","msg":"monitoring gitaly","time":"2020-01-15T12:23:39Z","wrapper":1482}
+time="2020-01-15T12:23:39Z" level=info msg="Starting Gitaly" version="Gitaly, version 1.77.1"
+time="2020-01-15T12:23:39Z" level=warning msg="git path not configured. Using default path resolution" resolvedPath=/opt/gitlab/embedded/bin/git
+time="2020-01-15T12:23:39Z" level=fatal msg="load config" config_path=/var/opt/gitlab/gitaly/config.toml error="socket could not be created in /var/opt/gitlab/gitaly/internal_sockets: listen unix /var/opt/gitlab/gitaly/internal_sockets/test-1bd265bb.sock: bind: file name too long"
+{"gitaly":1491,"level":"warning","msg":"forwarding signal","signal":17,"time":"2020-01-15T12:23:39Z","wrapper":1482}
+{"error":"os: process already finished","gitaly":1491,"level":"error","msg":"can't forward the signal","signal":17,"time":"2020-01-15T12:23:39Z","wrapper":1482}
+{"gitaly":1491,"level":"error","msg":"wrapper for gitaly shutting down","time":"2020-01-15T12:23:40Z","wrapper":1482}
+{"level":"info","msg":"Wrapper started","time":"2020-01-15T12:23:40Z","wrapper":1500}
+{"level":"info","msg":"finding gitaly","pid_file":"/var/opt/gitlab/gitaly/gitaly.pid","time":"2020-01-15T12:23:40Z","wrapper":1500}
+{"level":"info","msg":"spawning a process","time":"2020-01-15T12:23:40Z","wrapper":1500}
+{"gitaly":1506,"level":"info","msg":"monitoring gitaly","time":"2020-01-15T12:23:40Z","wrapper":1500}
+time="2020-01-15T12:23:40Z" level=info msg="Starting Gitaly" version="Gitaly, version 1.77.1"
+time="2020-01-15T12:23:40Z" level=warning msg="git path not configured. Using default path resolution" resolvedPath=/opt/gitlab/embedded/bin/git
+time="2020-01-15T12:23:40Z" level=fatal msg="load config" config_path=/var/opt/gitlab/gitaly/config.toml error="socket could not be created in /var/opt/gitlab/gitaly/internal_sockets: listen unix /var/opt/gitlab/gitaly/internal_sockets/test-32db1803.sock: bind: file name too long"
+{"gitaly":1506,"level":"warning","msg":"forwarding signal","signal":17,"time":"2020-01-15T12:23:40Z","wrapper":1500}
+{"error":"os: process already finished","gitaly":1506,"level":"error","msg":"can't forward the signal","signal":17,"time":"2020-01-15T12:23:40Z","wrapper":1500}
+{"gitaly":1506,"level":"error","msg":"wrapper for gitaly shutting down","time":"2020-01-15T12:23:41Z","wrapper":1500}
+{"level":"info","msg":"Wrapper started","time":"2020-01-15T12:23:41Z","wrapper":1520}
+{"level":"info","msg":"finding gitaly","pid_file":"/var/opt/gitlab/gitaly/gitaly.pid","time":"2020-01-15T12:23:41Z","wrapper":1520}
+{"level":"info","msg":"spawning a process","time":"2020-01-15T12:23:41Z","wrapper":1520}
+{"gitaly":1526,"level":"info","msg":"monitoring gitaly","time":"2020-01-15T12:23:41Z","wrapper":1520}
+time="2020-01-15T12:23:41Z" level=info msg="Starting Gitaly" version="Gitaly, version 1.77.1"
+time="2020-01-15T12:23:41Z" level=warning msg="git path not configured. Using default path resolution" resolvedPath=/opt/gitlab/embedded/bin/git
+time="2020-01-15T12:23:41Z" level=fatal msg="load config" config_path=/var/opt/gitlab/gitaly/config.toml error="socket could not be created in /var/opt/gitlab/gitaly/internal_sockets: listen unix /var/opt/gitlab/gitaly/internal_sockets/test-b752ecea.sock: bind: file name too long"
+{"gitaly":1526,"level":"warning","msg":"forwarding signal","signal":17,"time":"2020-01-15T12:23:41Z","wrapper":1520}
+{"error":"os: process already finished","gitaly":1526,"level":"error","msg":"can't forward the signal","signal":17,"time":"2020-01-15T12:23:41Z","wrapper":1520}
+{"gitaly":1526,"level":"error","msg":"wrapper for gitaly shutting down","time":"2020-01-15T12:23:42Z","wrapper":1520}
+{"level":"info","msg":"Wrapper started","time":"2020-01-15T12:23:42Z","wrapper":1535}
+{"level":"info","msg":"finding gitaly","pid_file":"/var/opt/gitlab/gitaly/gitaly.pid","time":"2020-01-15T12:23:42Z","wrapper":1535}
+{"level":"info","msg":"spawning a process","time":"2020-01-15T12:23:42Z","wrapper":1535}
+{"gitaly":1541,"level":"info","msg":"monitoring gitaly","time":"2020-01-15T12:23:42Z","wrapper":1535}
+time="2020-01-15T12:23:42Z" level=info msg="Starting Gitaly" version="Gitaly, version 1.77.1"
+time="2020-01-15T12:23:42Z" level=warning msg="git path not configured. Using default path resolution" resolvedPath=/opt/gitlab/embedded/bin/git
+time="2020-01-15T12:23:42Z" level=fatal msg="load config" config_path=/var/opt/gitlab/gitaly/config.toml error="socket could not be created in /var/opt/gitlab/gitaly/internal_sockets: listen unix /var/opt/gitlab/gitaly/internal_sockets/test-b159473f.sock: bind: file name too long"
+{"gitaly":1541,"level":"warning","msg":"forwarding signal","signal":17,"time":"2020-01-15T12:23:42Z","wrapper":1535}
+{"error":"os: process already finished","gitaly":1541,"level":"error","msg":"can't forward the signal","signal":17,"time":"2020-01-15T12:23:42Z","wrapper":1535}
+{"gitaly":1541,"level":"error","msg":"wrapper for gitaly shutting down","time":"2020-01-15T12:23:43Z","wrapper":1535}
+{"level":"info","msg":"Wrapper started","time":"2020-01-15T12:23:43Z","wrapper":1549}
+{"level":"info","msg":"finding gitaly","pid_file":"/var/opt/gitlab/gitaly/gitaly.pid","time":"2020-01-15T12:23:43Z","wrapper":1549}
+{"level":"info","msg":"spawning a process","time":"2020-01-15T12:23:43Z","wrapper":1549}
+{"gitaly":1556,"level":"info","msg":"monitoring gitaly","time":"2020-01-15T12:23:44Z","wrapper":1549}
+time="2020-01-15T12:23:44Z" level=info msg="Starting Gitaly" version="Gitaly, version 1.77.1"
+time="2020-01-15T12:23:44Z" level=warning msg="git path not configured. Using default path resolution" resolvedPath=/opt/gitlab/embedded/bin/git
+time="2020-01-15T12:23:44Z" level=fatal msg="load config" config_path=/var/opt/gitlab/gitaly/config.toml error="socket could not be created in /var/opt/gitlab/gitaly/internal_sockets: listen unix /var/opt/gitlab/gitaly/internal_sockets/test-b2259cbc.sock: bind: file name too long"
+{"gitaly":1556,"level":"warning","msg":"forwarding signal","signal":17,"time":"2020-01-15T12:23:44Z","wrapper":1549}
+{"error":"os: process already finished","gitaly":1556,"level":"error","msg":"can't forward the signal","signal":17,"time":"2020-01-15T12:23:44Z","wrapper":1549}
+{"gitaly":1556,"level":"error","msg":"wrapper for gitaly shutting down","time":"2020-01-15T12:23:45Z","wrapper":1549}
+{"level":"info","msg":"Wrapper started","time":"2020-01-15T12:23:45Z","wrapper":1564}
+{"level":"info","msg":"finding gitaly","pid_file":"/var/opt/gitlab/gitaly/gitaly.pid","time":"2020-01-15T12:23:45Z","wrapper":1564}
+{"level":"info","msg":"spawning a process","time":"2020-01-15T12:23:45Z","wrapper":1564}
+{"gitaly":1570,"level":"info","msg":"monitoring gitaly","time":"2020-01-15T12:23:45Z","wrapper":1564}
+time="2020-01-15T12:23:45Z" level=info msg="Starting Gitaly" version="Gitaly, version 1.77.1"
+time="2020-01-15T12:23:45Z" level=warning msg="git path not configured. Using default path resolution" resolvedPath=/opt/gitlab/embedded/bin/git
+time="2020-01-15T12:23:45Z" level=fatal msg="load config" config_path=/var/opt/gitlab/gitaly/config.toml error="socket could not be created in /var/opt/gitlab/gitaly/internal_sockets: listen unix /var/opt/gitlab/gitaly/internal_sockets/test-b051a6d3.sock: bind: file name too long"
+{"gitaly":1570,"level":"warning","msg":"forwarding signal","signal":17,"time":"2020-01-15T12:23:45Z","wrapper":1564}
+{"error":"os: process already finished","gitaly":1570,"level":"error","msg":"can't forward the signal","signal":17,"time":"2020-01-15T12:23:45Z","wrapper":1564}
+{"gitaly":1570,"level":"error","msg":"wrapper for gitaly shutting down","time":"2020-01-15T12:23:46Z","wrapper":1564}
+{"level":"info","msg":"Wrapper started","time":"2020-01-15T12:23:46Z","wrapper":1580}
+{"level":"info","msg":"finding gitaly","pid_file":"/var/opt/gitlab/gitaly/gitaly.pid","time":"2020-01-15T12:23:46Z","wrapper":1580}
+{"level":"info","msg":"spawning a process","time":"2020-01-15T12:23:46Z","wrapper":1580}
+{"gitaly":1586,"level":"info","msg":"monitoring gitaly","time":"2020-01-15T12:23:46Z","wrapper":1580}
+time="2020-01-15T12:23:46Z" level=info msg="Starting Gitaly" version="Gitaly, version 1.77.1"
+time="2020-01-15T12:23:46Z" level=warning msg="git path not configured. Using default path resolution" resolvedPath=/opt/gitlab/embedded/bin/git
+time="2020-01-15T12:23:46Z" level=fatal msg="load config" config_path=/var/opt/gitlab/gitaly/config.toml error="socket could not be created in /var/opt/gitlab/gitaly/internal_sockets: listen unix /var/opt/gitlab/gitaly/internal_sockets/test-4aaf7654.sock: bind: file name too long"
+{"gitaly":1586,"level":"warning","msg":"forwarding signal","signal":17,"time":"2020-01-15T12:23:46Z","wrapper":1580}
+{"error":"os: process already finished","gitaly":1586,"level":"error","msg":"can't forward the signal","signal":17,"time":"2020-01-15T12:23:46Z","wrapper":1580}
+{"gitaly":1586,"level":"error","msg":"wrapper for gitaly shutting down","time":"2020-01-15T12:23:47Z","wrapper":1580}
+{"level":"info","msg":"Wrapper started","time":"2020-01-15T12:23:47Z","wrapper":1594}
+{"level":"info","msg":"finding gitaly","pid_file":"/var/opt/gitlab/gitaly/gitaly.pid","time":"2020-01-15T12:23:47Z","wrapper":1594}
+{"level":"info","msg":"spawning a process","time":"2020-01-15T12:23:47Z","wrapper":1594}
+{"gitaly":1600,"level":"info","msg":"monitoring gitaly","time":"2020-01-15T12:23:47Z","wrapper":1594}
+time="2020-01-15T12:23:47Z" level=info msg="Starting Gitaly" version="Gitaly, version 1.77.1"
+time="2020-01-15T12:23:47Z" level=warning msg="git path not configured. Using default path resolution" resolvedPath=/opt/gitlab/embedded/bin/git
+time="2020-01-15T12:23:47Z" level=fatal msg="load config" config_path=/var/opt/gitlab/gitaly/config.toml error="socket could not be created in /var/opt/gitlab/gitaly/internal_sockets: listen unix /var/opt/gitlab/gitaly/internal_sockets/test-3887b3ab.sock: bind: file name too long"
+{"gitaly":1600,"level":"warning","msg":"forwarding signal","signal":17,"time":"2020-01-15T12:23:47Z","wrapper":1594}
+{"gitaly":1600,"level":"error","msg":"wrapper for gitaly shutting down","time":"2020-01-15T12:23:48Z","wrapper":1594}
+{"level":"info","msg":"Wrapper started","time":"2020-01-15T12:23:48Z","wrapper":1608}
+{"level":"info","msg":"finding gitaly","pid_file":"/var/opt/gitlab/gitaly/gitaly.pid","time":"2020-01-15T12:23:48Z","wrapper":1608}
+{"level":"info","msg":"spawning a process","time":"2020-01-15T12:23:48Z","wrapper":1608}
+{"gitaly":1614,"level":"info","msg":"monitoring gitaly","time":"2020-01-15T12:23:48Z","wrapper":1608}
+time="2020-01-15T12:23:48Z" level=info msg="Starting Gitaly" version="Gitaly, version 1.77.1"
+time="2020-01-15T12:23:48Z" level=warning msg="git path not configured. Using default path resolution" resolvedPath=/opt/gitlab/embedded/bin/git
+time="2020-01-15T12:23:48Z" level=fatal msg="load config" config_path=/var/opt/gitlab/gitaly/config.toml error="socket could not be created in /var/opt/gitlab/gitaly/internal_sockets: listen unix /var/opt/gitlab/gitaly/internal_sockets/test-8291708e.sock: bind: file name too long"
+{"gitaly":1614,"level":"warning","msg":"forwarding signal","signal":17,"time":"2020-01-15T12:23:48Z","wrapper":1608}
+{"error":"os: process already finished","gitaly":1614,"level":"error","msg":"can't forward the signal","signal":17,"time":"2020-01-15T12:23:48Z","wrapper":1608}
+{"gitaly":1614,"level":"error","msg":"wrapper for gitaly shutting down","time":"2020-01-15T12:23:49Z","wrapper":1608}
+{"level":"info","msg":"Wrapper started","time":"2020-01-15T12:23:49Z","wrapper":1622}
+{"level":"info","msg":"finding gitaly","pid_file":"/var/opt/gitlab/gitaly/gitaly.pid","time":"2020-01-15T12:23:49Z","wrapper":1622}
+{"level":"info","msg":"spawning a process","time":"2020-01-15T12:23:49Z","wrapper":1622}
+{"gitaly":1631,"level":"info","msg":"monitoring gitaly","time":"2020-01-15T12:23:49Z","wrapper":1622}
+time="2020-01-15T12:23:49Z" level=info msg="Starting Gitaly" version="Gitaly, version 1.77.1"
+time="2020-01-15T12:23:49Z" level=warning msg="git path not configured. Using default path resolution" resolvedPath=/opt/gitlab/embedded/bin/git
+time="2020-01-15T12:23:49Z" level=fatal msg="load config" config_path=/var/opt/gitlab/gitaly/config.toml error="socket could not be created in /var/opt/gitlab/gitaly/internal_sockets: listen unix /var/opt/gitlab/gitaly/internal_sockets/test-9abd39a0.sock: bind: file name too long"
+{"gitaly":1631,"level":"warning","msg":"forwarding signal","signal":17,"time":"2020-01-15T12:23:49Z","wrapper":1622}
+{"error":"os: process already finished","gitaly":1631,"level":"error","msg":"can't forward the signal","signal":17,"time":"2020-01-15T12:23:49Z","wrapper":1622}
+{"gitaly":1631,"level":"error","msg":"wrapper for gitaly shutting down","time":"2020-01-15T12:23:50Z","wrapper":1622}
+{"level":"info","msg":"Wrapper started","time":"2020-01-15T12:23:50Z","wrapper":1638}
+{"level":"info","msg":"finding gitaly","pid_file":"/var/opt/gitlab/gitaly/gitaly.pid","time":"2020-01-15T12:23:50Z","wrapper":1638}
+{"level":"info","msg":"spawning a process","time":"2020-01-15T12:23:50Z","wrapper":1638}
+{"gitaly":1644,"level":"info","msg":"monitoring gitaly","time":"2020-01-15T12:23:50Z","wrapper":1638}
+time="2020-01-15T12:23:50Z" level=info msg="Starting Gitaly" version="Gitaly, version 1.77.1"
+time="2020-01-15T12:23:50Z" level=warning msg="git path not configured. Using default path resolution" resolvedPath=/opt/gitlab/embedded/bin/git
+time="2020-01-15T12:23:50Z" level=fatal msg="load config" config_path=/var/opt/gitlab/gitaly/config.toml error="socket could not be created in /var/opt/gitlab/gitaly/internal_sockets: listen unix /var/opt/gitlab/gitaly/internal_sockets/test-b0c019fe.sock: bind: file name too long"
+{"gitaly":1644,"level":"warning","msg":"forwarding signal","signal":17,"time":"2020-01-15T12:23:50Z","wrapper":1638}
+{"error":"os: process already finished","gitaly":1644,"level":"error","msg":"can't forward the signal","signal":17,"time":"2020-01-15T12:23:50Z","wrapper":1638}
+{"gitaly":1644,"level":"error","msg":"wrapper for gitaly shutting down","time":"2020-01-15T12:23:51Z","wrapper":1638}
+{"level":"info","msg":"Wrapper started","time":"2020-01-15T12:23:51Z","wrapper":1653}
+{"level":"info","msg":"finding gitaly","pid_file":"/var/opt/gitlab/gitaly/gitaly.pid","time":"2020-01-15T12:23:51Z","wrapper":1653}
+{"level":"info","msg":"spawning a process","time":"2020-01-15T12:23:51Z","wrapper":1653}
+{"gitaly":1659,"level":"info","msg":"monitoring gitaly","time":"2020-01-15T12:23:51Z","wrapper":1653}
+time="2020-01-15T12:23:51Z" level=info msg="Starting Gitaly" version="Gitaly, version 1.77.1"
+time="2020-01-15T12:23:51Z" level=warning msg="git path not configured. Using default path resolution" resolvedPath=/opt/gitlab/embedded/bin/git
+time="2020-01-15T12:23:51Z" level=fatal msg="load config" config_path=/var/opt/gitlab/gitaly/config.toml error="socket could not be created in /var/opt/gitlab/gitaly/internal_sockets: listen unix /var/opt/gitlab/gitaly/internal_sockets/test-c023cf9d.sock: bind: file name too long"
+{"gitaly":1659,"level":"warning","msg":"forwarding signal","signal":17,"time":"2020-01-15T12:23:51Z","wrapper":1653}
+{"error":"os: process already finished","gitaly":1659,"level":"error","msg":"can't forward the signal","signal":17,"time":"2020-01-15T12:23:51Z","wrapper":1653}
+{"gitaly":1659,"level":"error","msg":"wrapper for gitaly shutting down","time":"2020-01-15T12:23:52Z","wrapper":1653}
+{"level":"info","msg":"Wrapper started","time":"2020-01-15T12:23:52Z","wrapper":1667}
+{"level":"info","msg":"finding gitaly","pid_file":"/var/opt/gitlab/gitaly/gitaly.pid","time":"2020-01-15T12:23:52Z","wrapper":1667}
+{"level":"info","msg":"spawning a process","time":"2020-01-15T12:23:52Z","wrapper":1667}
+{"gitaly":1673,"level":"info","msg":"monitoring gitaly","time":"2020-01-15T12:23:52Z","wrapper":1667}
+time="2020-01-15T12:23:52Z" level=info msg="Starting Gitaly" version="Gitaly, version 1.77.1"
+time="2020-01-15T12:23:52Z" level=warning msg="git path not configured. Using default path resolution" resolvedPath=/opt/gitlab/embedded/bin/git
+time="2020-01-15T12:23:52Z" level=fatal msg="load config" config_path=/var/opt/gitlab/gitaly/config.toml error="socket could not be created in /var/opt/gitlab/gitaly/internal_sockets: listen unix /var/opt/gitlab/gitaly/internal_sockets/test-1022e38a.sock: bind: file name too long"
+{"gitaly":1673,"level":"warning","msg":"forwarding signal","signal":17,"time":"2020-01-15T12:23:52Z","wrapper":1667}
+{"error":"os: process already finished","gitaly":1673,"level":"error","msg":"can't forward the signal","signal":17,"time":"2020-01-15T12:23:54Z","wrapper":1667}
+{"gitaly":1673,"level":"error","msg":"wrapper for gitaly shutting down","time":"2020-01-15T12:23:53Z","wrapper":1667}
+{"level":"info","msg":"Wrapper started","time":"2020-01-15T12:23:54Z","wrapper":1682}
+{"level":"info","msg":"finding gitaly","pid_file":"/var/opt/gitlab/gitaly/gitaly.pid","time":"2020-01-15T12:23:54Z","wrapper":1682}
+{"level":"info","msg":"spawning a process","time":"2020-01-15T12:23:54Z","wrapper":1682}
+{"gitaly":1689,"level":"info","msg":"monitoring gitaly","time":"2020-01-15T12:23:54Z","wrapper":1682}
+time="2020-01-15T12:23:54Z" level=info msg="Starting Gitaly" version="Gitaly, version 1.77.1"
+time="2020-01-15T12:23:54Z" level=warning msg="git path not configured. Using default path resolution" resolvedPath=/opt/gitlab/embedded/bin/git
+time="2020-01-15T12:23:54Z" level=fatal msg="load config" config_path=/var/opt/gitlab/gitaly/config.toml error="socket could not be created in /var/opt/gitlab/gitaly/internal_sockets: listen unix /var/opt/gitlab/gitaly/internal_sockets/test-5f35dd15.sock: bind: file name too long"
+{"gitaly":1689,"level":"warning","msg":"forwarding signal","signal":17,"time":"2020-01-15T12:23:54Z","wrapper":1682}
+{"error":"os: process already finished","gitaly":1689,"level":"error","msg":"can't forward the signal","signal":17,"time":"2020-01-15T12:23:54Z","wrapper":1682}
+{"gitaly":1689,"level":"error","msg":"wrapper for gitaly shutting down","time":"2020-01-15T12:23:55Z","wrapper":1682}
+{"level":"info","msg":"Wrapper started","time":"2020-01-15T12:23:55Z","wrapper":1695}
+{"level":"info","msg":"finding gitaly","pid_file":"/var/opt/gitlab/gitaly/gitaly.pid","time":"2020-01-15T12:23:55Z","wrapper":1695}
+{"level":"info","msg":"spawning a process","time":"2020-01-15T12:23:55Z","wrapper":1695}
+{"gitaly":1702,"level":"info","msg":"monitoring gitaly","time":"2020-01-15T12:23:55Z","wrapper":1695}
+time="2020-01-15T12:23:55Z" level=info msg="Starting Gitaly" version="Gitaly, version 1.77.1"
+time="2020-01-15T12:23:55Z" level=warning msg="git path not configured. Using default path resolution" resolvedPath=/opt/gitlab/embedded/bin/git
+time="2020-01-15T12:23:55Z" level=fatal msg="load config" config_path=/var/opt/gitlab/gitaly/config.toml error="socket could not be created in /var/opt/gitlab/gitaly/internal_sockets: listen unix /var/opt/gitlab/gitaly/internal_sockets/test-8ac55c89.sock: bind: file name too long"
+{"gitaly":1702,"level":"warning","msg":"forwarding signal","signal":17,"time":"2020-01-15T12:23:55Z","wrapper":1695}
+{"error":"os: process already finished","gitaly":1702,"level":"error","msg":"can't forward the signal","signal":17,"time":"2020-01-15T12:23:55Z","wrapper":1695}
+{"gitaly":1702,"level":"error","msg":"wrapper for gitaly shutting down","time":"2020-01-15T12:23:56Z","wrapper":1695}
+{"level":"info","msg":"Wrapper started","time":"2020-01-15T12:23:56Z","wrapper":1708}
+{"level":"info","msg":"finding gitaly","pid_file":"/var/opt/gitlab/gitaly/gitaly.pid","time":"2020-01-15T12:23:56Z","wrapper":1708}
+{"level":"info","msg":"spawning a process","time":"2020-01-15T12:23:56Z","wrapper":1708}
+{"gitaly":1714,"level":"info","msg":"monitoring gitaly","time":"2020-01-15T12:23:56Z","wrapper":1708}
+time="2020-01-15T12:23:56Z" level=info msg="Starting Gitaly" version="Gitaly, version 1.77.1"
+time="2020-01-15T12:23:56Z" level=warning msg="git path not configured. Using default path resolution" resolvedPath=/opt/gitlab/embedded/bin/git
+time="2020-01-15T12:23:56Z" level=fatal msg="load config" config_path=/var/opt/gitlab/gitaly/config.toml error="socket could not be created in /var/opt/gitlab/gitaly/internal_sockets: listen unix /var/opt/gitlab/gitaly/internal_sockets/test-a862e85a.sock: bind: file name too long"
+{"gitaly":1714,"level":"warning","msg":"forwarding signal","signal":17,"time":"2020-01-15T12:23:56Z","wrapper":1708}
+{"error":"os: process already finished","gitaly":1714,"level":"error","msg":"can't forward the signal","signal":17,"time":"2020-01-15T12:23:56Z","wrapper":1708}
+{"gitaly":1714,"level":"error","msg":"wrapper for gitaly shutting down","time":"2020-01-15T12:23:57Z","wrapper":1708}
+{"level":"info","msg":"Wrapper started","time":"2020-01-15T12:23:57Z","wrapper":1740}
+{"level":"info","msg":"finding gitaly","pid_file":"/var/opt/gitlab/gitaly/gitaly.pid","time":"2020-01-15T12:23:57Z","wrapper":1740}
+{"level":"info","msg":"spawning a process","time":"2020-01-15T12:23:57Z","wrapper":1740}
+{"gitaly":1746,"level":"info","msg":"monitoring gitaly","time":"2020-01-15T12:23:57Z","wrapper":1740}
+time="2020-01-15T12:23:57Z" level=info msg="Starting Gitaly" version="Gitaly, version 1.77.1"
+time="2020-01-15T12:23:57Z" level=warning msg="git path not configured. Using default path resolution" resolvedPath=/opt/gitlab/embedded/bin/git
+time="2020-01-15T12:23:57Z" level=fatal msg="load config" config_path=/var/opt/gitlab/gitaly/config.toml error="socket could not be created in /var/opt/gitlab/gitaly/internal_sockets: listen unix /var/opt/gitlab/gitaly/internal_sockets/test-d68fe397.sock: bind: file name too long"
+{"gitaly":1746,"level":"warning","msg":"forwarding signal","signal":17,"time":"2020-01-15T12:23:57Z","wrapper":1740}
+{"error":"os: process already finished","gitaly":1746,"level":"error","msg":"can't forward the signal","signal":17,"time":"2020-01-15T12:23:57Z","wrapper":1740}
+{"gitaly":1746,"level":"error","msg":"wrapper for gitaly shutting down","time":"2020-01-15T12:23:58Z","wrapper":1740}
+{"level":"info","msg":"Wrapper started","time":"2020-01-15T12:23:58Z","wrapper":1755}
+{"level":"info","msg":"finding gitaly","pid_file":"/var/opt/gitlab/gitaly/gitaly.pid","time":"2020-01-15T12:23:58Z","wrapper":1755}
+{"level":"info","msg":"spawning a process","time":"2020-01-15T12:23:58Z","wrapper":1755}
+{"gitaly":1762,"level":"info","msg":"monitoring gitaly","time":"2020-01-15T12:23:58Z","wrapper":1755}
+time="2020-01-15T12:23:58Z" level=info msg="Starting Gitaly" version="Gitaly, version 1.77.1"
+time="2020-01-15T12:23:58Z" level=warning msg="git path not configured. Using default path resolution" resolvedPath=/opt/gitlab/embedded/bin/git
+time="2020-01-15T12:23:58Z" level=fatal msg="load config" config_path=/var/opt/gitlab/gitaly/config.toml error="socket could not be created in /var/opt/gitlab/gitaly/internal_sockets: listen unix /var/opt/gitlab/gitaly/internal_sockets/test-5be8d320.sock: bind: file name too long"
+{"gitaly":1762,"level":"warning","msg":"forwarding signal","signal":17,"time":"2020-01-15T12:23:58Z","wrapper":1755}
+{"error":"os: process already finished","gitaly":1762,"level":"error","msg":"can't forward the signal","signal":17,"time":"2020-01-15T12:23:58Z","wrapper":1755}
+{"gitaly":1762,"level":"error","msg":"wrapper for gitaly shutting down","time":"2020-01-15T12:23:59Z","wrapper":1755}
+{"level":"info","msg":"Wrapper started","time":"2020-01-15T12:23:59Z","wrapper":1776}
+{"level":"info","msg":"finding gitaly","pid_file":"/var/opt/gitlab/gitaly/gitaly.pid","time":"2020-01-15T12:23:59Z","wrapper":1776}
+{"level":"info","msg":"spawning a process","time":"2020-01-15T12:23:59Z","wrapper":1776}
+{"gitaly":1783,"level":"info","msg":"monitoring gitaly","time":"2020-01-15T12:23:59Z","wrapper":1776}
+time="2020-01-15T12:23:59Z" level=info msg="Starting Gitaly" version="Gitaly, version 1.77.1"
+time="2020-01-15T12:23:59Z" level=warning msg="git path not configured. Using default path resolution" resolvedPath=/opt/gitlab/embedded/bin/git
+time="2020-01-15T12:23:59Z" level=fatal msg="load config" config_path=/var/opt/gitlab/gitaly/config.toml error="socket could not be created in /var/opt/gitlab/gitaly/internal_sockets: listen unix /var/opt/gitlab/gitaly/internal_sockets/test-abc3765e.sock: bind: file name too long"
+{"gitaly":1783,"level":"warning","msg":"forwarding signal","signal":17,"time":"2020-01-15T12:23:59Z","wrapper":1776}
+{"error":"os: process already finished","gitaly":1783,"level":"error","msg":"can't forward the signal","signal":17,"time":"2020-01-15T12:23:59Z","wrapper":1776}
+{"gitaly":1783,"level":"error","msg":"wrapper for gitaly shutting down","time":"2020-01-15T12:24:00Z","wrapper":1776}
+{"level":"info","msg":"Wrapper started","time":"2020-01-15T12:24:00Z","wrapper":1790}
+{"level":"info","msg":"finding gitaly","pid_file":"/var/opt/gitlab/gitaly/gitaly.pid","time":"2020-01-15T12:24:00Z","wrapper":1790}
+{"level":"info","msg":"spawning a process","time":"2020-01-15T12:24:00Z","wrapper":1790}
+{"gitaly":1796,"level":"info","msg":"monitoring gitaly","time":"2020-01-15T12:24:00Z","wrapper":1790}
+time="2020-01-15T12:24:00Z" level=info msg="Starting Gitaly" version="Gitaly, version 1.77.1"
+time="2020-01-15T12:24:00Z" level=warning msg="git path not configured. Using default path resolution" resolvedPath=/opt/gitlab/embedded/bin/git
+time="2020-01-15T12:24:00Z" level=fatal msg="load config" config_path=/var/opt/gitlab/gitaly/config.toml error="socket could not be created in /var/opt/gitlab/gitaly/internal_sockets: listen unix /var/opt/gitlab/gitaly/internal_sockets/test-411d7a09.sock: bind: file name too long"
+{"gitaly":1796,"level":"warning","msg":"forwarding signal","signal":17,"time":"2020-01-15T12:24:00Z","wrapper":1790}
+{"error":"os: process already finished","gitaly":1796,"level":"error","msg":"can't forward the signal","signal":17,"time":"2020-01-15T12:24:00Z","wrapper":1790}
+{"gitaly":1796,"level":"error","msg":"wrapper for gitaly shutting down","time":"2020-01-15T12:24:01Z","wrapper":1790}
+{"level":"info","msg":"Wrapper started","time":"2020-01-15T12:24:01Z","wrapper":1806}
+{"level":"info","msg":"finding gitaly","pid_file":"/var/opt/gitlab/gitaly/gitaly.pid","time":"2020-01-15T12:24:01Z","wrapper":1806}
+{"level":"info","msg":"spawning a process","time":"2020-01-15T12:24:01Z","wrapper":1806}
+{"gitaly":1812,"level":"info","msg":"monitoring gitaly","time":"2020-01-15T12:24:01Z","wrapper":1806}
+time="2020-01-15T12:24:01Z" level=info msg="Starting Gitaly" version="Gitaly, version 1.77.1"
+time="2020-01-15T12:24:01Z" level=warning msg="git path not configured. Using default path resolution" resolvedPath=/opt/gitlab/embedded/bin/git
+time="2020-01-15T12:24:01Z" level=fatal msg="load config" config_path=/var/opt/gitlab/gitaly/config.toml error="socket could not be created in /var/opt/gitlab/gitaly/internal_sockets: listen unix /var/opt/gitlab/gitaly/internal_sockets/test-5798ddc3.sock: bind: file name too long"
+{"gitaly":1812,"level":"warning","msg":"forwarding signal","signal":17,"time":"2020-01-15T12:24:01Z","wrapper":1806}
+{"error":"os: process already finished","gitaly":1812,"level":"error","msg":"can't forward the signal","signal":17,"time":"2020-01-15T12:24:01Z","wrapper":1806}
+{"gitaly":1812,"level":"error","msg":"wrapper for gitaly shutting down","time":"2020-01-15T12:24:02Z","wrapper":1806}
+{"level":"info","msg":"Wrapper started","time":"2020-01-15T12:24:02Z","wrapper":1864}
+{"level":"info","msg":"finding gitaly","pid_file":"/var/opt/gitlab/gitaly/gitaly.pid","time":"2020-01-15T12:24:02Z","wrapper":1864}
+{"level":"info","msg":"spawning a process","time":"2020-01-15T12:24:02Z","wrapper":1864}
+{"gitaly":1870,"level":"info","msg":"monitoring gitaly","time":"2020-01-15T12:24:02Z","wrapper":1864}
+time="2020-01-15T12:24:02Z" level=info msg="Starting Gitaly" version="Gitaly, version 1.77.1"
+time="2020-01-15T12:24:02Z" level=warning msg="git path not configured. Using default path resolution" resolvedPath=/opt/gitlab/embedded/bin/git
+time="2020-01-15T12:24:02Z" level=fatal msg="load config" config_path=/var/opt/gitlab/gitaly/config.toml error="socket could not be created in /var/opt/gitlab/gitaly/internal_sockets: listen unix /var/opt/gitlab/gitaly/internal_sockets/test-96730f4b.sock: bind: file name too long"
+{"gitaly":1870,"level":"warning","msg":"forwarding signal","signal":17,"time":"2020-01-15T12:24:02Z","wrapper":1864}
+{"error":"os: process already finished","gitaly":1870,"level":"error","msg":"can't forward the signal","signal":17,"time":"2020-01-15T12:24:02Z","wrapper":1864}
+{"gitaly":1870,"level":"error","msg":"wrapper for gitaly shutting down","time":"2020-01-15T12:24:03Z","wrapper":1864}
+{"level":"info","msg":"Wrapper started","time":"2020-01-15T12:24:03Z","wrapper":1881}
+{"level":"info","msg":"finding gitaly","pid_file":"/var/opt/gitlab/gitaly/gitaly.pid","time":"2020-01-15T12:24:03Z","wrapper":1881}
+{"level":"info","msg":"spawning a process","time":"2020-01-15T12:24:03Z","wrapper":1881}
+{"gitaly":1887,"level":"info","msg":"monitoring gitaly","time":"2020-01-15T12:24:03Z","wrapper":1881}
+time="2020-01-15T12:24:03Z" level=info msg="Starting Gitaly" version="Gitaly, version 1.77.1"
+time="2020-01-15T12:24:03Z" level=warning msg="git path not configured. Using default path resolution" resolvedPath=/opt/gitlab/embedded/bin/git
+time="2020-01-15T12:24:03Z" level=fatal msg="load config" config_path=/var/opt/gitlab/gitaly/config.toml error="socket could not be created in /var/opt/gitlab/gitaly/internal_sockets: listen unix /var/opt/gitlab/gitaly/internal_sockets/test-df4da389.sock: bind: file name too long"
+{"gitaly":1887,"level":"warning","msg":"forwarding signal","signal":17,"time":"2020-01-15T12:24:03Z","wrapper":1881}
+{"error":"os: process already finished","gitaly":1887,"level":"error","msg":"can't forward the signal","signal":17,"time":"2020-01-15T12:24:03Z","wrapper":1881}
+{"gitaly":1887,"level":"error","msg":"wrapper for gitaly shutting down","time":"2020-01-15T12:24:04Z","wrapper":1881}
+{"level":"info","msg":"Wrapper started","time":"2020-01-15T12:24:04Z","wrapper":1896}
+{"level":"info","msg":"finding gitaly","pid_file":"/var/opt/gitlab/gitaly/gitaly.pid","time":"2020-01-15T12:24:04Z","wrapper":1896}
+{"level":"info","msg":"spawning a process","time":"2020-01-15T12:24:04Z","wrapper":1896}
+{"gitaly":1903,"level":"info","msg":"monitoring gitaly","time":"2020-01-15T12:24:04Z","wrapper":1896}
+time="2020-01-15T12:24:04Z" level=info msg="Starting Gitaly" version="Gitaly, version 1.77.1"
+time="2020-01-15T12:24:04Z" level=warning msg="git path not configured. Using default path resolution" resolvedPath=/opt/gitlab/embedded/bin/git
+time="2020-01-15T12:24:04Z" level=fatal msg="load config" config_path=/var/opt/gitlab/gitaly/config.toml error="socket could not be created in /var/opt/gitlab/gitaly/internal_sockets: listen unix /var/opt/gitlab/gitaly/internal_sockets/test-35f67223.sock: bind: file name too long"
+{"gitaly":1903,"level":"warning","msg":"forwarding signal","signal":17,"time":"2020-01-15T12:24:04Z","wrapper":1896}
+{"error":"os: process already finished","gitaly":1903,"level":"error","msg":"can't forward the signal","signal":17,"time":"2020-01-15T12:24:04Z","wrapper":1896}
+{"gitaly":1903,"level":"error","msg":"wrapper for gitaly shutting down","time":"2020-01-15T12:24:05Z","wrapper":1896}
+{"level":"info","msg":"Wrapper started","time":"2020-01-15T12:24:05Z","wrapper":1909}
+{"level":"info","msg":"finding gitaly","pid_file":"/var/opt/gitlab/gitaly/gitaly.pid","time":"2020-01-15T12:24:05Z","wrapper":1909}
+{"level":"info","msg":"spawning a process","time":"2020-01-15T12:24:05Z","wrapper":1909}
+{"gitaly":1915,"level":"info","msg":"monitoring gitaly","time":"2020-01-15T12:24:05Z","wrapper":1909}
+time="2020-01-15T12:24:05Z" level=info msg="Starting Gitaly" version="Gitaly, version 1.77.1"
+time="2020-01-15T12:24:05Z" level=warning msg="git path not configured. Using default path resolution" resolvedPath=/opt/gitlab/embedded/bin/git
+time="2020-01-15T12:24:05Z" level=fatal msg="load config" config_path=/var/opt/gitlab/gitaly/config.toml error="socket could not be created in /var/opt/gitlab/gitaly/internal_sockets: listen unix /var/opt/gitlab/gitaly/internal_sockets/test-f653faf3.sock: bind: file name too long"
+{"gitaly":1915,"level":"warning","msg":"forwarding signal","signal":17,"time":"2020-01-15T12:24:05Z","wrapper":1909}
+{"error":"os: process already finished","gitaly":1915,"level":"error","msg":"can't forward the signal","signal":17,"time":"2020-01-15T12:24:05Z","wrapper":1909}
+{"gitaly":1915,"level":"error","msg":"wrapper for gitaly shutting down","time":"2020-01-15T12:24:06Z","wrapper":1909}
+{"level":"info","msg":"Wrapper started","time":"2020-01-15T12:24:06Z","wrapper":1923}
+{"level":"info","msg":"finding gitaly","pid_file":"/var/opt/gitlab/gitaly/gitaly.pid","time":"2020-01-15T12:24:06Z","wrapper":1923}
+{"level":"info","msg":"spawning a process","time":"2020-01-15T12:24:06Z","wrapper":1923}
+{"gitaly":1929,"level":"info","msg":"monitoring gitaly","time":"2020-01-15T12:24:06Z","wrapper":1923}
+time="2020-01-15T12:24:06Z" level=info msg="Starting Gitaly" version="Gitaly, version 1.77.1"
+time="2020-01-15T12:24:06Z" level=warning msg="git path not configured. Using default path resolution" resolvedPath=/opt/gitlab/embedded/bin/git
+time="2020-01-15T12:24:06Z" level=fatal msg="load config" config_path=/var/opt/gitlab/gitaly/config.toml error="socket could not be created in /var/opt/gitlab/gitaly/internal_sockets: listen unix /var/opt/gitlab/gitaly/internal_sockets/test-6a0bf23f.sock: bind: file name too long"
+{"gitaly":1929,"level":"warning","msg":"forwarding signal","signal":17,"time":"2020-01-15T12:24:07Z","wrapper":1923}
+{"error":"os: process already finished","gitaly":1929,"level":"error","msg":"can't forward the signal","signal":17,"time":"2020-01-15T12:24:07Z","wrapper":1923}
+{"gitaly":1929,"level":"error","msg":"wrapper for gitaly shutting down","time":"2020-01-15T12:24:07Z","wrapper":1923}
+{"level":"info","msg":"Wrapper started","time":"2020-01-15T12:24:08Z","wrapper":1940}
+{"level":"info","msg":"finding gitaly","pid_file":"/var/opt/gitlab/gitaly/gitaly.pid","time":"2020-01-15T12:24:08Z","wrapper":1940}
+{"level":"info","msg":"spawning a process","time":"2020-01-15T12:24:08Z","wrapper":1940}
+{"gitaly":1947,"level":"info","msg":"monitoring gitaly","time":"2020-01-15T12:24:08Z","wrapper":1940}
+time="2020-01-15T12:24:08Z" level=info msg="Starting Gitaly" version="Gitaly, version 1.77.1"
+time="2020-01-15T12:24:08Z" level=warning msg="git path not configured. Using default path resolution" resolvedPath=/opt/gitlab/embedded/bin/git
+time="2020-01-15T12:24:08Z" level=fatal msg="load config" config_path=/var/opt/gitlab/gitaly/config.toml error="socket could not be created in /var/opt/gitlab/gitaly/internal_sockets: listen unix /var/opt/gitlab/gitaly/internal_sockets/test-fc699e10.sock: bind: file name too long"
+{"gitaly":1947,"level":"warning","msg":"forwarding signal","signal":17,"time":"2020-01-15T12:24:08Z","wrapper":1940}
+{"error":"os: process already finished","gitaly":1947,"level":"error","msg":"can't forward the signal","signal":17,"time":"2020-01-15T12:24:08Z","wrapper":1940}
+{"gitaly":1947,"level":"error","msg":"wrapper for gitaly shutting down","time":"2020-01-15T12:24:09Z","wrapper":1940}
+{"level":"info","msg":"Wrapper started","time":"2020-01-15T12:24:09Z","wrapper":1954}
+{"level":"info","msg":"finding gitaly","pid_file":"/var/opt/gitlab/gitaly/gitaly.pid","time":"2020-01-15T12:24:09Z","wrapper":1954}
+{"level":"info","msg":"spawning a process","time":"2020-01-15T12:24:09Z","wrapper":1954}
+{"gitaly":1964,"level":"info","msg":"monitoring gitaly","time":"2020-01-15T12:24:09Z","wrapper":1954}
+time="2020-01-15T12:24:09Z" level=info msg="Starting Gitaly" version="Gitaly, version 1.77.1"
+time="2020-01-15T12:24:09Z" level=warning msg="git path not configured. Using default path resolution" resolvedPath=/opt/gitlab/embedded/bin/git
+time="2020-01-15T12:24:09Z" level=fatal msg="load config" config_path=/var/opt/gitlab/gitaly/config.toml error="socket could not be created in /var/opt/gitlab/gitaly/internal_sockets: listen unix /var/opt/gitlab/gitaly/internal_sockets/test-80f34d8e.sock: bind: file name too long"
+{"gitaly":1964,"level":"warning","msg":"forwarding signal","signal":17,"time":"2020-01-15T12:24:09Z","wrapper":1954}
+{"error":"os: process already finished","gitaly":1964,"level":"error","msg":"can't forward the signal","signal":17,"time":"2020-01-15T12:24:09Z","wrapper":1954}
+{"gitaly":1964,"level":"error","msg":"wrapper for gitaly shutting down","time":"2020-01-15T12:24:10Z","wrapper":1954}
+{"level":"info","msg":"Wrapper started","time":"2020-01-15T12:24:10Z","wrapper":1973}
+{"level":"info","msg":"finding gitaly","pid_file":"/var/opt/gitlab/gitaly/gitaly.pid","time":"2020-01-15T12:24:10Z","wrapper":1973}
+{"level":"info","msg":"spawning a process","time":"2020-01-15T12:24:10Z","wrapper":1973}
+{"gitaly":1979,"level":"info","msg":"monitoring gitaly","time":"2020-01-15T12:24:10Z","wrapper":1973}
+time="2020-01-15T12:24:10Z" level=info msg="Starting Gitaly" version="Gitaly, version 1.77.1"
+time="2020-01-15T12:24:10Z" level=warning msg="git path not configured. Using default path resolution" resolvedPath=/opt/gitlab/embedded/bin/git
+time="2020-01-15T12:24:10Z" level=fatal msg="load config" config_path=/var/opt/gitlab/gitaly/config.toml error="socket could not be created in /var/opt/gitlab/gitaly/internal_sockets: listen unix /var/opt/gitlab/gitaly/internal_sockets/test-66852323.sock: bind: file name too long"
+{"gitaly":1979,"level":"warning","msg":"forwarding signal","signal":17,"time":"2020-01-15T12:24:10Z","wrapper":1973}
+{"error":"os: process already finished","gitaly":1979,"level":"error","msg":"can't forward the signal","signal":17,"time":"2020-01-15T12:24:10Z","wrapper":1973}
+{"gitaly":1979,"level":"error","msg":"wrapper for gitaly shutting down","time":"2020-01-15T12:24:11Z","wrapper":1973}
+{"level":"info","msg":"Wrapper started","time":"2020-01-15T12:24:11Z","wrapper":1989}
+{"level":"info","msg":"finding gitaly","pid_file":"/var/opt/gitlab/gitaly/gitaly.pid","time":"2020-01-15T12:24:11Z","wrapper":1989}
+{"level":"info","msg":"spawning a process","time":"2020-01-15T12:24:11Z","wrapper":1989}
+{"gitaly":1997,"level":"info","msg":"monitoring gitaly","time":"2020-01-15T12:24:11Z","wrapper":1989}
+time="2020-01-15T12:24:11Z" level=info msg="Starting Gitaly" version="Gitaly, version 1.77.1"
+time="2020-01-15T12:24:11Z" level=warning msg="git path not configured. Using default path resolution" resolvedPath=/opt/gitlab/embedded/bin/git
+time="2020-01-15T12:24:11Z" level=fatal msg="load config" config_path=/var/opt/gitlab/gitaly/config.toml error="socket could not be created in /var/opt/gitlab/gitaly/internal_sockets: listen unix /var/opt/gitlab/gitaly/internal_sockets/test-78d4b5d1.sock: bind: file name too long"
+{"gitaly":1997,"level":"warning","msg":"forwarding signal","signal":17,"time":"2020-01-15T12:24:11Z","wrapper":1989}
+{"error":"os: process already finished","gitaly":1997,"level":"error","msg":"can't forward the signal","signal":17,"time":"2020-01-15T12:24:11Z","wrapper":1989}
+{"gitaly":1997,"level":"error","msg":"wrapper for gitaly shutting down","time":"2020-01-15T12:24:12Z","wrapper":1989}
+{"level":"info","msg":"Wrapper started","time":"2020-01-15T12:24:12Z","wrapper":2013}
+{"level":"info","msg":"finding gitaly","pid_file":"/var/opt/gitlab/gitaly/gitaly.pid","time":"2020-01-15T12:24:12Z","wrapper":2013}
+{"level":"info","msg":"spawning a process","time":"2020-01-15T12:24:12Z","wrapper":2013}
+{"gitaly":2020,"level":"info","msg":"monitoring gitaly","time":"2020-01-15T12:24:12Z","wrapper":2013}
+time="2020-01-15T12:24:12Z" level=info msg="Starting Gitaly" version="Gitaly, version 1.77.1"
+time="2020-01-15T12:24:12Z" level=warning msg="git path not configured. Using default path resolution" resolvedPath=/opt/gitlab/embedded/bin/git
+time="2020-01-15T12:24:12Z" level=fatal msg="load config" config_path=/var/opt/gitlab/gitaly/config.toml error="socket could not be created in /var/opt/gitlab/gitaly/internal_sockets: listen unix /var/opt/gitlab/gitaly/internal_sockets/test-07ff2899.sock: bind: file name too long"
+{"gitaly":2020,"level":"warning","msg":"forwarding signal","signal":17,"time":"2020-01-15T12:24:12Z","wrapper":2013}
+{"error":"os: process already finished","gitaly":2020,"level":"error","msg":"can't forward the signal","signal":17,"time":"2020-01-15T12:24:12Z","wrapper":2013}
+{"gitaly":2020,"level":"error","msg":"wrapper for gitaly shutting down","time":"2020-01-15T12:24:13Z","wrapper":2013}
+{"level":"info","msg":"Wrapper started","time":"2020-01-15T12:24:13Z","wrapper":2026}
+{"level":"info","msg":"finding gitaly","pid_file":"/var/opt/gitlab/gitaly/gitaly.pid","time":"2020-01-15T12:24:13Z","wrapper":2026}
+{"level":"info","msg":"spawning a process","time":"2020-01-15T12:24:13Z","wrapper":2026}
+{"gitaly":2032,"level":"info","msg":"monitoring gitaly","time":"2020-01-15T12:24:13Z","wrapper":2026}
+time="2020-01-15T12:24:13Z" level=info msg="Starting Gitaly" version="Gitaly, version 1.77.1"
+time="2020-01-15T12:24:13Z" level=warning msg="git path not configured. Using default path resolution" resolvedPath=/opt/gitlab/embedded/bin/git
+time="2020-01-15T12:24:13Z" level=fatal msg="load config" config_path=/var/opt/gitlab/gitaly/config.toml error="socket could not be created in /var/opt/gitlab/gitaly/internal_sockets: listen unix /var/opt/gitlab/gitaly/internal_sockets/test-4bb5ffe7.sock: bind: file name too long"
+{"gitaly":2032,"level":"warning","msg":"forwarding signal","signal":17,"time":"2020-01-15T12:24:13Z","wrapper":2026}
+{"error":"os: process already finished","gitaly":2032,"level":"error","msg":"can't forward the signal","signal":17,"time":"2020-01-15T12:24:13Z","wrapper":2026}
+{"gitaly":2032,"level":"error","msg":"wrapper for gitaly shutting down","time":"2020-01-15T12:24:14Z","wrapper":2026}
+{"level":"info","msg":"Wrapper started","time":"2020-01-15T12:24:14Z","wrapper":2040}
+{"level":"info","msg":"finding gitaly","pid_file":"/var/opt/gitlab/gitaly/gitaly.pid","time":"2020-01-15T12:24:14Z","wrapper":2040}
+{"level":"info","msg":"spawning a process","time":"2020-01-15T12:24:14Z","wrapper":2040}
+{"gitaly":2046,"level":"info","msg":"monitoring gitaly","time":"2020-01-15T12:24:14Z","wrapper":2040}
+time="2020-01-15T12:24:14Z" level=info msg="Starting Gitaly" version="Gitaly, version 1.77.1"
+time="2020-01-15T12:24:14Z" level=warning msg="git path not configured. Using default path resolution" resolvedPath=/opt/gitlab/embedded/bin/git
+time="2020-01-15T12:24:14Z" level=fatal msg="load config" config_path=/var/opt/gitlab/gitaly/config.toml error="socket could not be created in /var/opt/gitlab/gitaly/internal_sockets: listen unix /var/opt/gitlab/gitaly/internal_sockets/test-e207952f.sock: bind: file name too long"
+{"gitaly":2046,"level":"warning","msg":"forwarding signal","signal":17,"time":"2020-01-15T12:24:14Z","wrapper":2040}
+{"error":"os: process already finished","gitaly":2046,"level":"error","msg":"can't forward the signal","signal":17,"time":"2020-01-15T12:24:14Z","wrapper":2040}
+{"gitaly":2046,"level":"error","msg":"wrapper for gitaly shutting down","time":"2020-01-15T12:24:15Z","wrapper":2040}
+{"level":"info","msg":"Wrapper started","time":"2020-01-15T12:24:15Z","wrapper":2053}
+{"level":"info","msg":"finding gitaly","pid_file":"/var/opt/gitlab/gitaly/gitaly.pid","time":"2020-01-15T12:24:15Z","wrapper":2053}
+{"level":"info","msg":"spawning a process","time":"2020-01-15T12:24:15Z","wrapper":2053}
+{"gitaly":2059,"level":"info","msg":"monitoring gitaly","time":"2020-01-15T12:24:15Z","wrapper":2053}
+time="2020-01-15T12:24:15Z" level=info msg="Starting Gitaly" version="Gitaly, version 1.77.1"
+time="2020-01-15T12:24:15Z" level=warning msg="git path not configured. Using default path resolution" resolvedPath=/opt/gitlab/embedded/bin/git
+time="2020-01-15T12:24:15Z" level=fatal msg="load config" config_path=/var/opt/gitlab/gitaly/config.toml error="socket could not be created in /var/opt/gitlab/gitaly/internal_sockets: listen unix /var/opt/gitlab/gitaly/internal_sockets/test-cf7822e9.sock: bind: file name too long"
+{"gitaly":2059,"level":"warning","msg":"forwarding signal","signal":17,"time":"2020-01-15T12:24:15Z","wrapper":2053}
+{"error":"os: process already finished","gitaly":2059,"level":"error","msg":"can't forward the signal","signal":17,"time":"2020-01-15T12:24:15Z","wrapper":2053}
+{"gitaly":2059,"level":"error","msg":"wrapper for gitaly shutting down","time":"2020-01-15T12:24:16Z","wrapper":2053}
+{"level":"info","msg":"Wrapper started","time":"2020-01-15T12:24:16Z","wrapper":2066}
+{"level":"info","msg":"finding gitaly","pid_file":"/var/opt/gitlab/gitaly/gitaly.pid","time":"2020-01-15T12:24:16Z","wrapper":2066}
+{"level":"info","msg":"spawning a process","time":"2020-01-15T12:24:16Z","wrapper":2066}
+{"gitaly":2072,"level":"info","msg":"monitoring gitaly","time":"2020-01-15T12:24:16Z","wrapper":2066}
+time="2020-01-15T12:24:16Z" level=info msg="Starting Gitaly" version="Gitaly, version 1.77.1"
+time="2020-01-15T12:24:16Z" level=warning msg="git path not configured. Using default path resolution" resolvedPath=/opt/gitlab/embedded/bin/git
+time="2020-01-15T12:24:17Z" level=fatal msg="load config" config_path=/var/opt/gitlab/gitaly/config.toml error="socket could not be created in /var/opt/gitlab/gitaly/internal_sockets: listen unix /var/opt/gitlab/gitaly/internal_sockets/test-8cae2365.sock: bind: file name too long"
+{"gitaly":2072,"level":"warning","msg":"forwarding signal","signal":17,"time":"2020-01-15T12:24:17Z","wrapper":2066}
+{"error":"os: process already finished","gitaly":2072,"level":"error","msg":"can't forward the signal","signal":17,"time":"2020-01-15T12:24:17Z","wrapper":2066}
+{"gitaly":2072,"level":"warning","msg":"forwarding signal","signal":15,"time":"2020-01-15T12:24:17Z","wrapper":2066}
+{"error":"os: process already finished","gitaly":2072,"level":"error","msg":"can't forward the signal","signal":15,"time":"2020-01-15T12:24:17Z","wrapper":2066}
+{"gitaly":2072,"level":"warning","msg":"forwarding signal","signal":18,"time":"2020-01-15T12:24:17Z","wrapper":2066}
+{"error":"os: process already finished","gitaly":2072,"level":"error","msg":"can't forward the signal","signal":18,"time":"2020-01-15T12:24:17Z","wrapper":2066}
+{"gitaly":2072,"level":"error","msg":"wrapper for gitaly shutting down","time":"2020-01-15T12:24:17Z","wrapper":2066}
+{"level":"info","msg":"Wrapper started","time":"2020-01-15T12:24:17Z","wrapper":2082}
+{"level":"info","msg":"finding gitaly","pid_file":"/var/opt/gitlab/gitaly/gitaly.pid","time":"2020-01-15T12:24:17Z","wrapper":2082}
+{"level":"info","msg":"spawning a process","time":"2020-01-15T12:24:17Z","wrapper":2082}
+{"gitaly":2088,"level":"info","msg":"monitoring gitaly","time":"2020-01-15T12:24:17Z","wrapper":2082}
+time="2020-01-15T12:24:17Z" level=info msg="Starting Gitaly" version="Gitaly, version 1.77.1"
+time="2020-01-15T12:24:17Z" level=warning msg="git path not configured. Using default path resolution" resolvedPath=/opt/gitlab/embedded/bin/git
+time="2020-01-15T12:24:18Z" level=fatal msg="load config" config_path=/var/opt/gitlab/gitaly/config.toml error="socket could not be created in /var/opt/gitlab/gitaly/internal_sockets: listen unix /var/opt/gitlab/gitaly/internal_sockets/test-718842c9.sock: bind: file name too long"
+{"gitaly":2088,"level":"warning","msg":"forwarding signal","signal":17,"time":"2020-01-15T12:24:18Z","wrapper":2082}
+{"error":"os: process already finished","gitaly":2088,"level":"error","msg":"can't forward the signal","signal":17,"time":"2020-01-15T12:24:18Z","wrapper":2082}
+{"gitaly":2088,"level":"error","msg":"wrapper for gitaly shutting down","time":"2020-01-15T12:24:18Z","wrapper":2082}
+{"level":"info","msg":"Wrapper started","time":"2020-01-15T12:24:18Z","wrapper":2115}
+{"level":"info","msg":"finding gitaly","pid_file":"/var/opt/gitlab/gitaly/gitaly.pid","time":"2020-01-15T12:24:18Z","wrapper":2115}
+{"level":"info","msg":"spawning a process","time":"2020-01-15T12:24:19Z","wrapper":2115}
+{"gitaly":2121,"level":"info","msg":"monitoring gitaly","time":"2020-01-15T12:24:19Z","wrapper":2115}
+time="2020-01-15T12:24:19Z" level=info msg="Starting Gitaly" version="Gitaly, version 1.77.1"
+time="2020-01-15T12:24:19Z" level=warning msg="git path not configured. Using default path resolution" resolvedPath=/opt/gitlab/embedded/bin/git
+time="2020-01-15T12:24:19Z" level=fatal msg="load config" config_path=/var/opt/gitlab/gitaly/config.toml error="socket could not be created in /var/opt/gitlab/gitaly/internal_sockets: listen unix /var/opt/gitlab/gitaly/internal_sockets/test-e4d5d6bf.sock: bind: file name too long"
+{"gitaly":2121,"level":"warning","msg":"forwarding signal","signal":17,"time":"2020-01-15T12:24:19Z","wrapper":2115}
+{"error":"os: process already finished","gitaly":2121,"level":"error","msg":"can't forward the signal","signal":17,"time":"2020-01-15T12:24:19Z","wrapper":2115}
+{"gitaly":2121,"level":"error","msg":"wrapper for gitaly shutting down","time":"2020-01-15T12:24:20Z","wrapper":2115}
+{"level":"info","msg":"Wrapper started","time":"2020-01-15T12:24:20Z","wrapper":2154}
+{"level":"info","msg":"finding gitaly","pid_file":"/var/opt/gitlab/gitaly/gitaly.pid","time":"2020-01-15T12:24:20Z","wrapper":2154}
+{"level":"info","msg":"spawning a process","time":"2020-01-15T12:24:20Z","wrapper":2154}
+{"gitaly":2161,"level":"info","msg":"monitoring gitaly","time":"2020-01-15T12:24:20Z","wrapper":2154}
+time="2020-01-15T12:24:20Z" level=info msg="Starting Gitaly" version="Gitaly, version 1.77.1"
+time="2020-01-15T12:24:20Z" level=warning msg="git path not configured. Using default path resolution" resolvedPath=/opt/gitlab/embedded/bin/git
+time="2020-01-15T12:24:20Z" level=fatal msg="load config" config_path=/var/opt/gitlab/gitaly/config.toml error="socket could not be created in /var/opt/gitlab/gitaly/internal_sockets: listen unix /var/opt/gitlab/gitaly/internal_sockets/test-ab6bf431.sock: bind: file name too long"
+{"gitaly":2161,"level":"warning","msg":"forwarding signal","signal":17,"time":"2020-01-15T12:24:20Z","wrapper":2154}
+{"error":"os: process already finished","gitaly":2161,"level":"error","msg":"can't forward the signal","signal":17,"time":"2020-01-15T12:24:20Z","wrapper":2154}
+{"gitaly":2161,"level":"error","msg":"wrapper for gitaly shutting down","time":"2020-01-15T12:24:21Z","wrapper":2154}
+{"level":"info","msg":"Wrapper started","time":"2020-01-15T12:24:21Z","wrapper":2185}
+{"level":"info","msg":"finding gitaly","pid_file":"/var/opt/gitlab/gitaly/gitaly.pid","time":"2020-01-15T12:24:21Z","wrapper":2185}
+{"level":"info","msg":"spawning a process","time":"2020-01-15T12:24:21Z","wrapper":2185}
+{"gitaly":2191,"level":"info","msg":"monitoring gitaly","time":"2020-01-15T12:24:21Z","wrapper":2185}
+time="2020-01-15T12:24:21Z" level=info msg="Starting Gitaly" version="Gitaly, version 1.77.1"
+time="2020-01-15T12:24:21Z" level=warning msg="git path not configured. Using default path resolution" resolvedPath=/opt/gitlab/embedded/bin/git
+time="2020-01-15T12:24:21Z" level=fatal msg="load config" config_path=/var/opt/gitlab/gitaly/config.toml error="socket could not be created in /var/opt/gitlab/gitaly/internal_sockets: listen unix /var/opt/gitlab/gitaly/internal_sockets/test-61e9adf6.sock: bind: file name too long"
+{"gitaly":2191,"level":"warning","msg":"forwarding signal","signal":17,"time":"2020-01-15T12:24:21Z","wrapper":2185}
+{"error":"os: process already finished","gitaly":2191,"level":"error","msg":"can't forward the signal","signal":17,"time":"2020-01-15T12:24:21Z","wrapper":2185}
+{"gitaly":2191,"level":"error","msg":"wrapper for gitaly shutting down","time":"2020-01-15T12:24:22Z","wrapper":2185}
+{"level":"info","msg":"Wrapper started","time":"2020-01-15T12:24:22Z","wrapper":2202}
+{"level":"info","msg":"finding gitaly","pid_file":"/var/opt/gitlab/gitaly/gitaly.pid","time":"2020-01-15T12:24:22Z","wrapper":2202}
+{"level":"info","msg":"spawning a process","time":"2020-01-15T12:24:22Z","wrapper":2202}
+{"gitaly":2208,"level":"info","msg":"monitoring gitaly","time":"2020-01-15T12:24:22Z","wrapper":2202}
+time="2020-01-15T12:24:22Z" level=info msg="Starting Gitaly" version="Gitaly, version 1.77.1"
+time="2020-01-15T12:24:22Z" level=warning msg="git path not configured. Using default path resolution" resolvedPath=/opt/gitlab/embedded/bin/git
+time="2020-01-15T12:24:22Z" level=fatal msg="load config" config_path=/var/opt/gitlab/gitaly/config.toml error="socket could not be created in /var/opt/gitlab/gitaly/internal_sockets: listen unix /var/opt/gitlab/gitaly/internal_sockets/test-ffc454af.sock: bind: file name too long"
+{"gitaly":2208,"level":"warning","msg":"forwarding signal","signal":17,"time":"2020-01-15T12:24:22Z","wrapper":2202}
+{"error":"os: process already finished","gitaly":2208,"level":"error","msg":"can't forward the signal","signal":17,"time":"2020-01-15T12:24:22Z","wrapper":2202}
+{"gitaly":2208,"level":"error","msg":"wrapper for gitaly shutting down","time":"2020-01-15T12:24:23Z","wrapper":2202}
+{"level":"info","msg":"Wrapper started","time":"2020-01-15T12:24:23Z","wrapper":2221}
+{"level":"info","msg":"finding gitaly","pid_file":"/var/opt/gitlab/gitaly/gitaly.pid","time":"2020-01-15T12:24:23Z","wrapper":2221}
+{"level":"info","msg":"spawning a process","time":"2020-01-15T12:24:23Z","wrapper":2221}
+{"gitaly":2227,"level":"info","msg":"monitoring gitaly","time":"2020-01-15T12:24:23Z","wrapper":2221}
+time="2020-01-15T12:24:23Z" level=info msg="Starting Gitaly" version="Gitaly, version 1.77.1"
+time="2020-01-15T12:24:23Z" level=warning msg="git path not configured. Using default path resolution" resolvedPath=/opt/gitlab/embedded/bin/git
+time="2020-01-15T12:24:23Z" level=fatal msg="load config" config_path=/var/opt/gitlab/gitaly/config.toml error="socket could not be created in /var/opt/gitlab/gitaly/internal_sockets: listen unix /var/opt/gitlab/gitaly/internal_sockets/test-884fa0ec.sock: bind: file name too long"
+{"gitaly":2227,"level":"warning","msg":"forwarding signal","signal":17,"time":"2020-01-15T12:24:23Z","wrapper":2221}
+{"error":"os: process already finished","gitaly":2227,"level":"error","msg":"can't forward the signal","signal":17,"time":"2020-01-15T12:24:23Z","wrapper":2221}
+{"gitaly":2227,"level":"error","msg":"wrapper for gitaly shutting down","time":"2020-01-15T12:24:24Z","wrapper":2221}
+{"level":"info","msg":"Wrapper started","time":"2020-01-15T12:24:24Z","wrapper":2240}
+{"level":"info","msg":"finding gitaly","pid_file":"/var/opt/gitlab/gitaly/gitaly.pid","time":"2020-01-15T12:24:24Z","wrapper":2240}
+{"level":"info","msg":"spawning a process","time":"2020-01-15T12:24:24Z","wrapper":2240}
+{"gitaly":2248,"level":"info","msg":"monitoring gitaly","time":"2020-01-15T12:24:24Z","wrapper":2240}
+time="2020-01-15T12:24:24Z" level=info msg="Starting Gitaly" version="Gitaly, version 1.77.1"
+time="2020-01-15T12:24:24Z" level=warning msg="git path not configured. Using default path resolution" resolvedPath=/opt/gitlab/embedded/bin/git
+time="2020-01-15T12:24:24Z" level=fatal msg="load config" config_path=/var/opt/gitlab/gitaly/config.toml error="socket could not be created in /var/opt/gitlab/gitaly/internal_sockets: listen unix /var/opt/gitlab/gitaly/internal_sockets/test-7d5144cf.sock: bind: file name too long"
+{"gitaly":2248,"level":"warning","msg":"forwarding signal","signal":17,"time":"2020-01-15T12:24:24Z","wrapper":2240}
+{"error":"os: process already finished","gitaly":2248,"level":"error","msg":"can't forward the signal","signal":17,"time":"2020-01-15T12:24:24Z","wrapper":2240}
+{"gitaly":2248,"level":"error","msg":"wrapper for gitaly shutting down","time":"2020-01-15T12:24:25Z","wrapper":2240}
+{"level":"info","msg":"Wrapper started","time":"2020-01-15T12:24:25Z","wrapper":2260}
+{"level":"info","msg":"finding gitaly","pid_file":"/var/opt/gitlab/gitaly/gitaly.pid","time":"2020-01-15T12:24:25Z","wrapper":2260}
+{"level":"info","msg":"spawning a process","time":"2020-01-15T12:24:25Z","wrapper":2260}
+{"gitaly":2266,"level":"info","msg":"monitoring gitaly","time":"2020-01-15T12:24:25Z","wrapper":2260}
+time="2020-01-15T12:24:25Z" level=info msg="Starting Gitaly" version="Gitaly, version 1.77.1"
+time="2020-01-15T12:24:25Z" level=warning msg="git path not configured. Using default path resolution" resolvedPath=/opt/gitlab/embedded/bin/git
+time="2020-01-15T12:24:25Z" level=fatal msg="load config" config_path=/var/opt/gitlab/gitaly/config.toml error="socket could not be created in /var/opt/gitlab/gitaly/internal_sockets: listen unix /var/opt/gitlab/gitaly/internal_sockets/test-6b8e3e44.sock: bind: file name too long"
+{"gitaly":2266,"level":"warning","msg":"forwarding signal","signal":17,"time":"2020-01-15T12:24:25Z","wrapper":2260}
+{"error":"os: process already finished","gitaly":2266,"level":"error","msg":"can't forward the signal","signal":17,"time":"2020-01-15T12:24:25Z","wrapper":2260}
+{"gitaly":2266,"level":"error","msg":"wrapper for gitaly shutting down","time":"2020-01-15T12:24:26Z","wrapper":2260}
+{"level":"info","msg":"Wrapper started","time":"2020-01-15T12:24:26Z","wrapper":2276}
+{"level":"info","msg":"finding gitaly","pid_file":"/var/opt/gitlab/gitaly/gitaly.pid","time":"2020-01-15T12:24:26Z","wrapper":2276}
+{"level":"info","msg":"spawning a process","time":"2020-01-15T12:24:26Z","wrapper":2276}
+{"gitaly":2282,"level":"info","msg":"monitoring gitaly","time":"2020-01-15T12:24:26Z","wrapper":2276}
+time="2020-01-15T12:24:26Z" level=info msg="Starting Gitaly" version="Gitaly, version 1.77.1"
+time="2020-01-15T12:24:26Z" level=warning msg="git path not configured. Using default path resolution" resolvedPath=/opt/gitlab/embedded/bin/git
+time="2020-01-15T12:24:26Z" level=fatal msg="load config" config_path=/var/opt/gitlab/gitaly/config.toml error="socket could not be created in /var/opt/gitlab/gitaly/internal_sockets: listen unix /var/opt/gitlab/gitaly/internal_sockets/test-afe9330a.sock: bind: file name too long"
+{"gitaly":2282,"level":"warning","msg":"forwarding signal","signal":17,"time":"2020-01-15T12:24:26Z","wrapper":2276}
+{"error":"os: process already finished","gitaly":2282,"level":"error","msg":"can't forward the signal","signal":17,"time":"2020-01-15T12:24:26Z","wrapper":2276}
+{"gitaly":2282,"level":"error","msg":"wrapper for gitaly shutting down","time":"2020-01-15T12:24:27Z","wrapper":2276}
+{"level":"info","msg":"Wrapper started","time":"2020-01-15T12:24:27Z","wrapper":2299}
+{"level":"info","msg":"finding gitaly","pid_file":"/var/opt/gitlab/gitaly/gitaly.pid","time":"2020-01-15T12:24:27Z","wrapper":2299}
+{"level":"info","msg":"spawning a process","time":"2020-01-15T12:24:27Z","wrapper":2299}
+{"gitaly":2307,"level":"info","msg":"monitoring gitaly","time":"2020-01-15T12:24:27Z","wrapper":2299}
+time="2020-01-15T12:24:27Z" level=info msg="Starting Gitaly" version="Gitaly, version 1.77.1"
+time="2020-01-15T12:24:27Z" level=warning msg="git path not configured. Using default path resolution" resolvedPath=/opt/gitlab/embedded/bin/git
+time="2020-01-15T12:24:27Z" level=fatal msg="load config" config_path=/var/opt/gitlab/gitaly/config.toml error="socket could not be created in /var/opt/gitlab/gitaly/internal_sockets: listen unix /var/opt/gitlab/gitaly/internal_sockets/test-1b0bcc90.sock: bind: file name too long"
+{"gitaly":2307,"level":"warning","msg":"forwarding signal","signal":17,"time":"2020-01-15T12:24:27Z","wrapper":2299}
+{"error":"os: process already finished","gitaly":2307,"level":"error","msg":"can't forward the signal","signal":17,"time":"2020-01-15T12:24:27Z","wrapper":2299}
+{"gitaly":2307,"level":"error","msg":"wrapper for gitaly shutting down","time":"2020-01-15T12:24:28Z","wrapper":2299}
+{"level":"info","msg":"Wrapper started","time":"2020-01-15T12:24:28Z","wrapper":2317}
+{"level":"info","msg":"finding gitaly","pid_file":"/var/opt/gitlab/gitaly/gitaly.pid","time":"2020-01-15T12:24:28Z","wrapper":2317}
+{"level":"info","msg":"spawning a process","time":"2020-01-15T12:24:28Z","wrapper":2317}
+{"gitaly":2323,"level":"info","msg":"monitoring gitaly","time":"2020-01-15T12:24:28Z","wrapper":2317}
+time="2020-01-15T12:24:28Z" level=info msg="Starting Gitaly" version="Gitaly, version 1.77.1"
+time="2020-01-15T12:24:28Z" level=warning msg="git path not configured. Using default path resolution" resolvedPath=/opt/gitlab/embedded/bin/git
+time="2020-01-15T12:24:28Z" level=fatal msg="load config" config_path=/var/opt/gitlab/gitaly/config.toml error="socket could not be created in /var/opt/gitlab/gitaly/internal_sockets: listen unix /var/opt/gitlab/gitaly/internal_sockets/test-f7dcb5e9.sock: bind: file name too long"
+{"gitaly":2323,"level":"warning","msg":"forwarding signal","signal":17,"time":"2020-01-15T12:24:28Z","wrapper":2317}
+{"error":"os: process already finished","gitaly":2323,"level":"error","msg":"can't forward the signal","signal":17,"time":"2020-01-15T12:24:28Z","wrapper":2317}
+{"gitaly":2323,"level":"error","msg":"wrapper for gitaly shutting down","time":"2020-01-15T12:24:29Z","wrapper":2317}
+{"level":"info","msg":"Wrapper started","time":"2020-01-15T12:24:29Z","wrapper":2332}
+{"level":"info","msg":"finding gitaly","pid_file":"/var/opt/gitlab/gitaly/gitaly.pid","time":"2020-01-15T12:24:29Z","wrapper":2332}
+{"level":"info","msg":"spawning a process","time":"2020-01-15T12:24:29Z","wrapper":2332}
+{"gitaly":2338,"level":"info","msg":"monitoring gitaly","time":"2020-01-15T12:24:29Z","wrapper":2332}
+time="2020-01-15T12:24:29Z" level=info msg="Starting Gitaly" version="Gitaly, version 1.77.1"
+time="2020-01-15T12:24:29Z" level=warning msg="git path not configured. Using default path resolution" resolvedPath=/opt/gitlab/embedded/bin/git
+time="2020-01-15T12:24:29Z" level=fatal msg="load config" config_path=/var/opt/gitlab/gitaly/config.toml error="socket could not be created in /var/opt/gitlab/gitaly/internal_sockets: listen unix /var/opt/gitlab/gitaly/internal_sockets/test-0ed956d4.sock: bind: file name too long"
+{"gitaly":2338,"level":"warning","msg":"forwarding signal","signal":17,"time":"2020-01-15T12:24:29Z","wrapper":2332}
+{"error":"os: process already finished","gitaly":2338,"level":"error","msg":"can't forward the signal","signal":17,"time":"2020-01-15T12:24:29Z","wrapper":2332}
+{"gitaly":2338,"level":"error","msg":"wrapper for gitaly shutting down","time":"2020-01-15T12:24:30Z","wrapper":2332}
+{"level":"info","msg":"Wrapper started","time":"2020-01-15T12:24:30Z","wrapper":2346}
+{"level":"info","msg":"finding gitaly","pid_file":"/var/opt/gitlab/gitaly/gitaly.pid","time":"2020-01-15T12:24:30Z","wrapper":2346}
+{"level":"info","msg":"spawning a process","time":"2020-01-15T12:24:30Z","wrapper":2346}
+{"gitaly":2352,"level":"info","msg":"monitoring gitaly","time":"2020-01-15T12:24:30Z","wrapper":2346}
+time="2020-01-15T12:24:30Z" level=info msg="Starting Gitaly" version="Gitaly, version 1.77.1"
+time="2020-01-15T12:24:30Z" level=warning msg="git path not configured. Using default path resolution" resolvedPath=/opt/gitlab/embedded/bin/git
+time="2020-01-15T12:24:30Z" level=fatal msg="load config" config_path=/var/opt/gitlab/gitaly/config.toml error="socket could not be created in /var/opt/gitlab/gitaly/internal_sockets: listen unix /var/opt/gitlab/gitaly/internal_sockets/test-dcfbeb10.sock: bind: file name too long"
+{"gitaly":2352,"level":"warning","msg":"forwarding signal","signal":17,"time":"2020-01-15T12:24:30Z","wrapper":2346}
+{"error":"os: process already finished","gitaly":2352,"level":"error","msg":"can't forward the signal","signal":17,"time":"2020-01-15T12:24:30Z","wrapper":2346}
+{"gitaly":2352,"level":"error","msg":"wrapper for gitaly shutting down","time":"2020-01-15T12:24:31Z","wrapper":2346}
+{"level":"info","msg":"Wrapper started","time":"2020-01-15T12:24:31Z","wrapper":2362}
+{"level":"info","msg":"finding gitaly","pid_file":"/var/opt/gitlab/gitaly/gitaly.pid","time":"2020-01-15T12:24:31Z","wrapper":2362}
+{"level":"info","msg":"spawning a process","time":"2020-01-15T12:24:31Z","wrapper":2362}
+{"gitaly":2368,"level":"info","msg":"monitoring gitaly","time":"2020-01-15T12:24:31Z","wrapper":2362}
+time="2020-01-15T12:24:31Z" level=info msg="Starting Gitaly" version="Gitaly, version 1.77.1"
+time="2020-01-15T12:24:31Z" level=warning msg="git path not configured. Using default path resolution" resolvedPath=/opt/gitlab/embedded/bin/git
+time="2020-01-15T12:24:31Z" level=fatal msg="load config" config_path=/var/opt/gitlab/gitaly/config.toml error="socket could not be created in /var/opt/gitlab/gitaly/internal_sockets: listen unix /var/opt/gitlab/gitaly/internal_sockets/test-b4a40a22.sock: bind: file name too long"
+{"gitaly":2368,"level":"warning","msg":"forwarding signal","signal":17,"time":"2020-01-15T12:24:31Z","wrapper":2362}
+{"error":"os: process already finished","gitaly":2368,"level":"error","msg":"can't forward the signal","signal":17,"time":"2020-01-15T12:24:31Z","wrapper":2362}
+{"gitaly":2368,"level":"error","msg":"wrapper for gitaly shutting down","time":"2020-01-15T12:24:32Z","wrapper":2362}
+{"level":"info","msg":"Wrapper started","time":"2020-01-15T12:24:32Z","wrapper":2377}
+{"level":"info","msg":"finding gitaly","pid_file":"/var/opt/gitlab/gitaly/gitaly.pid","time":"2020-01-15T12:24:32Z","wrapper":2377}
+{"level":"info","msg":"spawning a process","time":"2020-01-15T12:24:32Z","wrapper":2377}
+{"gitaly":2383,"level":"info","msg":"monitoring gitaly","time":"2020-01-15T12:24:32Z","wrapper":2377}
+time="2020-01-15T12:24:32Z" level=info msg="Starting Gitaly" version="Gitaly, version 1.77.1"
+time="2020-01-15T12:24:32Z" level=warning msg="git path not configured. Using default path resolution" resolvedPath=/opt/gitlab/embedded/bin/git
+time="2020-01-15T12:24:32Z" level=fatal msg="load config" config_path=/var/opt/gitlab/gitaly/config.toml error="socket could not be created in /var/opt/gitlab/gitaly/internal_sockets: listen unix /var/opt/gitlab/gitaly/internal_sockets/test-42a6c840.sock: bind: file name too long"
+{"gitaly":2383,"level":"warning","msg":"forwarding signal","signal":17,"time":"2020-01-15T12:24:32Z","wrapper":2377}
+{"error":"os: process already finished","gitaly":2383,"level":"error","msg":"can't forward the signal","signal":17,"time":"2020-01-15T12:24:32Z","wrapper":2377}
+{"gitaly":2383,"level":"error","msg":"wrapper for gitaly shutting down","time":"2020-01-15T12:24:33Z","wrapper":2377}
+{"level":"info","msg":"Wrapper started","time":"2020-01-15T12:24:33Z","wrapper":2394}
+{"level":"info","msg":"finding gitaly","pid_file":"/var/opt/gitlab/gitaly/gitaly.pid","time":"2020-01-15T12:24:33Z","wrapper":2394}
+{"level":"info","msg":"spawning a process","time":"2020-01-15T12:24:33Z","wrapper":2394}
+{"gitaly":2400,"level":"info","msg":"monitoring gitaly","time":"2020-01-15T12:24:33Z","wrapper":2394}
+time="2020-01-15T12:24:33Z" level=info msg="Starting Gitaly" version="Gitaly, version 1.77.1"
+time="2020-01-15T12:24:33Z" level=warning msg="git path not configured. Using default path resolution" resolvedPath=/opt/gitlab/embedded/bin/git
+time="2020-01-15T12:24:33Z" level=fatal msg="load config" config_path=/var/opt/gitlab/gitaly/config.toml error="socket could not be created in /var/opt/gitlab/gitaly/internal_sockets: listen unix /var/opt/gitlab/gitaly/internal_sockets/test-89c80e49.sock: bind: file name too long"
+{"gitaly":2400,"level":"warning","msg":"forwarding signal","signal":17,"time":"2020-01-15T12:24:33Z","wrapper":2394}
+{"error":"os: process already finished","gitaly":2400,"level":"error","msg":"can't forward the signal","signal":17,"time":"2020-01-15T12:24:33Z","wrapper":2394}
+{"gitaly":2400,"level":"error","msg":"wrapper for gitaly shutting down","time":"2020-01-15T12:24:34Z","wrapper":2394}
+{"level":"info","msg":"Wrapper started","time":"2020-01-15T12:24:35Z","wrapper":2411}
+{"level":"info","msg":"finding gitaly","pid_file":"/var/opt/gitlab/gitaly/gitaly.pid","time":"2020-01-15T12:24:35Z","wrapper":2411}
+{"level":"info","msg":"spawning a process","time":"2020-01-15T12:24:35Z","wrapper":2411}
+{"gitaly":2418,"level":"info","msg":"monitoring gitaly","time":"2020-01-15T12:24:35Z","wrapper":2411}
+time="2020-01-15T12:24:35Z" level=info msg="Starting Gitaly" version="Gitaly, version 1.77.1"
+time="2020-01-15T12:24:35Z" level=warning msg="git path not configured. Using default path resolution" resolvedPath=/opt/gitlab/embedded/bin/git
+time="2020-01-15T12:24:35Z" level=fatal msg="load config" config_path=/var/opt/gitlab/gitaly/config.toml error="socket could not be created in /var/opt/gitlab/gitaly/internal_sockets: listen unix /var/opt/gitlab/gitaly/internal_sockets/test-f8e7744b.sock: bind: file name too long"
+{"gitaly":2418,"level":"warning","msg":"forwarding signal","signal":17,"time":"2020-01-15T12:24:35Z","wrapper":2411}
+{"error":"os: process already finished","gitaly":2418,"level":"error","msg":"can't forward the signal","signal":17,"time":"2020-01-15T12:24:35Z","wrapper":2411}
+{"gitaly":2418,"level":"error","msg":"wrapper for gitaly shutting down","time":"2020-01-15T12:24:36Z","wrapper":2411}
+{"level":"info","msg":"Wrapper started","time":"2020-01-15T12:24:36Z","wrapper":2426}
+{"level":"info","msg":"finding gitaly","pid_file":"/var/opt/gitlab/gitaly/gitaly.pid","time":"2020-01-15T12:24:36Z","wrapper":2426}
+{"level":"info","msg":"spawning a process","time":"2020-01-15T12:24:36Z","wrapper":2426}
+{"gitaly":2432,"level":"info","msg":"monitoring gitaly","time":"2020-01-15T12:24:36Z","wrapper":2426}
+time="2020-01-15T12:24:36Z" level=info msg="Starting Gitaly" version="Gitaly, version 1.77.1"
+time="2020-01-15T12:24:36Z" level=warning msg="git path not configured. Using default path resolution" resolvedPath=/opt/gitlab/embedded/bin/git
+time="2020-01-15T12:24:36Z" level=fatal msg="load config" config_path=/var/opt/gitlab/gitaly/config.toml error="socket could not be created in /var/opt/gitlab/gitaly/internal_sockets: listen unix /var/opt/gitlab/gitaly/internal_sockets/test-dd016e4e.sock: bind: file name too long"
+{"gitaly":2432,"level":"warning","msg":"forwarding signal","signal":17,"time":"2020-01-15T12:24:36Z","wrapper":2426}
+{"error":"os: process already finished","gitaly":2432,"level":"error","msg":"can't forward the signal","signal":17,"time":"2020-01-15T12:24:36Z","wrapper":2426}
+{"gitaly":2432,"level":"error","msg":"wrapper for gitaly shutting down","time":"2020-01-15T12:24:37Z","wrapper":2426}
+{"level":"info","msg":"Wrapper started","time":"2020-01-15T12:24:37Z","wrapper":2440}
+{"level":"info","msg":"finding gitaly","pid_file":"/var/opt/gitlab/gitaly/gitaly.pid","time":"2020-01-15T12:24:37Z","wrapper":2440}
+{"level":"info","msg":"spawning a process","time":"2020-01-15T12:24:37Z","wrapper":2440}
+{"gitaly":2446,"level":"info","msg":"monitoring gitaly","time":"2020-01-15T12:24:37Z","wrapper":2440}
+time="2020-01-15T12:24:37Z" level=info msg="Starting Gitaly" version="Gitaly, version 1.77.1"
+time="2020-01-15T12:24:37Z" level=warning msg="git path not configured. Using default path resolution" resolvedPath=/opt/gitlab/embedded/bin/git
+time="2020-01-15T12:24:37Z" level=fatal msg="load config" config_path=/var/opt/gitlab/gitaly/config.toml error="socket could not be created in /var/opt/gitlab/gitaly/internal_sockets: listen unix /var/opt/gitlab/gitaly/internal_sockets/test-a0397d8d.sock: bind: file name too long"
+{"gitaly":2446,"level":"warning","msg":"forwarding signal","signal":17,"time":"2020-01-15T12:24:37Z","wrapper":2440}
+{"error":"os: process already finished","gitaly":2446,"level":"error","msg":"can't forward the signal","signal":17,"time":"2020-01-15T12:24:37Z","wrapper":2440}
+{"gitaly":2446,"level":"error","msg":"wrapper for gitaly shutting down","time":"2020-01-15T12:24:38Z","wrapper":2440}
+{"level":"info","msg":"Wrapper started","time":"2020-01-15T12:24:38Z","wrapper":2454}
+{"level":"info","msg":"finding gitaly","pid_file":"/var/opt/gitlab/gitaly/gitaly.pid","time":"2020-01-15T12:24:38Z","wrapper":2454}
+{"level":"info","msg":"spawning a process","time":"2020-01-15T12:24:38Z","wrapper":2454}
+{"gitaly":2460,"level":"info","msg":"monitoring gitaly","time":"2020-01-15T12:24:38Z","wrapper":2454}
+time="2020-01-15T12:24:38Z" level=info msg="Starting Gitaly" version="Gitaly, version 1.77.1"
+time="2020-01-15T12:24:38Z" level=warning msg="git path not configured. Using default path resolution" resolvedPath=/opt/gitlab/embedded/bin/git
+time="2020-01-15T12:24:38Z" level=fatal msg="load config" config_path=/var/opt/gitlab/gitaly/config.toml error="socket could not be created in /var/opt/gitlab/gitaly/internal_sockets: listen unix /var/opt/gitlab/gitaly/internal_sockets/test-8e621e2e.sock: bind: file name too long"
+{"gitaly":2460,"level":"warning","msg":"forwarding signal","signal":17,"time":"2020-01-15T12:24:38Z","wrapper":2454}
+{"error":"os: process already finished","gitaly":2460,"level":"error","msg":"can't forward the signal","signal":17,"time":"2020-01-15T12:24:38Z","wrapper":2454}
+{"gitaly":2460,"level":"error","msg":"wrapper for gitaly shutting down","time":"2020-01-15T12:24:39Z","wrapper":2454}
+{"level":"info","msg":"Wrapper started","time":"2020-01-15T12:24:39Z","wrapper":2468}
+{"level":"info","msg":"finding gitaly","pid_file":"/var/opt/gitlab/gitaly/gitaly.pid","time":"2020-01-15T12:24:39Z","wrapper":2468}
+{"level":"info","msg":"spawning a process","time":"2020-01-15T12:24:39Z","wrapper":2468}
+{"gitaly":2474,"level":"info","msg":"monitoring gitaly","time":"2020-01-15T12:24:39Z","wrapper":2468}
+time="2020-01-15T12:24:39Z" level=info msg="Starting Gitaly" version="Gitaly, version 1.77.1"
+time="2020-01-15T12:24:39Z" level=warning msg="git path not configured. Using default path resolution" resolvedPath=/opt/gitlab/embedded/bin/git
+time="2020-01-15T12:24:39Z" level=fatal msg="load config" config_path=/var/opt/gitlab/gitaly/config.toml error="socket could not be created in /var/opt/gitlab/gitaly/internal_sockets: listen unix /var/opt/gitlab/gitaly/internal_sockets/test-7222572f.sock: bind: file name too long"
+{"gitaly":2474,"level":"warning","msg":"forwarding signal","signal":17,"time":"2020-01-15T12:24:39Z","wrapper":2468}
+{"error":"os: process already finished","gitaly":2474,"level":"error","msg":"can't forward the signal","signal":17,"time":"2020-01-15T12:24:39Z","wrapper":2468}
+{"gitaly":2474,"level":"error","msg":"wrapper for gitaly shutting down","time":"2020-01-15T12:24:40Z","wrapper":2468}
+{"level":"info","msg":"Wrapper started","time":"2020-01-15T12:24:40Z","wrapper":2484}
+{"level":"info","msg":"finding gitaly","pid_file":"/var/opt/gitlab/gitaly/gitaly.pid","time":"2020-01-15T12:24:40Z","wrapper":2484}
+{"level":"info","msg":"spawning a process","time":"2020-01-15T12:24:40Z","wrapper":2484}
+{"gitaly":2490,"level":"info","msg":"monitoring gitaly","time":"2020-01-15T12:24:40Z","wrapper":2484}
+time="2020-01-15T12:24:40Z" level=info msg="Starting Gitaly" version="Gitaly, version 1.77.1"
+time="2020-01-15T12:24:40Z" level=warning msg="git path not configured. Using default path resolution" resolvedPath=/opt/gitlab/embedded/bin/git
+time="2020-01-15T12:24:40Z" level=fatal msg="load config" config_path=/var/opt/gitlab/gitaly/config.toml error="socket could not be created in /var/opt/gitlab/gitaly/internal_sockets: listen unix /var/opt/gitlab/gitaly/internal_sockets/test-77d40097.sock: bind: file name too long"
+{"gitaly":2490,"level":"warning","msg":"forwarding signal","signal":17,"time":"2020-01-15T12:24:40Z","wrapper":2484}
+{"error":"os: process already finished","gitaly":2490,"level":"error","msg":"can't forward the signal","signal":17,"time":"2020-01-15T12:24:40Z","wrapper":2484}
+{"gitaly":2490,"level":"error","msg":"wrapper for gitaly shutting down","time":"2020-01-15T12:24:41Z","wrapper":2484}
+{"level":"info","msg":"Wrapper started","time":"2020-01-15T12:24:41Z","wrapper":2499}
+{"level":"info","msg":"finding gitaly","pid_file":"/var/opt/gitlab/gitaly/gitaly.pid","time":"2020-01-15T12:24:41Z","wrapper":2499}
+{"level":"info","msg":"spawning a process","time":"2020-01-15T12:24:41Z","wrapper":2499}
+{"gitaly":2505,"level":"info","msg":"monitoring gitaly","time":"2020-01-15T12:24:41Z","wrapper":2499}
+time="2020-01-15T12:24:41Z" level=info msg="Starting Gitaly" version="Gitaly, version 1.77.1"
+time="2020-01-15T12:24:41Z" level=warning msg="git path not configured. Using default path resolution" resolvedPath=/opt/gitlab/embedded/bin/git
+time="2020-01-15T12:24:41Z" level=fatal msg="load config" config_path=/var/opt/gitlab/gitaly/config.toml error="socket could not be created in /var/opt/gitlab/gitaly/internal_sockets: listen unix /var/opt/gitlab/gitaly/internal_sockets/test-af36695c.sock: bind: file name too long"
+{"gitaly":2505,"level":"warning","msg":"forwarding signal","signal":17,"time":"2020-01-15T12:24:41Z","wrapper":2499}
+{"error":"os: process already finished","gitaly":2505,"level":"error","msg":"can't forward the signal","signal":17,"time":"2020-01-15T12:24:41Z","wrapper":2499}
+{"gitaly":2505,"level":"error","msg":"wrapper for gitaly shutting down","time":"2020-01-15T12:24:42Z","wrapper":2499}
+{"level":"info","msg":"Wrapper started","time":"2020-01-15T12:24:42Z","wrapper":2522}
+{"level":"info","msg":"finding gitaly","pid_file":"/var/opt/gitlab/gitaly/gitaly.pid","time":"2020-01-15T12:24:42Z","wrapper":2522}
+{"level":"info","msg":"spawning a process","time":"2020-01-15T12:24:42Z","wrapper":2522}
+{"gitaly":2528,"level":"info","msg":"monitoring gitaly","time":"2020-01-15T12:24:42Z","wrapper":2522}
+time="2020-01-15T12:24:42Z" level=info msg="Starting Gitaly" version="Gitaly, version 1.77.1"
+time="2020-01-15T12:24:42Z" level=warning msg="git path not configured. Using default path resolution" resolvedPath=/opt/gitlab/embedded/bin/git
+time="2020-01-15T12:24:42Z" level=fatal msg="load config" config_path=/var/opt/gitlab/gitaly/config.toml error="socket could not be created in /var/opt/gitlab/gitaly/internal_sockets: listen unix /var/opt/gitlab/gitaly/internal_sockets/test-5688f823.sock: bind: file name too long"
+{"gitaly":2528,"level":"warning","msg":"forwarding signal","signal":17,"time":"2020-01-15T12:24:42Z","wrapper":2522}
+{"error":"os: process already finished","gitaly":2528,"level":"error","msg":"can't forward the signal","signal":17,"time":"2020-01-15T12:24:42Z","wrapper":2522}
+{"gitaly":2528,"level":"error","msg":"wrapper for gitaly shutting down","time":"2020-01-15T12:24:43Z","wrapper":2522}
+{"level":"info","msg":"Wrapper started","time":"2020-01-15T12:24:43Z","wrapper":2538}
+{"level":"info","msg":"finding gitaly","pid_file":"/var/opt/gitlab/gitaly/gitaly.pid","time":"2020-01-15T12:24:43Z","wrapper":2538}
+{"level":"info","msg":"spawning a process","time":"2020-01-15T12:24:43Z","wrapper":2538}
+{"gitaly":2544,"level":"info","msg":"monitoring gitaly","time":"2020-01-15T12:24:43Z","wrapper":2538}
+time="2020-01-15T12:24:43Z" level=info msg="Starting Gitaly" version="Gitaly, version 1.77.1"
+time="2020-01-15T12:24:43Z" level=warning msg="git path not configured. Using default path resolution" resolvedPath=/opt/gitlab/embedded/bin/git
+time="2020-01-15T12:24:43Z" level=fatal msg="load config" config_path=/var/opt/gitlab/gitaly/config.toml error="socket could not be created in /var/opt/gitlab/gitaly/internal_sockets: listen unix /var/opt/gitlab/gitaly/internal_sockets/test-7731f82b.sock: bind: file name too long"
+{"gitaly":2544,"level":"warning","msg":"forwarding signal","signal":17,"time":"2020-01-15T12:24:43Z","wrapper":2538}
+{"error":"os: process already finished","gitaly":2544,"level":"error","msg":"can't forward the signal","signal":17,"time":"2020-01-15T12:24:43Z","wrapper":2538}
+{"gitaly":2544,"level":"error","msg":"wrapper for gitaly shutting down","time":"2020-01-15T12:24:44Z","wrapper":2538}
+{"level":"info","msg":"Wrapper started","time":"2020-01-15T12:24:44Z","wrapper":2552}
+{"level":"info","msg":"finding gitaly","pid_file":"/var/opt/gitlab/gitaly/gitaly.pid","time":"2020-01-15T12:24:44Z","wrapper":2552}
+{"level":"info","msg":"spawning a process","time":"2020-01-15T12:24:44Z","wrapper":2552}
+{"gitaly":2558,"level":"info","msg":"monitoring gitaly","time":"2020-01-15T12:24:44Z","wrapper":2552}
+time="2020-01-15T12:24:44Z" level=info msg="Starting Gitaly" version="Gitaly, version 1.77.1"
+time="2020-01-15T12:24:44Z" level=warning msg="git path not configured. Using default path resolution" resolvedPath=/opt/gitlab/embedded/bin/git
+time="2020-01-15T12:24:44Z" level=fatal msg="load config" config_path=/var/opt/gitlab/gitaly/config.toml error="socket could not be created in /var/opt/gitlab/gitaly/internal_sockets: listen unix /var/opt/gitlab/gitaly/internal_sockets/test-f6c169fa.sock: bind: file name too long"
+{"gitaly":2558,"level":"warning","msg":"forwarding signal","signal":17,"time":"2020-01-15T12:24:44Z","wrapper":2552}
+{"error":"os: process already finished","gitaly":2558,"level":"error","msg":"can't forward the signal","signal":17,"time":"2020-01-15T12:24:44Z","wrapper":2552}
+{"gitaly":2558,"level":"error","msg":"wrapper for gitaly shutting down","time":"2020-01-15T12:24:45Z","wrapper":2552}
+{"level":"info","msg":"Wrapper started","time":"2020-01-15T12:24:45Z","wrapper":2566}
+{"level":"info","msg":"finding gitaly","pid_file":"/var/opt/gitlab/gitaly/gitaly.pid","time":"2020-01-15T12:24:45Z","wrapper":2566}
+{"level":"info","msg":"spawning a process","time":"2020-01-15T12:24:45Z","wrapper":2566}
+{"gitaly":2572,"level":"info","msg":"monitoring gitaly","time":"2020-01-15T12:24:45Z","wrapper":2566}
+time="2020-01-15T12:24:45Z" level=info msg="Starting Gitaly" version="Gitaly, version 1.77.1"
+time="2020-01-15T12:24:45Z" level=warning msg="git path not configured. Using default path resolution" resolvedPath=/opt/gitlab/embedded/bin/git
+time="2020-01-15T12:24:45Z" level=fatal msg="load config" config_path=/var/opt/gitlab/gitaly/config.toml error="socket could not be created in /var/opt/gitlab/gitaly/internal_sockets: listen unix /var/opt/gitlab/gitaly/internal_sockets/test-2513eb37.sock: bind: file name too long"
+{"gitaly":2572,"level":"warning","msg":"forwarding signal","signal":17,"time":"2020-01-15T12:24:45Z","wrapper":2566}
+{"error":"os: process already finished","gitaly":2572,"level":"error","msg":"can't forward the signal","signal":17,"time":"2020-01-15T12:24:45Z","wrapper":2566}
+{"gitaly":2572,"level":"error","msg":"wrapper for gitaly shutting down","time":"2020-01-15T12:24:46Z","wrapper":2566}
+{"level":"info","msg":"Wrapper started","time":"2020-01-15T12:24:46Z","wrapper":2580}
+{"level":"info","msg":"finding gitaly","pid_file":"/var/opt/gitlab/gitaly/gitaly.pid","time":"2020-01-15T12:24:46Z","wrapper":2580}
+{"level":"info","msg":"spawning a process","time":"2020-01-15T12:24:46Z","wrapper":2580}
+{"gitaly":2587,"level":"info","msg":"monitoring gitaly","time":"2020-01-15T12:24:46Z","wrapper":2580}
+time="2020-01-15T12:24:46Z" level=info msg="Starting Gitaly" version="Gitaly, version 1.77.1"
+time="2020-01-15T12:24:46Z" level=warning msg="git path not configured. Using default path resolution" resolvedPath=/opt/gitlab/embedded/bin/git
+time="2020-01-15T12:24:46Z" level=fatal msg="load config" config_path=/var/opt/gitlab/gitaly/config.toml error="socket could not be created in /var/opt/gitlab/gitaly/internal_sockets: listen unix /var/opt/gitlab/gitaly/internal_sockets/test-f3be4361.sock: bind: file name too long"
+{"gitaly":2587,"level":"warning","msg":"forwarding signal","signal":17,"time":"2020-01-15T12:24:46Z","wrapper":2580}
+{"error":"os: process already finished","gitaly":2587,"level":"error","msg":"can't forward the signal","signal":17,"time":"2020-01-15T12:24:46Z","wrapper":2580}
+{"gitaly":2587,"level":"error","msg":"wrapper for gitaly shutting down","time":"2020-01-15T12:24:47Z","wrapper":2580}
+{"level":"info","msg":"Wrapper started","time":"2020-01-15T12:24:47Z","wrapper":2593}
+{"level":"info","msg":"finding gitaly","pid_file":"/var/opt/gitlab/gitaly/gitaly.pid","time":"2020-01-15T12:24:47Z","wrapper":2593}
+{"level":"info","msg":"spawning a process","time":"2020-01-15T12:24:47Z","wrapper":2593}
+{"gitaly":2599,"level":"info","msg":"monitoring gitaly","time":"2020-01-15T12:24:47Z","wrapper":2593}
+time="2020-01-15T12:24:47Z" level=info msg="Starting Gitaly" version="Gitaly, version 1.77.1"
+time="2020-01-15T12:24:47Z" level=warning msg="git path not configured. Using default path resolution" resolvedPath=/opt/gitlab/embedded/bin/git
+time="2020-01-15T12:24:47Z" level=fatal msg="load config" config_path=/var/opt/gitlab/gitaly/config.toml error="socket could not be created in /var/opt/gitlab/gitaly/internal_sockets: listen unix /var/opt/gitlab/gitaly/internal_sockets/test-c38ce2ec.sock: bind: file name too long"
+{"gitaly":2599,"level":"warning","msg":"forwarding signal","signal":17,"time":"2020-01-15T12:24:47Z","wrapper":2593}
+{"error":"os: process already finished","gitaly":2599,"level":"error","msg":"can't forward the signal","signal":17,"time":"2020-01-15T12:24:47Z","wrapper":2593}
+{"gitaly":2599,"level":"error","msg":"wrapper for gitaly shutting down","time":"2020-01-15T12:24:48Z","wrapper":2593}
+{"level":"info","msg":"Wrapper started","time":"2020-01-15T12:24:48Z","wrapper":2607}
+{"level":"info","msg":"finding gitaly","pid_file":"/var/opt/gitlab/gitaly/gitaly.pid","time":"2020-01-15T12:24:48Z","wrapper":2607}
+{"level":"info","msg":"spawning a process","time":"2020-01-15T12:24:48Z","wrapper":2607}
+{"gitaly":2614,"level":"info","msg":"monitoring gitaly","time":"2020-01-15T12:24:48Z","wrapper":2607}
+time="2020-01-15T12:24:48Z" level=info msg="Starting Gitaly" version="Gitaly, version 1.77.1"
+time="2020-01-15T12:24:48Z" level=warning msg="git path not configured. Using default path resolution" resolvedPath=/opt/gitlab/embedded/bin/git
+time="2020-01-15T12:24:48Z" level=fatal msg="load config" config_path=/var/opt/gitlab/gitaly/config.toml error="socket could not be created in /var/opt/gitlab/gitaly/internal_sockets: listen unix /var/opt/gitlab/gitaly/internal_sockets/test-e0af288d.sock: bind: file name too long"
+{"gitaly":2614,"level":"warning","msg":"forwarding signal","signal":17,"time":"2020-01-15T12:24:48Z","wrapper":2607}
+{"error":"os: process already finished","gitaly":2614,"level":"error","msg":"can't forward the signal","signal":17,"time":"2020-01-15T12:24:48Z","wrapper":2607}
+{"gitaly":2614,"level":"error","msg":"wrapper for gitaly shutting down","time":"2020-01-15T12:24:49Z","wrapper":2607}
+{"level":"info","msg":"Wrapper started","time":"2020-01-15T12:24:49Z","wrapper":2622}
+{"level":"info","msg":"finding gitaly","pid_file":"/var/opt/gitlab/gitaly/gitaly.pid","time":"2020-01-15T12:24:49Z","wrapper":2622}
+{"level":"info","msg":"spawning a process","time":"2020-01-15T12:24:49Z","wrapper":2622}
+{"gitaly":2628,"level":"info","msg":"monitoring gitaly","time":"2020-01-15T12:24:49Z","wrapper":2622}
+time="2020-01-15T12:24:49Z" level=info msg="Starting Gitaly" version="Gitaly, version 1.77.1"
+time="2020-01-15T12:24:49Z" level=warning msg="git path not configured. Using default path resolution" resolvedPath=/opt/gitlab/embedded/bin/git
+time="2020-01-15T12:24:49Z" level=fatal msg="load config" config_path=/var/opt/gitlab/gitaly/config.toml error="socket could not be created in /var/opt/gitlab/gitaly/internal_sockets: listen unix /var/opt/gitlab/gitaly/internal_sockets/test-df575748.sock: bind: file name too long"
+{"gitaly":2628,"level":"warning","msg":"forwarding signal","signal":17,"time":"2020-01-15T12:24:49Z","wrapper":2622}
+{"error":"os: process already finished","gitaly":2628,"level":"error","msg":"can't forward the signal","signal":17,"time":"2020-01-15T12:24:49Z","wrapper":2622}
+{"gitaly":2628,"level":"error","msg":"wrapper for gitaly shutting down","time":"2020-01-15T12:24:50Z","wrapper":2622}
+{"level":"info","msg":"Wrapper started","time":"2020-01-15T12:24:50Z","wrapper":2637}
+{"level":"info","msg":"finding gitaly","pid_file":"/var/opt/gitlab/gitaly/gitaly.pid","time":"2020-01-15T12:24:50Z","wrapper":2637}
+{"level":"info","msg":"spawning a process","time":"2020-01-15T12:24:50Z","wrapper":2637}
+{"gitaly":2643,"level":"info","msg":"monitoring gitaly","time":"2020-01-15T12:24:50Z","wrapper":2637}
+time="2020-01-15T12:24:50Z" level=info msg="Starting Gitaly" version="Gitaly, version 1.77.1"
+time="2020-01-15T12:24:50Z" level=warning msg="git path not configured. Using default path resolution" resolvedPath=/opt/gitlab/embedded/bin/git
+time="2020-01-15T12:24:51Z" level=fatal msg="load config" config_path=/var/opt/gitlab/gitaly/config.toml error="socket could not be created in /var/opt/gitlab/gitaly/internal_sockets: listen unix /var/opt/gitlab/gitaly/internal_sockets/test-9d66b62a.sock: bind: file name too long"
+{"gitaly":2643,"level":"warning","msg":"forwarding signal","signal":17,"time":"2020-01-15T12:24:51Z","wrapper":2637}
+{"error":"os: process already finished","gitaly":2643,"level":"error","msg":"can't forward the signal","signal":17,"time":"2020-01-15T12:24:51Z","wrapper":2637}
+{"gitaly":2643,"level":"error","msg":"wrapper for gitaly shutting down","time":"2020-01-15T12:24:51Z","wrapper":2637}
+{"level":"info","msg":"Wrapper started","time":"2020-01-15T12:24:51Z","wrapper":2652}
+{"level":"info","msg":"finding gitaly","pid_file":"/var/opt/gitlab/gitaly/gitaly.pid","time":"2020-01-15T12:24:51Z","wrapper":2652}
+{"level":"info","msg":"spawning a process","time":"2020-01-15T12:24:51Z","wrapper":2652}
+{"gitaly":2659,"level":"info","msg":"monitoring gitaly","time":"2020-01-15T12:24:51Z","wrapper":2652}
+time="2020-01-15T12:24:52Z" level=info msg="Starting Gitaly" version="Gitaly, version 1.77.1"
+time="2020-01-15T12:24:52Z" level=warning msg="git path not configured. Using default path resolution" resolvedPath=/opt/gitlab/embedded/bin/git
+time="2020-01-15T12:24:52Z" level=fatal msg="load config" config_path=/var/opt/gitlab/gitaly/config.toml error="socket could not be created in /var/opt/gitlab/gitaly/internal_sockets: listen unix /var/opt/gitlab/gitaly/internal_sockets/test-33cb368c.sock: bind: file name too long"
+{"gitaly":2659,"level":"warning","msg":"forwarding signal","signal":17,"time":"2020-01-15T12:24:52Z","wrapper":2652}
+{"error":"os: process already finished","gitaly":2659,"level":"error","msg":"can't forward the signal","signal":17,"time":"2020-01-15T12:24:52Z","wrapper":2652}
+{"gitaly":2659,"level":"error","msg":"wrapper for gitaly shutting down","time":"2020-01-15T12:24:52Z","wrapper":2652}
+{"level":"info","msg":"Wrapper started","time":"2020-01-15T12:24:53Z","wrapper":2665}
+{"level":"info","msg":"finding gitaly","pid_file":"/var/opt/gitlab/gitaly/gitaly.pid","time":"2020-01-15T12:24:53Z","wrapper":2665}
+{"level":"info","msg":"spawning a process","time":"2020-01-15T12:24:53Z","wrapper":2665}
+{"gitaly":2671,"level":"info","msg":"monitoring gitaly","time":"2020-01-15T12:24:53Z","wrapper":2665}
+time="2020-01-15T12:24:53Z" level=info msg="Starting Gitaly" version="Gitaly, version 1.77.1"
+time="2020-01-15T12:24:53Z" level=warning msg="git path not configured. Using default path resolution" resolvedPath=/opt/gitlab/embedded/bin/git
+time="2020-01-15T12:24:53Z" level=fatal msg="load config" config_path=/var/opt/gitlab/gitaly/config.toml error="socket could not be created in /var/opt/gitlab/gitaly/internal_sockets: listen unix /var/opt/gitlab/gitaly/internal_sockets/test-bdd4c0e5.sock: bind: file name too long"
+{"gitaly":2671,"level":"warning","msg":"forwarding signal","signal":17,"time":"2020-01-15T12:24:53Z","wrapper":2665}
+{"error":"os: process already finished","gitaly":2671,"level":"error","msg":"can't forward the signal","signal":17,"time":"2020-01-15T12:24:53Z","wrapper":2665}
+{"gitaly":2671,"level":"error","msg":"wrapper for gitaly shutting down","time":"2020-01-15T12:24:54Z","wrapper":2665}
+{"level":"info","msg":"Wrapper started","time":"2020-01-15T12:24:54Z","wrapper":2679}
+{"level":"info","msg":"finding gitaly","pid_file":"/var/opt/gitlab/gitaly/gitaly.pid","time":"2020-01-15T12:24:54Z","wrapper":2679}
+{"level":"info","msg":"spawning a process","time":"2020-01-15T12:24:54Z","wrapper":2679}
+{"gitaly":2685,"level":"info","msg":"monitoring gitaly","time":"2020-01-15T12:24:54Z","wrapper":2679}
+time="2020-01-15T12:24:54Z" level=info msg="Starting Gitaly" version="Gitaly, version 1.77.1"
+time="2020-01-15T12:24:54Z" level=warning msg="git path not configured. Using default path resolution" resolvedPath=/opt/gitlab/embedded/bin/git
+time="2020-01-15T12:24:54Z" level=fatal msg="load config" config_path=/var/opt/gitlab/gitaly/config.toml error="socket could not be created in /var/opt/gitlab/gitaly/internal_sockets: listen unix /var/opt/gitlab/gitaly/internal_sockets/test-f551593f.sock: bind: file name too long"
+{"gitaly":2685,"level":"warning","msg":"forwarding signal","signal":17,"time":"2020-01-15T12:24:54Z","wrapper":2679}
+{"error":"os: process already finished","gitaly":2685,"level":"error","msg":"can't forward the signal","signal":17,"time":"2020-01-15T12:24:54Z","wrapper":2679}
+{"gitaly":2685,"level":"error","msg":"wrapper for gitaly shutting down","time":"2020-01-15T12:24:55Z","wrapper":2679}
+{"level":"info","msg":"Wrapper started","time":"2020-01-15T12:24:55Z","wrapper":2695}
+{"level":"info","msg":"finding gitaly","pid_file":"/var/opt/gitlab/gitaly/gitaly.pid","time":"2020-01-15T12:24:55Z","wrapper":2695}
+{"level":"info","msg":"spawning a process","time":"2020-01-15T12:24:55Z","wrapper":2695}
+{"gitaly":2701,"level":"info","msg":"monitoring gitaly","time":"2020-01-15T12:24:55Z","wrapper":2695}
+time="2020-01-15T12:24:55Z" level=info msg="Starting Gitaly" version="Gitaly, version 1.77.1"
+time="2020-01-15T12:24:55Z" level=warning msg="git path not configured. Using default path resolution" resolvedPath=/opt/gitlab/embedded/bin/git
+time="2020-01-15T12:24:55Z" level=fatal msg="load config" config_path=/var/opt/gitlab/gitaly/config.toml error="socket could not be created in /var/opt/gitlab/gitaly/internal_sockets: listen unix /var/opt/gitlab/gitaly/internal_sockets/test-80ba3e60.sock: bind: file name too long"
+{"gitaly":2701,"level":"warning","msg":"forwarding signal","signal":17,"time":"2020-01-15T12:24:55Z","wrapper":2695}
+{"error":"os: process already finished","gitaly":2701,"level":"error","msg":"can't forward the signal","signal":17,"time":"2020-01-15T12:24:55Z","wrapper":2695}
+{"gitaly":2701,"level":"error","msg":"wrapper for gitaly shutting down","time":"2020-01-15T12:24:56Z","wrapper":2695}
+{"level":"info","msg":"Wrapper started","time":"2020-01-15T12:24:56Z","wrapper":2709}
+{"level":"info","msg":"finding gitaly","pid_file":"/var/opt/gitlab/gitaly/gitaly.pid","time":"2020-01-15T12:24:56Z","wrapper":2709}
+{"level":"info","msg":"spawning a process","time":"2020-01-15T12:24:56Z","wrapper":2709}
+{"gitaly":2715,"level":"info","msg":"monitoring gitaly","time":"2020-01-15T12:24:56Z","wrapper":2709}
+time="2020-01-15T12:24:56Z" level=info msg="Starting Gitaly" version="Gitaly, version 1.77.1"
+time="2020-01-15T12:24:56Z" level=warning msg="git path not configured. Using default path resolution" resolvedPath=/opt/gitlab/embedded/bin/git
+time="2020-01-15T12:24:56Z" level=fatal msg="load config" config_path=/var/opt/gitlab/gitaly/config.toml error="socket could not be created in /var/opt/gitlab/gitaly/internal_sockets: listen unix /var/opt/gitlab/gitaly/internal_sockets/test-8644adf9.sock: bind: file name too long"
+{"gitaly":2715,"level":"warning","msg":"forwarding signal","signal":17,"time":"2020-01-15T12:24:56Z","wrapper":2709}
+{"error":"os: process already finished","gitaly":2715,"level":"error","msg":"can't forward the signal","signal":17,"time":"2020-01-15T12:24:56Z","wrapper":2709}
+{"gitaly":2715,"level":"error","msg":"wrapper for gitaly shutting down","time":"2020-01-15T12:24:57Z","wrapper":2709}
+{"level":"info","msg":"Wrapper started","time":"2020-01-15T12:24:57Z","wrapper":2731}
+{"level":"info","msg":"finding gitaly","pid_file":"/var/opt/gitlab/gitaly/gitaly.pid","time":"2020-01-15T12:24:57Z","wrapper":2731}
+{"level":"info","msg":"spawning a process","time":"2020-01-15T12:24:57Z","wrapper":2731}
+{"gitaly":2737,"level":"info","msg":"monitoring gitaly","time":"2020-01-15T12:24:57Z","wrapper":2731}
+time="2020-01-15T12:24:57Z" level=info msg="Starting Gitaly" version="Gitaly, version 1.77.1"
+time="2020-01-15T12:24:57Z" level=warning msg="git path not configured. Using default path resolution" resolvedPath=/opt/gitlab/embedded/bin/git
+time="2020-01-15T12:24:57Z" level=fatal msg="load config" config_path=/var/opt/gitlab/gitaly/config.toml error="socket could not be created in /var/opt/gitlab/gitaly/internal_sockets: listen unix /var/opt/gitlab/gitaly/internal_sockets/test-7663616c.sock: bind: file name too long"
+{"gitaly":2737,"level":"warning","msg":"forwarding signal","signal":17,"time":"2020-01-15T12:24:57Z","wrapper":2731}
+{"error":"os: process already finished","gitaly":2737,"level":"error","msg":"can't forward the signal","signal":17,"time":"2020-01-15T12:24:57Z","wrapper":2731}
+{"gitaly":2737,"level":"error","msg":"wrapper for gitaly shutting down","time":"2020-01-15T12:24:58Z","wrapper":2731}
+{"level":"info","msg":"Wrapper started","time":"2020-01-15T12:24:58Z","wrapper":2757}
+{"level":"info","msg":"finding gitaly","pid_file":"/var/opt/gitlab/gitaly/gitaly.pid","time":"2020-01-15T12:24:58Z","wrapper":2757}
+{"level":"info","msg":"spawning a process","time":"2020-01-15T12:24:58Z","wrapper":2757}
+{"gitaly":2763,"level":"info","msg":"monitoring gitaly","time":"2020-01-15T12:24:58Z","wrapper":2757}
+time="2020-01-15T12:24:58Z" level=info msg="Starting Gitaly" version="Gitaly, version 1.77.1"
+time="2020-01-15T12:24:58Z" level=warning msg="git path not configured. Using default path resolution" resolvedPath=/opt/gitlab/embedded/bin/git
+time="2020-01-15T12:24:58Z" level=fatal msg="load config" config_path=/var/opt/gitlab/gitaly/config.toml error="socket could not be created in /var/opt/gitlab/gitaly/internal_sockets: listen unix /var/opt/gitlab/gitaly/internal_sockets/test-9ae33d1d.sock: bind: file name too long"
+{"gitaly":2763,"level":"warning","msg":"forwarding signal","signal":17,"time":"2020-01-15T12:24:58Z","wrapper":2757}
+{"error":"os: process already finished","gitaly":2763,"level":"error","msg":"can't forward the signal","signal":17,"time":"2020-01-15T12:24:58Z","wrapper":2757}
+{"gitaly":2763,"level":"error","msg":"wrapper for gitaly shutting down","time":"2020-01-15T12:24:59Z","wrapper":2757}
+{"level":"info","msg":"Wrapper started","time":"2020-01-15T12:24:59Z","wrapper":2782}
+{"level":"info","msg":"finding gitaly","pid_file":"/var/opt/gitlab/gitaly/gitaly.pid","time":"2020-01-15T12:24:59Z","wrapper":2782}
+{"level":"info","msg":"spawning a process","time":"2020-01-15T12:24:59Z","wrapper":2782}
+{"gitaly":2788,"level":"info","msg":"monitoring gitaly","time":"2020-01-15T12:24:59Z","wrapper":2782}
+time="2020-01-15T12:24:59Z" level=info msg="Starting Gitaly" version="Gitaly, version 1.77.1"
+time="2020-01-15T12:24:59Z" level=warning msg="git path not configured. Using default path resolution" resolvedPath=/opt/gitlab/embedded/bin/git
+time="2020-01-15T12:24:59Z" level=fatal msg="load config" config_path=/var/opt/gitlab/gitaly/config.toml error="socket could not be created in /var/opt/gitlab/gitaly/internal_sockets: listen unix /var/opt/gitlab/gitaly/internal_sockets/test-a0044f87.sock: bind: file name too long"
+{"gitaly":2788,"level":"warning","msg":"forwarding signal","signal":17,"time":"2020-01-15T12:24:59Z","wrapper":2782}
+{"error":"os: process already finished","gitaly":2788,"level":"error","msg":"can't forward the signal","signal":17,"time":"2020-01-15T12:24:59Z","wrapper":2782}
+{"gitaly":2788,"level":"error","msg":"wrapper for gitaly shutting down","time":"2020-01-15T12:25:00Z","wrapper":2782}
+{"level":"info","msg":"Wrapper started","time":"2020-01-15T12:25:00Z","wrapper":2798}
+{"level":"info","msg":"finding gitaly","pid_file":"/var/opt/gitlab/gitaly/gitaly.pid","time":"2020-01-15T12:25:00Z","wrapper":2798}
+{"level":"info","msg":"spawning a process","time":"2020-01-15T12:25:00Z","wrapper":2798}
+{"gitaly":2805,"level":"info","msg":"monitoring gitaly","time":"2020-01-15T12:25:00Z","wrapper":2798}
+time="2020-01-15T12:25:00Z" level=info msg="Starting Gitaly" version="Gitaly, version 1.77.1"
+time="2020-01-15T12:25:00Z" level=warning msg="git path not configured. Using default path resolution" resolvedPath=/opt/gitlab/embedded/bin/git
+time="2020-01-15T12:25:00Z" level=fatal msg="load config" config_path=/var/opt/gitlab/gitaly/config.toml error="socket could not be created in /var/opt/gitlab/gitaly/internal_sockets: listen unix /var/opt/gitlab/gitaly/internal_sockets/test-70e169c0.sock: bind: file name too long"
+{"gitaly":2805,"level":"warning","msg":"forwarding signal","signal":17,"time":"2020-01-15T12:25:00Z","wrapper":2798}
+{"error":"os: process already finished","gitaly":2805,"level":"error","msg":"can't forward the signal","signal":17,"time":"2020-01-15T12:25:00Z","wrapper":2798}
+{"gitaly":2805,"level":"warning","msg":"forwarding signal","signal":15,"time":"2020-01-15T12:25:00Z","wrapper":2798}
+{"error":"os: process already finished","gitaly":2805,"level":"error","msg":"can't forward the signal","signal":15,"time":"2020-01-15T12:25:00Z","wrapper":2798}
+{"gitaly":2805,"level":"warning","msg":"forwarding signal","signal":18,"time":"2020-01-15T12:25:00Z","wrapper":2798}
+{"error":"os: process already finished","gitaly":2805,"level":"error","msg":"can't forward the signal","signal":18,"time":"2020-01-15T12:25:00Z","wrapper":2798}
+{"gitaly":2805,"level":"error","msg":"wrapper for gitaly shutting down","time":"2020-01-15T12:25:01Z","wrapper":2798}

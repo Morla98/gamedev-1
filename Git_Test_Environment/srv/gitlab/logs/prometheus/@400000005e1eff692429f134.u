@@ -1,0 +1,35 @@
+2020-01-15_11:52:25.70953 level=info ts=2020-01-15T11:52:25.707Z caller=main.go:293 msg="no time or size retention was set so using the default time retention" duration=15d
+2020-01-15_11:52:25.71123 level=info ts=2020-01-15T11:52:25.709Z caller=main.go:329 msg="Starting Prometheus" version="(version=2.12.0, branch=master, revision=)"
+2020-01-15_11:52:25.71159 level=info ts=2020-01-15T11:52:25.709Z caller=main.go:330 build_context="(go=go1.12.13, user=GitLab-Omnibus, date=)"
+2020-01-15_11:52:25.71191 level=info ts=2020-01-15T11:52:25.709Z caller=main.go:331 host_details="(Linux 4.9.184-linuxkit #1 SMP Tue Jul 2 22:58:16 UTC 2019 x86_64 b2742740c304 (none))"
+2020-01-15_11:52:25.71232 level=info ts=2020-01-15T11:52:25.709Z caller=main.go:332 fd_limits="(soft=50000, hard=50000)"
+2020-01-15_11:52:25.71267 level=info ts=2020-01-15T11:52:25.709Z caller=main.go:333 vm_limits="(soft=unlimited, hard=unlimited)"
+2020-01-15_11:52:25.72286 level=info ts=2020-01-15T11:52:25.722Z caller=web.go:448 component=web msg="Start listening for connections" address=localhost:9090
+2020-01-15_11:52:25.72333 level=info ts=2020-01-15T11:52:25.722Z caller=main.go:654 msg="Starting TSDB ..."
+2020-01-15_11:52:25.83747 level=info ts=2020-01-15T11:52:25.836Z caller=head.go:509 component=tsdb msg="replaying WAL, this may take awhile"
+2020-01-15_11:52:27.11675 level=info ts=2020-01-15T11:52:27.116Z caller=head.go:557 component=tsdb msg="WAL segment loaded" segment=0 maxSegment=1
+2020-01-15_11:52:27.13624 level=info ts=2020-01-15T11:52:27.128Z caller=head.go:557 component=tsdb msg="WAL segment loaded" segment=1 maxSegment=1
+2020-01-15_11:52:27.19011 level=info ts=2020-01-15T11:52:27.190Z caller=main.go:669 fs_type=65735546
+2020-01-15_11:52:27.19046 level=info ts=2020-01-15T11:52:27.190Z caller=main.go:670 msg="TSDB started"
+2020-01-15_11:52:27.19094 level=info ts=2020-01-15T11:52:27.190Z caller=main.go:740 msg="Loading configuration file" filename=/var/opt/gitlab/prometheus/prometheus.yml
+2020-01-15_11:52:27.22197 level=error ts=2020-01-15T11:52:27.221Z caller=manager.go:334 component="discovery manager scrape" msg="Cannot create service discovery" err="unable to load specified CA cert /var/run/secrets/kubernetes.io/serviceaccount/ca.crt: open /var/run/secrets/kubernetes.io/serviceaccount/ca.crt: no such file or directory" type=*kubernetes.SDConfig
+2020-01-15_11:52:27.22275 level=error ts=2020-01-15T11:52:27.222Z caller=manager.go:334 component="discovery manager scrape" msg="Cannot create service discovery" err="unable to load specified CA cert /var/run/secrets/kubernetes.io/serviceaccount/ca.crt: open /var/run/secrets/kubernetes.io/serviceaccount/ca.crt: no such file or directory" type=*kubernetes.SDConfig
+2020-01-15_11:52:27.23403 level=error ts=2020-01-15T11:52:27.233Z caller=manager.go:334 component="discovery manager scrape" msg="Cannot create service discovery" err="unable to load specified CA cert /var/run/secrets/kubernetes.io/serviceaccount/ca.crt: open /var/run/secrets/kubernetes.io/serviceaccount/ca.crt: no such file or directory" type=*kubernetes.SDConfig
+2020-01-15_11:52:27.48408 level=info ts=2020-01-15T11:52:27.484Z caller=main.go:768 msg="Completed loading of configuration file" filename=/var/opt/gitlab/prometheus/prometheus.yml
+2020-01-15_11:52:27.48445 level=info ts=2020-01-15T11:52:27.484Z caller=main.go:623 msg="Server is ready to receive web requests."
+2020-01-15_11:52:32.48614 level=error ts=2020-01-15T11:52:32.485Z caller=manager.go:123 component="scrape manager" msg="error creating new scrape pool" err="error creating HTTP client: unable to load specified CA cert /var/run/secrets/kubernetes.io/serviceaccount/ca.crt: open /var/run/secrets/kubernetes.io/serviceaccount/ca.crt: no such file or directory" scrape_pool=kubernetes-cadvisor
+2020-01-15_11:52:32.48652 level=error ts=2020-01-15T11:52:32.485Z caller=manager.go:123 component="scrape manager" msg="error creating new scrape pool" err="error creating HTTP client: unable to load specified CA cert /var/run/secrets/kubernetes.io/serviceaccount/ca.crt: open /var/run/secrets/kubernetes.io/serviceaccount/ca.crt: no such file or directory" scrape_pool=kubernetes-nodes
+2020-01-15_11:52:32.48685 level=error ts=2020-01-15T11:52:32.485Z caller=manager.go:123 component="scrape manager" msg="error creating new scrape pool" err="error creating HTTP client: unable to load specified CA cert /var/run/secrets/kubernetes.io/serviceaccount/ca.crt: open /var/run/secrets/kubernetes.io/serviceaccount/ca.crt: no such file or directory" scrape_pool=kubernetes-pods
+2020-01-15_11:52:34.25064 level=info ts=2020-01-15T11:52:34.250Z caller=compact.go:495 component=tsdb msg="write block" mint=1579036507075 maxt=1579039200000 ulid=01DYMGRJXER0TFJ9KBW81QRZ7R duration=1.308005207s
+2020-01-15_11:52:34.78809 level=info ts=2020-01-15T11:52:34.787Z caller=head.go:593 component=tsdb msg="head GC completed" duration=326.767991ms
+2020-01-15_11:52:35.22550 level=info ts=2020-01-15T11:52:35.224Z caller=head.go:593 component=tsdb msg="head GC completed" duration=14.77077ms
+2020-01-15_11:52:35.50089 level=info ts=2020-01-15T11:52:35.500Z caller=head.go:593 component=tsdb msg="head GC completed" duration=5.072788ms
+2020-01-15_11:52:36.07177 level=info ts=2020-01-15T11:52:36.071Z caller=head.go:593 component=tsdb msg="head GC completed" duration=4.093496ms
+2020-01-15_11:52:36.58954 level=info ts=2020-01-15T11:52:36.589Z caller=head.go:663 component=tsdb msg="WAL checkpoint complete" first=0 last=1 duration=517.560694ms
+2020-01-15_11:52:36.85359 level=info ts=2020-01-15T11:52:36.853Z caller=head.go:593 component=tsdb msg="head GC completed" duration=14.251145ms
+2020-01-15_11:52:37.18394 level=info ts=2020-01-15T11:52:37.183Z caller=head.go:593 component=tsdb msg="head GC completed" duration=14.540769ms
+2020-01-15_11:52:37.67935 level=info ts=2020-01-15T11:52:37.672Z caller=head.go:663 component=tsdb msg="WAL checkpoint complete" first=2 last=3 duration=488.384465ms
+2020-01-15_11:52:37.89011 level=info ts=2020-01-15T11:52:37.890Z caller=head.go:593 component=tsdb msg="head GC completed" duration=3.490892ms
+2020-01-15_11:56:05.28178 level=warn ts=2020-01-15T11:56:05.280Z caller=manager.go:567 component="rule manager" group="GitLab Saturation Ratios" msg="Error on ingesting results from rule evaluation with different value but same timestamp" numDropped=1
+2020-01-15_12:00:09.03652 level=warn ts=2020-01-15T12:00:08.885Z caller=manager.go:567 component="rule manager" group="GitLab Saturation Ratios" msg="Error on ingesting results from rule evaluation with different value but same timestamp" numDropped=1
+2020-01-15_12:01:05.05311 level=warn ts=2020-01-15T12:01:05.052Z caller=manager.go:567 component="rule manager" group="GitLab Saturation Ratios" msg="Error on ingesting results from rule evaluation with different value but same timestamp" numDropped=1
