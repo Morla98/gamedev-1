@@ -111,7 +111,6 @@ public class CollectorService {
 				System.out.println("Found in Response: " + c.getToken() + " " + c.getId());
 				// updateWithToken(c.getToken());
 				if (c.getToken() != null && tokenProvider.validateToken(c.getToken())) {
-					System.out.println("BRUH I GOT A VALID TOKEN!");
 					config.setToken(c.getToken());
 				}
 				if (c.getId() != null) {
