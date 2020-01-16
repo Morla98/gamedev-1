@@ -1,5 +1,8 @@
 package com.unihannover.gamedev.restcontroller;
 
+import com.unihannover.gamedev.services.HookHandlerService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -7,23 +10,15 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class CollectorController {
 
+    @Autowired
+    HookHandlerService hookHandlerService;
 
     /**
-     * for User check each achievement with MetricDB and send updated values to main application
+     * WebHook endpoint
      */
-    private void updateAchievements(){
-
+    @RequestMapping(value="/update", method = RequestMethod.POST)
+    public void update(@RequestBody String data) {
+        // Pass object to hook handler
+        hookHandlerService.handle(data);
     }
-
-
-    /**
-     * gets called on hook from application
-     * the data from the hook is stored in the MetricDB
-     */
-    @RequestMapping(value="/update", method = RequestMethod.GET)
-    public void update(){
-        System.out.println("Hello World!");
-    }
-
-
 }
