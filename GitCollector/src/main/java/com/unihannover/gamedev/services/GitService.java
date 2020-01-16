@@ -560,7 +560,7 @@ public class GitService{
                 updateAchievements(user_email);
             }
         }catch (Exception e){
-            System.out.println("email doesnt exist in Collector");
+            System.out.println("email doesnt exist in Collector" + " " + user_email);
             e.printStackTrace();
         }
         return;
