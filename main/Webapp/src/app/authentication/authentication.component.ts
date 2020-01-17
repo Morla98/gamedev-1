@@ -18,6 +18,7 @@ export class AuthenticationComponent implements OnInit {
    this.authService.login(this.email, this.password);
   }
 
+  // Listetning for the Enter key
   @HostListener('window:keyup', ['$event'])
     keyEvent(event: KeyboardEvent) {
         if (event.keyCode === 13) {

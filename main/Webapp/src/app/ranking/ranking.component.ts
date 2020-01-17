@@ -20,12 +20,14 @@ import { of } from 'rxjs';
 export class RankingComponent implements OnInit {
   public dataSource: MatTableDataSource<User>;
   public displayedColumns;
+
   constructor(
     private api: UserControllerService,
     cd: ChangeDetectorRef,
     private matSnackBar: MatSnackBar
   ) {
     this.displayedColumns = ['userName', 'level', 'score'];
+
     this.api
       .getAllUsersUsingGET()
       .pipe(

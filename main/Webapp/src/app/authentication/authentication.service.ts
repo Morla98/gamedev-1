@@ -33,6 +33,7 @@ export class AuthenticationService {
       .pipe(
         tap(res => {
           if (res !== undefined) {
+            // saving the token and email in the browser storage
             sessionStorage.setItem('jwt', res);
             sessionStorage.setItem('email', email);
             this.snackBar.open(this.translateService.instant('LOGIN_SUCCESS'));

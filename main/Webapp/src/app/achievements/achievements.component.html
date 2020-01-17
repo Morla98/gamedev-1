@@ -1,4 +1,6 @@
 <mat-sidenav-container class="example-container">
+
+  <!-- Side menu, with a list of Collectors -->
   <mat-sidenav mode="side"
                opened>
     <div *ngFor="let service of services"
@@ -10,8 +12,10 @@
   </mat-sidenav>
   <mat-sidenav-content>
 
+    <!-- Heading -->
     <h2><mat-icon *ngIf="selectedService !== undefined" (click)="backToOverview()" >arrow_back</mat-icon> {{'ACHIEVEMENTS' | translate}}</h2>
 
+    <!-- Previews of all Collectors -->
       <div *ngIf="selectedService === undefined" class="flex-container">
         <mat-card *ngFor="let preview of previews">
           <mat-card-header>
@@ -29,6 +33,8 @@
           </mat-card-content>
         </mat-card>
       </div>
+
+      <!-- Achievement Overview of a single Collector -->
       <div *ngIf="selectedService !== undefined" class="flex-column-container">
         <div *ngFor="let achievement of achievements" class="achievement">
           <div class="achievement-title">{{achievement.name}}</div>
@@ -39,5 +45,6 @@
           </div>
         </div>
       </div>
+
   </mat-sidenav-content>
 </mat-sidenav-container>

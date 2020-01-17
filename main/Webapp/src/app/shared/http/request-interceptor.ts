@@ -11,8 +11,13 @@ export class RequestInterceptor implements HttpInterceptor {
     request: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
+
     const token = sessionStorage.getItem('jwt');
+
+    // this allows a flexible host for the website
     const baseUrl = window.location.protocol + '//' + window.location.host;
+
+    // if a token is present in the browser storage it will be added to every request
     if (token) {
       request = request.clone({
         setHeaders: {
