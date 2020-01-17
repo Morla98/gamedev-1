@@ -11,6 +11,7 @@ export class ResponseInterceptor implements HttpInterceptor {
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         return next.handle(req).pipe(
             catchError(error => {
+                
                 if (error.status === 401 && this.router.url.indexOf('login') < 0) {
                     sessionStorage.removeItem('jwt');
                     this.router.navigate(['/login']);

@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { ProfileComponent } from '../profile/profile.component';
-import { ServicesComponent } from '../services/services.component';
 import { SharedModule } from '../shared/shared.module';
 import { BaseComponent } from './base.component';
 import { RouterModule } from '@angular/router';
@@ -9,7 +8,7 @@ import { RankingModule } from '../ranking/ranking.module';
 import { AchievementsModule } from '../achievements/achievements.module';
 
 @NgModule({
-  declarations: [BaseComponent, ProfileComponent, ServicesComponent],
+  declarations: [BaseComponent, ProfileComponent],
   imports: [
     SharedModule,
     RouterModule.forChild(baseRoutes),

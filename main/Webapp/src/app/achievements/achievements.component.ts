@@ -1,5 +1,4 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
-import { Service } from '../services/service.models';
 import { cloneDeep } from 'lodash-es';
 import {
   AchievementControllerService,
@@ -8,7 +7,12 @@ import {
 } from 'src/api/services';
 import { map, catchError } from 'rxjs/operators';
 import { of } from 'rxjs';
-import { Achievement, Collector, PreviewDto, AchievementDto } from 'src/api/models';
+import {
+  Achievement,
+  Collector,
+  PreviewDto,
+  AchievementDto
+} from 'src/api/models';
 import { MatSnackBar } from '@angular/material';
 
 @Component({
@@ -21,21 +25,26 @@ export class AchievementsComponent implements OnInit {
   public previews: PreviewDto[];
   public userEmail: string;
   public achievements;
+
   private _selectedServiceId: string;
+
   constructor(
     private achievementService: UserAchievementControllerService,
     private cd: ChangeDetectorRef,
     private collectorService: CollectorControllerService,
     private matSnackBar: MatSnackBar
   ) {
+    // Looking in the Browser Storage for a login credential
     const foundMail = sessionStorage.getItem('email');
     if (foundMail !== undefined) {
       this.userEmail = foundMail;
     }
+
     this.loadServices();
     this.loadPreviews();
   }
 
+  // getter and setter helps to also load achievement every time the selected Service/Collector changes
   set selectedService(id: string) {
     this._selectedServiceId = id;
     this.loadAchievements();
@@ -43,8 +52,10 @@ export class AchievementsComponent implements OnInit {
   get selectedService(): string {
     return this._selectedServiceId;
   }
+
   ngOnInit() {}
 
+  // Making a Http request to our main Backend to get all Achievements for a certain Service
   loadAchievements() {
     const currentService = this.services.find(
       s => s.id === this.selectedService
@@ -55,7 +66,10 @@ export class AchievementsComponent implements OnInit {
         .pipe(
           map(data => {
             if (data !== undefined) {
-              this.achievements = data.sort((a,b) => a.name.localeCompare(b.name));
+              this.achievements = data.sort((a, b) =>
+                a.name.localeCompare(b.name)
+              );
+
               this.cd.markForCheck();
             }
           }),
@@ -65,10 +79,12 @@ export class AchievementsComponent implements OnInit {
             return of(undefined);
           })
         )
+        // subcribing here because the Observable is lazy and the call will otherwise not be made at all
         .subscribe(data => {});
     }
   }
 
+  // Making a Http request to our main Backend to get all previews for services/collectors
   loadPreviews() {
     this.achievementService
       .getUserAchievementsPreviewUsingGET()
@@ -84,9 +100,12 @@ export class AchievementsComponent implements OnInit {
           return of(undefined);
         })
       )
+      // subscribing, since the observable is lazy
       .subscribe(data => {});
   }
 
+
+  //Making a Http request to our main Backend to get all services/collectors
   loadServices() {
     this.collectorService
       .getAllCollectorsUsingGET()
@@ -102,6 +121,7 @@ export class AchievementsComponent implements OnInit {
           return of(undefined);
         })
       )
+      // subscribing, since the observable is lazy
       .subscribe(data => {});
   }
 
@@ -121,12 +141,4 @@ export class AchievementsComponent implements OnInit {
   backToOverview() {
     this.selectedService = undefined;
   }
-
-  // getSelectedAchievements() {
-  //   const service = this.services.find(s => s.name === this.selectedService);
-  //   if (service !== undefined) {
-  //     return service.achievements;
-  //   }
-  //   return [];
-  // }
 }

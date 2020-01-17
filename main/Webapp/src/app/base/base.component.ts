@@ -15,6 +15,7 @@ export class BaseComponent implements OnInit {
   public user;
 
   private subs: Subscription[] = [];
+
   constructor(
     private router: Router,
     private translateService: TranslateService,
@@ -32,6 +33,7 @@ export class BaseComponent implements OnInit {
         .pipe(filter(data => data !== undefined))
         .subscribe(data => (this.user = data))
     );
+    
     this.authenticationService.loadUserInfo();
   }
 
