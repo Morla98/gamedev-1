@@ -1,21 +1,16 @@
 version: '3.0'
-#
-# Suggestion for port conventions:
-#  - 80   : Frontend
-#  - 80xx : Development (pgAdmin, ...)
-#  - 90xx : Connectors (WebHooks)
-#
+
 services:
-  # Main
+
   gitcollector:
-    container_name: GitCollector
+    container_name: git-collector
     restart: always
     volumes:
       - ./config:/config
     build:
       context: .
     ports:
-      - 9084:8080
+      - 9002:8080
 
 #volumes:
 #  config-volume:
@@ -24,4 +19,4 @@ services:
 networks:
   default:
     external:
-      name: devgame-network
+      name: devgame

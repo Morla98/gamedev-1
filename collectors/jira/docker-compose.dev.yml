@@ -9,5 +9,5 @@ services:
     volumes:
       - jiraVolume
     ports:
-      - 9003:8080
+      - 8003:8080
 
