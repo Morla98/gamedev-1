@@ -1,63 +1,46 @@
-# GameDev-1
+# Hauptanwendung
 
-## Setup
-### Anforderungen
+### Konfiguration
+_TODO_
 
- * Docker CE/EE
- * `docker-compose`
- * ggf. `git`
-
-### Starten der Anwendung
+### Starten
 
 ```shell
-docker-compose up --build
+docker-compose -f docker-compose.yml up -d
 ```
 
-### Beenden der Anwendung
+#### Starten mit Entwicklungs-Umgebung
 
 ```shell
-docker-compose down
+docker-compose -f docker-compose.yml -f docker-compose.dev.yml up -d
 ```
 
-### Fehlerbehebung
+## Entwicklungs-Umgebung
 
-Sollte mal etwas hartnäckig nicht klappen, dann komplett aufräumen:
-```shell
-docker-compose down
-docker volume prune
-docker container prune 
-```
+### Weboberfläche
 
-und starten mit
-```shell
-docker-compose up --build --remove-orphans --force-recreate
-```
+ * [http://localhost:8082](http://localhost:8080)
+ * Swagger (API-GUI): [http://localhost:8082/swagger-ui.html](http://localhost:8080/swagger-ui.html)
 
-## Weboberfläche
-
- * [http://localhost:8082](http://localhost:8082)
-   * Benutzer `admin`
-   * Passwort `gameDev`
- * Swagger (API-GUI): [http://localhost:8082/swagger-ui.html](http://localhost:8082/swagger-ui.html)
-
-## Datenbank
+### Datenbank
 
 Postgres-Datenbank unter Host `db`.
 
 Zugangsdaten: `root`:`root` .
+Die Datenbank sollte aufgrund der schwachen Zugangsdaten niemals mittels Portweiterleitung o.Ä. weitergeleitet werden, sondern nur im Docker-internen Netzwerk (`devgame`) verwendet werden.
 
-### pgAdmin
+#### pgAdmin
 
-Grafische Benutzeroberfläche mit vorkonfigurierter Verbindung zum Server:
+Grafische Datenbank-Benutzeroberfläche (mit vorkonfigurierter Verbindung zum Server)
  * [http://localhost:8001](http://localhost:8001)
    * Benutzer `admin`
    * Passwort `admin`
 
-## LDAP
+### LDAP
 
-### Gruppen und Benutzer
+#### Vorkonfigurierte Gruppen und Benutzer
 
-(Aktuell) werden folgende (POSIX-)Benutzer angelegt:
+Aktuell werden folgende (POSIX-)Benutzer angelegt:
 
 | Username (`uid` / `cn`) | Passwort | Email |
 | --- | --- | --- |
@@ -76,13 +59,13 @@ Folgende (POSIX-)Gruppen werden angelegt:
 Die Benutzer `developer1` und `developer2` sind Mitglied der Gruppe `developers` .
 `developer3` ist Mitglied der Gruppe `non-developers` .
 
-### phpLDAPadmin
+#### phpLDAPadmin
 
-Erreichbar unter [http://192.168.60.101:8002](http://192.168.60.101:8002).
+Erreichbar unter [http://localhost:8002](http://localhost:8002).
 
 Benutzername: `cn=admin,dc=example,dc=org`, Passwort: `admin`
 
-### Debugging: Manuelles `ldapsearch`
+#### Manuelles `ldapsearch`
 
 Die Filter in phpLDAPadmin sind kaputt (`&` wird fälschlicherweise gequoted), daher:
 
