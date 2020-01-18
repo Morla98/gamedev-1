@@ -80,3 +80,4 @@ cn: non-developers
 gidnumber: 501
 objectclass: posixGroup
 objectclass: top
+
