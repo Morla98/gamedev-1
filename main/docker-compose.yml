@@ -1,0 +1,34 @@
+version: '3.7'
+
+services:
+
+  # The database
+  db:
+    image: postgres
+    container_name: devgame_db
+    restart: always
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: devgame
+    volumes:
+      - ./db/init:/docker-entrypoint-initdb.d
+    networks:
+      - devgame
+
+  # Main application
+  main:
+    container_name: devgame
+    restart: always
+    build:
+      context: ./main
+    ports:
+      - 8080:8080
+    networks:
+      - devgame
+
+# Internal network
+networks:
+  devgame:
+    name: devgame
+

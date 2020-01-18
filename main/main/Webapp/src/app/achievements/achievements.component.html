@@ -1,0 +1,50 @@
+<mat-sidenav-container class="example-container">
+
+  <!-- Side menu, with a list of Collectors -->
+  <mat-sidenav mode="side"
+               opened>
+    <div *ngFor="let service of services"
+         class="service"
+         (click)="selectService(service.id)"
+         [class.underlined]="selectedService === service.id">
+      {{service.name}}
+    </div>
+  </mat-sidenav>
+  <mat-sidenav-content>
+
+    <!-- Heading -->
+    <h2><mat-icon *ngIf="selectedService !== undefined" (click)="backToOverview()" >arrow_back</mat-icon> {{'ACHIEVEMENTS' | translate}}</h2>
+
+    <!-- Previews of all Collectors -->
+      <div *ngIf="selectedService === undefined" class="flex-container">
+        <mat-card *ngFor="let preview of previews">
+          <mat-card-header>
+            <span>
+              {{preview.collectorName}}
+            </span>
+            <span>
+              {{getOverallCompletion(preview.achievements) | number:'1.0-0'}}%
+            </span>
+          </mat-card-header>
+          <mat-card-content>
+            <ul>
+              <li *ngFor="let achievement of preview.achievements"> {{achievement.name}}: {{achievement.progress | number:'1.0-0'}}%</li>
+            </ul>
+          </mat-card-content>
+        </mat-card>
+      </div>
+
+      <!-- Achievement Overview of a single Collector -->
+      <div *ngIf="selectedService !== undefined" class="flex-column-container">
+        <div *ngFor="let achievement of achievements" class="achievement">
+          <div class="achievement-title">{{achievement.name}}</div>
+          <div class="achievement-description">{{achievement.description}}.</div>
+          <div class="achievement-progress">
+            <div class="achievement-progress-description">{{'PROGRESS' | translate}}: {{ achievement.progress | number }}%</div>
+            <div class="achievement-progress-bar"><mat-progress-bar mode="determinate" value="{{ achievement.progress | number:0 }}"></mat-progress-bar></div>
+          </div>
+        </div>
+      </div>
+
+  </mat-sidenav-content>
+</mat-sidenav-container>
