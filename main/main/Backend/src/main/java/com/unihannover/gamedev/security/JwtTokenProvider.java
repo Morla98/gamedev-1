@@ -14,7 +14,7 @@ import io.jsonwebtoken.SignatureException;
 import io.jsonwebtoken.UnsupportedJwtException;
 
 /**
- *
+ *	This Service generates and validates Jwt Tokens used in Authentication for User and Collectors
  *
  * @author Dominit Andrae
  */
@@ -32,22 +32,32 @@ public class JwtTokenProvider {
 	@Value("${app.jwtExpirationInMs}")
 	private int jwtExpirationInMs;
 
+	
+	
+	/**
+	 * This Method generates a Token for an User
+	 * @param email
+	 * @return Jwt Token
+	 */
 	public String generateToken(String email) {
 
 		Date now = new Date();
 		Date expiryDate = new Date(now.getTime() + jwtExpirationInMs);
 
-
-		//The long should be user Id which has to be added
 		return Jwts.builder().setSubject(email).setIssuedAt(new Date())
 				.setExpiration(expiryDate).signWith(SignatureAlgorithm.HS512, jwtSecret).compact();
 	}
 	
+	
+	
+	/**
+	 * This Method generates a Token for a Collector using a different Secret and no Expiration Date
+	 * @param id
+	 * @param secret
+	 * @return Jwt Token
+	 */
 	public String generateTokenWithSecretAndId(String id, String secret) {
 
-		Date now = new Date();
-
-		//The long should be user Id which has to be added
 		return Jwts.builder().setSubject(id).setIssuedAt(new Date()).signWith(SignatureAlgorithm.HS512, secret).compact();
 	}
 
@@ -57,6 +67,11 @@ public class JwtTokenProvider {
 		return claims.getSubject();
 	}
 
+	/**
+	 * Validates a User Token and checks for Signature, Expiration, Token Type and Claim
+	 * @param authToken
+	 * @return true if the Token is valid
+	 */
 	public boolean validateToken(String authToken) {
 		try {
 			Jwts.parser().setSigningKey(jwtSecret).parseClaimsJws(authToken);
@@ -80,6 +95,12 @@ public class JwtTokenProvider {
 		return false;
 	}
 	
+	/**
+	 * Validates a Collector Token and checks for Signature, Expiration, Token Type and Claim
+	 * 
+	 * @param authToken
+	 * @return true if the Token is valid
+	 */
 	public boolean validateCollectorToken(String authToken) {
 		try {
 			Jwts.parser().setSigningKey(jwtCollectorSecret).parseClaimsJws(authToken);

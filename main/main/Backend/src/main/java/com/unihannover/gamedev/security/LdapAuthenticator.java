@@ -15,7 +15,7 @@ import java.util.Properties;
 import java.util.regex.Pattern;
 
 /**
- *
+ * This service is used for Request to an ldap System
  * @author Dominik Andrae
  */
 @Service
@@ -26,6 +26,14 @@ public class LdapAuthenticator {
         ldapConfiguration = LdapConfigParser.LdapJsonToObject();
     }
 
+    
+    /**
+     * Authenticates at the ldap server with a service user, searches for a certain user
+     *  and tries to validate his login credentials.
+     * @param email
+     * @param password
+     * @return true if the ldap server authenticates the user
+     */
     public boolean performAuthentication(String email, String password) {
 
         // Validate user email (to be safe when inserting it into the search filter)
@@ -93,7 +101,7 @@ public class LdapAuthenticator {
     }
 
     /**
-     * Returns true iff the provided email is valid (in terms of RFC822)
+     * Returns true if the provided email is valid (in terms of RFC822)
      */
     private static boolean isEmailValid(String email) {
         final Pattern EMAIL_REGEX = Pattern.compile("[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", Pattern.CASE_INSENSITIVE);
