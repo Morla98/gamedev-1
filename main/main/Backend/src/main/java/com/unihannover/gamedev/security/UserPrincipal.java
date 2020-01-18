@@ -10,7 +10,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.unihannover.gamedev.models.User;
 
 /**
- *
+ *	
  *
  * @author Dominik Andrae
  */
@@ -28,7 +28,7 @@ public class UserPrincipal implements UserDetails {
 	 * Constructor.
 	 *
 	 * @param username The user name
-	 * @param email The user emain (primary key)
+	 * @param email The user email (primary key)
 	 */
 	public UserPrincipal(String username, String email) {
 		this.username = username;
