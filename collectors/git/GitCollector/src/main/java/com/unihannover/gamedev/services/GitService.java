@@ -548,6 +548,7 @@ public class GitService{
      */
     public void parseCommit(RevCommit commit){
         String user_email = commit.getCommitterIdent().getEmailAddress();
+        userList = httpService.getUsers();
         try{
             if(repository.findByUseremail(user_email).size() == 1){
                 Metric new_metric = repository.findByUseremail(user_email).get(0);

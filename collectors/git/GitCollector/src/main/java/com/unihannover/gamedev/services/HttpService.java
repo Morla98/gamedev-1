@@ -46,7 +46,6 @@ public class HttpService {
 			if (config.getToken() != null) {
 				get.setHeader("X-Auth-Token", config.getToken());
 			}
-			System.out.println("THIS IS THE TOKEN BRUH: " + config.getToken());
 			response = httpClient.execute(get);
 			String responsestring = EntityUtils.toString(response.getEntity(), "UTF-8");
 			// System.out.println("Responsestring: " + responsestring);
