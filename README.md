@@ -14,6 +14,7 @@ Um diese Software betreiben zu können, müssen folgende Voraussetzungen erfüll
 
  * Betriebssystem prinzipiell beliebig; vorzugsweise UNIX-artig.
  * Installiert sind `docker` und `docker-compose` (letzteres in einer Version, die Compose-Dateien mit `version: '3.7'` oder höher unterstützt).
+ * Eine Internet-Anbindung ist verfügbar
 
 ### Starten der Anwendung(en)
 
