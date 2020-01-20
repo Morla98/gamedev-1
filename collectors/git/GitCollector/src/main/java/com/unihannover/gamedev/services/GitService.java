@@ -405,7 +405,13 @@ public class GitService{
      * @param metric the Metric of the associated user
      */
     public void getDiffs(RevCommit commit, Metric metric){
-        RevCommit parent = commit.getParent(0);
+        RevCommit parent;
+        try{
+            //This try catch is just for the first commit. The first commit has no parent! An initial commit with a README helps to prevent losing data from a commit.
+            parent = commit.getParent(0);
+        } catch (Exception e) {
+            return;
+        }
         System.out.println("Printing diff between tree: " + parent + " and " + commit);
         //File file = new File("fout.txt");
         try{
