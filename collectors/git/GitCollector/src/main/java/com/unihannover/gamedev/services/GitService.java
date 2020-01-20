@@ -570,7 +570,6 @@ public class GitService{
         RevCommit parent = commit.getParent(0);
         if ((parent.getCommitterIdent().getEmailAddress()).equals(user_email))
         {
-            System.out.println("\n\n\n\nTEST2\n\n\n\n");
             new_metric.setDoubleCommit(1);
         }
     }
@@ -598,7 +597,6 @@ public class GitService{
                 }
                 if (parent != null)
                 {
-                    System.out.println("\n\n\n\nTEST\n\n\n\n");
                     setParentRelatedAchievement(commit, user_email, new_metric);
                 }
                 getDiffs(commit, new_metric);
