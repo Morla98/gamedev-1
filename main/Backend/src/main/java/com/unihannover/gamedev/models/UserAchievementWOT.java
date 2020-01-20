@@ -38,7 +38,7 @@ public class UserAchievementWOT {
     private String userEmail;
 
     @Column(name = "progress")
-    private double progress;
+    private float progress;
 
 
 
@@ -68,11 +68,11 @@ public class UserAchievementWOT {
         this.userEmail = userEmail;
     }
 
-    public double getProgress() {
+    public float getProgress() {
         return progress;
     }
 
-    public void setProgress(double progress) {
+    public void setProgress(float progress) {
         this.progress = progress;
     }
 }

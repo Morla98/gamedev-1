@@ -12,14 +12,14 @@ public class AchievementDto {
 
 	private String userEmail;
 
-	private double progress;
+	private float progress;
 	
 	private Timestamp lastUpdated;
 
-	private double value;
+	private float value;
 
-	public AchievementDto(String collectorId, String name, String description, String userEmail, double progress,
-			Timestamp lastUpdated, double value) {
+	public AchievementDto(String collectorId, String name, String description, String userEmail, float progress,
+			Timestamp lastUpdated, float value) {
 		super();
 		this.collectorId = collectorId;
 		this.name = name;
@@ -53,7 +53,7 @@ public class AchievementDto {
 	 *
 	 * @return The progress of the Achievement
 	 */
-	public double getProgress() {
+	public float getProgress() {
 		return progress;
 	}
 
@@ -62,7 +62,7 @@ public class AchievementDto {
 	 *
 	 * @param progress The progress of the Achievement
 	 */
-	public void setProgress(double progress) {
+	public void setProgress(float progress) {
 		this.progress = progress;
 	}
 
@@ -145,7 +145,7 @@ public class AchievementDto {
 	 *
 	 * @return The value of the Achievement
 	 */
-	public double getValue() {
+	public float getValue() {
 		return value;
 	}
 
@@ -154,7 +154,7 @@ public class AchievementDto {
 	 *
 	 * @param calue The value of the Achievement
 	 */
-	public void setValue(double value) {
+	public void setValue(float value) {
 		this.value = value;
 	}
 

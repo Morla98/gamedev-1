@@ -56,7 +56,7 @@ public class UserAchievement {
 	private String userEmail;
 
 	@Column(name = "progress")
-	private double progress;
+	private float progress;
 
 	@Column(name = "last_updated")
 	private Timestamp lastUpdated;
@@ -127,7 +127,7 @@ public class UserAchievement {
 	 *
 	 * @return The progress of the UserAchievement
 	 */
-	public double getProgress() {
+	public float getProgress() {
 		return progress;
 	}
 
@@ -138,7 +138,7 @@ public class UserAchievement {
 	 *
 	 * @param progress The progress of the UserAchievement
 	 */
-	public void setProgress(double progress) {
+	public void setProgress(float progress) {
 		this.progress = progress;
 	}
 

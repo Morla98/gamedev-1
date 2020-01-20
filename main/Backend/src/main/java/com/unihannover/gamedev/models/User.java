@@ -31,10 +31,10 @@ public class User {
 	private boolean anonymous;
 
 	@Column(name = "level")
-	private double level;
+	private float level;
 
 	@Column(name = "score")
-	private double score;
+	private float score;
 
 	
 	public User(String email, boolean anonymous) {
@@ -172,7 +172,7 @@ public class User {
 	 *
 	 * @return The user level
 	 */
-	public double getLevel() {
+	public float getLevel() {
 		return level;
 	}
 
@@ -181,7 +181,7 @@ public class User {
 	 *
 	 * @param level The new user level
 	 */
-	public void setLevel(double level) {
+	public void setLevel(float level) {
 		this.level = level;
 	}
 
@@ -190,7 +190,7 @@ public class User {
 	 *
 	 * @return The user score
 	 */
-	public double getScore() {
+	public float getScore() {
 		return score;
 	}
 
@@ -199,7 +199,7 @@ public class User {
 	 *
 	 * @param score The user score
 	 */
-	public void setScore(double score) {
+	public void setScore(float score) {
 		this.score = score;
 	}
 }
