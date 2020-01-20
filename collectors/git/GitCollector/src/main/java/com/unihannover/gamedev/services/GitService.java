@@ -119,7 +119,7 @@ public class GitService{
         this.achievementList = achievementList;
         this.httpService = httpService;
         this.repository = repository;
-        this.userList = new ArrayList<User>();
+        this.userList = httpService.getUsers();
         this.uaList = uaList;
         this.uaModelList = uaModelList;
         setLastCommitDate();
@@ -127,6 +127,10 @@ public class GitService{
         setCreateDiffList();
         setNameLambdaList();
         this.user = user;
+        for(User usern : userList)
+        {
+            addUserByEmail(usern.getEmail());
+        }
     }
     /**
      * Get the User specified LastCommitDate from the gitTimeStamp.json
@@ -240,6 +244,12 @@ public class GitService{
             String ending = name.substring(name.lastIndexOf(".") + 1);
             if(ending.equals("js")){
                 metric.setJavaScriptCommits(metric.getJavaScriptCommits() + 1);
+            }
+        });
+        nameLambdaList.add((name,metric) -> {
+            String ending = name.substring(name.lastIndexOf(".") + 1);
+            if(ending.equals("py")){
+                metric.setPythonCommits(metric.getPythonCommits() + 1);
             }
         });
     }
@@ -486,6 +496,7 @@ public class GitService{
      * @param user_email the email of the user whose Achievements should be initialized
      */
     public void addUserByEmail(String user_email){
+
         System.out.println("User " + user_email + " has logged in for the first time and is being added to databases ...");
         UserAchievement userAchievement;
         List<Model> iList = new ArrayList<>();
@@ -549,6 +560,22 @@ public class GitService{
     }
 
     /**
+     * Check if the parent commit was made by the same user.
+     * @param commit
+     * @param user_email
+     * @param new_metric
+     */
+    public void setParentRelatedAchievement(RevCommit commit, String user_email, Metric new_metric)
+    {
+        RevCommit parent = commit.getParent(0);
+        if ((parent.getCommitterIdent().getEmailAddress()).equals(user_email))
+        {
+            System.out.println("\n\n\n\nTEST2\n\n\n\n");
+            new_metric.setDoubleCommit(1);
+        }
+    }
+
+    /**
      * process an incoming commit
      * @param commit the commit to process
      */
@@ -562,6 +589,18 @@ public class GitService{
                 new_metric.setNumberOfCommits(new_metric.getNumberOfCommits() + 1);
                 getTimeRelatedAchievement(commit, new_metric);
                 getCommitMessageRelatedAchievement(commit, new_metric);
+                RevCommit parent = null;
+                try
+                {
+                    parent = commit.getParent(0);
+                } catch(Exception e) {
+
+                }
+                if (parent != null)
+                {
+                    System.out.println("\n\n\n\nTEST\n\n\n\n");
+                    setParentRelatedAchievement(commit, user_email, new_metric);
+                }
                 getDiffs(commit, new_metric);
                 repository.save(new_metric);
                 updateAchievements(user_email);
@@ -586,7 +625,6 @@ public class GitService{
             //TODO: Zeit Zonen Fehler
             Date latest_date_t = minDate;
             System.out.println(minDate);
-            //TODO: warum gibt dass hier nicht alle User die sich eingeloggt haben?
             System.out.println("Alle User von httpService.getUsers(): ");
             for(User user : httpService.getUsers()){
                 System.out.println(user.getEmail());

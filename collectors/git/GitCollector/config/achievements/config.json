@@ -68,6 +68,20 @@
     "name": "Tortured Soul",
     "value": 30,
     "command": "getJavaScriptCommits",
+  },
+  {
+    "description": "Work on 100 Python Files",
+    "upperbound": "100.0",
+    "name": "Semicolon hater",
+    "value": 15,
+    "command": "getPythonCommits",
+  },
+  {
+    "description": "Push two times in a row",
+    "upperbound": "1.0",
+    "name": "Doublekill",
+    "value": 10,
+    "command": "getDoubleCommit",
   }
 ]
 

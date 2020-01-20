@@ -40,6 +40,12 @@ public class Metric {
     @Column(name = "JavaScriptCommits")
     private int JavaScriptCommits;
 
+    @Column(name = "PythonCommits")
+    private int PythonCommits;
+
+    @Column(name = "DoubleCommit")
+    private int DoubleCommit;
+
     public int getJavaScriptCommits() {
         return JavaScriptCommits;
     }
@@ -51,6 +57,12 @@ public class Metric {
     }
     public void setJavaCommits(int javaCommits) {
         JavaCommits = javaCommits;
+    }
+    public int getPythonCommits() {
+        return PythonCommits;
+    }
+    public void setPythonCommits(int pythonCommits) {
+        PythonCommits = pythonCommits;
     }
     public int getNumberOfNewFiles() {
         return numberOfNewFiles;
@@ -98,5 +110,12 @@ public class Metric {
     }
     public void setNumberOfCorrectCommitMessages(int numberOfCorrectCommitMessages) {
         this.numberOfCorrectCommitMessages = numberOfCorrectCommitMessages;
+    }
+
+    public int getDoubleCommit() {
+        return DoubleCommit;
+    }
+    public void setDoubleCommit(int doubleCommits) {
+        this.DoubleCommit = doubleCommits;
     }
 }
