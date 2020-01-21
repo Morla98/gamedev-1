@@ -257,6 +257,12 @@ public class GitService{
                 metric.setPythonCommits(metric.getPythonCommits() + 1);
             }
         });
+        nameLambdaList.add((name,metric) -> {
+            String ending = name.substring(name.lastIndexOf(".") + 1);
+            if(ending.equals("html")){
+                metric.setHtmlCommits(metric.getHtmlCommits() + 1);
+            }
+        });
     }
 
     /**

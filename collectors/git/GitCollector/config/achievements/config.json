@@ -82,6 +82,34 @@
     "name": "Doublekill",
     "value": 10,
     "command": "getDoubleCommit",
+  },
+  {
+    "description": "Commit 50 empty Lines",
+    "upperbound": "50.0",
+    "name": "I`m helping",
+    "value": 1,
+    "command": "getEmptyLines",
+  },
+  {
+    "description": "Write 100 Javadocs",
+    "upperbound": "100",
+    "name": "CuSaTop quality",
+    "value": 10,
+    "command": "getJavadocs",
+  },
+  {
+    "description": "Write 50 TODO`s",
+    "upperbound": "50",
+    "name": "Maybe later",
+    "value": 2,
+    "command": "getTODOs",
+  },
+  {
+    "description": "Work on 100 html files",
+    "upperbound": "100",
+    "name": "<name>html Achievement<name>",
+    "value": 10,
+    "command": "getHtmlCommits",
   }
 ]
 

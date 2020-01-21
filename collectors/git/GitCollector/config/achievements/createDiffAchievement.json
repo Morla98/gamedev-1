@@ -1,10 +1,22 @@
 [
     {
         "command": "NumberOfComments",
-        "regex": "//"
+        "regex": "//(.*)(//|\n)"
     },
     {
         "command": "NumberOfHelloWorlds",
         "regex": "Hello World"
+    },
+    {
+        "command": "EmptyLines",
+        "regex": "\+\n"
+    },
+    {
+        "command": "Javadocs",
+        "regex": "\+(\s|\t)*/\*\*\n\+((.*\n\+)*)\*/(\s|\t)*\n\+((\s|\t)*\n\+)*(\s|\t)*(public|private|protected)"
+    },
+    {
+        "command": "TODOs",
+        "regex": "//TODO:(.*)(//|\n)"
     }
 ]

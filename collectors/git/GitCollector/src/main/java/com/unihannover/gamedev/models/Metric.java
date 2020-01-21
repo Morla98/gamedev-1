@@ -43,9 +43,45 @@ public class Metric {
     @Column(name = "PythonCommits")
     private int PythonCommits;
 
+    @Column(name = "HtmlCommits")
+    private int HtmlCommits;
+
     @Column(name = "DoubleCommit")
     private int DoubleCommit;
 
+    @Column(name = "EmptyLines")
+    private int EmptyLines;
+
+    @Column(name = "Javadocs")
+    private int Javadocs;
+
+    @Column(name = "TODOs")
+    private int TODOs;
+
+    public int getHtmlCommits() {
+        return HtmlCommits;
+    }
+    public void setHtmlCommits(int htmlCommits) {
+        HtmlCommits = htmlCommits;
+    }
+    public int getTODOs() {
+        return TODOs;
+    }
+    public void setTODOs(int TODOs) {
+        this.TODOs = TODOs;
+    }
+    public int getJavadocs() {
+        return Javadocs;
+    }
+    public void setJavadocs(int javadocs) {
+        Javadocs = javadocs;
+    }
+    public int getEmptyLines() {
+        return EmptyLines;
+    }
+    public void setEmptyLines(int emptyLines) {
+        EmptyLines = emptyLines;
+    }
     public int getJavaScriptCommits() {
         return JavaScriptCommits;
     }
@@ -111,7 +147,6 @@ public class Metric {
     public void setNumberOfCorrectCommitMessages(int numberOfCorrectCommitMessages) {
         this.numberOfCorrectCommitMessages = numberOfCorrectCommitMessages;
     }
-
     public int getDoubleCommit() {
         return DoubleCommit;
     }
