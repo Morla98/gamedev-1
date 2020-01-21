@@ -18,6 +18,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 
 /**
  *
+ *	This Class is a configuration Class from Spring, where the Rest endpoints are secured and the Jwt filter is set
  *
  * @author Dominik Andrae
  */

@@ -19,15 +19,15 @@ docker-compose -f docker-compose.yml -f docker-compose.dev.yml up -d
 
 ### Weboberfläche
 
- * [http://localhost:8082](http://localhost:8080)
- * Swagger (API-GUI): [http://localhost:8082/swagger-ui.html](http://localhost:8080/swagger-ui.html)
+ * [http://localhost:8080](http://localhost:8080)
+ * Swagger (API-GUI): [http://localhost:8080/swagger-ui.html](http://localhost:8080/swagger-ui.html)
 
 ### Datenbank
 
 Postgres-Datenbank unter Host `db`.
 
 Zugangsdaten: `root`:`root` .
-Die Datenbank sollte aufgrund der schwachen Zugangsdaten niemals mittels Portweiterleitung o.Ä. weitergeleitet werden, sondern nur im Docker-internen Netzwerk (`devgame`) verwendet werden.
+Die Datenbank sollte aufgrund der schwachen Zugangsdaten niemals von außen erreichbar sein, sondern nur im Docker-internen Netzwerk (`devgame`) verwendet werden.
 
 #### pgAdmin
 
@@ -48,6 +48,7 @@ Aktuell werden folgende (POSIX-)Benutzer angelegt:
 | `developer1` | `developer1` | `dev1@example.com` |
 | `developer2` | `developer2` | `dev2@example.com` |
 | `developer3` | `developer3` | `dev3@example.com` |
+| `abc` | `abc` | `abc@gmx.de` |
 
 Folgende (POSIX-)Gruppen werden angelegt:
 
@@ -56,7 +57,7 @@ Folgende (POSIX-)Gruppen werden angelegt:
 | `developers` | 500 |
 | `non-developers` | 501 |
 
-Die Benutzer `developer1` und `developer2` sind Mitglied der Gruppe `developers` .
+Die Benutzer `developer1`, `developer2` und `abc@gmx.de` sind Mitglied der Gruppe `developers` .
 `developer3` ist Mitglied der Gruppe `non-developers` .
 
 #### phpLDAPadmin
@@ -70,7 +71,7 @@ Benutzername: `cn=admin,dc=example,dc=org`, Passwort: `admin`
 Die Filter in phpLDAPadmin sind kaputt (`&` wird fälschlicherweise gequoted), daher:
 
 ```shell
-docker-compose exec ldap-server bash
+docker-compose -f docker-compose.yml -f docker-compose.dev.yml exec ldap-server bash
 # Startet eine Bash-Shell im OpenLDAP-Container
 ldapsearch -D "cn=admin,dc=example,dc=org" -w admin -p 389 -h localhost -b "dc=example,dc=org" -s sub "(&(gidNumber=500)(objectClass=posixAccount)(mail=*))"
 ```

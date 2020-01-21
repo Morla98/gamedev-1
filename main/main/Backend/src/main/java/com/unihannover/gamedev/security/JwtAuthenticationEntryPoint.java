@@ -12,7 +12,7 @@ import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.stereotype.Component;
 
 /**
- *
+ *  
  *
  * @author Dominik Andrae
  */

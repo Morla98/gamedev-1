@@ -1,5 +1,5 @@
 {
-  "name" : "JiraCollector",
+  "name" : "Jira",
   "collectorId" : "jira",
   "token" : "",
   "mainApiUrl" : "http://devgame:8080/api",

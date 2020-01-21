@@ -3,7 +3,6 @@ version: '3.7'
 #
 # Services useful for debug purposes
 #
-# TODO: Port conventions
 
 services:
 
