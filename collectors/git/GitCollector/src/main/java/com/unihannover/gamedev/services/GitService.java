@@ -73,6 +73,10 @@ public class GitService{
      */
     private MetricRepository repository;
     /**
+     * List of all Users from the pull before
+     */
+    private List<User> userListBackup;
+    /**
      * List of all Users
      */
     private List<User> userList;
@@ -119,7 +123,7 @@ public class GitService{
         this.achievementList = achievementList;
         this.httpService = httpService;
         this.repository = repository;
-        this.userList = httpService.getUsers();
+        this.userList = userList;
         this.uaList = uaList;
         this.uaModelList = uaModelList;
         setLastCommitDate();
@@ -131,6 +135,7 @@ public class GitService{
         {
             addUserByEmail(usern.getEmail());
         }
+        userListBackup = userList;
     }
     /**
      * Get the User specified LastCommitDate from the gitTimeStamp.json
@@ -496,7 +501,18 @@ public class GitService{
      * @param user_email the email of the user whose Achievements should be initialized
      */
     public void addUserByEmail(String user_email){
-
+        if (userListBackup != null)
+        {
+            for(User user : userListBackup)
+            {
+                //If the user was known before don't overwrite the data!
+                if(user.getEmail().equals(user_email))
+                {
+                    return;
+                }
+            }
+        }
+        //The for loops ran through. We know that it has to be a new user because the user couldn't be found in the backup.
         System.out.println("User " + user_email + " has logged in for the first time and is being added to databases ...");
         UserAchievement userAchievement;
         List<Model> iList = new ArrayList<>();
@@ -549,9 +565,14 @@ public class GitService{
         if(checkUser(userList, user_email)){
             parseCommit(commit);
         }else{
+            userListBackup = userList;
             userList = httpService.getUsers();
+            for (User user : userList)
+            {
+                addUserByEmail(user.getEmail());
+            }
             if(checkUser(userList, user_email)){
-                addUserByEmail(user_email);
+                System.out.println("User " + user_email + " is recognized by Main Application.");
                 parseCommit(commit);
             }else{
                 System.out.println("User " + user_email + " is not recognized by Main Application and Commit "+ commit.getName() +" will be ignored");
@@ -580,7 +601,6 @@ public class GitService{
      */
     public void parseCommit(RevCommit commit){
         String user_email = commit.getCommitterIdent().getEmailAddress();
-        userList = httpService.getUsers();
         try{
             if(repository.findByUseremail(user_email).size() == 1){
                 Metric new_metric = repository.findByUseremail(user_email).get(0);
