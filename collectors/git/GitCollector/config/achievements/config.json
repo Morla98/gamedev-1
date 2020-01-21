@@ -107,9 +107,16 @@
   {
     "description": "Work on 100 html files",
     "upperbound": "100",
-    "name": "<name>html Achievement<name>",
+    "name": "<h1>html Achievement<\\h1>",
     "value": 10,
     "command": "getHtmlCommits",
+  },
+  {
+    "description": "handle 50 Execptions",
+    "upperbound": "50",
+    "name": "Exceptional Work",
+    "value": 5,
+    "command": "getExceptions",
   }
 ]
 

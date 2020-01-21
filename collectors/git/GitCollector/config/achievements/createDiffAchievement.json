@@ -18,5 +18,9 @@
     {
         "command": "TODOs",
         "regex": "//TODO:(.*)(//|\n)"
+    },
+    {
+        "command": "Exceptions",
+        "regex":  "try((\s|\t)|\n\+)*\{(.*\n\+)*\}((\s|\t)|(\n\+))*catch((\s|\t)|\n\+)*\((.*)\)((\s|\t)*|(\n\+))*\{(.*\n\+)*\}"
     }
 ]

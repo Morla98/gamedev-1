@@ -58,6 +58,15 @@ public class Metric {
     @Column(name = "TODOs")
     private int TODOs;
 
+    @Column(name = "Exceptions")
+    private int Exceptions;
+
+    public int getExceptions() {
+        return Exceptions;
+    }
+    public void setExceptions(int exceptions) {
+        Exceptions = exceptions;
+    }
     public int getHtmlCommits() {
         return HtmlCommits;
     }
