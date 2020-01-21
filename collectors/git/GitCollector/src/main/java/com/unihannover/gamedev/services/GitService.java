@@ -385,7 +385,7 @@ public class GitService{
         String deleted_diff = "";
         String file_name = lines[3].substring(lines[3].lastIndexOf("/") + 1);
         String old_name = lines[2].substring(lines[2].lastIndexOf("/") + 1);
-        System.out.println("This is the name of the changed file: " + file_name);
+        //System.out.println("This is the name of the changed file: " + file_name);
         getNameRelatedAchievements(file_name, metric);
         for(int i = 5; i < lines.length; i++){
             if(lines[i].startsWith("+")){
@@ -444,14 +444,14 @@ public class GitService{
                     diffFormatter.format(diffFormatter.toFileHeader(entry));
                     FileHeader fileHeader = diffFormatter.toFileHeader( entry );
                     List<? extends HunkHeader> hunks = fileHeader.getHunks();
-                    for( HunkHeader hunk : hunks ) {
+                    /*for( HunkHeader hunk : hunks ) {
                         System.out.println( hunk );
-                    }
+                    }*/
                     FileInputStream fin = new FileInputStream(new File("fout.txt"));
                     java.util.Scanner scanner = new java.util.Scanner(fin,"UTF-8").useDelimiter("\\Z");
                     String theString = scanner.hasNext() ? scanner.next() : "";
-                    System.out.println("/n COMMIT DIFF STRING Of A File: ");
-                    System.out.println(theString);
+                    //System.out.println("/n COMMIT DIFF STRING Of A File: ");
+                    //System.out.println(theString);
                     scanner.close();
                     getDiffRelatedAchievements(theString, metric);
                     PrintWriter pw = new PrintWriter("fout.txt");
@@ -519,7 +519,7 @@ public class GitService{
             }
         }
         //The for loops ran through. We know that it has to be a new user because the user couldn't be found in the backup.
-        System.out.println("User " + user_email + " has logged in for the first time and is being added to databases ...");
+        //System.out.println("User " + user_email + " has logged in for the first time and is being added to databases ...");
         UserAchievement userAchievement;
         List<Model> iList = new ArrayList<>();
         for(Achievement achievement: achievementList){
@@ -531,10 +531,10 @@ public class GitService{
             userAchievement.setLastUpdated(new Timestamp(System.currentTimeMillis()));
             iList.add(userAchievement);
         }
-        System.out.println("... Sending User " + user_email + " to Main Application ...");
+        //System.out.println("... Sending User " + user_email + " to Main Application ...");
         httpService.sendList(iList, "http://devgame:8080/api/user-achievements");
-        System.out.println("... User " + user_email + " has been succesfully send");
-        System.out.println("Initializing Metric for " + user_email);
+        //System.out.println("... User " + user_email + " has been succesfully send");
+        //System.out.println("Initializing Metric for " + user_email);
         Metric new_Metric = new Metric();
         new_Metric.setNightCommits(0);
         new_Metric.setNumberOfNewFiles(0);
@@ -578,10 +578,10 @@ public class GitService{
                 addUserByEmail(user.getEmail());
             }
             if(checkUser(userList, user_email)){
-                System.out.println("User " + user_email + " is recognized by Main Application.");
+                //System.out.println("User " + user_email + " is recognized by Main Application.");
                 parseCommit(commit);
             }else{
-                System.out.println("User " + user_email + " is not recognized by Main Application and Commit "+ commit.getName() +" will be ignored");
+                //System.out.println("User " + user_email + " is not recognized by Main Application and Commit "+ commit.getName() +" will be ignored");
             }
         }
     }
@@ -648,11 +648,11 @@ public class GitService{
             List<Ref> call = git.branchList().setListMode(ListBranchCommand.ListMode.ALL).call();
             //TODO: Zeit Zonen Fehler
             Date latest_date_t = minDate;
-            System.out.println(minDate);
+            /*System.out.println(minDate);
             System.out.println("Alle User von httpService.getUsers(): ");
             for(User user : httpService.getUsers()){
                 System.out.println(user.getEmail());
-            }
+            }*/
             for(Ref ref : call)
             {
                 System.out.println("\nBranch: " + ref.getName()+ "\n");
