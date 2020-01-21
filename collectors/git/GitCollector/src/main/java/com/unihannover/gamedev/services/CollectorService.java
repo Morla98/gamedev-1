@@ -97,7 +97,7 @@ public class CollectorService {
 			try {
 				// getting the JsonString
 				String responseObject = EntityUtils.toString(result);
-				System.out.println("response: " + responseObject);
+				//System.out.println("response: " + responseObject);
 				// Parsing the JsonString
 				c = mapper.readValue(responseObject, Collector.class);
 			} catch (org.apache.http.ParseException e) {
@@ -108,7 +108,7 @@ public class CollectorService {
 				e.printStackTrace();
 			}
 			if (c != null) {
-				System.out.println("Found in Response: " + c.getToken() + " " + c.getId());
+				//System.out.println("Found in Response: " + c.getToken() + " " + c.getId());
 				// updateWithToken(c.getToken());
 				if (c.getToken() != null && tokenProvider.validateToken(c.getToken())) {
 					config.setToken(c.getToken());
@@ -178,7 +178,7 @@ public class CollectorService {
 			new_metric.setNumberOfCommits(0);
 			repository.save(new_metric);
 			Metric m = repository.findByUseremail(user.getEmail()).get(0);
-			System.out.println("Initializing git_collector_metrics:: user_email: " + user.getEmail() + "; #ofCommits: " + m.getNumberOfCommits());
+			//System.out.println("Initializing git_collector_metrics:: user_email: " + user.getEmail() + "; #ofCommits: " + m.getNumberOfCommits());
 		}
 		uaList = new ArrayList<>();
 

@@ -73,6 +73,10 @@ public class GitService{
      */
     private MetricRepository repository;
     /**
+     * List of all Users from the pull before
+     */
+    private List<User> userListBackup;
+    /**
      * List of all Users
      */
     private List<User> userList;
@@ -119,7 +123,7 @@ public class GitService{
         this.achievementList = achievementList;
         this.httpService = httpService;
         this.repository = repository;
-        this.userList = new ArrayList<User>();
+        this.userList = userList;
         this.uaList = uaList;
         this.uaModelList = uaModelList;
         setLastCommitDate();
@@ -127,6 +131,11 @@ public class GitService{
         setCreateDiffList();
         setNameLambdaList();
         this.user = user;
+        for(User usern : userList)
+        {
+            addUserByEmail(usern.getEmail());
+        }
+        userListBackup = userList;
     }
     /**
      * Get the User specified LastCommitDate from the gitTimeStamp.json
@@ -240,6 +249,18 @@ public class GitService{
             String ending = name.substring(name.lastIndexOf(".") + 1);
             if(ending.equals("js")){
                 metric.setJavaScriptCommits(metric.getJavaScriptCommits() + 1);
+            }
+        });
+        nameLambdaList.add((name,metric) -> {
+            String ending = name.substring(name.lastIndexOf(".") + 1);
+            if(ending.equals("py")){
+                metric.setPythonCommits(metric.getPythonCommits() + 1);
+            }
+        });
+        nameLambdaList.add((name,metric) -> {
+            String ending = name.substring(name.lastIndexOf(".") + 1);
+            if(ending.equals("html")){
+                metric.setHtmlCommits(metric.getHtmlCommits() + 1);
             }
         });
     }
@@ -364,7 +385,7 @@ public class GitService{
         String deleted_diff = "";
         String file_name = lines[3].substring(lines[3].lastIndexOf("/") + 1);
         String old_name = lines[2].substring(lines[2].lastIndexOf("/") + 1);
-        System.out.println("This is the name of the changed file: " + file_name);
+        //System.out.println("This is the name of the changed file: " + file_name);
         getNameRelatedAchievements(file_name, metric);
         for(int i = 5; i < lines.length; i++){
             if(lines[i].startsWith("+")){
@@ -405,7 +426,13 @@ public class GitService{
      * @param metric the Metric of the associated user
      */
     public void getDiffs(RevCommit commit, Metric metric){
-        RevCommit parent = commit.getParent(0);
+        RevCommit parent;
+        try{
+            //This try catch is just for the first commit. The first commit has no parent! An initial commit with a README helps to prevent losing data from a commit.
+            parent = commit.getParent(0);
+        } catch (Exception e) {
+            return;
+        }
         System.out.println("Printing diff between tree: " + parent + " and " + commit);
         //File file = new File("fout.txt");
         try{
@@ -417,14 +444,14 @@ public class GitService{
                     diffFormatter.format(diffFormatter.toFileHeader(entry));
                     FileHeader fileHeader = diffFormatter.toFileHeader( entry );
                     List<? extends HunkHeader> hunks = fileHeader.getHunks();
-                    for( HunkHeader hunk : hunks ) {
+                    /*for( HunkHeader hunk : hunks ) {
                         System.out.println( hunk );
-                    }
+                    }*/
                     FileInputStream fin = new FileInputStream(new File("fout.txt"));
                     java.util.Scanner scanner = new java.util.Scanner(fin,"UTF-8").useDelimiter("\\Z");
                     String theString = scanner.hasNext() ? scanner.next() : "";
-                    System.out.println("/n COMMIT DIFF STRING Of A File: ");
-                    System.out.println(theString);
+                    //System.out.println("/n COMMIT DIFF STRING Of A File: ");
+                    //System.out.println(theString);
                     scanner.close();
                     getDiffRelatedAchievements(theString, metric);
                     PrintWriter pw = new PrintWriter("fout.txt");
@@ -480,7 +507,19 @@ public class GitService{
      * @param user_email the email of the user whose Achievements should be initialized
      */
     public void addUserByEmail(String user_email){
-        System.out.println("User " + user_email + " has logged in for the first time and is being added to databases ...");
+        if (userListBackup != null)
+        {
+            for(User user : userListBackup)
+            {
+                //If the user was known before don't overwrite the data!
+                if(user.getEmail().equals(user_email))
+                {
+                    return;
+                }
+            }
+        }
+        //The for loops ran through. We know that it has to be a new user because the user couldn't be found in the backup.
+        //System.out.println("User " + user_email + " has logged in for the first time and is being added to databases ...");
         UserAchievement userAchievement;
         List<Model> iList = new ArrayList<>();
         for(Achievement achievement: achievementList){
@@ -492,10 +531,10 @@ public class GitService{
             userAchievement.setLastUpdated(new Timestamp(System.currentTimeMillis()));
             iList.add(userAchievement);
         }
-        System.out.println("... Sending User " + user_email + " to Main Application ...");
+        //System.out.println("... Sending User " + user_email + " to Main Application ...");
         httpService.sendList(iList, "http://devgame:8080/api/user-achievements");
-        System.out.println("... User " + user_email + " has been succesfully send");
-        System.out.println("Initializing Metric for " + user_email);
+        //System.out.println("... User " + user_email + " has been succesfully send");
+        //System.out.println("Initializing Metric for " + user_email);
         Metric new_Metric = new Metric();
         new_Metric.setNightCommits(0);
         new_Metric.setNumberOfNewFiles(0);
@@ -532,13 +571,33 @@ public class GitService{
         if(checkUser(userList, user_email)){
             parseCommit(commit);
         }else{
+            userListBackup = userList;
             userList = httpService.getUsers();
+            for (User user : userList)
+            {
+                addUserByEmail(user.getEmail());
+            }
             if(checkUser(userList, user_email)){
-                addUserByEmail(user_email);
+                //System.out.println("User " + user_email + " is recognized by Main Application.");
                 parseCommit(commit);
             }else{
-                System.out.println("User " + user_email + " is not recognized by Main Application and Commit "+ commit.getName() +" will be ignored");
+                //System.out.println("User " + user_email + " is not recognized by Main Application and Commit "+ commit.getName() +" will be ignored");
             }
+        }
+    }
+
+    /**
+     * Check if the parent commit was made by the same user.
+     * @param commit
+     * @param user_email
+     * @param new_metric
+     */
+    public void setParentRelatedAchievement(RevCommit commit, String user_email, Metric new_metric)
+    {
+        RevCommit parent = commit.getParent(0);
+        if ((parent.getCommitterIdent().getEmailAddress()).equals(user_email))
+        {
+            new_metric.setDoubleCommit(1);
         }
     }
 
@@ -548,7 +607,6 @@ public class GitService{
      */
     public void parseCommit(RevCommit commit){
         String user_email = commit.getCommitterIdent().getEmailAddress();
-        userList = httpService.getUsers();
         try{
             if(repository.findByUseremail(user_email).size() == 1){
                 Metric new_metric = repository.findByUseremail(user_email).get(0);
@@ -556,6 +614,17 @@ public class GitService{
                 new_metric.setNumberOfCommits(new_metric.getNumberOfCommits() + 1);
                 getTimeRelatedAchievement(commit, new_metric);
                 getCommitMessageRelatedAchievement(commit, new_metric);
+                RevCommit parent = null;
+                try
+                {
+                    parent = commit.getParent(0);
+                } catch(Exception e) {
+
+                }
+                if (parent != null)
+                {
+                    setParentRelatedAchievement(commit, user_email, new_metric);
+                }
                 getDiffs(commit, new_metric);
                 repository.save(new_metric);
                 updateAchievements(user_email);
@@ -579,12 +648,11 @@ public class GitService{
             List<Ref> call = git.branchList().setListMode(ListBranchCommand.ListMode.ALL).call();
             //TODO: Zeit Zonen Fehler
             Date latest_date_t = minDate;
-            System.out.println(minDate);
-            //TODO: warum gibt dass hier nicht alle User die sich eingeloggt haben?
+            /*System.out.println(minDate);
             System.out.println("Alle User von httpService.getUsers(): ");
             for(User user : httpService.getUsers()){
                 System.out.println(user.getEmail());
-            }
+            }*/
             for(Ref ref : call)
             {
                 System.out.println("\nBranch: " + ref.getName()+ "\n");
