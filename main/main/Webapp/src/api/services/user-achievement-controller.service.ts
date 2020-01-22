@@ -21,6 +21,7 @@ import { PreviewDto } from '../models/preview-dto';
 class UserAchievementControllerService extends __BaseService {
   static readonly updateUserAchievementsUsingPOSTPath = '/api/user-achievements';
   static readonly getAllUsersUsingGETPath = '/api/user-achievements/all';
+  static readonly getCollectorAverageUsingGETPath = '/api/user-achievements/average';
   static readonly getUserAchievementsByCollectorIdUsingGETPath = '/api/user-achievements/by-collector-id';
   static readonly getUserAchievementsPreviewUsingGETPath = '/api/user-achievements/preview';
   static readonly getUserAchievementsCollectorPreviewUsingGETPath = '/api/user-achievements/preview-for-collector';
@@ -96,6 +97,42 @@ class UserAchievementControllerService extends __BaseService {
   getAllUsersUsingGET(): __Observable<Array<UserAchievement>> {
     return this.getAllUsersUsingGETResponse().pipe(
       __map(_r => _r.body as Array<UserAchievement>)
+    );
+  }
+
+  /**
+   * @param collectorId collectorId
+   * @return OK
+   */
+  getCollectorAverageUsingGETResponse(collectorId: string): __Observable<__StrictHttpResponse<number>> {
+    let __params = this.newParams();
+    let __headers = new HttpHeaders();
+    let __body: any = null;
+    if (collectorId != null) __params = __params.set('collectorId', collectorId.toString());
+    let req = new HttpRequest<any>(
+      'GET',
+      this.rootUrl + `/api/user-achievements/average`,
+      __body,
+      {
+        headers: __headers,
+        params: __params,
+        responseType: 'text'
+      });
+
+    return this.http.request<any>(req).pipe(
+      __filter(_r => _r instanceof HttpResponse),
+      __map((_r) => {
+        return (_r as HttpResponse<any>).clone({ body: parseFloat((_r as HttpResponse<any>).body as string) }) as __StrictHttpResponse<number>
+      })
+    );
+  }
+  /**
+   * @param collectorId collectorId
+   * @return OK
+   */
+  getCollectorAverageUsingGET(collectorId: string): __Observable<number> {
+    return this.getCollectorAverageUsingGETResponse(collectorId).pipe(
+      __map(_r => _r.body as number)
     );
   }
 
