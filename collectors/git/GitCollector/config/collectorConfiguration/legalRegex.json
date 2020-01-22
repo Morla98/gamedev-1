@@ -1,6 +1,6 @@
 [
   {
-    "regex" : "(feat|fix|chore|test)(.*):.*\\s"
+    "regex" : "(feat|fix|chore|test)\(.+\):.+\\s"
   },
   {
   "regex" : "test\\s"
