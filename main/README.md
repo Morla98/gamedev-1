@@ -1,7 +1,23 @@
 # Hauptanwendung
 
 ### Konfiguration
-_TODO_
+
+Die Konfiguration der Hauptanwendung geschieht in zwei Dateien:
+
+ 1. `main/Backend/config/ldapConfig.json` : Konfiguration des LDAP-Servers
+```json
+{
+  "LDAP_URL": "ldap://ldap-server:389",  # Protokoll, Host und Port zum LDAP-Server; ggf. hier ldaps verwenden
+  "LDAP_SERVICE_USER_DN": "cn=admin,dc=example,dc=org",  # DN für den Service-Benutzer
+  "LDAP_SERVICE_USER_PW": "admin",  # Passwort des Service-Benutzers
+  "LDAP_BASE": "dc=example,dc=org",  # Basis für die Suche (nach Nutzern beim Login)
+  "LDAP_SEARCH_FILTER": "(&(objectClass=posixAccount)(mail=#EMAIL)(gidNumber=500))"  # Frei konfigurierbarer Such-Filter. `#EMAIL` wird beim Login durch die vom Benutzer angegebene Email ersetzt.
+}
+```
+ 2. `main/Backend/src/main/resources/application.properties` : Konfiguration der Sicherheits-Tokens
+    * `app.jwtSecret` : JWT-Secret der Haupt-Anwendung selbst, hier einen zufälligen Wert wählen
+    * `app.jwtCollectorSecret` : Shared JWT-Secret für die initiale Anmeldung für Kollektoren (dieser muss in der Kollektor-Konfiruation jeweils identisch angegeben werden). Einen zufälligen Wert wählen.
+    * Die anderen Optionen können belassen werden
 
 ### Starten
 
