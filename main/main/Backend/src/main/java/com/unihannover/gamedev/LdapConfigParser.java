@@ -16,10 +16,6 @@ public class LdapConfigParser {
         File file = new File(CONFIG_FILEPATH);
         try {
             LdapConfiguration configuration = (new ObjectMapper()).readValue(file, LdapConfiguration.class);
-
-            // Debug: Print parsed configuration
-            printConfig(configuration);
-
             return configuration;
 
         } catch (IOException e) {
@@ -45,20 +41,5 @@ public class LdapConfigParser {
             e.printStackTrace();
         }
         return null;
-    }
-
-    /**
-     * Print the parsed configuration into the stdout.
-     * TODO: Remove in production?!
-     */
-    private static void printConfig(LdapConfiguration configuration) {
-        System.out.println("-------------");
-        System.out.println("Printing LdapConfig object with its attributes");
-        System.out.println(configuration.LDAP_URL);
-        System.out.println(configuration.LDAP_SERVICE_USER_DN);
-        System.out.println(configuration.LDAP_SERVICE_USER_PW);
-        System.out.println(configuration.LDAP_BASE);
-        System.out.println(configuration.LDAP_SEARCH_FILTER);
-        System.out.println("-------------");
     }
 }
