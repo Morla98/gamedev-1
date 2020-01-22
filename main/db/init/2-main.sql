@@ -63,6 +63,9 @@ BEGIN
             AND ua.user_email = u.email
     );
 
+    UPDATE main.users u
+    SET "level" = log(2, 2 + u.score)::INTEGER;
+
     RETURN NEW;
 END;
 $$ LANGUAGE plpgsql;
