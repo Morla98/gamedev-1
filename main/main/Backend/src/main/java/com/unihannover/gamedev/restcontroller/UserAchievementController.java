@@ -183,6 +183,7 @@ public class UserAchievementController extends BaseController {
                 if (collectorId.equals(u.getCollectorId())) {
                     list.add(u);
                 }
+            }
         }
         //add non-progress achievements
         for(UserAchievement u : userAchievementRepo.findByUserEmail(userMail)) {
