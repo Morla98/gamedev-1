@@ -1,0 +1,18 @@
+@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+@import './scss/variables';
+
+body {
+  background-color: map-get($color, primary);
+}
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+}
+
+h2 {
+  color: white;
+}

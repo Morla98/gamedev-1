@@ -1,0 +1,16 @@
+version: '3.0'
+
+services:
+
+  jiracollector:
+    container_name: jira-collector
+    restart: always
+    build:
+      context: ./jira-collector
+    ports:
+      - 9001:8080
+
+networks:
+  default:
+    external:
+      name: devgame

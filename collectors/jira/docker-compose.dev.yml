@@ -1,0 +1,16 @@
+version: '3.0'
+
+services:
+
+  jira:
+    image: atlassian/jira-software
+    container_name: jira
+    restart: always
+    volumes:
+      - jiradata:/var/atlassian/jira
+    ports:
+      - 8003:8080
+
+volumes:
+  jiradata:
+    external: false

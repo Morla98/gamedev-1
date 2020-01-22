@@ -1,0 +1,24 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>{{'LOGIN' | translate}}</mat-card-title>
+  </mat-card-header>
+
+  <div class="flex-container">
+    <mat-form-field>
+      <input matInput
+             [placeholder]="'EMAIL' | translate"
+             [(ngModel)]="email">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput
+             [placeholder]="'PASSWORD' | translate"
+             type="password"
+             [(ngModel)]="password">
+    </mat-form-field>
+  </div>
+  <mat-card-actions align="end">
+    <button mat-raised-button
+            (click)="login()">{{'LOGIN' | translate}}</button>
+  </mat-card-actions>
+
+</mat-card>

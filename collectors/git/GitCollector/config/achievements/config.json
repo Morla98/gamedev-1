@@ -1,0 +1,122 @@
+[
+  {
+    "description": "Push for the first time",
+    "upperbound": "1.0",
+    "name": "Hello Git",
+    "value": 10,
+    "command": "getNumberOfCommits"
+  },
+  {
+    "description": "Push 100 times",
+    "upperbound": "100.0",
+    "name": "Experienced Commiter",
+    "value": 50,
+    "command": "getNumberOfCommits"
+  },
+  {
+    "description": "Push 100 times between 12am and 1pm",
+    "upperbound": "100.0",
+    "name": "Push, Eat, Repeat",
+    "value": 50,
+    "command": "getDinnerCommits"
+  },
+  {
+    "description": "100 commits with correct message format",
+    "upperbound": "100.0",
+    "name": "Approved by Dominik",
+    "value": 5,
+    "command": "getNumberOfCorrectCommitMessages"
+  },
+  {
+    "description": "Create 100 Files",
+    "upperbound": "100.0",
+    "name": "Creater of Files",
+    "value": 20,
+    "command": "getNumberOfNewFiles"
+  },
+  {
+    "description": "Make 50 Commits between 0am and 4am",
+    "upperbound": "50.0",
+    "name": "Get some Sleep",
+    "value": 0,
+    "command": "getNightCommits"
+  },
+  {
+    "description": "Make 100 Comments",
+    "upperbound": "100.0",
+    "name": "Tutorial Maker",
+    "value": 20,
+    "command": "getNumberOfComments",
+  },
+  {
+    "description": "write 10 Hello Worlds",
+    "upperbound": "10.0",
+    "name": "Hello There",
+    "value": 10,
+    "command": "getNumberOfHelloWorlds",
+  },
+  {
+    "description": "Work on 100 Java Files",
+    "upperbound": "100.0",
+    "name": "Java Developer",
+    "value": 10,
+    "command": "getJavaCommits",
+  },
+  {
+    "description": "Work on 100 JavaScript Files",
+    "upperbound": "100.0",
+    "name": "Tortured Soul",
+    "value": 30,
+    "command": "getJavaScriptCommits",
+  },
+  {
+    "description": "Work on 100 Python Files",
+    "upperbound": "100.0",
+    "name": "Semicolon hater",
+    "value": 15,
+    "command": "getPythonCommits",
+  },
+  {
+    "description": "Push two times in a row",
+    "upperbound": "1.0",
+    "name": "Doublekill",
+    "value": 10,
+    "command": "getDoubleCommit",
+  },
+  {
+    "description": "Commit 50 empty Lines",
+    "upperbound": "50.0",
+    "name": "I`m helping",
+    "value": 1,
+    "command": "getEmptyLines",
+  },
+  {
+    "description": "Write 100 Javadocs",
+    "upperbound": "100",
+    "name": "CuSaTop quality",
+    "value": 10,
+    "command": "getJavadocs",
+  },
+  {
+    "description": "Write 50 TODO`s",
+    "upperbound": "50",
+    "name": "Maybe later",
+    "value": 2,
+    "command": "getTODOs",
+  },
+  {
+    "description": "Work on 100 html files",
+    "upperbound": "100",
+    "name": "<h1>html Achievement</h1>",
+    "value": 10,
+    "command": "getHtmlCommits",
+  },
+  {
+    "description": "handle 50 Execptions",
+    "upperbound": "50",
+    "name": "Exceptional Work",
+    "value": 5,
+    "command": "getExceptions",
+  }
+]
+

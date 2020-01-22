@@ -1,0 +1,43 @@
+@import '../../scss/variables';
+h2 {
+  color: map-get($color, primary);
+}
+
+#profile-wrapper {
+  min-width: 800px;
+}
+
+.flex-container{
+    display: flex;
+    flex-direction: row;
+    .fields{
+        display: flex;
+        flex-direction: column;
+        margin: 1rem;
+        width: 650px;
+        min-width: 650px;
+
+        .mat-form-field {
+          margin-bottom: 1.5rem;
+        }
+    }
+    img{
+        margin: 1rem;
+    }
+}
+
+mat-sidenav-container {
+    background-color: map-get($color, primary-background);
+    height: calc(100vh - 5rem);
+    mat-sidenav {
+      min-width: 20rem;
+      padding-right: 2rem;
+      background-color: map-get($color, primary-dark);
+      color: map-get($color, primary-background);
+    }
+  }
+  
+  mat-sidenav-content {
+    padding: 2rem;
+  }
+  

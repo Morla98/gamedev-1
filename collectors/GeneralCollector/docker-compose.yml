@@ -1,0 +1,18 @@
+version: '3.0'
+
+services:
+
+  generalcollector:
+    container_name: general-collector
+    restart: always
+    volumes:
+      - ./config:/config
+    build:
+      context: ./general-collector
+    ports:
+      - 9003:8080
+
+networks:
+  default:
+    external:
+      name: devgame

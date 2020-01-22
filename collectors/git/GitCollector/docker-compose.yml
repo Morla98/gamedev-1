@@ -1,0 +1,22 @@
+version: '3.0'
+
+services:
+
+  gitcollector:
+    container_name: git-collector
+    restart: always
+    volumes:
+      - ./config:/config
+    build:
+      context: .
+    ports:
+      - 9002:8080
+
+#volumes:
+#  config-volume:
+#    external: false
+
+networks:
+  default:
+    external:
+      name: devgame
