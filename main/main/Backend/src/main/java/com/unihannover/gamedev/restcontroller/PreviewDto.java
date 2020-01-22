@@ -12,22 +12,14 @@ import java.util.ArrayList;
 public class PreviewDto{
 
     public String collectorName;
-
-    /*
-    public List<String> names;
-    public List<String> descriptions;
-     */
-
     public List<AchievementDto> achievements;
+    public double average;
 
 
     public PreviewDto(String collectorName) {
-        /*
-        this.names = new ArrayList<String>();
-        this.sectriptions = new ArrayList<String>();
-        */
         this.achievements = new ArrayList<AchievementDto>();
         this.collectorName = collectorName;
+        this.average = 0;
     }
 
     /**
@@ -40,6 +32,9 @@ public class PreviewDto{
         this.achievements.add(a);
     }
 
+    public void setAverage(double avg) {
+        this.average = avg;
+    }
     /*
     public void addUserAchievement(String name, String description, UserAchievement ua){
         this.names.add(a.getName());

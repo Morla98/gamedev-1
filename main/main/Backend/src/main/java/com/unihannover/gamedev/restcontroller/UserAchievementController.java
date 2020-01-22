@@ -76,6 +76,29 @@ public class UserAchievementController extends BaseController {
         return dtos;
     }
 
+    /**
+     * Returns the progress of all achievements together.
+     *
+     * @param collectorId The collector to get achievements from
+     * @return The average progress
+     */
+    @RequestMapping(value = "/user-achievements/average", method = RequestMethod.GET)
+    public double getCollectorAverage(@RequestParam(value = "collectorId") String collectorId) {
+
+        String userEmail = ((UserPrincipal) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getUsername();
+
+        List<UserAchievement> achievements = userAchievementRepo.findByUserEmail(userEmail);
+        int count = 0;
+        double sum = 0.0;
+        for (UserAchievement u : achievements) {
+            if (u.getCollectorId().equals(collectorId)) {
+                count++;
+                sum += u.getProgress();
+            }
+        }
+        return sum/count;
+    }
+
 
     /**
          * Returns the previews of all achievements in a List of PreviewDtos.
@@ -145,8 +168,6 @@ public class UserAchievementController extends BaseController {
 
         String userMail = ((UserPrincipal) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getUsername();
 
-        int achievementCount = 4;
-
         List<UserAchievement> list = new ArrayList<>();
         //add non finished achievements
         for(UserAchievement u : userAchievementRepo.findByUserEmail(userMail)) {
@@ -158,13 +179,14 @@ public class UserAchievementController extends BaseController {
         }
         //add finished achievements
         for(UserAchievement u : userAchievementRepo.findByUserEmail(userMail)) {
+            if(u.getProgress() == 0.0) {
                 if (collectorId.equals(u.getCollectorId())) {
                     list.add(u);
                 }
         }
         //add non-progress achievements
         for(UserAchievement u : userAchievementRepo.findByUserEmail(userMail)) {
-            if(u.getProgress() == 0.0) {
+            if(u.getProgress() == 1.0) {
                 if (collectorId.equals(u.getCollectorId())) {
                     list.add(u);
                 }
@@ -172,6 +194,9 @@ public class UserAchievementController extends BaseController {
         }
 
         List<PreviewDto> dtoList = new ArrayList<>();
+
+        //Can be used to send shorter lists
+        int achievementCount = 4;
 
         PreviewDto dto = new PreviewDto(collectorId);
         for(int i = 0; i < achievementCount && i < list.size(); i++){
@@ -182,6 +207,7 @@ public class UserAchievementController extends BaseController {
             null, a.getValue());
 
             dto.addUserAchievement(aDto);
+            dto.setAverage(getCollectorAverage(collectorId));
         }
 
         return dto;
