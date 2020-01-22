@@ -107,7 +107,7 @@
   {
     "description": "Work on 100 html files",
     "upperbound": "100",
-    "name": "<h1>html Achievement<\\h1>",
+    "name": "<h1>html Achievement</h1>",
     "value": 10,
     "command": "getHtmlCommits",
   },
