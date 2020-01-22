@@ -1,0 +1,129 @@
+@import '../../scss/variables';
+h2 {
+  color: map-get($color, primary);
+}
+.flex-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  mat-card {
+    min-width: 25rem;
+    margin: 1rem;
+    background-color: map-get($color, primary);
+    color: map-get($color, primary-background);
+    mat-card-header {
+      display: flex;
+      justify-content: space-between;
+    }
+    li {
+      margin-top: 1rem;
+    }
+  }
+}
+
+.flex-column-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: left;
+    overflow-y: auto;
+    padding-bottom: 4rem;
+  .achievement {
+    background-color: #ffffff;
+    color: #313030;
+    height: 200px;
+    min-height: 200px;
+    width: 300px;
+    min-width: 300px;
+    margin: 2rem;
+    padding: 20px;
+    border-radius: 2px;
+
+    .achievement-title {
+      font-size: 130%;
+      font-weight: bold;
+      text-transform: uppercase;
+      text-align: center;
+      margin-top: 10px;
+      margin-bottom: 15px;
+    }
+
+    .achievement-description {
+      height: 110px;
+      max-height: 110px;
+      overflow: hidden;
+      margin-left: 10px;
+      margin-right: 10px;
+      font-size: 90%;
+    }
+
+    .achievement-progress {
+      .achievement-progress-description {
+        text-align: center;
+        font-weight: lighter;
+        font-size: 80%;
+        margin-bottom: 5px;
+      }
+
+      .achievement-progress-bar {
+        /* Customize the progress bar */
+        .mat-progress-bar {
+          height: 10px;
+        }
+
+        ::ng-deep .mat-progress-bar-fill::after {
+          background-color: map-get($color, primary);
+        }
+
+        ::ng-deep .mat-progress-bar-buffer {
+          background: #E4E8EB;
+        }
+
+        ::ng-deep .mat-progress-bar {
+          border-radius: 2px;
+        }
+      }
+    }
+  }
+}
+
+mat-sidenav-container {
+  background-color: map-get($color, primary-background);
+  height: calc(100vh - 5rem);
+  mat-sidenav {
+    min-width: 20rem;
+    padding-right: 2rem;
+    background-color: map-get($color, primary-dark);
+    color: map-get($color, primary-background);
+    //   display: flex;
+    //   flex-direction: column;
+    .service {
+      width: 15rem;
+      height: 8rem;
+      margin: 2rem;
+      font-size: 150%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: map-get($color, primary-background);
+      color: map-get($color, primary);
+      border-radius: 2px;
+      &:hover {
+        cursor: pointer;
+      }
+      &.underlined {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+mat-icon{
+  &:hover {
+    cursor: pointer;
+  }
+}
+mat-sidenav-content {
+  padding: 2rem;
+}

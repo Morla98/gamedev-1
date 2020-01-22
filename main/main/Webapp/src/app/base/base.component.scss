@@ -1,0 +1,76 @@
+@import '../../scss/variables';
+.header {
+  background-color: map-get($color, primary);
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+
+  .toolbar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    mat-icon {
+      color: map-get($color, primary-background);
+      font-size: 180%;
+      margin-right: 0.5rem;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+    .toolbar-item {
+      display: flex;
+      align-items: center;
+      font-size: 130%;
+      color: map-get($color, primary-background);
+      margin-left: 0.4rem;
+      margin-right: 0.4rem;
+
+      &:hover {
+        cursor: pointer;
+      }
+      span {
+        display: flex;
+        align-items: center;
+        background-color: map-get($color, primary-background);
+        height: 80%;
+        padding: 0 0.4rem;
+        color: map-get($color, primary);
+        margin-left: 0.4rem;
+      }
+    }
+
+    .language {
+      width: 8rem;
+      font-size: 130%;
+      display: flex;
+      align-items: center;
+      margin-left: 0.4rem;
+      margin-right: 0.4rem;
+
+      .mat-select {
+        text-align: left;
+        margin-bottom: 0;
+        ::ng-deep {
+          .mat-select-value-text {
+            color: map-get($color, primary-background);
+          }
+          .mat-select-underline {
+            background-color: map-get($color, primary-background);
+          }
+          .mat-select-disabled .mat-select-value,
+          .mat-select-arrow,
+          .mat-select-trigger {
+            color: map-get($color, primary-background);
+          }
+        }
+      }
+    }
+    button {
+      font-size: 130%;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "LDAP_URL": "ldap://ldap-server:389",
+  "LDAP_SERVICE_USER_DN": "cn=admin,dc=example,dc=org",
+  "LDAP_SERVICE_USER_PW": "admin",
+  "LDAP_BASE": "dc=example,dc=org",
+  "LDAP_SEARCH_FILTER": "(&(objectClass=posixAccount)(mail=#EMAIL)(gidNumber=500))"
+}

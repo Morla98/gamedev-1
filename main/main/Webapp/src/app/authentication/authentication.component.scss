@@ -1,0 +1,16 @@
+@import '../../scss/variables';
+
+mat-card{
+    margin: 30vh auto;
+    width: 30rem;
+
+    .flex-container{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+    }
+
+    button {
+        background-color: map-get($color, primary-background);
+    }
+}
