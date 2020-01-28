@@ -1,12 +1,12 @@
 # GameDev 1
 
-_TODO_ : Kurze Projekt-Beschreibung
+Gamedev versucht sich an der gamifizierung des Arbeitsalltags von Software Entwicklern. Dabei werden Achievements aus Software Entwicklungstools wie Git und Jira generiert, um die Arbeit langfristig motivierender zu gestalten. 
 
 ### Terminologie und Aufbau
 
- * **Hauptanwendung** _TODO_
+ * **Hauptanwendung**: Die Hauptanwendung hostet die Webseite und stellt die Rest-API zur Verfügung. Sie überprüft ob sich die User in dem angebunden LDAP befinden und legt diese bei Erstanmeldung in dem `main` Datenbbank schema an. In dem `main` schema werden alle angemeldeten User mit ihren Achievements verwaltet, sowie auch die angemeldeten Kollektoren. 
 
- * **Kollektoren** _TODO_
+ * **Kollektoren** sind eigenständige, von der Hauptanwendung abgekoppelte Systeme, welche die genutzten Entwicklungstools auslesen und entsprechend auswerten. Jeder Kollektor hat in dem `metrics` Schema seine eigene Datenbank, in der er informationen für seine eigenen Achievements abspeichert. Da der Kollektor selbstständig arbeitet und sein eigenes Datenbank schema hat, ist er auch selber dafür zuständig die Achievements der einzelnen User an die Hauptanwendung zu übermitteln.
 
 ### Anforderungen
 
